@@ -1,6 +1,5 @@
 
 class ApplicationController < DigitalServicesCore::ApplicationController
-
   def user_not_authorized(exception)
     # Force sign out of the unauthorized user, to prevent an infinite loop on the
     # site home-page (which is also the enrollments-search page)
@@ -23,14 +22,13 @@ class ApplicationController < DigitalServicesCore::ApplicationController
 
   protected
 
-  def signed_in_root_path(resource_or_scope)
+  def signed_in_root_path(_resource_or_scope)
     main_app.root_path
   end
 
-  def after_sign_out_path_for(resource_or_scope)
+  def after_sign_out_path_for(_resource_or_scope)
     main_app.root_path
   end
-
 
   def high_voltage_controller?
     self.class.to_s =~ /^HighVoltage::/
@@ -72,7 +70,6 @@ class ApplicationController < DigitalServicesCore::ApplicationController
 
     path = main_app.root_path
 
-
     redirect_to(request.referrer || path)
   end
 
@@ -80,7 +77,7 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     act = exception.query
     policy_name = exception.policy.class.to_s.underscore
 
-    count = act.to_sym.in?(%i[index? list?]) ? 2 : 1
+    count = act.to_sym.in?(%i(index? list?)) ? 2 : 1
 
     model_name =
       if exception.record.is_a?(Class)
@@ -99,9 +96,9 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     subject = exception.subject
     policy_name = "#{subject.to_s.underscore}_policy"
     act = "#{exception.action}?".try(:to_sym)
-    act = :index? if act == :read? && action_name == "index"
+    act = :index? if act == :read? && action_name == 'index'
 
-    default = I18n.t(:default, scope: "pundit")
+    default = I18n.t(:default, scope: 'pundit')
 
     if subject.try :model_name
       count = (act == :index?) ? 2 : 1
@@ -113,4 +110,3 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     I18n.t "pundit.#{policy_name}.#{act}", default: default
   end
 end
-
