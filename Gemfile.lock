@@ -385,7 +385,7 @@ PLATFORMS
 DEPENDENCIES
   airbrake (~> 5.0)
   aws-sdk-resources (~> 2.2.27)
-  before_commit
+  before_commit (~> 0.2)
   bullet
   byebug
   capybara (~> 2.6.2)

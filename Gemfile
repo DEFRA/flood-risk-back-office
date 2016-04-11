@@ -23,7 +23,6 @@ gem "digital_services_core", "1.0.0", tag: "v1.0.0",
 
 gem "before_commit"
 
-
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
 # variables being available.
@@ -59,6 +58,7 @@ group :development do
   gem "web-console", "~> 3.0" # Access an IRB console on exception pages or by using <%= console %> in views
   gem "foreman", require: false # for use with Procfile.development
   gem "mail_safe", "~> 0.3" # provides a safety net while developing an application that uses ActionMailer
+  gem "before_commit", "~> 0.2"
 end
 
 group :test do

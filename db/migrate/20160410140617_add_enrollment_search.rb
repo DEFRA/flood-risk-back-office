@@ -39,15 +39,13 @@ class AddEnrollmentSearch < ActiveRecord::Migration
   end
 
   def change
+    add_column :dsc_enrollments, :reference_number, :string, limit: 12
 
-    add_column :dsc_enrollments, :reference_number, :string, :limit => 12
-
-    add_index :dsc_enrollments, [:reference_number], :unique => true
+    add_index :dsc_enrollments, [:reference_number], unique: true
 
     # Drop the legacy view, if it exists
     execute "DROP VIEW IF EXISTS dsc_enrollment_searches_view"
 
     create_view :dsc_enrollment_searches
   end
-
 end

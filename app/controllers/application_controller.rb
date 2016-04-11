@@ -1,4 +1,3 @@
-
 class ApplicationController < DigitalServicesCore::ApplicationController
 
   # def user_not_authorized(exception)
@@ -73,7 +72,6 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     redirect_to(request.referrer || path)
   end
 
-  # TODO: Remove this disable
   # rubocop:disable Metrics/AbcSize
   def pundit_message(exception)
     act = exception.query
@@ -98,9 +96,9 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     subject = exception.subject
     policy_name = "#{subject.to_s.underscore}_policy"
     act = "#{exception.action}?".try(:to_sym)
-    act = :index? if act == :read? && action_name == 'index'
+    act = :index? if act == :read? && action_name == "index"
 
-    default = I18n.t(:default, scope: 'pundit')
+    default = I18n.t(:default, scope: "pundit")
 
     if subject.try :model_name
       count = (act == :index?) ? 2 : 1
