@@ -1,12 +1,4 @@
-
 class ApplicationController < DigitalServicesCore::ApplicationController
-  def user_not_authorized(exception)
-    # Force sign out of the unauthorized user, to prevent an infinite loop on the
-    # site home-page (which is also the enrollments-search page)
-    sign_out(:user) unless Pundit.policy(pundit_user, EnrollmentSearch).index?
-    super
-  end
-
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
@@ -59,7 +51,6 @@ class ApplicationController < DigitalServicesCore::ApplicationController
       dsc_errors_controller?
   end
 
-  # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
   def user_not_authorized(exception)
     flash[:not_authorized] =
       if exception.try(:policy)
@@ -73,6 +64,7 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     redirect_to(request.referrer || path)
   end
 
+  # rubocop:disable Metrics/AbcSize
   def pundit_message(exception)
     act = exception.query
     policy_name = exception.policy.class.to_s.underscore
@@ -96,9 +88,9 @@ class ApplicationController < DigitalServicesCore::ApplicationController
     subject = exception.subject
     policy_name = "#{subject.to_s.underscore}_policy"
     act = "#{exception.action}?".try(:to_sym)
-    act = :index? if act == :read? && action_name == 'index'
+    act = :index? if act == :read? && action_name == "index"
 
-    default = I18n.t(:default, scope: 'pundit')
+    default = I18n.t(:default, scope: "pundit")
 
     if subject.try :model_name
       count = (act == :index?) ? 2 : 1

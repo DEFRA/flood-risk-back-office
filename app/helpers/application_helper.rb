@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def set_page_title(title)
     return unless title.present?
 
@@ -13,7 +12,6 @@ module ApplicationHelper
 
     title
   end
-
 
   def glyphicon_tag(icon, text: nil, tooltip: nil, tooltip_is_html: false)
     icon = icon.to_s.tr("_", "-")
@@ -30,5 +28,4 @@ module ApplicationHelper
 
     html.html_safe
   end
-
 end

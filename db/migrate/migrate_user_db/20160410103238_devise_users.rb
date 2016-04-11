@@ -1,5 +1,5 @@
 class DeviseUsers < ActiveRecord::Migration
-
+  # rubocop:disable Metrics/AbcSize
   def change
     change_table :dsc_users do |t|
       t.string     :invitation_token
@@ -21,5 +21,4 @@ class DeviseUsers < ActiveRecord::Migration
       t.datetime :locked_at
     end
   end
-
 end
