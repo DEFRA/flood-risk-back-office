@@ -8,8 +8,8 @@ gem "coffee-rails", "~> 4.1.0"  # Use CoffeeScript for .coffee assets and views
 gem "jquery-rails", ">= 3.1.4"  # Use jquery as the JavaScript library
 gem "turbolinks", "~> 2.5.3"    # Turbolinks makes following links in your web application faster.
 # Read more: https://github.com/rails/turbolinks
-gem "govuk_admin_template", "~> 4.1.0"
-gem "govuk_frontend_toolkit", "~> 4.9.1" # Added this to get Tabs for Choosing Exemption working
+gem 'govuk_admin_template', '~> 4.1.0'
+gem 'govuk_frontend_toolkit', '~> 4.9.1' # Added this to get Tabs for Choosing Exemption working
 
 gem "simple_form", "~> 3.2.0"
 gem "pundit", "~> 1.1.0"
@@ -22,6 +22,7 @@ gem "digital_services_core", "1.0.0", tag: "v1.0.0",
                                       git: "https://github.com/EnvironmentAgency/digital-services-core"
 
 gem "before_commit"
+
 
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
@@ -40,6 +41,8 @@ gem "validates_timeliness", "~> 4.0.2" # date/time validator for Rails and Activ
 # Use Passenger as our web-server/app-server
 # (e.g. on AWS via Upstart, Heroku vi Procfile, and locally via Procfile.development
 gem "passenger", "~> 5.0.25", require: false
+
+gem "kaminari", "~> 0.16"
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.6.0", require: false # also enables "build_dummy_data" functionality in dev

@@ -1,0 +1,45 @@
+<div role="tabpanel" class="tab-pane" id="business-type">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td><%= t '.type' %></td>
+            <td><%= t(enrollment.organisation.type_name, scope: 'organisation_type') if organisation_type %></td>
+          </tr>
+
+          <% if organisation_type == 'partnership' %>
+            <% enrollment.organisation.partner_contacts.each_with_index do |partner, idx| %>
+              <tr>
+                <td><%= t ".partner_details", count: (idx + 1) %></td>
+                <td><%= render "shared/contact_details", contact: partner %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td><%= t ".#{organisation_type}.organisation_name", default: :'.organisation_name' %></td>
+              <td><%= @presenter.organisation_name %></td>
+            </tr>
+          <% end %>
+
+          <% if organisation_type.in? %w[limited_company limited_liability_partnership] %>
+            <tr>
+              <td><%= t ".#{organisation_type}.organisation_number", default: :'.organisation_number' %></td>
+              <td><%= enrollment.organisation.try! :company_number %></td>
+            </tr>
+          <% end %>
+
+          <% unless organisation_type == 'partnership' %>
+            <tr>
+              <td><%= t ".#{organisation_type}.organisation_address", default: :'.organisation_address' %></td>
+              <%
+                 addr = enrollment.organisation.try!(:contact).try!(:primary_address)
+                 addresses = [addr.premises, addr.street_address,
+                              addr.locality, addr.city, addr.postcode] if addr
+              %>
+              <td><%= addresses.reject(&:blank?).join(', ') if addresses %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
