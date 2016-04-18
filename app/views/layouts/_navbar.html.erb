@@ -4,7 +4,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
          role="button"><%= glyphicon_tag :file %>
-        <%= DigitalServicesCore::Enrollment.model_name.human(count: 2) %>
+        <%= FloodRiskEngine::Enrollment.model_name.human(count: 2) %>
         <span class="caret"></span></a>
 
       <ul class="dropdown-menu">
@@ -13,34 +13,37 @@
                           main_app.admin_enrollments_path %></li>
         <% end %>
 
-        <% if policy(DigitalServicesCore::Enrollment).create? %>
+        <% if policy(FloodRiskEngine::Enrollment).create? %>
           <li><%= link_to glyphicon_tag('plus', text: t('.new_enrollment')),
-                          main_app.admin_enrollments_path, method: :post %></li>
+                          main_app.new_admin_enrollment_path %></li>
         <% end %>
 
-        <% if true # policy(DigitalServicesCore::Enrollment).export? %>
+        <% if true # policy(FloodRiskEngine::Enrollment).export? %>
           <li><%= link_to glyphicon_tag('download-alt', text: t('.export_enrollments')),
                           main_app.admin_enrollment_exports_path %></li>
         <% end %>
       </ul>
     </li>
 
-    <% if policy(DigitalServicesCore::User).index? %>
+    <% if policy(User).index? %>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
            role="button"><%= glyphicon_tag 'user' %>
-          <%= DigitalServicesCore::User.model_name.human(count: 2) %>
+          <%= User.model_name.human(count: 2) %>
           <span class="caret"></span></a>
 
         <ul class="dropdown-menu">
-          <% if policy(DigitalServicesCore::User).index? %>
+          <% if policy(User).index? %>
             <li><%= link_to glyphicon_tag('list', text: t('.view_users')),
                             admin_users_path %></li>
           <% end %>
 
-          <% if policy(DigitalServicesCore::User).invite? %>
-            <li><%= link_to glyphicon_tag('plus-sign', text: t('devise.invite_user')),
-                            new_user_invitation_path %></li>
+          <% if policy(User).invite? %>
+            <li><%=
+            'TODO: new_user_invitation_path'
+            #link_to glyphicon_tag('plus-sign',
+            #text: t('devise.invite_user')),new_user_invitation_path
+            %></li>
           <% end %>
         </ul>
       </li>

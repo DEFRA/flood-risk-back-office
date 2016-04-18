@@ -1,5 +1,5 @@
-module DigitalServicesCore
-  class EnrollmentPolicy < Admin::ApplicationPolicy
+module FloodRiskEngine
+  class EnrollmentPolicy < ApplicationPolicy
     def index?
       user.present? && user.has_any_role?
     end
