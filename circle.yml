@@ -1,9 +1,6 @@
 dependencies:
   post:
-    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle install
-    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign
-    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign pre-commit
-
+    - bundle exec rake before_commit:run
     - git config --global user.email test@example.com # overcommit AuthorEmail
     - git config --global user.name "Test Example" # overcommit AuthorName
     - npm install -g jshint coffeelint htmlhint # overcommit packages
