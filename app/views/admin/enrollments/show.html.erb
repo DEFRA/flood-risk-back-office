@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-9">
-      <h1><%= set_page_title t('.heading') %></h1>
+      <h1><%= page_title t('.heading') %></h1>
       <%= render "admin/enrollments/show/main", presenter: @presenter, enrollment: @enrollment %>
       <%= render "admin/enrollments/show/exemptions", presenter: @presenter %>
       <%= render "admin/enrollments/show/site", enrollment: @enrollment %>

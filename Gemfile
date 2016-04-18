@@ -8,8 +8,8 @@ gem "coffee-rails", "~> 4.1.0"  # Use CoffeeScript for .coffee assets and views
 gem "jquery-rails", ">= 3.1.4"  # Use jquery as the JavaScript library
 gem "turbolinks", "~> 2.5.3"    # Turbolinks makes following links in your web application faster.
 # Read more: https://github.com/rails/turbolinks
-gem 'govuk_admin_template', '~> 4.1.0'
-gem 'govuk_frontend_toolkit', '~> 4.9.1' # Added this to get Tabs for Choosing Exemption working
+gem "govuk_admin_template", "~> 4.1.0"
+gem "govuk_frontend_toolkit", "~> 4.9.1" # Added this to get Tabs for Choosing Exemption working
 
 gem "simple_form", "~> 3.2.0"
 gem "pundit", "~> 1.1.0"
@@ -18,10 +18,9 @@ gem "devise_invitable", "~> 1.5.3"
 gem "sucker_punch", "~> 2.0.1"
 gem "aws-sdk-resources", "~> 2.2.27" # Amazon S3 API access (e.g. data exports)
 
-gem "digital_services_core", "1.0.0", tag: "v1.0.0",
-                                      git: "https://github.com/EnvironmentAgency/digital-services-core"
-
 gem "before_commit"
+
+gem "flood_risk_engine", path: "../flood-risk-engine"
 
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
@@ -36,7 +35,7 @@ gem "scenic", "~> 1.2.0"      # Versioned database views for Rails
 gem "virtus", "~> 1.0.5"      # Virtus allows you to define attributes on classes, modules or class
 # instances with optional information about types - used in Presenters
 gem "validates_timeliness", "~> 4.0.2" # date/time validator for Rails and ActiveModel
-
+gem "rolify", "~> 5.0"
 # Use Passenger as our web-server/app-server
 # (e.g. on AWS via Upstart, Heroku vi Procfile, and locally via Procfile.development
 gem "passenger", "~> 5.0.25", require: false
@@ -58,7 +57,6 @@ group :development do
   gem "web-console", "~> 3.0" # Access an IRB console on exception pages or by using <%= console %> in views
   gem "foreman", require: false # for use with Procfile.development
   gem "mail_safe", "~> 0.3" # provides a safety net while developing an application that uses ActionMailer
-  gem "before_commit", "~> 0.2"
 end
 
 group :test do

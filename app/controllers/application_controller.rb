@@ -1,12 +1,5 @@
-class ApplicationController < DigitalServicesCore::ApplicationController
 
-  # def user_not_authorized(exception)
-  #   # Force sign out of the unauthorized user, to prevent an infinite loop on the
-  #   # site home-page (which is also the enrollments-search page)
-  #   sign_out(:user) unless Pundit.policy(pundit_user, EnrollmentSearch).index?
-  #   super
-  # end
-
+class ApplicationController < ActionController::Base # < DigitalServicesCore::ApplicationController
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
@@ -16,7 +9,7 @@ class ApplicationController < DigitalServicesCore::ApplicationController
   before_action :authenticate_user!, unless: :skip_user_authenticate?
 
   after_action :verify_authorized, unless: :skip_pundit_verify?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit_verify?
+  # TODO: reinstate - after_action :verify_policy_scoped, only: :index, unless: :skip_pundit_verify?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

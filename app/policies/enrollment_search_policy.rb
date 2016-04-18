@@ -1,4 +1,4 @@
-class EnrollmentSearchPolicy < Admin::ApplicationPolicy
+class EnrollmentSearchPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.try! :has_any_role?

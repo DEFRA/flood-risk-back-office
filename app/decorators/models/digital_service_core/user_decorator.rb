@@ -1,6 +1,6 @@
 require "rolify"
 
-DigitalServicesCore::User.class_eval do
+User.class_eval do
   devise :recoverable, :lockable, :invitable
   attr_accessor :assigned_role
 

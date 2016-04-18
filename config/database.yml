@@ -13,7 +13,6 @@ default: &default
   username: <%= Rails.application.secrets.pg_username || 'vagrant' %>
   password: <%= Rails.application.secrets.pg_password || 'vagrant' %>
 
-
 development:
   <<: *default
   database: <%= ENV['PG_DEV_DATABASE'] || 'flood_risk_dev' %>
@@ -21,7 +20,6 @@ development:
 test:
   <<: *default
   database: <%= ENV['PG_TEST_DATABASE'] || 'flood_risk_back_office_test' %>
-
 
 production:
   <<: *default
