@@ -1,4 +1,5 @@
-class ApplicationController < DigitalServicesCore::ApplicationController
+
+class ApplicationController < ActionController::Base # < DigitalServicesCore::ApplicationController
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
@@ -8,7 +9,7 @@ class ApplicationController < DigitalServicesCore::ApplicationController
   before_action :authenticate_user!, unless: :skip_user_authenticate?
 
   after_action :verify_authorized, unless: :skip_pundit_verify?
-  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit_verify?
+  # TODO: reinstate - after_action :verify_policy_scoped, only: :index, unless: :skip_pundit_verify?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

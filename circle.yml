@@ -1,0 +1,13 @@
+dependencies:
+  post:
+    - bundle exec rake before_commit:run
+    - git config --global user.email test@example.com # overcommit AuthorEmail
+    - git config --global user.name "Test Example" # overcommit AuthorName
+    - npm install -g jshint coffeelint htmlhint # overcommit packages
+
+test:
+  override:
+    - >-
+      BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --run &&
+      htmlhint -c ./.htmlhintrc ./app/**/*.html.erb &&
+      bundle exec rspec --color --require rails_helper -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml

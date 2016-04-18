@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, class_name: "DigitalServicesCore::User"
+  devise_for :users, class_name: "User"
+
+  mount FloodRiskEngine::Engine => "/fre"
 
   authenticated :user do
     root to: 'admin/enrollments#index'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
       patch :enable
     end
 
-    resources :enrollments, only: [:index, :show, :create, :edit, :update] do
+    resources :enrollments, only: [:index, :show, :edit, :update, :new] do
     end
 
     resources :enrollment_exports, only: [:index, :create, :show]
@@ -27,7 +29,7 @@ Rails.application.routes.draw do
   # We use high voltage to manage static content including error-pages
   get "/pages/*id" => 'high_voltage/pages#show', as: :page, format: false
 
-  mount DigitalServicesCore::Engine => "/dsc"
+  #mount DigitalServicesCore::Engine => "/dsc"
 
   get "/dsc/enrollments/:state/:id", to: 'digital_services_core/enrollments#update'
   get "/dsc/enrollments/:id", to: 'digital_services_core/enrollments#update'

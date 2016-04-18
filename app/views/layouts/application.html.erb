@@ -11,7 +11,7 @@
 
   content_for :app_home_path, main_app.root_path
   content_for :app_title, t('.title')
-  set_page_title t('.title')
+  page_title t('.title')
 
   render 'layouts/navbar'
 -%>
@@ -19,14 +19,14 @@
 <%-
   wrapper_opts = { class: "#{controller.class.to_s.underscore.gsub(%r{[/_]}, '-')} #{action_name}-action" }
 
-  if controller.class.in? [DigitalServicesCore::EnrollmentsController,
-                           DigitalServicesCore::ReviewsController
-                          ]
-    # Disable Turbolinks transition cache for enrollments controllers
-    wrapper_opts[:data] = {}
-    wrapper_opts[:data][:no_transition_cache] = ''
-    wrapper_opts[:data][:no_turbolink] = ''
-  end
+  # if controller.class.in? [FloodRiskEngine::EnrollmentsController,
+  #                          DigitalServicesCore::ReviewsController
+  #                         ]
+  #   # Disable Turbolinks transition cache for enrollments controllers
+  #   wrapper_opts[:data] = {}
+  #   wrapper_opts[:data][:no_transition_cache] = ''
+  #   wrapper_opts[:data][:no_turbolink] = ''
+  # end
 -%>
 
 <%- content_for :content do %>

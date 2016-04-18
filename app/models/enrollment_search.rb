@@ -2,7 +2,7 @@ class EnrollmentSearch < ActiveRecord::Base
   extend Textacular
   self.table_name = "dsc_enrollment_searches" # This is a database view
 
-  belongs_to :enrollment, class_name: "DigitalServicesCore::Enrollment"
+  belongs_to :enrollment, class_name: "FloodRiskEngine::Enrollment"
 
   attr_accessor :q
 
@@ -18,9 +18,9 @@ class EnrollmentSearch < ActiveRecord::Base
     #   Unicode alpha-numeric
     #   @, ., -, _ (for email address)
     #   keywords: and or not
-    query = term.
-            gsub(/[^\.\-_@[[:space:]][[:alnum:]]]/, " ").
-            gsub(/ and /i, " ").gsub(/ or /i, " ").gsub(/ not /i, " ")
+    query = term
+            .gsub(/[^\.\-_@[[:space:]][[:alnum:]]]/, " ")
+            .gsub(/ and /i, " ").gsub(/ or /i, " ").gsub(/ not /i, " ")
 
     return none if query.blank?
 

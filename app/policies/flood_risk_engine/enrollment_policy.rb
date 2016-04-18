@@ -1,5 +1,5 @@
-module DigitalServicesCore
-  class EnrollmentPolicy < Admin::ApplicationPolicy
+module FloodRiskEngine
+  class EnrollmentPolicy < ApplicationPolicy
     def index?
       user.present? && user.has_any_role?
     end
@@ -40,7 +40,7 @@ module DigitalServicesCore
     # as here we have an enrollment, but there we would have neither an instantiated
     # enrollment_exemptions or enrollment.
     def edit_exemptions?
-      not record.submitted?
+      !record.submitted?
     end
 
     class Scope < Scope
