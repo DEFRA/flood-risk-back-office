@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# We have attempted to make seeding flexible depending on the environment the seed is occuring. This allows us to,
+# for example add dummy records into a User Testing or staging environment that we wouldn't want in development. This
+# works by having a file for each environment within db/seeds which handles anything specific to that environment.
+# Anything that is mutual to all goes in db/seeds/all.rb. db/seeds.rb then simply becomes a function that calls all.rb
+# and the relevant environment specific file. This solution and the code below were taken from
+# https://archive.dennisreimann.de/blog/seeds-for-different-environments/
+["all", Rails.env].each do |seed|
+  seed_file = Rails.root.join("db", "seeds", "#{seed}.rb")
+  if File.exists?(seed_file)
+    puts "SEED MSG: Loading #{seed} data"
+    require seed_file
+  end
+end

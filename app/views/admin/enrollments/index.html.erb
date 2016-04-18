@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="header">
+      <h1><%= set_page_title t('.heading') %></h1>
+
+      <p class="text-muted"><%= t '.bullet_list' %></p>
+        <ul class="text-muted">
+          <% t('.bullets').each do |str| %>
+            <li><%= str %></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<%= form_tag admin_enrollments_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-5">
+      <div class="form-group">
+        <label class="sr-only" for="search" id="search"><%= t '.search_label' %></label>
+        <div class="input-group">
+          <span class="input-group-addon"><%= glyphicon_tag 'search' %></span>
+          <%= search_field_tag :q, params[:q], class: "form-control", id: "search", placeholder: t(:search) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <%= content_tag :button, t('.search_button'), class: 'btn btn-success' %>
+    </div>
+
+    <div class="col-md-2"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <fieldset class="col-md-8">
+      <% %i[submitted not_submitted all].each do |st| %>
+        <% checked = params[:stage] == st.to_s || (params[:stage].blank? && st == :submitted) %>
+
+        <%= label :stage, st, class: 'radio-inline' do %>
+          <%= radio_button_tag :stage, st, checked %>
+          <%= t ".#{st}_label" %>
+        <% end %>
+      <% end %>
+    </fieldset>
+
+    <div class="col-md-2"></div>
+  </div>
+<% end %>
+
+<br/>
+<br/>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <% if @enrollment_results.except(:order, :limit, :offset).any? %>
+      <%= render collection: @enrollment_results.to_a.uniq(&:enrollment_id), partial: 'result' %>
+      <%= paginate @enrollment_results %>
+    <% elsif params[:q].present? %>
+      <div class="panel panel-default">
+        <div class="panel-body"><em><%= t(:no_results) %></em></div>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-2"></div>
+</div>

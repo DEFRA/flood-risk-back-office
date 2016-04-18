@@ -13,32 +13,16 @@ default: &default
   username: <%= Rails.application.secrets.pg_username || 'vagrant' %>
   password: <%= Rails.application.secrets.pg_password || 'vagrant' %>
 
-default_users: &default_users
-  <<: *default
-  host: <%= Rails.application.secrets.pg_users_host  || 'localhost' %>
-  port: <%= Rails.application.secrets.pg_users_port || 5432 %>
-  database: <%= Rails.application.secrets.pg_users_database || 'flood_risk_users' %>
-  username: <%= Rails.application.secrets.pg_users_username || 'vagrant' %>
-  password: <%= Rails.application.secrets.pg_users_password || 'vagrant' %>
 
 development:
   <<: *default
   database: <%= ENV['PG_DEV_DATABASE'] || 'flood_risk_dev' %>
 
-users_development:
-  <<: *default_users
-  database: <%= ENV['PG_USERS_DEV_DATABASE'] || 'flood_risk_users_dev' %>
-
 test:
   <<: *default
   database: <%= ENV['PG_TEST_DATABASE'] || 'flood_risk_back_office_test' %>
 
-users_test:
-  <<: *default_users
-  database: <%= ENV['PG_USERS_TEST_DATABASE'] || 'flood_risk_back_office_users_test' %>
 
 production:
   <<: *default
 
-users_production:
-  <<: *default_users

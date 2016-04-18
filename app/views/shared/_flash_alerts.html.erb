@@ -1,0 +1,30 @@
+<% flashes = flash.to_hash.symbolize_keys.slice(:alert, :notice, :info, :warn, :not_authorized) %>
+<% if flashes.any? %>
+  <div>
+    <% flashes.each do |key, messages| %>
+        <%
+          flash.discard(key)
+
+          clazz =
+            case key
+            when :alert then "danger"
+            when :notice then "success"
+            when :info then "info"
+            when :warn then "warning"
+            when :not_authorized then "danger"
+            else "alert"
+            end
+
+          messages = [messages] unless messages.is_a?(Array)
+        %>
+
+        <% messages.reject(&:blank?).each do |text| %>
+          <div class= "alert alert-<%= clazz %> fade in" role="alert" alert-dismissible>
+            <button type="button" class="close" data-dismiss="alert"
+              aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= text.to_s %>
+          </div>
+        <% end %>
+    <% end %>
+  </div>
+<% end %>

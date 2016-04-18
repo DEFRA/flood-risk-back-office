@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-
   devise_for :users, class_name: "DigitalServicesCore::User"
 
   authenticated :user do
-    root to: "admin/enrollments#index"
+    root to: 'admin/enrollments#index'
   end
 
   unauthenticated do
     devise_scope :user do
-      root to: "admin/sessions#new", as: "unauthenticated"
+      root to: 'admin/sessions#new', as: "unauthenticated"
     end
   end
 
@@ -26,15 +25,14 @@ Rails.application.routes.draw do
   end
 
   # We use high voltage to manage static content including error-pages
-  get "/pages/*id" => "high_voltage/pages#show", as: :page, format: false
-
+  get "/pages/*id" => 'high_voltage/pages#show', as: :page, format: false
 
   mount DigitalServicesCore::Engine => "/dsc"
 
-  get "/dsc/enrollments/:state/:id", to: "digital_services_core/enrollments#update"
-  get "/dsc/enrollments/:id", to: "digital_services_core/enrollments#update"
+  get "/dsc/enrollments/:state/:id", to: 'digital_services_core/enrollments#update'
+  get "/dsc/enrollments/:id", to: 'digital_services_core/enrollments#update'
 
-  match "(errors)/:status", to: "digital_services_core/errors#show", via: :all, constraints: { status: /\d{3}/ }
+  match "(errors)/:status", to: 'digital_services_core/errors#show', via: :all, constraints: { status: /\d{3}/ }
 
   if Rails.env.development?
     mount GovukAdminTemplate::Engine, at: "/style-guide"

@@ -1,0 +1,58 @@
+<% e = result.enrollment %>
+<% presenter = EnrollmentPresenter.new(e, self) %>
+
+<%= content_tag_for :div, e, class: 'panel panel-default' do %>
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2 class="h4"><%= link_to(presenter.organisation_name, admin_enrollment_path(e)) %></h2>
+      </div>
+      <div class="col-xs-6">
+        <div class="text-right">
+          <h4>
+            <% if e.reference_number? %>
+              <span class="label label-default">#<%= e.reference_number %></span>
+            <% end %>
+            <%= presenter.status_tag %>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="list-group">
+   <li class="list-group-item">
+      <dl class="dl-horizontal">
+        <dt><%= t '.site_address_label' %></dt>
+        <dd>
+          <% if e.site_address %>
+            <% if e.site_address.postcode? %>
+              <%= render(partial: 'shared/display_address_single_line', locals: { address: e.site_address }) %>
+            <% else %>
+              <%= e.site_address.grid_reference %>
+            <% end %>
+          <% end %>
+        </dd>
+
+        <dt><%= t '.applicant_label' %></dt>
+        <dd>
+          <%= e.applicant_contact.try :full_name %>
+          <span class="text-muted"><%= e.applicant_contact.try :email_address %></span>
+        </dd>
+
+        <dt><%= t '.correspondence_label' %></dt>
+        <dd>
+          <%= e.correspondence_contact.try :full_name %>
+          <span class="text-muted"><%= e.correspondence_contact.try :email_address %></span>
+        </dd>
+
+        <% if e.organisation.is_a? WasteExemptionsShared::OrganisationType::Partnership %>
+          <dt><%= t '.partner_label' %></dt>
+          <dd>
+            <%= e.organisation.partner_contacts.map(&:full_name).join(", ") %>
+          </dd>
+        <% end %>
+      </dl>
+    </li>
+  </ul>
+<% end %>

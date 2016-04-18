@@ -1,14 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FloodRiskBackOffice</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+<%- content_for :head do -%>
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+<%- end -%>
 
-<%= yield %>
+<%-
+  # Disable Google Analytics, until we have know that
+  # value to set for the environment-variable "GOVUK_APP_DOMAIN"
+  content_for :exclude_analytics, true
 
-</body>
-</html>
+  content_for :app_home_path, main_app.root_path
+  content_for :app_title, t('.title')
+  set_page_title t('.title')
+
+  render 'layouts/navbar'
+-%>
+
+<%-
+  wrapper_opts = { class: "#{controller.class.to_s.underscore.gsub(%r{[/_]}, '-')} #{action_name}-action" }
+
+  if controller.class.in? [DigitalServicesCore::EnrollmentsController,
+                           DigitalServicesCore::ReviewsController
+                          ]
+    # Disable Turbolinks transition cache for enrollments controllers
+    wrapper_opts[:data] = {}
+    wrapper_opts[:data][:no_transition_cache] = ''
+    wrapper_opts[:data][:no_turbolink] = ''
+  end
+-%>
+
+<%- content_for :content do %>
+  <%= render "shared/flash_alerts" %>
+
+  <%= content_tag :div, yield, wrapper_opts %>
+<% end -%>
+
+<%= render template: 'layouts/govuk_admin_template' %>
