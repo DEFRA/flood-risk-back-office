@@ -1,0 +1,22 @@
+dependencies:
+  post:
+    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle install
+    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign
+    - BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --sign pre-commit
+
+    - git config --global user.email test@example.com # overcommit AuthorEmail
+    - git config --global user.name "Test Example" # overcommit AuthorName
+    - npm install -g jshint coffeelint htmlhint # overcommit packages
+
+# database:
+#   override:
+#     - cp config/database.circle-ci.yml config/database.yml
+#     - RAILS_ENV=test bundle exec rake db:create:all --trace
+#     - RAILS_ENV=test bundle exec rake db:migrate --trace
+
+test:
+  override:
+    - >-
+      BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --run &&
+      htmlhint -c ./.htmlhintrc ./app/**/*.html.erb &&
+      bundle exec rspec --color --require rails_helper -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
