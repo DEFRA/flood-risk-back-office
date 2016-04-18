@@ -2,7 +2,7 @@ class EnrollmentSearch < ActiveRecord::Base
   extend Textacular
   self.table_name = "dsc_enrollment_searches" # This is a database view
 
-  belongs_to :enrollment, class_name: "DigitalServicesCore::Enrollment"
+  belongs_to :enrollment, class_name: "FloodRiskEngine::Enrollment"
 
   attr_accessor :q
 
