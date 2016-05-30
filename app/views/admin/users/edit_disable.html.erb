@@ -1,0 +1,17 @@
+<header>
+  <h1>
+    <%= page_title t('.title') %>
+    <small><%= @user.email %></small>
+  </h1>
+</header>
+<br/>
+
+<%= simple_form_for [:admin, @user],
+                    url: admin_user_disable_path, method: :patch do |f| %>
+  <%= f.input :disabled_comment, required: false, input_html: { rows: 5 } %>
+
+  <%= f.button :submit, t('.title'), class: 'btn-danger' %>
+<% end %>
+
+<br/>
+<%= cancel_go_back_link %>

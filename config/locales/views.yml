@@ -88,5 +88,12 @@ en:
         correspondence_label: Contact
         partner_label: Partners
         site_address_label: Site location
-
+        en:
+    passwords:
+      new:
+        subtitle: Enter the email address associated with your account
+    unlocks:
+      new:
+        subtitle1: For your security this account may be locked if you or someone else repeatedly tries to sign in using incorrect details.
+        subtitle2: Enter the email address used to register this account. You'll then receive account unlocking guidance by email.
 

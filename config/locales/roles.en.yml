@@ -1,0 +1,6 @@
+en:
+  allowed_roles:
+    system: System user
+    super_agent: Administrative super user
+    admin_agent: Administrative user
+    data_agent: Data user

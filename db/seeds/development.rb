@@ -1,4 +1,4 @@
-puts "BO:SEED MSG: Seeding users..."
+Rails.logger.info "BO:SEED MSG: Seeding users..."
 
 User.destroy_all
 
@@ -14,9 +14,9 @@ User.destroy_all
   tim.crowe.ea@gmail.com
   rob.nichols.ea@gmail.com
   tomstatter@gmail.com
-  ).each do |email|
+).each do |email|
   user = User.create!(email: email, password: "Abcde12345")
   user.add_role :system
 end
 
-puts "BO:SEED MSG: There are now #{User.count} rows in the users table"
+Rails.logger.info "BO:SEED MSG: There are now #{User.count} rows in the users table"

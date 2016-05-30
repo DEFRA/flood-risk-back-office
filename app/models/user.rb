@@ -1,6 +1,7 @@
 
 class User < ActiveRecord::Base
-  has_paper_trail class_name: "UserVersion"
+  # has_paper_trail class_name: "UserVersion"
+  attr_accessor :assigned_role
 
   rolify role_cname: "Role",
          role_join_table_name: "users_roles",
@@ -15,7 +16,13 @@ class User < ActiveRecord::Base
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }
 
-  private
+  def enabled?
+    !disabled?
+  end
+
+  def disabled?
+    disabled_at.present?
+  end
 
   def password_meets_minimum_requirements
     if password.present? && errors[:password].empty?
