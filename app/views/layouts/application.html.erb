@@ -3,10 +3,7 @@
   <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 <%- end -%>
-<% content_for(:page_title) do
-  page_title(page_title_symbol: :page_title1)
-end
-  %>
+
 <%-
   # Disable Google Analytics, until we have know that
   # value to set for the environment-variable "GOVUK_APP_DOMAIN"
@@ -14,7 +11,7 @@ end
 
   content_for :app_home_path, main_app.root_path
   content_for :app_title, t('.title')
-  #page_title t('.title')
+  page_title t('.title')
 
   render 'layouts/navbar'
 -%>
