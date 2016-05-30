@@ -1,6 +1,8 @@
+<% content_for(:page_title1) { t('.title') } %>
+
 <header class="row">
   <div class="col-sm-6">
-    <h1><%= page_title User.model_name.human(count: 2) %></h1>
+    <h1><%= User.model_name.human(count: 2) %></h1>
   </div>
   <div class="h1 col-sm-6 text-right">
     <%= link_to glyphicon_tag(:plus_sign, text: t('devise.invite_user')),

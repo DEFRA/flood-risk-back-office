@@ -3,7 +3,10 @@
   <%= javascript_include_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 <%- end -%>
-
+<% content_for(:page_title) do
+  page_title(page_title_symbol: :page_title1)
+end
+  %>
 <%-
   # Disable Google Analytics, until we have know that
   # value to set for the environment-variable "GOVUK_APP_DOMAIN"

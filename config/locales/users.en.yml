@@ -10,3 +10,5 @@ en:
         title: Edit user
       edit_disable:
         title: Disable user
+      index:
+        title: Users

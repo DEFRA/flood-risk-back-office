@@ -1,17 +1,4 @@
 module ApplicationHelper
-  def page_title(title)
-    return unless title.present?
-
-    stripped_title = title.gsub(/’/, %('))
-
-    if content_for? :page_title
-      content_for :page_title, " | #{stripped_title}"
-    else
-      content_for :page_title, stripped_title
-    end
-
-    title
-  end
 
   def cancel_go_back_link
     if request.referer.present?
