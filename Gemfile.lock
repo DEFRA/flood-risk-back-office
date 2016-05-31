@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: 0d0d65eb49775a48f3c2e918454fc8ee5f0e71f0
-  branch: develop
+  revision: 260e17e2016bbe8ecc6ca5c8f90105cf1bb498f9
+  branch: feature/back_office_integration
   specs:
     flood_risk_engine (0.0.1)
       activerecord-session_store (~> 0.1)

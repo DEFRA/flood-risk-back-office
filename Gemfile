@@ -18,7 +18,7 @@ gem "flutie"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
-    branch: "develop"
+    branch: "feature/back_office_integration"
 
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
