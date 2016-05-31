@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: 260e17e2016bbe8ecc6ca5c8f90105cf1bb498f9
+  revision: 8adb47a8235dedef454d7d89d216dc064ef4cc35
   branch: feature/back_office_integration
   specs:
     flood_risk_engine (0.0.1)
