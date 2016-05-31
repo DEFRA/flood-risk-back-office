@@ -4,10 +4,6 @@
 
 This is a private repo used to build Flood Risk admin features for internal users.
 
-## Versions
-
-The project is currently using Ruby version 2.2.3 and Rails 4.2.6.
-
 ## Installation
 
 Clone the repository, copying the project into a working directory

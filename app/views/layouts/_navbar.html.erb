@@ -9,8 +9,10 @@
 
       <ul class="dropdown-menu">
         <% if policy(EnrollmentSearch).index? %>
-          <li><%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
-                          main_app.admin_enrollments_path %></li>
+          <li>
+            <%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
+                        main_app.admin_enrollments_path %>
+           </li>
         <% end %>
 
         <% if policy(FloodRiskEngine::Enrollment).create? %>
@@ -19,8 +21,10 @@
         <% end %>
 
         <% if true # policy(FloodRiskEngine::Enrollment).export? %>
-          <li><%= link_to glyphicon_tag('download-alt', text: t('.export_enrollments')),
-                          main_app.admin_enrollment_exports_path %></li>
+          <li>
+            <%= link_to glyphicon_tag('download-alt', text: t('.export_enrollments')),
+                        main_app.admin_enrollment_exports_path %>
+          </li>
         <% end %>
       </ul>
     </li>
@@ -34,23 +38,30 @@
 
         <ul class="dropdown-menu">
           <% if policy(User).index? %>
-            <li><%= link_to glyphicon_tag('list', text: t('.view_users')),
-                            admin_users_path %></li>
+            <li>
+              <%= link_to glyphicon_tag('list', text: t('.view_users')), admin_users_path %>
+            </li>
           <% end %>
 
           <% if policy(User).invite? %>
-            <li><%= link_to glyphicon_tag('plus-sign', text: t('devise.invite_user')), new_user_invitation_path %></li>
+            <li>
+              <%= link_to glyphicon_tag('plus-sign', text: t('devise.invite_user')),
+                  new_user_invitation_path %>
+            </li>
           <% end %>
         </ul>
       </li>
     <% end %>
 
     <li>
-      <%= link_to glyphicon_tag('log-out',
-                                text: t('devise.sign_out')), destroy_user_session_path, method: :delete %>
+      <%= link_to glyphicon_tag('log-out', text: t('devise.sign_out')),
+                  destroy_user_session_path,
+                  method: :delete %>
     </li>
   <% else %>
-    <li><%= link_to glyphicon_tag('log-in', text: t('devise.sign_in')), new_user_session_path %></li>
+    <li>
+      <%= link_to glyphicon_tag('log-in', text: t('devise.sign_in')), new_user_session_path %>
+    </li>
   <% end %>
 <%- end -%>
 
