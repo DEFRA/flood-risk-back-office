@@ -16,12 +16,26 @@ class User < ActiveRecord::Base
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }
 
-  def enabled?
-    !disabled?
+  def disable(comment)
+    update disabled_comment: comment,
+           disabled_at: current_time_from_proper_timezone
+  end
+
+  def disable!(comment)
+    update! disabled_comment: comment,
+            disabled_at: current_time_from_proper_timezone
+  end
+
+  def enable!
+    update! disabled_at: nil, disabled_comment: nil
   end
 
   def disabled?
     disabled_at.present?
+  end
+
+  def enabled?
+    !disabled?
   end
 
   def password_meets_minimum_requirements
