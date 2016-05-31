@@ -1,5 +1,4 @@
-
-class ApplicationController < ActionController::Base # < DigitalServicesCore::ApplicationController
+class ApplicationController < ActionController::Base
   include Pundit
 
   # Prevent CSRF attacks by raising an exception.
@@ -34,7 +33,7 @@ class ApplicationController < ActionController::Base # < DigitalServicesCore::Ap
   helper_method :govuk_admin_template_controlller?
 
   def dsc_errors_controller?
-    self.class.to_s =~ /^DigitalServicesCore::ErrorsController/
+    self.class.to_s =~ /^ErrorsController/
   end
   helper_method :dsc_errors_controller?
 

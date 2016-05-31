@@ -45,6 +45,7 @@ group :development, :test do
   # running in the background. Read more: https://github.com/rails/spring
   gem "spring-commands-rspec", require: false # allow spring to wrap the rspec command
   gem "bullet" # ActiveRecord N+1 detection
+  gem "ffaker"
   gem "faker"
 end
 
