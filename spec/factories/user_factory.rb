@@ -4,10 +4,10 @@ FactoryGirl.define do
     "xxxx#{Time.zone.now.to_i}#{rand(1000)}#{n}xxxxxxxxxxxxx"
   end
 
-  sequence(:random_email) { Faker::Internet.email }
+  sequence(:random_email) { FFaker::Internet.email }
 
   factory :user do
-    email Faker::Internet.email
+    email { generate(:random_email) }
     password "Secret08"
     password_confirmation { password }
 
