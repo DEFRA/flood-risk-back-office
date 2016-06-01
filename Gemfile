@@ -3,7 +3,7 @@ ruby "2.3.1"
 
 gem "rails", "4.2.6"
 gem "sass-rails", "~> 5.0"    # Use SCSS for stylesheets
-gem "uglifier", "~> 1.3"      # Use Uglifier as compressor for JavaScript assets
+gem "uglifier", "~> 3.0"      # Use Uglifier as compressor for JavaScript assets
 gem "coffee-rails", "~> 4.1"  # Use CoffeeScript for .coffee assets and views
 gem "turbolinks", "~> 2.5"    # Turbolinks makes following links in your web application faster.
 gem "govuk_admin_template", "~> 4.1"
@@ -18,7 +18,7 @@ gem "flutie"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
-    branch: "feature/back_office_integration"
+    branch: "develop"
 
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
@@ -28,7 +28,7 @@ gem "dotenv-rails", groups: [:development, :test]
 gem "pg", "~> 0.18.4"           # Use Postgres for the DB
 gem "quiet_assets", "~> 1.1.0"  # Mutes assets pipeline log messages
 gem "textacular", "~> 3.2.2"    # Postgres free-text search utilities
-gem "scenic", "~> 1.2.0" # Versioned database views for Rails
+gem "scenic", "~> 1.3.0" # Versioned database views for Rails
 # instances with optional information about types - used in Presenters
 gem "validates_timeliness", "~> 4.0.2" # date/time validator for Rails and ActiveModel
 gem "rolify", "~> 5.0"
@@ -38,7 +38,7 @@ gem "passenger", "~> 5.0.25", require: false
 gem "kaminari", "~> 0.16"
 
 group :development, :test do
-  gem "factory_girl_rails", "~> 4.6.0" # also enables "build_dummy_data" functionality in dev
+  gem "factory_girl_rails", "~> 4.6" # also enables "build_dummy_data" functionality in dev
   gem "byebug"  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "rspec-rails", "~> 3.4.2"
   gem "spring"  # Spring speeds up development by keeping your application
