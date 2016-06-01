@@ -1,0 +1,45 @@
+---
+en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "You must enter your email address"
+              invalid: "Please enter a valid email address"
+              not_found: "Your email address has not been found"
+              taken: "Email address has already been taken"
+            password:
+              blank: "You must enter a password"
+              invalid: |
+                You must enter a valid password.
+                It must contain at least one uppercase character, one lowercase character and one number.
+              too_long:
+                one: "Password must be no longer than 1 character"
+                other: "Password must be no longer than %{count} characters"
+              too_short:
+                one: "Your password must be at least 1 character"
+                other: "Your password must be at least %{count} characters"
+            password_confirmation:
+              confirmation: "The passwords you have entered do not match"
+            reset_password_token:
+              invalid: |
+                It looks like you're trying to reset your password, but the URL you followed was invalid.
+                Password reset links expire after 6 hours, and also after you've successfully
+                reset your password via an email link.
+                You can <a href="/boc/users/password/new">request a new password reset email</a>.
+            invitation_token:
+              invalid: |
+                It looks like you're trying to accept an invitation, but the URL you followed was invalid.
+                Invitation links expire after 2 weeks, and also after you've successfully accepted an invitation.
+            unlock_token:
+              invalid: |
+                It looks like you're trying to unlock your account, but the URL you followed was invalid.
+                Unlock account links expire after 30 minutes, and also after you've
+                successfully unlocked your account via an email link.
+            assigned_role:
+              blank: "You must select a user role"
+              inclusion: "Role is not included in the list"
+            disabled_comment:
+              blank: "Comment can't be blank"

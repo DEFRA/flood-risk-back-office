@@ -1,0 +1,28 @@
+.enrollment-exemptions-table {
+  th {
+    &.actions {
+      width: 30px;
+    }
+
+    &.state {
+      width: 100px;
+    }
+
+    &.code {
+      width: 60px;
+    }
+
+    &.submitted-at {
+      width: 160px;
+    }
+
+  }
+
+  td {
+    vertical-align: middle;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

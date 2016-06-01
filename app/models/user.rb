@@ -1,6 +1,5 @@
 
 class User < ActiveRecord::Base
-  # has_paper_trail class_name: "UserVersion"
   attr_accessor :assigned_role
 
   rolify role_cname: "Role",
@@ -11,7 +10,12 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable,
   # :registerable, :recoverable, :rememberable
-  devise :database_authenticatable, :trackable, :validatable, :lockable, :invitable
+  devise :database_authenticatable,
+         :trackable,
+         :validatable,
+         :lockable,
+         :invitable,
+         :recoverable
 
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }

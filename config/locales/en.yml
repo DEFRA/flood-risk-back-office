@@ -44,3 +44,26 @@ en:
   user_disabled_success: "User %{name} has been successfully disabled"
   user_enabled_success: "User %{name} has been successfully enabled"
   cancel_go_back: Cancel and go back
+
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+      role:
+        one: Role
+        other: Roles
+    attributes:
+      user:
+        email: Email address
+        disabled_comment: Comments
+        disabled_at: Disabled date
+        invitation_sent_at: Invitation sent date
+        invitation_accepted_at: Invitation accepted date
+    allowed_roles:
+      system: System user
+      super_agent: Administrative super user
+      admin_agent: Administrative user
+      data_agent: Data user
+
+

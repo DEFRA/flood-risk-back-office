@@ -1,0 +1,25 @@
+en:
+  user_roles:
+    intro: >
+      A user's role determines what they can see and do once logged in
+    roles:
+      purchaser:
+        name: System user
+        description: >
+          Can do anything including invite other users
+      admin:
+        name: Administrative super user
+        description: >
+          bla bla blabla bla blabla bla blabla bla blabla bla blabla bla
+          blabla bla blabla bla blabla bla bla
+      reader:
+        name: Administrative user
+        description: >
+          bla bla blabla bla blabla bla blabla bla blabla bla blabla bla
+          blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla
+          blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
+      developer:
+        name: Data user
+        description: >
+          bla bla bla
+

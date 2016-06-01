@@ -1,0 +1,17 @@
+<%= render "/shared/email_header" %>
+
+<p>
+  <%= t("devise.mailer.invitation_instructions.someone_invited_you",
+      url: main_app.root_url.chomp("/")) %>
+</p>
+
+<p>
+  <%= link_to t("devise.mailer.invitation_instructions.accept"),
+                 accept_user_invitation_url(invitation_token: @token) %>
+</p>
+
+<p>
+  <%= t("devise.mailer.invitation_instructions.ignore").html_safe %>
+</p>
+
+<%= render "/shared/email_footer" %>

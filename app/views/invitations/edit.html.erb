@@ -1,0 +1,21 @@
+<header>
+  <h1><%= page_title t("devise.invitations.edit.header") %></h1>
+</header>
+<br/>
+<%= simple_form_for resource,
+                    as: resource_name,
+                    url: user_invitation_path,
+                    html: { method: :patch, autocomplete: "off" } do |f| %>
+  <%= full_devise_error_messages! %>
+  <%= f.hidden_field :invitation_token %>
+
+  <%-
+    password_length = User.try :password_length
+    hint = t("devise.minimum_password_length", count: password_length.min) if password_length && f.object.errors[:password].empty?
+  -%>
+  <%= f.input :password, input_html: { class: 'input-md-4', autocomplete: "off" }, hint: hint %>
+  <%= f.input :password_confirmation, input_html: { class: 'input-md-4', autocomplete: "off" } %>
+
+  <%= f.button :submit, t("devise.invitations.edit.submit_button"),
+                        data: { disable_with: t('please_wait_html') } %>
+<% end %>

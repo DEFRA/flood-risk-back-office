@@ -14,6 +14,12 @@ module ApplicationHelper
     title
   end
 
+  def open_close_tag(target, open = false)
+    icon = glyphicon_tag(open ? :chevron_up : :chevron_down)
+    link_to icon, "##{target}", role: "button", "data-toggle" => "collapse",
+                                "aria-expanded" => "true", "aria-controls" => target
+  end
+
   def cancel_go_back_link
     if request.referer.present?
       link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")), :back,
@@ -36,6 +42,22 @@ module ApplicationHelper
 
     html = content_tag :span, "", opts.merge(class: "glyphicon glyphicon-#{icon}", "aria-hidden" => "true")
     html += " #{text}" if text.present?
+
+    html.html_safe
+  end
+
+  def full_devise_error_messages!
+    return "" if resource.errors.empty?
+
+    messages = resource.errors.messages.map do |_k, msgs|
+      content_tag(:li, msgs.to_sentence.html_safe) if msgs.any?
+    end
+
+    html = <<-HTML.strip_heredoc
+      <div class="#{SimpleForm.error_notification_class}">
+        <ul>#{messages.reject(&:blank?).join}</ul>
+      </div>
+      HTML
 
     html.html_safe
   end

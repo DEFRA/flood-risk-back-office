@@ -7,11 +7,10 @@
           <div class="col-xs-11">
             <%= glyphicon_tag :map_marker, text: t('.title') %>
           </div>
-          <div class="col-xs-1 text-right"><%= open_close_tag 'site-details' %></div>
         </div>
       </div>
 
-      <div class="panel-body collapse" id="site-details">
+      <div class="panel-body" id="site-details">
 
         <ul class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#site-tab" aria-controls="site-tab" role="tab" data-toggle="tab"><%= t '.site_tab.title' %></a></li>
@@ -23,25 +22,25 @@
             <div class="table-responsive">
               <table class="table table-bordered">
                 <%
-                  addr = enrollment.site_address
-                  location = addr.try! :location
+                  #addr = enrollment.site_address
+                  #location = addr.try! :location
                 %>
                 <tbody>
                   <tr>
                     <td><%= t '.site_tab.address' %></td>
-                    <td><%= enrollment.site_address.to_s %></td>
+                    <td><%#= enrollment.site_address.to_s %></td>
                   </tr>
                   <tr>
                     <td><%= t '.site_tab.grid_ref' %></td>
-                    <td><%= location.try! :grid_reference %></td>
+                    <td><%#= location.try! :grid_reference %></td>
                   </tr>
                   <tr>
                     <td><%= t '.site_tab.site_info' %></td>
-                    <td><%= simple_format(location.site_info) if location.try!(:site_info).present? %></td>
+                    <td><%#= simple_format(location.site_info) if location.try!(:site_info).present? %></td>
                   </tr>
                   <tr>
                       <td><%= t '.site_tab.administrative_area' %></td>
-                      <td><%= location && location.administrative_area && location.administrative_area.long_name %></td>
+                      <td><%#= location && location.administrative_area && location.administrative_area.long_name %></td>
                   </tr>
                 </tbody>
               </table>
@@ -54,11 +53,11 @@
                 <tbody>
                 <tr>
                   <td><%= t '.farm_tab.on_a_farm.label' %></td>
-                  <td><%= t ".farm_tab.on_a_farm.#{enrollment.on_a_farm}" %></td>
+                  <td><%=# t ".farm_tab.on_a_farm.#{enrollment.on_a_farm}" %></td>
                 </tr>
                 <tr>
                   <td><%= t '.farm_tab.is_a_farmer.label' %></td>
-                  <td><%= t ".farm_tab.is_a_farmer.#{enrollment.is_a_farmer}" %></td>
+                  <td><%=# t ".farm_tab.is_a_farmer.#{enrollment.is_a_farmer}" %></td>
                 </tr>
                 </tbody>
               </table>

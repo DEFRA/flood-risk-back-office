@@ -1,0 +1,19 @@
+<header>
+  <h1><%= page_title t("devise.sign_in") %></h1>
+</header>
+<br/>
+
+<%= simple_form_for(resource,
+                    as: resource_name,
+                    url: user_session_path,
+                    html: { autocomplete: 'off' }) do |f| %>
+  <%= f.input :email, required: false, autofocus: true, input_html: { class: "input-md-4" } %>
+  <%= f.input :password,
+              required: false,
+              input_html: { class: "input-md-4", autocomplete: 'off' } %>
+  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <%= f.button :submit, t("devise.sign_in"),
+                        data: { disable_with: t('please_wait_html') } %>
+<% end %>
+
+<%= render "/shared/devise_links" %>

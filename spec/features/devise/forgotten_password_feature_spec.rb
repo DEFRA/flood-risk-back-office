@@ -60,7 +60,7 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
       fill_in I18n.t("devise.new_password"), with: "654321"
       click_button I18n.t("devise.change_password")
 
-      key = "activerecord.errors.models.digital_services_core/user.attributes.password.too_short.other"
+      key = "activerecord.errors.models.user.attributes.password.too_short.other"
       expect(page).to have_form_error(:user_password, text: I18n.t(key, count: 8))
 
       visit new_user_session_path
@@ -72,7 +72,7 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
 
     scenario "Retreive lost password (blank new password)" do
       click_button I18n.t("devise.change_password")
-      key = "activerecord.errors.models.digital_services_core/user.attributes.password.blank"
+      key = "activerecord.errors.models.user.attributes.password.blank"
       expect(page).to have_form_error(:user_password, text: I18n.t(key))
 
       visit new_user_session_path

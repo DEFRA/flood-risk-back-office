@@ -1,0 +1,8 @@
+en:
+  admin:
+    enrollment_exemptions:
+      show:
+        organisation_types:
+          local_authority:
+            type: Type
+            name: Local authority

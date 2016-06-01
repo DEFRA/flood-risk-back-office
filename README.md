@@ -20,6 +20,21 @@ bundle install
 
 to download the dependencies. If you do not have [bundler](http://bundler.io/) you can either install it directly or install the rails gem first which comes with bundler.
 
+## Seeding data
+
+Seed the data (e.g. users) locally with `$ bundle exec rake db:seed`.
+
+To seed on Heroku where the environment is PRODUCTION,
+connect to a non-visitor and non-office network and run
+
+```
+$ heroku run bash -a [heroku_app_name]
+% bundle exec rails c
+% require './db/seeds/development.rb'
+% exit
+% exit
+```
+
 ## Start the service
 
 To start the service locally simply run

@@ -16,7 +16,7 @@ module FloodRiskEngine
     # in the back office. It is only possible to resume an enrollment if it is not
     # complete - otherwise the Edit button applies i.e. Resume is hidden and Edit is visible,
     def resume?
-      create? && record.present? && !record.submitted?
+      create? && record.present? # TODO: && !record.submitted?
     end
 
     def show?
@@ -56,9 +56,10 @@ module FloodRiskEngine
     private
 
     def enrollment_submitted?
-      record.present? &&
-        record.status_active? &&
-        record.submitted_at?
+      # TODO
+      record.present? # &&
+      # record.status_active? &&
+      # record.submitted_at?
     end
   end
 end
