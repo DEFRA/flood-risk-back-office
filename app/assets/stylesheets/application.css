@@ -15,3 +15,8 @@
  */
 
 @charset "utf-8";
+
+/* By default, block labels stack vertically */
+.block-label {
+  display: block;
+}

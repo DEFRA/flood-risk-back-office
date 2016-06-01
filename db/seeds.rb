@@ -6,8 +6,8 @@
 # https://archive.dennisreimann.de/blog/seeds-for-different-environments/
 ["all", Rails.env].each do |seed|
   seed_file = Rails.root.join("db", "seeds", "#{seed}.rb")
-  if File.exists?(seed_file)
-    puts "SEED MSG: Loading #{seed} data"
+  if File.exist?(seed_file)
+    Rails.logger.info "SEED MSG: Loading #{seed} data"
     require seed_file
   end
 end

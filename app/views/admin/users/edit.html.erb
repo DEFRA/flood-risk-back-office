@@ -1,0 +1,21 @@
+<% content_for(:page_title1) { t('.title') } %>
+
+<header>
+  <h1>
+    <%= t('.title') %>
+    <small><%= @user.email %></small>
+  </h1>
+</header>
+<br/>
+
+<%= simple_form_for [:admin, @user] do |f| %>
+  <%= f.input :assigned_role, collection: t("allowed_roles").map(&:reverse),
+              required: true, include_blank: false,
+              disabled: (@user == current_user), readonly: (@user == current_user),
+              input_html: { class: 'input-md-4' } %>
+
+  <%= f.button :submit %>
+<% end %>
+
+<br/>
+<%= cancel_go_back_link %>

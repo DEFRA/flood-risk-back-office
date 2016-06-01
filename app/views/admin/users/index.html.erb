@@ -1,0 +1,26 @@
+<% content_for(:page_title1) { t('.title') } %>
+
+<header class="row">
+  <div class="col-sm-6">
+    <h1><%= User.model_name.human(count: 2) %></h1>
+  </div>
+  <div class="h1 col-sm-6 text-right">
+    <%= link_to glyphicon_tag(:plus_sign, text: t('devise.invite_user')),
+                new_user_invitation_path,
+                class: 'btn btn-primary' %>
+  </div>
+</header>
+<br/>
+
+<table class="table table-striped">
+  <thead>
+    <% %i[email roles invitation_accepted? enabled? actions].each do |att| %>
+      <th><%= User.human_attribute_name att %></th>
+    <% end %>
+  </thead>
+  <tbody>
+    <%= render collection: @users, partial: 'admin/users/user' %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

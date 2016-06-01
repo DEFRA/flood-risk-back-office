@@ -1,0 +1,14 @@
+en:
+  admin:
+    users:
+      user:
+        disable: Disable
+        disabled: Disabled
+        enable: Enable
+        enabled: Enabled
+      edit:
+        title: Edit user
+      edit_disable:
+        title: Disable user
+      index:
+        title: Users

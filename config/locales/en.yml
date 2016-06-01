@@ -36,3 +36,11 @@ en:
   refresh: Refresh
   cancel: Cancel
   search: Search
+  edit: Edit
+  cancel: Cancel
+  please_wait_html: "Please wait&hellip;"
+  are_you_sure: "Are you sure?"
+  user_update_success: "User %{name} has been successfully updated"
+  user_disabled_success: "User %{name} has been successfully disabled"
+  user_enabled_success: "User %{name} has been successfully enabled"
+  cancel_go_back: Cancel and go back
