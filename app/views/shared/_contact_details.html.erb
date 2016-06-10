@@ -1,0 +1,43 @@
+<address>
+  <strong><%= contact.full_name %></strong>
+
+  <% if contact.position? %>
+    <br/>
+    <em><%= contact.position %></em>
+  <% end %>
+
+  <%
+    addr = contact.address
+
+    if addr
+      addresses = []
+
+      if addr.premises.try!(:match, /\A[0-9]+[a-z]?\z/i)
+        addresses.push [addr.premises, addr.street_address].join(' ')
+      else
+        addresses += [addr.premises, addr.street_address]
+      end
+
+      addresses += [addr.locality, addr.city, addr.postcode]
+
+      addresses.each do |line|
+  %>
+      <%= tag(:br) if line.present? %>
+      <%= line %>
+  <%
+      end
+    end
+  %>
+
+  <br/>
+
+  <% if contact.email_address? %>
+    <br/>
+    <%= mail_to contact.email_address %>
+  <% end %>
+
+  <% if contact.telephone_number? %>
+    <br/>
+    <%= link_to(contact.telephone_number, "tel:#{contact.telephone_number.gsub(/[^0-9]/, '')}") %>
+  <% end %>
+</address>

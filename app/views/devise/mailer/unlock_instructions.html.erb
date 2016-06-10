@@ -1,0 +1,13 @@
+<%= render "/shared/email_header" %>
+
+<p>
+  We received a request to unlock your account. You can do this through the link below.
+  You can only use this link once.
+</p>
+
+<p>
+  <%= link_to 'Unlock your account',
+              user_unlock_url(unlock_token: @token) %>
+</p>
+
+<%= render "/shared/email_footer" %>

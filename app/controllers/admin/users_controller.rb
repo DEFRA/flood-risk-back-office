@@ -31,7 +31,6 @@ module Admin
     end
 
     def enable
-      @user.enable!
       flash[:updated_user_id] = @user.id
       redirect_to :back, notice: t("user_enabled_success", name: @user.email)
     end

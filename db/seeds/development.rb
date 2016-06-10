@@ -12,7 +12,7 @@ User.destroy_all
   paula.french@environment-agency.gov.uk
   tim.stone.ea@gmail.com
   tim.crowe.ea@gmail.com
-  rob.nichols.ea@gmail.com
+  robnichols.ea@gmail.com
   tomstatter@gmail.com
 ).each do |email|
   user = User.create!(email: email, password: "Abcde12345")

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+
+      <div class="panel-heading panel-title">
+        <div class="row">
+          <div class="col-xs-11">
+            <%= glyphicon_tag :map_marker, text: t('.title') %>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body " id="site-details">
+
+
+<!--         <div class="tab-content"> -->
+          <div role="tabpanel" class="tab-pane active" id="site-tab">
+            <div class="table-responsive">
+              <table class="table">
+                <%
+                  #addr = enrollment.site_address
+                  #location = addr.try! :location
+                %>
+                <tbody>
+                  <tr>
+                    <td><%= t '.site_tab.address' %></td>
+                    <td><%#= enrollment.site_address.to_s %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t '.site_tab.grid_ref' %></td>
+                    <td><%= enrollment_exemption.grid_reference %></td>
+                  </tr>
+                  <tr>
+                    <td><%= t '.site_tab.site_info' %></td>
+                    <td><%#= simple_format(location.site_info) if location.try!(:site_info).present? %></td>
+                  </tr>
+                  <tr>
+                      <td><%= t '.site_tab.administrative_area' %></td>
+                      <td><%#= location && location.administrative_area && location.administrative_area.long_name %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

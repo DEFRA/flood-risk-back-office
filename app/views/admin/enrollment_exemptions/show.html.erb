@@ -1,0 +1,18 @@
+<% content_for(:page_title1) { t('.heading') } %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-9">
+      <h1><%= t('.heading') %></h1>
+      <%= render "admin/enrollment_exemptions/show/main", enrollment_exemption: @enrollment_exemption %>
+      <%= render "admin/enrollment_exemptions/show/exemptions", enrollment_exemption: @enrollment_exemption %>
+      <%= render "admin/enrollment_exemptions/show/site", enrollment_exemption: @enrollment_exemption %>
+    </div>
+
+    <div class="col-xs-12 col-sm-3">
+      <h2><%= t ".contact_header" %></h2>
+      <%= render "admin/enrollment_exemptions/show/correspondant", enrollment_exemption: @enrollment_exemption %>
+      <%= render "admin/enrollment_exemptions/show/actions", enrollment_exemption: @enrollment_exemption %>
+    </div>
+  </div>
+</div>

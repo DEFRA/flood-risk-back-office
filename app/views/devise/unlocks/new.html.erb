@@ -1,0 +1,18 @@
+<header>
+  <h1><%= page_title t("devise.resend_unlock_instructions") %></h1>
+</header>
+<br/>
+
+<p><%= t ".subtitle1" %></p>
+<p><%= t ".subtitle2" %></p>
+<br/>
+
+<%= simple_form_for(resource, as: resource_name, url: user_unlock_path, html: { method: :post }) do |f| %>
+  <%= full_devise_error_messages! %>
+
+  <%= f.input :email, required: true, autofocus: true, input_html: { class: "input-md-4" } %>
+  <%= f.button :submit, t("devise.resend_unlock_instructions"),
+                        data: { disable_with: t('please_wait_html') } %>
+<% end %>
+
+<%= render "/shared/devise_links" %>

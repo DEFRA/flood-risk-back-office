@@ -34,6 +34,9 @@ en:
       send_paranoid_instructions: "If we have your email address you'll shortly receive a password recovery email"
       updated: "Your password has been successfully changed. You're now signed in."
       updated_not_active: "Your password has been successfully changed"
+      new:
+        subtitle: Enter the email address associated with your account
+
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You've successfully signed up"
@@ -50,6 +53,12 @@ en:
       send_instructions: "You'll shortly receive an email describing how to unlock your account"
       send_paranoid_instructions: "If your account exists you'll shortly receive an email describing how to unlock it"
       unlocked: "Your account has been successfully unlocked. Please sign in to continue."
+      new:
+        subtitle1: For your security this account may be locked if you or someone else repeatedly tries to sign in using incorrect details.
+        subtitle2: Enter the email address used to register this account. You'll then receive account unlocking guidance by email.
+    passwords:
+      new:
+        subtitle: Enter the email address associated with your account
   errors:
     messages:
       already_confirmed: "was already confirmed. Please try signing in"

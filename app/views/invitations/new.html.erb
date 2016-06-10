@@ -1,0 +1,22 @@
+<header>
+  <h1><%= page_title t("devise.invitations.new.header") %></h1>
+</header>
+<br/>
+
+<%= simple_form_for resource, as: resource_name, url: user_invitation_path, html: { method: :post} do |f| %>
+  <%= full_devise_error_messages! %>
+
+  <%= f.input :email, required: true, input_html: { class: 'input-md-4' },
+                      placeholder: t('user.invite_new.email', scope: 'simple_form.placeholders') %>
+
+  <%= f.input :assigned_role, required: true, prompt: :translate,
+              input_html: { class: 'input-md-4' },
+              collection: t("allowed_roles").map(&:reverse) %>
+
+  <%= f.button :submit, t("devise.invitations.new.submit_button"),
+                        data: { disable_with: t('please_wait_html') } %>
+
+<% end %>
+
+<br/>
+<%= cancel_go_back_link %>

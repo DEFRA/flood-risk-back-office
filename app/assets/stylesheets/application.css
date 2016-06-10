@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_self
+ *= require tables
+ *= require admin/users
  *= require govuk_admin_template
  */
 

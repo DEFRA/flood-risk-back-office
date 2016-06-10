@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   mount FloodRiskEngine::Engine => "/fre"
 
   authenticated :user do
-    root to: 'admin/enrollments#index'
+    root to: 'admin/enrollment_exemptions#index'
   end
 
   unauthenticated do
@@ -19,10 +19,8 @@ Rails.application.routes.draw do
       patch :disable
       patch :enable
     end
-
-    resources :enrollments, only: [:index, :show, :edit, :update, :new] do
-    end
-
+    resources :enrollments, only: [:index, :show, :edit, :update, :new]
+    resources :enrollment_exemptions, only: [:index, :show]
     resources :enrollment_exports, only: [:index, :create, :show]
   end
 

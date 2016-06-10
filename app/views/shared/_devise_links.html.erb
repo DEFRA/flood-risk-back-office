@@ -1,0 +1,8 @@
+<br/>
+
+<p>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%- link = link_to t("devise.forgot_password"), new_user_password_path %>
+    <%= raw t("devise.forgot_password_phrase", link: link) %>
+  <% end -%>
+</p>

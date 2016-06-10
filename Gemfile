@@ -14,7 +14,6 @@ gem "devise", "~> 3.5"
 gem "devise_invitable", "~> 1.5"
 gem "aws-sdk-resources", "~> 2.2" # Amazon S3 API access (e.g. data exports)
 gem "before_commit"
-gem "flutie"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
@@ -23,7 +22,7 @@ gem "flood_risk_engine",
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
 # variables being available.
-gem "dotenv-rails", groups: [:development, :test]
+gem "dotenv-rails" # , groups: [:development, :test]
 
 gem "pg", "~> 0.18.4"           # Use Postgres for the DB
 gem "quiet_assets", "~> 1.1.0"  # Mutes assets pipeline log messages
@@ -50,11 +49,12 @@ group :development, :test do
 end
 
 group :development do
+  gem "thin"
   gem "rack-mini-profiler"
-  gem "thin" # in Development, use the Thin web-server instead of Webrick, when calling "rails server"
   gem "web-console", "~> 3.0" # Access an IRB console on exception pages or by using <%= console %> in views
   gem "foreman", require: false # for use with Procfile.development
-  gem "mail_safe", "~> 0.3" # provides a safety net while developing an application that uses ActionMailer
+  #  gem "mail_safe", "~> 0.3" # provides a safety net while developing an application that uses ActionMailer
+  gem "awesome_print", require: false
 end
 
 group :test do
@@ -68,9 +68,11 @@ group :test do
   gem "fuubar" # Enhanced rspec progress formatter
   gem "rspec_junit_formatter" # For CircleCI metadata reports
   gem "simplecov", require: false # Tool for checking code coverage
+  gem "email_spec"
 end
 
 group :production, :qa, :staging do
+  gem "whenever" # for creating chron jobs
   gem "rails_12factor", "~> 0.0" # Useful if deploying to Heroku
   gem "airbrake", "~> 5.0" # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
 end
