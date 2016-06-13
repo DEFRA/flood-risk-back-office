@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: 700bbe67f1f3b8aabc3682fa8ebfe0c8871c26ac
+  revision: d74be3a3630e08c8282d929501e4b5cb41dd7f26
   branch: develop
   specs:
     flood_risk_engine (0.0.1)
@@ -219,7 +219,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    mime-types (2.99.2)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
@@ -281,7 +283,7 @@ GEM
       activesupport (= 4.2.6)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (11.1.2)
+    rake (11.2.2)
     reform (2.1.0)
       disposable (>= 0.2.2, < 0.3.0)
       representable (>= 2.4.0, < 3.1.0)
@@ -465,4 +467,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.3
+   1.12.5

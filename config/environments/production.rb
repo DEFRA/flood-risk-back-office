@@ -76,4 +76,40 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  protocol = "https"
+  host = ENV["DEFAULT_URL_HOST"] || fail("Environment variable DEFAULT_URL_HOST has not been set")
+
+  Rails.application.routes.default_url_options =
+    config.action_controller.default_url_options =
+      config.action_mailer.default_url_options = { protocol: protocol, host: host }
+
+  config.action_mailer.asset_host = "#{protocol}://#{host}"
+
+  # action_mailer configuration settings
+  config.action_mailer.delivery_method = :smtp
+
+  # These are the minimum settings. On AWS we send email to postfix on the proxy server
+  # so these 2 settings are all that is required.
+  smtp = {
+    address: (ENV["EMAIL_HOST"] || fail("Environment variable DEFAULT_URL_HOST has not been set")),
+    port: (ENV["EMAIL_PORT"] || fail("Environment variable DEFAULT_URL_HOST has not been set"))
+  }
+
+  # This applies if using sendgrid
+  if ENV["EMAIL_USERNAME"].present?
+    smtp[:user_name] = ENV["EMAIL_USERNAME"]
+    smtp[:authentication] = :plain
+    smtp[:password] = ENV["EMAIL_PASSWORD"]
+  end
+
+  # E.g. Heroku
+  if ENV["EMAIL_HOST"] == "smtp.sendgrid.net"
+    smtp[:enable_starttls_auto] = true
+    smtp[:ssl] = true
+  end
+
+  smtp[:domain] = ENV["EMAIL_APP_DOMAIN"] if ENV["EMAIL_APP_DOMAIN"].present?
+
+  config.action_mailer.smtp_settings = smtp
 end
