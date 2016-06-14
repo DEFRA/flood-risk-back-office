@@ -53,7 +53,16 @@ Rails.application.configure do
     address: ENV['EMAIL_HOST'],
     port: ENV['EMAIL_PORT'],
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    ssl: (ENV["EMAIL_PORT"].to_i == 465) # Sendgrid uses port 465 for SSL traffic
   }
 
+  if defined? Bullet
+    config.after_initialize do
+      Bullet.enable = true # enable Bullet gem
+      Bullet.alert = false # pop up a JavaScript alert in the browser
+      Bullet.bullet_logger = true # log to the Bullet log file
+      Bullet.console = true # log warnings to your browser's console.log
+    end
+  end
 end
