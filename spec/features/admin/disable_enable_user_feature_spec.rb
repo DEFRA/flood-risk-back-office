@@ -83,7 +83,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       fill_in "Password", with: other_user.password
 
       expect do
-        click_button "Log in"
+        click_button "Sign in"
       end.to change { other_user.reload.sign_in_count }.by(1)
 
       expect(page).to have_flash I18n.t("devise.sessions.signed_in")

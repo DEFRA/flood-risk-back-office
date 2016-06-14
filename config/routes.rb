@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, class_name: "User"
+  devise_for :users, controllers: { :invitations => 'invitations' }
 
   mount FloodRiskEngine::Engine => "/fre"
 

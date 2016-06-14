@@ -1,0 +1,19 @@
+en:
+  pundit:
+    default: 'You are not authorised to perform this action.'
+
+    defaults:
+      index?: 'You are not authorised to view a list of %{name}!'
+      list?: 'You are not authorised to view a list of %{name}!'
+      read?: 'You are not authorised to view this %{name}!'
+      show?: 'You are not authorised to view this %{name}!'
+      edit?: 'You are not authorised to edit this %{name}!'
+      update?: 'You are not authorised to update this %{name}!'
+      new?: 'You are not authorised to create a %{name}!'
+      create?: 'You are not authorised to create a %{name}!'
+      destroy?: 'You are not authorised to delete this %{name}!'
+
+    user_policy:
+      invite?: 'You are not authorised to invite users!'
+      disable?: 'You are not authorised to disable this user!'
+      enable?: 'You are not authorised to enable this user!'
