@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: d74be3a3630e08c8282d929501e4b5cb41dd7f26
+  revision: 09e4004287c3dfdce7db7b1ff7f4278cd8d5eef2
   branch: develop
   specs:
     flood_risk_engine (0.0.1)
@@ -75,7 +75,7 @@ GEM
     ast (2.2.0)
     autoprefixer-rails (6.3.6.2)
       execjs
-    awesome_print (1.6.1)
+    awesome_print (1.7.0)
     aws-sdk-core (2.3.9)
       jmespath (~> 1.0)
     aws-sdk-resources (2.3.9)
@@ -238,7 +238,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.1)
+    phonelib (0.6.2)
     pkg-config (1.1.7)
     poltergeist (1.9.0)
       capybara (~> 2.1)
@@ -403,7 +403,7 @@ GEM
     websocket-driver (0.6.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    whenever (0.9.4)
+    whenever (0.9.6)
       chronic (>= 0.6.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
