@@ -15,7 +15,6 @@ RSpec.feature "Invite user" do
     end
 
     scenario "User without role is denied access" do
-      pending "FIX ME!"
       login_as create(:user)
       visit new_user_invitation_path
 
@@ -25,7 +24,6 @@ RSpec.feature "Invite user" do
 
     %i(super_agent admin_agent data_agent).each do |role|
       scenario "#{role.to_s.humanize} user is denied access" do
-        pending "FIX ME!"
         user = create :user
         user.add_role role
         login_as user
@@ -39,7 +37,6 @@ RSpec.feature "Invite user" do
 
   context "authorised" do
     background do
-      pending "FIX ME!"
       user = create :user
       user.add_role :system
       login_as user
@@ -54,7 +51,6 @@ RSpec.feature "Invite user" do
     end
 
     context "invalid" do
-      pending "FIX ME!"
       scenario "Invite user (invalid - existing email)" do
         create :user, email: email_addr
         fill_in "Email", with: email_addr
@@ -69,13 +65,10 @@ RSpec.feature "Invite user" do
 
       scenario "Invite user (no role selected)" do
         fill_in "Email", with: email_addr
-        expect(User.count).to eq(1)
-        click_button "Send an invitation"
-        expect(User.count).to eq(1)
 
-        # expect do
-        #   click_button "Send an invitation"
-        # end.not_to change(User, :count)
+        expect do
+          click_button "Send an invitation"
+        end.not_to change(User, :count)
 
         expect(page).to have_form_error(:user_assigned_role, text: "You must select a user role")
       end
@@ -136,7 +129,7 @@ RSpec.feature "Invite user" do
         click_button I18n.t("devise.invitations.edit.submit_button")
 
         expect(current_path).to eq new_user_session_path
-        expect(page).to have_css "h1", text: "Log in"
+        expect(page).to have_css "h1", text: "Sign in"
 
         u.reload
         expect(u.encrypted_password).to be_present
