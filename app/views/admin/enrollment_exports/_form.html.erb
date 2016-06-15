@@ -1,0 +1,21 @@
+<%= simple_form_for form do |f| %>
+
+  <h2><small><%= t ".date_range_legend" %></small></h2>
+
+  <%
+    date_opts = {
+      as: :date, html5: false,
+      order: %i[day month year],
+      end_year: Date.today.year,
+      start_year: 2016, # Year that waste-exemptions went live
+      wrapper_html: { class: "col-xs-6 col-md-5 col-lg-4" }
+    }
+  %>
+
+  <div class="row">
+    <%= f.input :from_date, date_opts.merge(prompt: :translate) %>
+    <%= f.input :to_date, date_opts.merge(default: Date.today) %>
+  </div>
+
+  <%= f.submit class: "btn btn-success", style: "display: block", data: { disable_with: t(".please_wait_html") } %>
+<% end %>

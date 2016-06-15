@@ -1,0 +1,24 @@
+en:
+  admin:
+    enrollment_exports:
+      index:
+        heading: Export completed registrations
+        heading_secondary: Previous Exports
+        to: to
+        table_headings:
+          - Status
+          - Row count
+          - Export file
+          - Date range
+          - Requested date
+          - Requested by
+      form:
+        date_range_legend: What is the date range for your search?
+        please_wait_html: "Please wait&hellip;"
+  enrollment_export_requested: Registration export [%{criteria}] has been requested.
+    It will be available to download below, in the next few minutes.
+  enrollment_export_states:
+    queued: Requested
+    started: In progress
+    completed: Complete
+    failed: Failed

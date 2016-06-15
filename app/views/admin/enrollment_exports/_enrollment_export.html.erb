@@ -1,0 +1,43 @@
+<%= content_tag_for :tr, enrollment_export,
+                    class: ("highlight-fade-out" if flash[:created_export_id] == enrollment_export.id) do %>
+  <td>
+    <%=
+      label_opts = { class: "label label-" }
+
+      label_opts[:class] +=
+        case enrollment_export.state
+        when "queued" then "info"
+        when "started" then "warning"
+        when "completed" then "success"
+        when "failed" then "danger"
+        else "default"
+        end
+
+      if enrollment_export.failed?
+        label_opts[:title] = enrollment_export.failure_text
+        label_opts["aria-haspopup"] = true
+        label_opts[:data] = { toggle: "tooltip" }
+      end
+
+      content_tag :span, t(enrollment_export.state, scope: "enrollment_export_states"),
+                  label_opts
+    %>
+  </td>
+  <td>
+    <% if enrollment_export.record_count %>
+      <%= number_with_delimiter enrollment_export.record_count %>
+    <% else %>
+      &hellip;
+    <% end %>
+  </td>
+  <td>
+    <% if enrollment_export.completed? %>
+      <%= link_to enrollment_export.file_name, admin_enrollment_export_path(enrollment_export, format: "csv") %>
+    <% else %>
+      &hellip;
+    <% end %>
+  </td>
+  <td><%= enrollment_export.to_s %></td>
+  <td><%= l enrollment_export.created_at, format: :long %></td>
+  <td><%= enrollment_export.created_by %></td>
+<% end %>

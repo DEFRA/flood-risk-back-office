@@ -44,7 +44,10 @@ Rails.application.configure do
   port = ENV["SSL_PORT"].try!(:to_i) || ENV["PORT"].try!(:to_i) || 3000
   protocol = ENV["SSL_PORT"].present? ? "https" : "http"
 
-  config.action_mailer.default_url_options = { host: host, port: port, protocol: protocol }
+  Rails.application.routes.default_url_options =
+    config.action_controller.default_url_options =
+      config.action_mailer.default_url_options = { host: host, port: port, protocol: protocol }
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name: ENV['EMAIL_USERNAME'],
