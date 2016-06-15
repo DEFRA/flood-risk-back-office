@@ -2,14 +2,12 @@ Rails.logger.info "BO:SEED MSG: Seeding users..."
 
 User.destroy_all
 
-# if ActiveRecord::Base.connection.instance_values["config"][:adapter].in? %w(postgres postgis)
-#   ActiveRecord::Base.connection.reset_pk_sequence! User.table_name
-# end
-
 %w(
   pollyjjones@gmail.com
+  glancyea@gmail.com
   alan.cruikshanks@environment-agency.gov.uk
   paula.french@environment-agency.gov.uk
+  johnathan.austin@environment-agency.gov.uk
   tim.stone.ea@gmail.com
   tim.crowe.ea@gmail.com
   robnichols.ea@gmail.com
