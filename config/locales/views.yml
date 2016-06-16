@@ -19,13 +19,11 @@ en:
         heading: Pending applications
         bullet_list: "You can search for an application by:"
         bullets:
-          - site postcode
           - registration reference number
-          - business or partner name
-          - applicant full name
-          - applicant email
-          - contact full name
-          - contact email
+          - organisation name
+          - contact name
+          - postcode
+          - exemption code, e.g. FRA23
         search_label: Search for a registration
         search_button: Find registration
         submitted_label: Submitted

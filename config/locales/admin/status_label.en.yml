@@ -5,7 +5,7 @@ en:
       approved: Approved
       being_processed: Being processed
       rejected: Rejected
-      building: Building
-      pending: Pending
+      building: Incomplete
+      pending: Pending screening
       expired:  Expired
       withdrawn: Withdrawn

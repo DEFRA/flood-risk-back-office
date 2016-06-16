@@ -35,6 +35,7 @@ gem "rolify", "~> 5.0"
 # (e.g. on AWS via Upstart, Heroku vi Procfile, and locally via Procfile.development
 gem "passenger", "~> 5.0.25", require: false
 gem "kaminari", "~> 0.16"
+gem "squeel"
 
 group :development, :test do
   gem "factory_girl_rails", "~> 4.6" # also enables "build_dummy_data" functionality in dev
