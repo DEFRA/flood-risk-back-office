@@ -2,12 +2,50 @@
   <div class="col-md-12">
     <div class="panel panel-default">
       <div class="panel-heading panel-title"><%= glyphicon_tag :user, text: t('.title') %></div>
-      <div class="panel-body">
-        <%=
-          contact = enrollment_exemption.correspondence_contact
-          render("shared/contact_details", contact: contact) if contact.present?
-        %>
+      <div class="panel-body" id="correspondence-contact-details">
+        <% contact = presenter.correspondence_contact %>
+
+        <% if contact %>
+          <strong><%= contact.full_name %></strong>
+          <% if contact.position? %>
+            <br/>
+            <%= t('.position') %> <%= contact.position %>
+          <% end %>
+          <br/>
+          <% if contact.email_address? %>
+            <br/>
+            <%= mail_to contact.email_address %>
+          <% end %>
+          <% if contact.telephone_number? %>
+            <br/>
+            <%= link_to(contact.telephone_number, "tel:#{contact.telephone_number.gsub(/[^0-9]/, '')}") %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% if presenter.secondary_contact %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-title"><%= glyphicon_tag :user, text: t('.secondary_contact.title') %></div>
+        <div class="panel-body" id="secondary-contact-details">
+          <% secondary_contact = presenter.secondary_contact %>
+          <strong><%= secondary_contact.full_name %></strong>
+          <br/>
+          <% if secondary_contact.email_address? %>
+            <br/>
+            <%= mail_to secondary_contact.email_address %>
+          <% end %>
+          <% if secondary_contact.telephone_number? %>
+            <br/>
+            <%= link_to(secondary_contact.telephone_number,
+                        "tel:#{secondary_contact.telephone_number.gsub(/[^0-9]/, '')}") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

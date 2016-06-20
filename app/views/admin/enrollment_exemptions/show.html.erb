@@ -1,18 +1,19 @@
-<% content_for(:page_title1) { t('.heading') } %>
 
-<div class="container-fluid">
+<div class="container-fluid" id="admin-enrollment-exemptions-show">
   <div class="row">
     <div class="col-xs-12 col-sm-9">
-      <h1><%= t('.heading') %></h1>
-      <%= render "admin/enrollment_exemptions/show/main", enrollment_exemption: @enrollment_exemption %>
-      <%= render "admin/enrollment_exemptions/show/exemptions", enrollment_exemption: @enrollment_exemption %>
-      <%= render "admin/enrollment_exemptions/show/site", enrollment_exemption: @enrollment_exemption %>
+      <%= render("flood_risk_engine/enrollments/header", title_text: t(".heading")) %>
+      <%= render "admin/enrollment_exemptions/show/main", form: form, presenter: presenter %>
     </div>
 
     <div class="col-xs-12 col-sm-3">
-      <h2><%= t ".contact_header" %></h2>
-      <%= render "admin/enrollment_exemptions/show/correspondant", enrollment_exemption: @enrollment_exemption %>
-      <%= render "admin/enrollment_exemptions/show/actions", enrollment_exemption: @enrollment_exemption %>
+      <header class="text">
+        <h1 class="form-title heading-large" id="groupLabel">
+          <%= t ".contact_header" %>
+        </h1>
+      </header>
+      <%= render "admin/enrollment_exemptions/show/correspondant", form: form, presenter: presenter %>
+      <%= render "admin/enrollment_exemptions/show/actions", form: form, presenter: presenter %>
     </div>
   </div>
 </div>

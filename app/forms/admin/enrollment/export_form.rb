@@ -1,4 +1,6 @@
 require "validates_timeliness/helper_methods"
+require "reform/form/multi_parameter_attributes"
+require "reform/form/active_model/form_builder_methods"
 
 module Admin
   module Enrollment

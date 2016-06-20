@@ -13,7 +13,16 @@ module Admin
     end
 
     def show
-      load_and_authorise_enrollment_exemption
+      enrollment_exemption = load_and_authorise_enrollment_exemption
+
+      presenter = EnrollmentExemptionPresenter.new(enrollment_exemption, view_context)
+
+      form = EnrollmentExemptionForm.new(enrollment_exemption)
+
+      render :show, locals: {
+        presenter: presenter,
+        form: form
+      }
     end
 
     private
@@ -21,7 +30,7 @@ module Admin
     def load_and_authorise_enrollment_exemption
       enrollment_exemption = FloodRiskEngine::EnrollmentExemption.find(params[:id])
       authorize enrollment_exemption
-      @enrollment_exemption = EnrollmentExemptionPresenter.new(enrollment_exemption, view_context)
+      enrollment_exemption
     end
   end
 end

@@ -75,16 +75,14 @@ module Flood
       end
 
       def run
-
         number = options["number"].to_i
-
 
         threads = options["max_threads"].to_i
 
         factories = options["all"] ?
           [
-            :approved_individual, :approved_limited_company, :approved_limited_liability_partnership,
-            :approved_local_authority, :approved_other, :approved_partnership
+            :confirmed_individual, :confirmed_limited_company, :confirmed_limited_liability_partnership,
+            :confirmed_local_authority, :confirmed_other, :confirmed_partnership
           ] : options["factory"]
 
         puts "Starting load of #{number} enrollments per factory(s) #{factories.inspect}"
@@ -99,7 +97,6 @@ module Flood
           end
 
         else
-
           puts "Running using #{threads} threads"
 
           cycles = (number / threads).to_i
@@ -122,7 +119,6 @@ module Flood
         puts("\nBulk load of [#{options["number"] * factories.size}] Enrollments took [#{t2 - t1}] seconds")
 
       end
-
 
       # Runs VACUUM against each table, which reclaims storage occupied by dead tuples.
       # Note it caters for when connected to a postgres database or a sqlite (for example if

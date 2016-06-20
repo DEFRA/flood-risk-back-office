@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20160615130330) do
     t.string   "token"
     t.integer  "secondary_contact_id"
     t.string   "reference_number",          limit: 12
-    t.integer  "status",                               default: 0, null: false
     t.integer  "updated_by_user_id"
+    t.integer  "status",                               default: 0, null: false
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
