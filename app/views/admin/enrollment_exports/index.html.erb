@@ -1,0 +1,25 @@
+<%= render("flood_risk_engine/enrollments/header", title_text: t(".heading")) %>
+
+<%= render "form", form: form %>
+
+<% if @exports.except(:limit, :offset).any? %>
+  <hr/>
+  <h2>
+    <%= t ".heading_secondary" %>
+    <%= link_to glyphicon_tag(:refresh, text: t(:refresh)), url_for, class: 'btn btn-primary btn-sm' %>
+  </h2>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr><%= raw t(".table_headings").map { |th| content_tag(:th, th) }.join %></tr>
+      </thead>
+
+      <tbody>
+        <%= render @exports %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+
+<%= paginate @exports %>

@@ -25,6 +25,10 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
   config.include AbstractController::Translation # enables t()
 
+  # Allows us to include should matchers like validate_presence_of if the spec type
+  # is :form (already works out of the box but only for type :model)
+  config.include(Shoulda::Matchers::ActiveModel, type: :form)
+
   # DatabaseCleaner config
   # config.before(:suite) do
   #   DatabaseCleaner.clean_with(:truncation)
