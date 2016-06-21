@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  before_action :set_paper_trail_whodunnit
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -52,6 +54,9 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized(exception)
+    # Force sign out of the unauthorized user, to prevent an infinite loop on the
+    # site home-page (which is also the enrollments-search page)
+    # sign_out(:user) unless Pundit.policy(pundit_user, EnrollmentSearch).index?
     flash[:not_authorized] =
       if exception.try(:policy)
         pundit_message exception
@@ -60,7 +65,6 @@ class ApplicationController < ActionController::Base
       end
 
     path = main_app.root_path
-
     redirect_to(request.referer || path)
   end
 
@@ -80,24 +84,6 @@ class ApplicationController < ActionController::Base
 
     human_name = model_name.human(count: count).downcase if exception.record
     default = I18n.t("pundit.defaults.#{act}", name: human_name) if human_name
-
-    I18n.t "pundit.#{policy_name}.#{act}", default: default
-  end
-
-  def active_admin_message(exception)
-    subject = exception.subject
-    policy_name = "#{subject.to_s.underscore}_policy"
-    act = "#{exception.action}?".try(:to_sym)
-    act = :index? if act == :read? && action_name == "index"
-
-    default = I18n.t(:default, scope: "pundit")
-
-    if subject.try :model_name
-      count = (act == :index?) ? 2 : 1
-      human_name = subject.model_name.human(count: count).downcase
-
-      default = I18n.t("pundit.defaults.#{act}", name: human_name)
-    end
 
     I18n.t "pundit.#{policy_name}.#{act}", default: default
   end

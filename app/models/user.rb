@@ -43,6 +43,27 @@ class User < ActiveRecord::Base
     !disabled?
   end
 
+  # Use ActiveJob to deliver Devise emails
+  # https://github.com/plataformatec/devise#activejob-integration
+  def send_devise_notification(notification, *args)
+    if Rails.application.config.active_job.queue_adapter == :inline
+      super
+    else
+      devise_mailer.send(notification, self, *args).deliver_later
+    end
+  end
+
+  def active_for_authentication?
+    super && enabled?
+  end
+
+  def inactive_message
+    # If the user is diabled, and Devise "paranoid mode" is on,
+    # display the message "Invalid email or password",
+    # instead of the default "Your account is not activated yet" message
+    (Devise.paranoid && disabled?) ? :invalid : super
+  end
+
   def password_meets_minimum_requirements
     if password.present? && errors[:password].empty?
       # Password must have at least 1 uppercase, 1 lowercase and 1 number character

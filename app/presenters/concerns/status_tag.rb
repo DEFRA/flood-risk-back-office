@@ -20,7 +20,6 @@ module StatusTag
   # Creates a styled enrollment or enrollment/exemption status span with
   # Example usage:
   #   status_tag("approved", "Approved on", { data: ... })
-
   def status_tag(status, body, options = {})
     default_options = { class: "label #{status_tag_css_class(status)}", style: "padding:0.7em;" }
     opts = default_options.merge(options || {})
