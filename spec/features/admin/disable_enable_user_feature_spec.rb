@@ -13,7 +13,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
 
   context "authorised" do
     scenario "System user can disable another user", versioning: true do
-      pending "FIX ME!"
+      # pending "FIX ME!"
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
 
@@ -22,12 +22,12 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
 
       fill_in "Comment", with: "User has left the company"
 
+      # expect do
       expect do
-        expect do
-          click_button "Disable user"
-          expect(page).to have_flash I18n.t("user_disabled_success", name: other_user.email)
-        end.to change { other_user.reload.disabled_at }.from(nil)
-      end # .to change { other_user.reload.versions.count }.by(1)
+        click_button "Disable user"
+        expect(page).to have_flash I18n.t("user_disabled_success", name: other_user.email)
+      end.to change { other_user.reload.disabled_at }.from(nil)
+      # end.to change { other_user.reload.versions.count }.by(1)
 
       expect(current_path).to eq admin_users_path
 

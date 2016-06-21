@@ -14,6 +14,7 @@ gem "devise", "~> 3.5"
 gem "devise_invitable", "~> 1.5"
 gem "aws-sdk-resources", "~> 2.2" # Amazon S3 API access (e.g. data exports)
 gem "before_commit"
+gem "paper_trail", "~> 5.1.1"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
