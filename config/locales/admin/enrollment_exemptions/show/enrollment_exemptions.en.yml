@@ -8,6 +8,7 @@ en:
           title: Actions
           update_status: Update status
           change_ad: Change AD classification
+          deregister: Deregister
         main:
           title: Registration and operator
           registration_and_operator:

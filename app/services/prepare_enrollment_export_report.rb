@@ -26,7 +26,7 @@ class PrepareEnrollmentExportReport
 
     [
       record.status,
-      "TBD Submitted date",
+      I18n.l(enrollment.submitted_at.to_date, format: :long),
       "TBD Decision date",
       "TBD Decision maker",
       enrollment_export.created_by,
@@ -51,7 +51,7 @@ class PrepareEnrollmentExportReport
 
   def self.column_names
     [
-      "Registration status",
+      "Registration status",              # 1.
       "Submitted date",
       "Decision date",
       "Decision maker",
@@ -60,13 +60,13 @@ class PrepareEnrollmentExportReport
       "NGR",
       "Site description",
       "EA area",
-      "Exemption code and description",
+      "Exemption code and description",   # 10.
       "Business type",
       "Contact name",
       "Contact email",
       "Contact phone number",
       "Operator name",
-      "Link to registration details"
+      "Link to registration details"      # 16.
     ]
   end
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength

@@ -3,7 +3,6 @@ FloodRiskEngine.configure do |config|
   # because that layout may include calls to helper methods that we (as an isolated engine)
   # don;t have access to.
   config.layout = "flood_risk_engine"
-  config.redirection_url_on_location_unchecked = "http://gov.uk"
 end
 
 export_directory = Rails.root.join("private", "exports")

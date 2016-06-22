@@ -16,7 +16,7 @@ FactoryGirl.define do
         valid_from: (Date.current - rand(7).days)
       )
 
-      object.save
+      object.submit
     end
 
     trait :with_secondary_contact do
@@ -24,7 +24,6 @@ FactoryGirl.define do
     end
 
     step :confirmation
-    status FloodRiskEngine::Enrollment.statuses.keys.sample
   end
 
   factory :confirmed, parent: :confirmed_random_status, traits: [:with_limited_company, :with_secondary_contact]

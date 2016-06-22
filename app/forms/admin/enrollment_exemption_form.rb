@@ -1,6 +1,6 @@
 module Admin
 
-  class EnrollmentExemptionForm < AdminBaseForm
+  class EnrollmentExemptionForm < BaseForm
 
     def initialize(model)
       super(model)

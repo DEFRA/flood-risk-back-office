@@ -12,7 +12,16 @@
                     role: 'button' %>
       </p>
     <% end %>
-    <% if policy(presenter.enrollment).edit? %>
+    <% if policy(presenter.enrollment).deregister? %>
+      <p>
+        <%= link_to t(".deregister"),
+                    edit_admin_enrollment_path(presenter.enrollment),
+                    id: "deregister-enrollment-exemption",
+                    class: "btn btn-warning",
+                    role: 'button' %>
+      </p>
+    <% end %>
+    <% if policy(presenter.enrollment).change_assisted_digital? %>
       <p>
         <%= link_to t(".change_ad"),
                     edit_admin_enrollment_path(presenter.enrollment),
