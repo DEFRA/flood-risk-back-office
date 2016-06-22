@@ -67,7 +67,7 @@
       <tbody>
         <% enrollment_exemptions.each_enrollment_exemption do |ee| %>
           <tr>
-            <td><%= "Pending" %></td>
+            <td><%= ee.status.humanize.capitalize %></td>
             <td><%= ee.submitted_at %></td>
             <td><%= ee.code %></td>
             <td><%= ee.organisation_name %></td>

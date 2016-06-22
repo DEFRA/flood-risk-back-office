@@ -30,8 +30,6 @@ module Admin
     def show
       export = EnrollmentExport.completed.find_by!(id: params[:id])
 
-      logger.error("Could not find report #{params[:id]}") unless export
-
       authorize export
 
       respond_to do |format|

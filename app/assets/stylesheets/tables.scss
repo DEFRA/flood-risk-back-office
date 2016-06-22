@@ -26,3 +26,23 @@
     }
   }
 }
+
+.users {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+}
+.users td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ee-show-main-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.ee-show-main-table-header-td {
+  width: 30%;
+}

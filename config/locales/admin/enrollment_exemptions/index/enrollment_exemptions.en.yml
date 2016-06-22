@@ -1,0 +1,34 @@
+en:
+  admin:
+    enrollment_exemptions:
+      index:
+        edit: Edit
+        show: View
+        table_headings:
+          state: State
+          submitted_at: Submitted
+          code: Code
+          organisation_name: Organisation
+        enrollment_exemption:
+          edit: Edit
+        heading: Exemption applications
+        bullet_list: "You can search for a registration by:"
+        bullets:
+          - site postcode
+          - registration reference number
+          - business or partner name
+          - applicant full name
+          - applicant email
+          - contact full name
+          - contact email
+        search_label: Search for a registration
+        search_button: Search
+        submitted_label: Submitted
+        not_submitted_label: Not yet submitted
+        all_label: All registrations
+      result:
+        applicant_label: Applicant
+        correspondence_label: Contact
+        partner_label: Partners
+        site_address_label: Site location
+        en:

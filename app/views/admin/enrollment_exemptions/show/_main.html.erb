@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-md-12">
+
     <div class="panel panel-default">
       <div class="panel-heading panel-title">
         <div class="row">
@@ -10,65 +11,54 @@
       </div>
 
       <div class="panel-body" id="registration-details">
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active">
-            <a href="#registration"
-               aria-controls="home"
-               role="tab"
-               data-toggle="tab">
-                <%= t '.registration_tab.title' %>
-            </a>
-          </li>
-          <li role="presentation">
-            <a href="#business-type"
-               aria-controls="home"
-               role="tab"
-               data-toggle="tab">
-                <%= t '.organisation_tab.title' %>
-            </a>
-          </li>
-        </ul>
-
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="registration">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <tbody>
-                  <tr>
-                    <td><%= t '.registration_tab.ref_number' %></td>
-                    <td><%#= enrollment_exemption.reference_number %></td>
-                  </tr>
-
-                  <tr>
-                    <td><%= t '.registration_tab.assistance_mode' %></td>
-                    <td><%#= enrollment_exemption.assistance_tag %></td>
-                  </tr>
-
-                  <tr>
-                    <td><%= t '.registration_tab.status' %></td>
-                    <td><%#= enrollment_exemption.status_tag %></td>
-                  </tr>
-
-                  <tr>
-                    <td><%= t '.registration_tab.submitted_at' %></td>
-                    <td><%#= enrollment_exemption.submitted_at %></td>
-                  </tr>
-
-                  <%# if enrollment_exemption.deregistered_comment.present? %>
-                  <!--   <tr>
-                      <td><%#= t '.registration_tab.deregistered_comment' %></td>
-                      <td><%#= enrollment_exemption.deregistered_comment %></td>
-                    </tr> -->
-                  <% #end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <%= render 'admin/enrollment_exemptions/show/organisation_tab',
-                      enrollment_exemption: enrollment_exemption,
-                      organisation_type: enrollment_exemption.enrollment_org_type %>
+        <div class="table-responsive">
+          <table class="table table-bordered ee-show-main-table">
+            <tbody>
+            <% presenter.registration_and_operator_data.each do |header, value| %>
+              <tr>
+                <td class="ee-show-main-table-header-td"><%= header %></td>
+                <td><%= value %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading panel-title">
+        <div class="row">
+          <div class="col-xs-11">
+            <%= glyphicon_tag :file, text: t('.exemption_panel.title') %>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body" id="exemption-details">
+        <div class="row">
+          <div class="col-xs-11">
+            <span><%= t('.exemption_panel.status') %></span>
+            <%= presenter.status_tag %>
+            <br/>
+          </div>
+        </div>
+        <br/>
+
+        <div class="table-responsive">
+          <table class="table table-bordered ee-show-main-table">
+            <tbody>
+            <% presenter.exemption_data.each do |header, value| %>
+              <tr>
+                <td class="ee-show-main-table-header-td"><%= header %></td>
+                <td><%= value %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

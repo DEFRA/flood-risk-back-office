@@ -1,0 +1,5 @@
+en:
+  presenters:
+    blank: Not specified
+    nil: Not available
+    no_expiry_date_present: "Does not expire"

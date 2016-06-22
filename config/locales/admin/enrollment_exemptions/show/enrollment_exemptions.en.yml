@@ -1,0 +1,45 @@
+en:
+  admin:
+    enrollment_exemptions:
+      show:
+        heading: View registration details
+        contact_header: Contact details
+        actions:
+          title: Actions
+          update_status: Update status
+          change_ad: Change AD classification
+        main:
+          title: Registration and operator
+          registration_and_operator:
+            partnership:
+              address: 'Address:'
+              name: 'Name:'
+              label: Partner %{index}
+            header_row1: Operator name
+            header_row2: Business type
+            header_row3: Address
+            header_row4: Reference number
+            header_row5: Submitted on
+            header_row6: Assisted digital
+          exemption_panel:
+            title: Exemption details
+            header_row1: Exemption number
+            header_row2: Exemption
+            header_row3: Grid reference
+            header_row4: Site description
+            header_row5: Expiry date
+            header_row6: EA admin area
+            status: Status
+            status_label:
+              approved: Approved
+              being_processed: Being processed
+              rejected: Rejected
+              building: Building
+              pending: Pending
+              expired:  Expired
+              withdrawn: Withdrawn
+        correspondant:
+          title: Contact
+          position: 'Position:'
+          secondary_contact:
+            title: Alternative contact
