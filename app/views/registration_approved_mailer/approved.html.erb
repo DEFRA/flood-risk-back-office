@@ -7,39 +7,39 @@
 <% end %>
 
 <p class="panel">
-  Your reference is: <%= EXEMPTION_NUMBER %>
+  Your reference is: <%= @presenter.reference_number %>
 </p>
 
 <h2 class="border-top">Exemption registered:</h2>
 <p>
-  <%= EXEMPTION_TITLE %> <%= EXEMPTION_CODE %><br />
-  at grid reference <%= GRID_REF %>.
+  <%= @presenter.exemption_title %> <%= @presenter.exemption_code %><br />
+  at grid reference <%= @presenter.grid_reference %>.
 </p>
 
 <h2 class="border-top">Things you need to do before you start work</h2>
 
-<%= IF ASSET ########################### %>
+<% if @presenter.asset? %>
 <p>
   When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet the conditions.
 </p>
-<%= ENDIF ASSET ######################## %>
+<% end %>
 
 <p>
   You should re-check the conditions of your exemptions in the <a href="https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities">flood risk activities guidance</a>
 </p>
 
 
-<%= IF SALMONID ########################### %>
+<% if @presenter.salmonid? %>
 <h2 class="border-top">The location is on a river where salmon are protected</h2>
 <p>
   This means you cannot do any work between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit.
 </p>
-<%= ENDIF SALMONID ######################## %>
+<% end %>
 
 <h2 class="border-top">Date of registration</h2>
 
 <p>
-  <%= REG_DATE %>
+  <%= @presenter.reg_date %>
 </p>
 
 <p>
@@ -48,15 +48,15 @@
 
 <h2 class="border-top">Responsible for activity (the ‘operator’)</h2>
 <p>
-  <%= OPERATOR %><br />
-  <%= ADDRESS %>
+  <%= @presenter.full_name %><br />
+  <%= @presenter.primary_address %>
 </p>
 
 <h2 class="border-top">Who we will contact</h2>
 <p>
-  <%= CONTACT_NAME %>, <%= CONTACT_JOBTITLE %><br />
-  Tel: <%= CONTACT_TEL_NUMBER %><br />
-  <%= CONTACT_EMAIL %>
+  <%=  @presenter.name %>, <%=  @presenter.position %><br />
+  Tel: <%=  @presenter.telephone_number %><br />
+  <%=  @presenter.email_address %>
 </p>
 
 <h2 class="border-top">Your responsibilities</h2>

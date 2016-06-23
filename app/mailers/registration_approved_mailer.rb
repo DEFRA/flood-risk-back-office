@@ -1,11 +1,11 @@
-class RegistrationRejectedMailer < ActionMailer::Base
+class RegistrationApprovedMailer < ActionMailer::Base
 
   add_template_helper(FloodRiskEngine::EmailHelper)
 
   layout "layouts/backend_mail"
 
-  def rejected(enrollment_exemption:, recipient_address:)
-    i18n_scope = RegistrationRejectedMailer.mail_yaml_key
+  def approved(enrollment_exemption:, recipient_address:)
+    i18n_scope = RegistrationApprovedMailer.mail_yaml_key
     subject = I18n.t(".subject", scope: i18n_scope)
 
     @presenter = ExemptionEmailPresenter.new(enrollment_exemption)
@@ -14,6 +14,6 @@ class RegistrationRejectedMailer < ActionMailer::Base
   end
 
   def self.mail_yaml_key
-    "admin.registration_rejected_mailer.rejected"
+    "admin.registration_approved_mailer.approved"
   end
 end

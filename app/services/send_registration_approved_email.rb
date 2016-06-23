@@ -1,4 +1,4 @@
-class SendRegistrationRejectedEmail
+class SendRegistrationApprovedEmail
 
   include Admin::CommonMailer
 
@@ -12,8 +12,9 @@ class SendRegistrationRejectedEmail
 
   def call
     validate_enrollment
+
     distinct_recipients.each do |recipient|
-      mailer = RegistrationRejectedMailer.rejected(
+      mailer = RegistrationApprovedMailer.approved(
         enrollment_exemption: enrollment_exemption,
         recipient_address: recipient
       )
@@ -29,13 +30,11 @@ class SendRegistrationRejectedEmail
   def validate_enrollment
     raise(ArgumentError, "Enrollment Exemption argument not supplied") unless enrollment_exemption.present?
 
-    raise(
-      FloodRiskEngine::InvalidEnrollmentStateError, "Exemption not in rejected state"
-    ) unless enrollment_exemption.rejected?
+    unless enrollment_exemption.approved?
+      raise FloodRiskEngine::InvalidEnrollmentStateError, "Exemption not in approved state"
+    end
 
-    raise(
-      FloodRiskEngine::MissingEmailAddressError, "Missing contact email address"
-    ) if primary_contact_email.blank?
+    raise FloodRiskEngine::MissingEmailAddressError, "Missing contact email address" if primary_contact_email.blank?
   end
 
 end
