@@ -1,17 +1,4 @@
 FloodRiskEngine::EnrollmentExemption.class_eval do
-  # TODO: -Putting status here for now for RIP-212 so it can be easily MOVED once Engine
-  # updated with related stories concerning NCCC management of EnrollmentExemption
-
-  enum status: {
-    building: 0,        # FO: anywhere before the confirmation step
-    pending: 1,         # FO: enrollment submitted and awaiting BO processing
-    being_processed: 2, # BO: prevents another admin user from processing it
-    approved: 3,        # BO: all checks pass
-    rejected: 4,        # BO: because e.g. grid ref in an SSI
-    expired: 5,         # BO: FRA23/24 only - expiry date has passed
-    withdrawn: 6        # BO: used to hide anything created in error
-  }
-
   # TODO: - Is valid_from the Correct DATE FIELD - suspect there could be others once the NCCC workflow complete
   # such as completed_at, submitted_at or registered_at
 
