@@ -24,6 +24,6 @@ module StatusTag
   def status_tag(status, body, options = {})
     default_options = { class: "label #{status_tag_css_class(status)}", style: "padding:0.7em;" }
     opts = default_options.merge(options || {})
-    content_tag(:span, body, opts).html_safe
+    content_tag(:span, body, opts)
   end
 end

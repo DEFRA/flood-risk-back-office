@@ -1,0 +1,73 @@
+<%= content_for(:title) do %>
+  Flood risk activity exemption successfully registered
+<% end %>
+
+<%= content_for(:heading) do %>
+  We’ve registered your exemption
+<% end %>
+
+<p class="panel">
+  Your reference is: <%= EXEMPTION_NUMBER %>
+</p>
+
+<h2 class="border-top">Exemption registered:</h2>
+<p>
+  <%= EXEMPTION_TITLE %> <%= EXEMPTION_CODE %><br />
+  at grid reference <%= GRID_REF %>.
+</p>
+
+<h2 class="border-top">Things you need to do before you start work</h2>
+
+<%= IF ASSET ########################### %>
+<p>
+  When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet the conditions.
+</p>
+<%= ENDIF ASSET ######################## %>
+
+<p>
+  You should re-check the conditions of your exemptions in the <a href="https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities">flood risk activities guidance</a>
+</p>
+
+
+<%= IF SALMONID ########################### %>
+<h2 class="border-top">The location is on a river where salmon are protected</h2>
+<p>
+  This means you cannot do any work between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit.
+</p>
+<%= ENDIF SALMONID ######################## %>
+
+<h2 class="border-top">Date of registration</h2>
+
+<p>
+  <%= REG_DATE %>
+</p>
+
+<p>
+  Exemptions don’t expire except for dredging FRA23 which expires 3 years after the registration date and dredging FRA24 which expires 1 year after the registration date.
+</p>
+
+<h2 class="border-top">Responsible for activity (the ‘operator’)</h2>
+<p>
+  <%= OPERATOR %><br />
+  <%= ADDRESS %>
+</p>
+
+<h2 class="border-top">Who we will contact</h2>
+<p>
+  <%= CONTACT_NAME %>, <%= CONTACT_JOBTITLE %><br />
+  Tel: <%= CONTACT_TEL_NUMBER %><br />
+  <%= CONTACT_EMAIL %>
+</p>
+
+<h2 class="border-top">Your responsibilities</h2>
+<p>
+  The organisation or individual responsible must keep to the description and conditions for the exemption(s). We can prosecute them if they don’t do this.
+</p>
+
+<h2 class="border-top">If your activity changes</h2>
+<p>
+  If the location changes, you will need to register a new exemption.
+</p>
+<p>
+  If the activity or the way you are doing the work changes, you will need to check if it is still exempt.
+</p>

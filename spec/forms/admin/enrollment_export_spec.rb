@@ -13,7 +13,7 @@ module Admin
 
       it { is_expected.to be_a(ExportForm) }
 
-      describe '#model' do
+      describe "#model" do
         it "is the correct type" do
           expect(subject.model).to be_a(EnrollmentExport)
         end

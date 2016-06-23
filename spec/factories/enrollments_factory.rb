@@ -1,13 +1,27 @@
 FactoryGirl.define do
-  # Base class for Enrollment with a random exemption, status, and valid_from selected for EnrollmentExemption
+  # Base class for BO Enrollments - Start in PEDNING
 
-  factory :confirmed_random_status, parent: :enrollment do
+  factory :base_back_office_enrollment, parent: :enrollment do
     after(:create) do |object|
       object.exemption_location = build(:location, description: "#{FFaker::Address.neighborhood}, near river.")
-
-      object.organisation.primary_address = build(:simple_address)
       object.correspondence_contact = build(:flood_risk_engine_contact, email_address: Faker::Internet.email)
 
+      object.save
+    end
+
+    trait :with_secondary_contact do
+      association :secondary_contact, factory: :contact
+    end
+
+    step :confirmation
+
+    status "pending"
+  end
+
+  # Base class for BO Enrollment with a random exemption, status, and valid_from selected for EnrollmentExemption
+
+  factory :confirmed_random_status, parent: :base_back_office_enrollment do
+    after(:create) do |object|
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first || create(:exemption)
 
       object.enrollment_exemptions.build(
@@ -38,19 +52,17 @@ FactoryGirl.define do
     next if ot.to_sym == :unknown
 
     factory :"confirmed_#{ot}", parent: :confirmed_random_status do
-      after(:build) do |object|
-        object.organisation = create(:organisation, :"as_#{ot}", name: Faker::Company.name)
+      after(:create) do |object|
+        if ot.to_sym == :partnership
+          object.organisation = create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
+        else
+          object.organisation = create(:organisation, :"as_#{ot}", name: Faker::Company.name)
+        end
 
         # this is an optional page in FO so create randomly
         object.secondary_contact = build :contact if [true, false].sample
-      end
 
-      if ot.to_sym == :partnership
-        after(:create) do |object|
-          (0..rand(4)).each do |_i|
-            object.organisation.partners << create(:partner_with_contact)
-          end
-        end
+        object.save!
       end
     end
   end

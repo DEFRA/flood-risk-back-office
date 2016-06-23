@@ -8,11 +8,9 @@ module ApplicationHelper
 
   def cancel_go_back_link
     if request.referer.present?
-      link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")), :back,
-              class: "ignore-visited"
+      link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")), :back, class: "ignore-visited"
     else
-      link_to glyphicon_tag(:ban_circle, text: t("cancel")), main_app.root_path,
-              class: "ignore-visited"
+      link_to glyphicon_tag(:ban_circle, text: t("cancel")), main_app.root_path, class: "ignore-visited"
     end
   end
 
@@ -29,14 +27,14 @@ module ApplicationHelper
     html = content_tag :span, "", opts.merge(class: "glyphicon glyphicon-#{icon}", "aria-hidden" => "true")
     html += " #{text}" if text.present?
 
-    html.html_safe
+    html
   end
 
   def full_devise_error_messages!
     return "" if resource.errors.empty?
 
     messages = resource.errors.messages.map do |_k, msgs|
-      content_tag(:li, msgs.to_sentence.html_safe) if msgs.any?
+      content_tag(:li, msgs.to_sentence) if msgs.any?
     end
 
     html = <<-HTML.strip_heredoc
@@ -45,6 +43,6 @@ module ApplicationHelper
       </div>
       HTML
 
-    html.html_safe
+    html
   end
 end

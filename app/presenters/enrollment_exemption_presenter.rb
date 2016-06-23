@@ -23,7 +23,6 @@ class EnrollmentExemptionPresenter < Presenter
   def initialize(enrollment_exemption, view_context)
     @enrollment_exemption = enrollment_exemption
     @enrollment = enrollment_exemption.enrollment
-    @organisation = enrollment.organisation
     super(view_context)
   end
 
