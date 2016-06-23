@@ -5,7 +5,7 @@ require "reform/form/active_model/form_builder_methods"
 module Admin
   module Enrollment
 
-    class ExportForm < AdminBaseForm
+    class ExportForm < BaseForm
 
       # See http://trailblazer.to/gems/reform/#multiparameter-dates
       feature Reform::Form::MultiParameterAttributes

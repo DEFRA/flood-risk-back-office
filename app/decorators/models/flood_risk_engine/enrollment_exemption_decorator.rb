@@ -12,7 +12,7 @@ FloodRiskEngine::EnrollmentExemption.class_eval do
     withdrawn: 6        # BO: used to hide anything created in error
   }
 
-  # TODO: - Is this thr Correct DATE FIELD - valid_from: suspect there could be others once the NCCC workflow complete
+  # TODO: - Is valid_from the Correct DATE FIELD - suspect there could be others once the NCCC workflow complete
   # such as completed_at, submitted_at or registered_at
 
   # rubocop:disable Style/Lambda
@@ -27,9 +27,8 @@ FloodRiskEngine::EnrollmentExemption.class_eval do
   #
   class << self
     def reportable(from_date, to_date)
-      reportable_status
+      reportable_by_date(from_date, to_date)
         .includes(enrollment: [:exemptions, :organisation, :correspondence_contact, :exemption_location])
-        .reportable_by_date(from_date, to_date)
     end
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615130330) do
+ActiveRecord::Schema.define(version: 20160622144823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20160615130330) do
     t.string   "reference_number",          limit: 12
     t.integer  "updated_by_user_id"
     t.integer  "status",                               default: 0, null: false
+    t.datetime "submitted_at"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
