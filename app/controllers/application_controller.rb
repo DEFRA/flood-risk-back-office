@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
 
     path = main_app.root_path
 
-    redirect_to(request.referrer || path)
+    redirect_to(request.referer || path)
   end
 
   # rubocop:disable Metrics/AbcSize
