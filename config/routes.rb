@@ -29,8 +29,7 @@ Rails.application.routes.draw do
 
   # get "/dsc/enrollments/:state/:id", to: 'digital_services_core/enrollments#update'
   # get "/dsc/enrollments/:id", to: 'digital_services_core/enrollments#update'
-
-  match "(errors)/:status", to: 'digital_services_core/errors#show', via: :all, constraints: { status: /\d{3}/ }
+  # match "(errors)/:status", to: 'digital_services_core/errors#show', via: :all, constraints: { status: /\d{3}/ }
 
   if Rails.env.development?
     mount GovukAdminTemplate::Engine, at: "/style-guide"

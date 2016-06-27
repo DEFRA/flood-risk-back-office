@@ -13,7 +13,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
 
   context "authorised" do
     scenario "System user can disable another user", versioning: true do
-      pending "FIX ME!"
+      # pending "FIX ME!"
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
 
@@ -27,7 +27,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
           click_button "Disable user"
           expect(page).to have_flash I18n.t("user_disabled_success", name: other_user.email)
         end.to change { other_user.reload.disabled_at }.from(nil)
-      end # .to change { other_user.reload.versions.count }.by(1)
+      end.to change { other_user.reload.versions.count }.by(1)
 
       expect(current_path).to eq admin_users_path
 
@@ -35,9 +35,9 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       expect(other_user.disabled_at).to be_kind_of ActiveSupport::TimeWithZone
       expect(other_user.disabled_comment).to eq "User has left the company"
 
-      # last_version = other_user.versions.last
-      # expect(last_version.reify).to be_enabled
-      # expect(last_version.whodunnit).to eq system_user.id.to_s
+      last_version = other_user.versions.last
+      expect(last_version.reify).to be_enabled
+      expect(last_version.whodunnit).to eq system_user.id.to_s
 
       logout :user
       visit new_user_session_path
@@ -65,7 +65,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
           within("tr#user_#{other_user.id}") { click_link "Enable" }
           expect(page).to have_flash I18n.t("user_enabled_success", name: other_user.email)
         end.to change { other_user.reload.disabled_at }.to(nil)
-      end # .to change { other_user.reload.versions.count }.by(1)
+      end.to change { other_user.reload.versions.count }.by(1)
 
       expect(current_path).to eq admin_users_path
 
@@ -73,9 +73,9 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       expect(other_user.disabled_at).to be_nil
       expect(other_user.disabled_comment).to be_nil
 
-      # last_version = other_user.versions.last
-      # expect(last_version.reify).to be_disabled
-      # expect(last_version.whodunnit).to eq system_user.id.to_s
+      last_version = other_user.versions.last
+      expect(last_version.reify).to be_disabled
+      expect(last_version.whodunnit).to eq system_user.id.to_s
 
       logout :user
       visit new_user_session_path
