@@ -1,0 +1,11 @@
+---
+en:
+  admin:
+    status_label:
+      approved: Approved
+      being_processed: Being processed
+      rejected: Rejected
+      building: Building
+      pending: Pending
+      expired:  Expired
+      withdrawn: Withdrawn

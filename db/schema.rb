@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622144823) do
+ActiveRecord::Schema.define(version: 20160624135831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 20160622144823) do
   add_index "flood_risk_engine_addresses", ["token"], name: "index_flood_risk_engine_addresses_on_token", unique: true, using: :btree
   add_index "flood_risk_engine_addresses", ["uprn"], name: "index_flood_risk_engine_addresses_on_uprn", using: :btree
 
+  create_table "flood_risk_engine_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "content"
+    t.string   "event"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "flood_risk_engine_comments", ["commentable_type", "commentable_id"], name: "commentable_idx", using: :btree
+
   create_table "flood_risk_engine_contacts", force: :cascade do |t|
     t.integer  "contact_type",                            default: 0,  null: false
     t.integer  "title",                                   default: 0,  null: false
@@ -94,8 +106,8 @@ ActiveRecord::Schema.define(version: 20160622144823) do
     t.string   "token"
     t.integer  "secondary_contact_id"
     t.string   "reference_number",          limit: 12
-    t.integer  "updated_by_user_id"
     t.integer  "status",                               default: 0, null: false
+    t.integer  "updated_by_user_id"
     t.datetime "submitted_at"
   end
 

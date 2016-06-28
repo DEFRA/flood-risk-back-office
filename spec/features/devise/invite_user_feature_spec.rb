@@ -115,7 +115,6 @@ RSpec.feature "Invite user" do
 
         expect(mailbox_for(email_addr)).to be_one
         email = open_last_email_for email_addr
-        expect(email.from).to include "no-reply@dummy.com"
         expect(email.subject).to eq I18n.t("devise.mailer.invitation_instructions.subject")
         expect(email).to have_body_text I18n.t("devise.mailer.invitation_instructions.hello", email: email_addr)
         expect(email).to have_body_text "You have been invited"

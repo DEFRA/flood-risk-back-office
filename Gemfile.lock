@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: ad7f65605bd37afcf518f7fc2e6bb2a1dba32bb9
+  revision: d036e5a20fabe31201dc09ec4010a0bc10394750
   branch: develop
   specs:
     flood_risk_engine (0.0.1)
@@ -118,7 +118,7 @@ GEM
     daemons (1.2.3)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
-    declarative (0.0.7)
+    declarative (0.0.8)
       uber (>= 0.0.15)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -361,7 +361,7 @@ GEM
     sprockets (3.6.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.0.4)
+    sprockets-rails (3.1.0)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)

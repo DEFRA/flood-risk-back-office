@@ -20,7 +20,14 @@ Rails.application.routes.draw do
       patch :enable
     end
     resources :enrollments, only: [:index, :show, :edit, :update, :new]
-    resources :enrollment_exemptions, only: [:index, :show]
+    resources :enrollment_exemptions, only: [:index, :show] do
+      resources(
+        :deregister,
+        only: [:new, :create],
+        path_names: {new: ""},
+        controller: "enrollment_exemptions/deregister"
+      )
+    end
     resources :enrollment_exports, only: [:index, :create, :show]
   end
 
