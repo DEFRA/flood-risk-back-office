@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: 9f6c8e4432d4da58d4af84cd5b8b5ab9ca7d53da
+  revision: dca074af2ab68522030ef71929fe61584cb2d454
   branch: develop
   specs:
     flood_risk_engine (0.0.1)
@@ -87,7 +87,7 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.11)
-    before_commit (0.8.1)
+    before_commit (0.8.2)
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
