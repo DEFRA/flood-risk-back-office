@@ -14,6 +14,10 @@ module Admin
       super params.fetch(params_key, {})
     end
 
+    def params_key
+      raise "`params_key` must be defined in child classes"
+    end
+
     protected
 
     def logger

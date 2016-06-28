@@ -4,7 +4,7 @@ require "shoulda/matchers"
 module Admin
 
   module Enrollment
-    RSpec.describe Admin::Enrollment::ExportForm, type: :form do
+    RSpec.describe ExportForm, type: :form do
       let(:enrollment) { build(:enrollment_export) }
 
       let(:form) { Admin::Enrollment::ExportForm.new(enrollment) }

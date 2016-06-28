@@ -2,7 +2,10 @@
 class EnrollmentExemptionPresenter < Presenter
   include PartnershipPresenter
   include StatusTag
+  include ActionView::Helpers::TagHelper # for content_tag
+  include ActionView::Helpers::TextHelper # for simple_format
 
+  attr_reader :enrollment_exemption
   delegate :exemption, :enrollment, :id, :status, :to_model, to: :enrollment_exemption
 
   delegate :organisation,
@@ -102,14 +105,8 @@ class EnrollmentExemptionPresenter < Presenter
     ]
   end
 
-  attr_reader :enrollment_exemption
-
-  def exemption
-    enrollment_exemption.exemption
-  end
-
   def status_label
-    I18n.t(status, scope: "admin.enrollment_exemptions.show.main.exemption_panel.status_label")
+    I18n.t(status, scope: "admin.status_label")
   end
 
   def status_options

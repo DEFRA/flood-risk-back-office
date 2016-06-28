@@ -31,7 +31,11 @@ RSpec.describe RegistrationRejectedMailer, type: :mailer do
 
       it "has the sender's email" do
         expect(ENV["DEVISE_MAILER_SENDER"]).to_not be_blank
-        expect(mail.from).to eql([ENV["DEVISE_MAILER_SENDER"]])
+        # Need to extract email part of sender address from entries like:
+        #   "No reply <no-reply@environment-agency.gov.uk>"
+        email_pattern = /[\w\-\.]+@[\w\-\.]+/
+        email = ENV["DEVISE_MAILER_SENDER"][email_pattern]
+        expect(mail.from).to eql([email])
       end
 
       describe "content" do
