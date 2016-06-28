@@ -18,7 +18,9 @@
       end
     %>
 
-    <%= glyphicon_tag icon, tooltip: tooltip, tooltip_is_html: true %>
+    <%= glyphicon_tag icon,
+                      tooltip: tooltip,
+                      tooltip_is_html: true %>
   </td>
 
   <td>
@@ -39,21 +41,27 @@
         tooltip = [tooltip1, tooltip2].compact.join("<br/><br/>")
       end
     %>
-    <%= glyphicon_tag icon, tooltip: tooltip, tooltip_is_html: true %>
+    <%= glyphicon_tag icon,
+                      tooltip: tooltip,
+                      tooltip_is_html: true %>
   </td>
 
   <td>
     <% # Disabling edit of current user, until you can edit more than a user's role
       if policy(user).edit? && user != current_user %>
       <%= link_to glyphicon_tag(:edit, text: t('edit')),
-                  edit_admin_user_path(user), class: 'btn btn-default' %>
+                  edit_admin_user_path(user),
+                  class: 'btn btn-default' %>
     <% end %>
 
     <% if user.disabled? && policy(user).enable? %>
       <%= link_to glyphicon_tag(:ok_circle, text: t('.enable')),
-                  admin_user_enable_path(user), method: :patch,
+                  admin_user_enable_path(user),
+                  method: :patch,
                   class: 'btn btn-success',
-                  data: { confirm: t('are_you_sure') } %>
+                  data: {
+                    confirm: t('are_you_sure')
+                  } %>
 
     <% elsif policy(user).disable? %>
       <%= link_to glyphicon_tag(:ban_circle, text: t('.disable')),
