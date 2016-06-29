@@ -6,7 +6,12 @@ module Admin
       include Devise::TestHelpers
 
       render_views
-      let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
+      let(:enrollment_exemption) do
+        FactoryGirl.create(
+          :enrollment_exemption,
+          status: FloodRiskEngine::EnrollmentExemption.statuses[:approved]
+        )
+      end
       let(:user) do
         user = FactoryGirl.create(:user)
         user.add_role :system

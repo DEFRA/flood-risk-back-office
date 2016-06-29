@@ -2,6 +2,8 @@
 module Admin
   module EnrollmentExemptions
     class DeregisterForm < BaseForm
+      require_relative "concerns/form_status_tag"
+      include FormStatusTag
 
       COMMENT_MAX_LENGTH = 500
 
@@ -69,16 +71,6 @@ module Admin
 
       def statuses
         self.class.statuses
-      end
-
-      include StatusTag
-
-      def status_tag
-        super(enrollment_exemption.status, status_label)
-      end
-
-      def status_label
-        I18n.t(status, scope: "admin.status_label") if status.present?
       end
 
       def create_comment
