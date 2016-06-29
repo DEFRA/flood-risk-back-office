@@ -70,9 +70,15 @@ RSpec.feature "View Enrollment Exemption Detail" do
 
   context("without secondary contact ") do
     let(:enrollment) { create :confirmed_no_secondary_contact }
+    let(:enrollment_exemption) do
+      create(
+        :enrollment_exemption,
+        enrollment: enrollment
+      )
+    end
 
     scenario "Page has the expected content when optional secondary_contact not present" do
-      visit admin_enrollment_exemption_path(enrollment.id)
+      visit admin_enrollment_exemption_path(enrollment_exemption)
 
       within "#admin-enrollment-exemptions-show" do
         expect(page).to have_css("#correspondence-contact-details")

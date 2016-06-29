@@ -60,7 +60,7 @@ FactoryGirl.define do
         end
 
         # this is an optional page in FO so create randomly
-        object.secondary_contact = build :contact if [true, false].sample
+        object.secondary_contact = build :contact #if [true, false].sample
 
         object.save!
       end

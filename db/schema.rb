@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624135831) do
+ActiveRecord::Schema.define(version: 20160629131906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,15 +98,14 @@ ActiveRecord::Schema.define(version: 20160624135831) do
 
   create_table "flood_risk_engine_enrollments", force: :cascade do |t|
     t.integer  "applicant_contact_id"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "organisation_id"
     t.string   "step",                      limit: 50
     t.integer  "correspondence_contact_id"
     t.string   "token"
     t.integer  "secondary_contact_id"
     t.string   "reference_number",          limit: 12
-    t.integer  "status",                               default: 0, null: false
     t.integer  "updated_by_user_id"
     t.datetime "submitted_at"
   end
@@ -119,11 +118,13 @@ ActiveRecord::Schema.define(version: 20160624135831) do
   add_index "flood_risk_engine_enrollments", ["updated_by_user_id"], name: "index_flood_risk_engine_enrollments_on_updated_by_user_id", using: :btree
 
   create_table "flood_risk_engine_enrollments_exemptions", force: :cascade do |t|
-    t.integer  "enrollment_id",             null: false
-    t.integer  "exemption_id",              null: false
-    t.integer  "status",        default: 0
+    t.integer  "enrollment_id",                        null: false
+    t.integer  "exemption_id",                         null: false
+    t.integer  "status",               default: 0
     t.datetime "expires_at"
     t.datetime "valid_from"
+    t.boolean  "asset_found",          default: false
+    t.boolean  "salmonid_river_found", default: false
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true, using: :btree
