@@ -13,6 +13,7 @@
  *= require_self
  *= require tables
  *= require admin/users
+ *= require admin/role_help
  *= require govuk_admin_template
  */
 
@@ -22,5 +23,3 @@
 .block-label {
   display: block;
 }
-
-

@@ -32,7 +32,8 @@ module Admin
 
     def enable
       flash[:updated_user_id] = @user.id
-      redirect_to :back, notice: t("user_enabled_success", name: @user.email)
+      @user.enable!
+      redirect_to admin_users_path, notice: t("user_enabled_success", name: @user.email)
     end
 
     # TODO: refactor!

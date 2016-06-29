@@ -380,8 +380,6 @@ GEM
     tilt (2.0.4)
     timeliness (0.3.8)
     tins (1.10.2)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
@@ -465,7 +463,6 @@ DEPENDENCIES
   spring-commands-rspec
   textacular (~> 3.2.2)
   thin
-  turbolinks (~> 2.5)
   uglifier (~> 3.0)
   validates_timeliness (~> 4.0.2)
   web-console (~> 3.0)

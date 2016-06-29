@@ -5,7 +5,6 @@ gem "rails", "4.2.6"
 gem "sass-rails", "~> 5.0"    # Use SCSS for stylesheets
 gem "uglifier", "~> 3.0"      # Use Uglifier as compressor for JavaScript assets
 gem "coffee-rails", "~> 4.1"  # Use CoffeeScript for .coffee assets and views
-gem "turbolinks", "~> 2.5"    # Turbolinks makes following links in your web application faster.
 gem "govuk_admin_template", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.9" # Added this to get Tabs for Choosing Exemption working
 gem "simple_form", "~> 3.2"

@@ -3,23 +3,19 @@ en:
     intro: >
       A user's role determines what they can see and do once logged in
     roles:
-      purchaser:
+      system:
         name: System user
         description: >
-          Can do anything including invite other users
-      admin:
+          Can do anything including inviting new users.
+      super_agent:
         name: Administrative super user
         description: >
-          bla bla blabla bla blabla bla blabla bla blabla bla blabla bla
-          blabla bla blabla bla blabla bla bla
-      reader:
+          Approve or reject registrations. Edit all registrations. Export data.
+      admin_agent:
         name: Administrative user
         description: >
-          bla bla blabla bla blabla bla blabla bla blabla bla blabla bla
-          blabla bla blabla bla blabla bla bla bla bla blabla bla blabla bla
-          blabla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-      developer:
+          View, edit in-progress registrations and add new.
+      data_agent:
         name: Data user
         description: >
-          bla bla bla
-
+          Can only search, view and export registrations.
