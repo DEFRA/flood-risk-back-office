@@ -2,6 +2,9 @@
 module Admin
   module EnrollmentExemptions
     class RejectForm < BaseForm
+
+      COMMENT_MAX_LENGTH = 500
+
       attr_reader :user
 
       def initialize(enrollment_exemption, user)
@@ -16,11 +19,27 @@ module Admin
         :admin_enrollment_exemptions_reject
       end
 
+      def self.locale_key
+        "admin.enrollment_exemptions.reject.new"
+      end
+
       property :comment, virtual: true
+      validates(
+        :comment,
+        length: {
+          maximum: COMMENT_MAX_LENGTH,
+          message: t(".errors.comment.too_long", max: COMMENT_MAX_LENGTH)
+        }
+      )
+
+      def comment_max_length
+        COMMENT_MAX_LENGTH
+      end
 
       def save
-        create_comment
-        super
+        create_comment if comment.present?
+        enrollment_exemption.rejected!
+        # TODO: Trigger email
       end
 
       def create_comment

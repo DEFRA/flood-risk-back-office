@@ -27,10 +27,6 @@ module Admin
         ).keys
       end
 
-      def self.t(locale, args = {})
-        I18n.t locale, args.merge(scope: locale_key)
-      end
-
       def self.locale_key
         "admin.enrollment_exemptions.deregister.new"
       end

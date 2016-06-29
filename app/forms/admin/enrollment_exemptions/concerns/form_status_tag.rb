@@ -14,7 +14,7 @@ module Admin
       end
 
       def enrollment_exemption
-        raise "`#{__method__}` method must be defined in #{self.class.name}"
+        raise "Instance method `#{__method__}` must be defined in #{self.class.name}"
       end
 
     end

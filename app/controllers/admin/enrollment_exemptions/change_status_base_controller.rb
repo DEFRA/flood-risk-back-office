@@ -18,11 +18,11 @@ module Admin
       private
 
       def authorize_action
-        raise "`#{__method__}` method must be defined in #{self.class.name}"
+        raise "Instance method `#{__method__}` must be defined in #{self.class.name}"
       end
 
       def form_class
-        raise "`#{__method__}` method must be defined in #{self.class.name}"
+        raise "Instance method `#{__method__}` must be defined in #{self.class.name}"
       end
 
       def enrollment_exemption

@@ -1,0 +1,16 @@
+en:
+  admin:
+    enrollment_exemptions:
+      reject:
+        new:
+          title: Reject registration %{reference}
+          panel_title: Exemption
+          sub_heading: You are about to send an exemption rejected email
+          table_headings:
+            operator: Operator
+            exemption_code: Exemption number
+          comment_clarification: "%{max} character limit"
+          submit: Confirm and send email
+          errors:
+            comment:
+              too_long: The comment must be no longer than %{max} characters

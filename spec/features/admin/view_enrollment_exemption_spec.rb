@@ -7,10 +7,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
 
   context("with secondary contact ") do
     let(:enrollment) { create :confirmed }
-    let(:enrollment_exemption) { enrollment.enrollment_exemptions.first }
+    let(:enrollment_exemption) do
+      enrollment.enrollment_exemptions.first.tap(&:pending!)
+    end
 
     scenario "Page has the expected content" do
-      visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first.id)
+      visit admin_enrollment_exemption_path(enrollment_exemption)
 
       within "#registration-details" do
         expect(page).to have_css("td", text: enrollment.reference_number)
@@ -32,6 +34,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
             enrollment.enrollment_exemptions.first
           )
         )
+        expect(page).to have_link(
+          "Reject",
+          href: new_admin_enrollment_exemption_reject_path(
+            enrollment.enrollment_exemptions.first
+          )
+        )
         expect(page).to have_css("#change-assisted-digital")
       end
     end
@@ -43,14 +51,17 @@ RSpec.feature "View Enrollment Exemption Detail" do
       end
 
       scenario "Page has the modified content" do
-        visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first.id)
+        visit admin_enrollment_exemption_path(enrollment_exemption)
 
         within ".panel.actions" do
           expect(page).to have_link(
             "Deregister",
-            href: new_admin_enrollment_exemption_deregister_path(
-              enrollment.enrollment_exemptions.first
-            )
+            href: new_admin_enrollment_exemption_deregister_path(enrollment_exemption)
+          )
+
+          expect(page).not_to have_link(
+            "Reject",
+            href: new_admin_enrollment_exemption_reject_path(enrollment_exemption)
           )
         end
       end
