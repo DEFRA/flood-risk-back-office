@@ -2,14 +2,14 @@ require "rails_helper"
 
 module Admin
   module EnrollmentExemptions
-    RSpec.describe DeregisterController, type: :controller do
+    RSpec.describe RejectController, type: :controller do
       include Devise::TestHelpers
 
       render_views
       let(:enrollment_exemption) do
         FactoryGirl.create(
           :enrollment_exemption,
-          status: FloodRiskEngine::EnrollmentExemption.statuses[:approved]
+          status: FloodRiskEngine::EnrollmentExemption.statuses[:pending]
         )
       end
       let(:user) do
@@ -32,8 +32,8 @@ module Admin
       describe "create action" do
         context "with success" do
           before do
-            allow_any_instance_of(DeregisterForm).to receive(:validate).and_return(true)
-            allow_any_instance_of(DeregisterForm).to receive(:save).and_return(true)
+            allow_any_instance_of(RejectForm).to receive(:validate).and_return(true)
+            allow_any_instance_of(RejectForm).to receive(:save).and_return(true)
           end
 
           it "redirects to enrollment_exemption show" do
@@ -46,7 +46,7 @@ module Admin
 
         context "with failure" do
           before do
-            allow_any_instance_of(DeregisterForm).to receive(:validate).and_return(false)
+            allow_any_instance_of(RejectForm).to receive(:validate).and_return(false)
           end
 
           it "renders new template" do

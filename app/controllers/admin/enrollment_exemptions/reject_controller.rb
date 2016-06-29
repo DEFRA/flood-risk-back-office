@@ -1,15 +1,15 @@
 module Admin
   module EnrollmentExemptions
-    class DeregisterController < ChangeStatusBaseController
+    class RejectController < ChangeStatusBaseController
 
       private
 
       def authorize_action
-        authorize enrollment_exemption, :deregister?
+        authorize enrollment_exemption, :reject?
       end
 
       def form_class
-        DeregisterForm
+        RejectForm
       end
 
     end

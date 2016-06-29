@@ -12,26 +12,8 @@
                     role: 'button' %>
       </p>
     <% end %>
-    <% if policy(presenter.enrollment).deregister? %>
-      <p>
-        <%= link_to t(".deregister"),
-                    edit_admin_enrollment_path(presenter.enrollment),
-                    id: "deregister-enrollment-exemption",
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
-    <% if policy(presenter.enrollment).change_assisted_digital? %>
-      <p>
-        <%= link_to t(".change_ad"),
-                    edit_admin_enrollment_path(presenter.enrollment),
-                    id: "change-assisted-digital",
-                    class: "btn btn-info",
-                    role: 'button' %>
-      </p>
-    <% end %>
 
-    <% if policy(presenter.enrollment).deregister? %>
+    <% if policy(presenter.enrollment_exemption).deregister? %>
       <p>
         <%= link_to t(".deregister"),
                     new_admin_enrollment_exemption_deregister_path(
@@ -42,5 +24,25 @@
       </p>
     <% end %>
 
+    <% if policy(presenter.enrollment_exemption).reject? %>
+      <p>
+        <%= link_to t(".reject"),
+                    new_admin_enrollment_exemption_reject_path(
+                      presenter.enrollment_exemption
+                    ),
+                    class: "btn btn-warning",
+                    role: 'button' %>
+      </p>
+    <% end %>
+
+    <% if policy(presenter.enrollment).change_assisted_digital? %>
+      <p>
+        <%= link_to t(".change_ad"),
+                    edit_admin_enrollment_path(presenter.enrollment),
+                    id: "change-assisted-digital",
+                    class: "btn btn-info",
+                    role: 'button' %>
+      </p>
+    <% end %>
   </div>
 </div>

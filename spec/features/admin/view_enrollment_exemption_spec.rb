@@ -7,9 +7,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
 
   context("with secondary contact ") do
     let(:enrollment) { create :confirmed }
+    let(:enrollment_exemption) do
+      enrollment.enrollment_exemptions.first.tap(&:pending!)
+    end
 
     scenario "Page has the expected content" do
-      visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first.id)
+      visit admin_enrollment_exemption_path(enrollment_exemption)
 
       within "#registration-details" do
         expect(page).to have_css("td", text: enrollment.reference_number)
@@ -25,14 +28,42 @@ RSpec.feature "View Enrollment Exemption Detail" do
 
       within ".panel.actions" do
         expect(page).to have_css("#update-enrollment-exemption-status")
-      end
-
-      within ".panel.actions" do
-        expect(page).to have_css("#deregister-enrollment-exemption")
-      end
-
-      within ".panel.actions" do
+        expect(page).not_to have_link(
+          "Deregister",
+          href: new_admin_enrollment_exemption_deregister_path(
+            enrollment.enrollment_exemptions.first
+          )
+        )
+        expect(page).to have_link(
+          "Reject",
+          href: new_admin_enrollment_exemption_reject_path(
+            enrollment.enrollment_exemptions.first
+          )
+        )
         expect(page).to have_css("#change-assisted-digital")
+      end
+    end
+
+    context("when the enrollment exemption is approved") do
+      before do
+        enrollment_exemption.approved!
+        enrollment.reload
+      end
+
+      scenario "Page has the modified content" do
+        visit admin_enrollment_exemption_path(enrollment_exemption)
+
+        within ".panel.actions" do
+          expect(page).to have_link(
+            "Deregister",
+            href: new_admin_enrollment_exemption_deregister_path(enrollment_exemption)
+          )
+
+          expect(page).not_to have_link(
+            "Reject",
+            href: new_admin_enrollment_exemption_reject_path(enrollment_exemption)
+          )
+        end
       end
     end
   end

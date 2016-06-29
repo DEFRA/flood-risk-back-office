@@ -57,19 +57,24 @@ class ApplicationPolicy
   private
 
   def system_user?
-    user.present? && (user.has_cached_role?(:system) || user.has_role?(:system))
+    user_has_role?(:system)
   end
 
   def super_agent_user?
-    user.present? && (user.has_cached_role?(:super_agent) || user.has_role?(:super_agent))
+    user_has_role?(:super_agent)
   end
 
   def admin_agent_user?
-    user.present? && (user.has_cached_role?(:admin_agent) || user.has_role?(:admin_agent))
+    user_has_role?(:admin_agent)
   end
 
   def data_agent_user?
-    user.present? && (user.has_cached_role?(:data_agent) || user.has_role?(:data_agent))
+    user_has_role?(:data_agent)
+  end
+
+  def user_has_role?(role)
+    return false unless user.present?
+    user.has_cached_role?(role) || user.has_role?(role)
   end
 
   def owner_user?
