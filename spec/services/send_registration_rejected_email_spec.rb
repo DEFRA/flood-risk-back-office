@@ -29,30 +29,37 @@ module FloodRiskEngine
         it "raises an error if the enrollment is not rejected?" do
           enrollment_exemption.building!
           enrollment.reload
-          expect { described_class.new(enrollment_exemption).call }.to raise_error(FloodRiskEngine::InvalidEnrollmentStateError)
+          expect { described_class.new(enrollment_exemption).call }
+            .to raise_error(FloodRiskEngine::InvalidEnrollmentStateError)
         end
 
         it "raises an error if there is no correspondence contact email address" do
           enrollment.correspondence_contact.email_address = ""
           enrollment.correspondence_contact.save
-          expect { described_class.new(enrollment_exemption).call }.to raise_error(FloodRiskEngine::MissingEmailAddressError)
+          expect { described_class.new(enrollment_exemption).call }
+            .to raise_error(FloodRiskEngine::MissingEmailAddressError)
         end
       end
 
-      context "primary_contact_email and 'other email recipient' (aka secondary contact) are different" do
+      context "primary_contact_email and  secondary contact are different" do
         it "sends an email to each address" do
-
           message_delivery = instance_double(ActionMailer::MessageDelivery)
           expect(message_delivery).to receive(:deliver_later).exactly(:twice)
 
           expect(mailer).to receive(:rejected)
             .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: correspondence_contact.email_address)
+            .with(
+              enrollment_exemption: enrollment_exemption,
+              recipient_address: correspondence_contact.email_address
+            )
             .and_return(message_delivery)
 
           expect(mailer).to receive(:rejected)
             .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: secondary_contact.email_address)
+            .with(
+              enrollment_exemption: enrollment_exemption,
+              recipient_address: secondary_contact.email_address
+            )
             .and_return(message_delivery)
 
           service_object = described_class.new(enrollment_exemption)
@@ -62,7 +69,7 @@ module FloodRiskEngine
         end
       end
 
-      context "when correspondence contact and secondary contact have the same email addresses" do
+      context "when correspondence and secondary contacts have same email addresses" do
         let(:secondary_contact) do
           FactoryGirl.create(
             :contact,
@@ -71,7 +78,6 @@ module FloodRiskEngine
         end
 
         it "sends one email to the shared address" do
-
           message_delivery = instance_double(ActionMailer::MessageDelivery)
           expect(message_delivery).to receive(:deliver_later).exactly(:once)
 
@@ -79,7 +85,10 @@ module FloodRiskEngine
 
           expect(mailer).to receive(:rejected)
             .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: correspondence_contact.email_address)
+            .with(
+              enrollment_exemption: enrollment_exemption,
+              recipient_address: correspondence_contact.email_address
+            )
             .and_return(message_delivery)
 
           expect(service_object.distinct_recipients.size).to eq 1
@@ -87,8 +96,7 @@ module FloodRiskEngine
         end
       end
 
-      context "when seconday contact is nil since it is optional in the 'email other' form" do
-
+      context "when seconday contact is nil" do
         let(:secondary_contact) do
           FactoryGirl.create(
             :contact,
@@ -96,11 +104,11 @@ module FloodRiskEngine
           )
         end
 
-        it "sends one email to the correspondence contact and does not use empty ('') secondary email" do
+        it "sends one email to the correspondence contact when secondary email blank" do
           @email_address = ""
         end
 
-        it "sends one email to the correspondence contact and does not use nil) secondary email" do
+        it "sends one email to the correspondence contact when secondary email nil" do
           @email_address = nil
         end
 
@@ -117,7 +125,10 @@ module FloodRiskEngine
 
           expect(mailer).to receive(:rejected)
             .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: primary_contact_email)
+            .with(
+              enrollment_exemption: enrollment_exemption,
+              recipient_address: primary_contact_email
+            )
             .and_return(message_delivery)
 
           service_object.call
