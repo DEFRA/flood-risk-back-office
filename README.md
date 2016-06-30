@@ -31,6 +31,7 @@ connect to a non-visitor and non-office network and run
 $ heroku run bash -a [heroku_app_name]
 % bundle exec rails c
 % require './db/seeds/development.rb'
+% FloodRiskEngine::Engine.load_seed # loads exemptions seed data
 % exit
 % exit
 ```

@@ -5,6 +5,7 @@ en:
         edit: Edit
         show: View
         table_headings:
+          reference_number: Reference
           state: State
           submitted_at: Submitted
           code: Code
@@ -14,13 +15,11 @@ en:
         heading: Exemption applications
         bullet_list: "You can search for a registration by:"
         bullets:
-          - site postcode
           - registration reference number
-          - business or partner name
-          - applicant full name
-          - applicant email
-          - contact full name
-          - contact email
+          - organisation name
+          - contact name
+          - postcode
+          - exemption code, e.g. FRA1
         search_label: Search for a registration
         search_button: Search
         submitted_label: Submitted

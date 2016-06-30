@@ -14,6 +14,14 @@
   page_title t('.title')
 -%>
 
+<%- content_for :body_start do %>
+  <div class="flood_risk_engine">
+<% end %>
+
+<%- content_for :body_end do %>
+  </div>
+<% end %>
+
 <%- content_for :content do %>
   <%= render "shared/flash_alerts" %>
   <%= content_tag :div, yield %>

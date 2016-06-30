@@ -6,43 +6,47 @@
       <h1><%= t('.heading') %></h1>
       <br/>
 
-     <!--  <p class="text-muted"><%= t '.bullet_list' %></p>
+      <p class="text-muted"><%= t '.bullet_list' %></p>
       <ul class="text-muted">
-        <%# t('.bullets').each do |str| %>
-          <li><%#= str %></li>
-        <%# end %>
-      </ul> -->
+        <% t('.bullets').each do |str| %>
+          <li><%= str %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
-
-<%= form_tag admin_enrollment_exemptions_path, method: :get do |f| %>
+<%= simple_form_for(form, url: admin_enrollment_exemptions_path, method: :get, as: :search) do |f| %>
   <div class="row">
     <div class="col-md-5">
       <div class="form-group">
-        <label class="sr-only" for="search" id="search"><%= t '.search_label' %></label>
+        <label class="sr-only" for="search" id="search">
+          <%= t '.search_label' %>
+        </label>
         <div class="input-group">
-          <span class="input-group-addon"><%= glyphicon_tag 'search' %></span>
-          <%= search_field_tag :q,
-                                params[:q],
-                                class: "form-control",
-                                id: "search",
-                                placeholder: t(:search) %>
+          <span class="input-group-addon">
+            <%= glyphicon_tag 'search' %>
+          </span>
+          <%= f.search_field :q,
+                             class: "form-control",
+                             id: "search",
+                             placeholder: t(:search) %>
         </div>
       </div>
     </div>
     <div class="col-md-3">
       <fieldset>
-      <select class="form-control">
-        <option>Pending</option>
-        <option>Approved</option>
-        <option>Rejected</option>
-      </select>
+        <%= f.collection_select :status,
+                                form.status_filter_options,
+                                ->(key) { key },
+                                ->(key) { t(key, scope: "admin.status_label") } ,
+                                { include_blank: "Any" },
+                                class: "form-control"
+                                %>
       </fieldset>
     </div>
 
     <div class="col-md-3">
-      <%= content_tag :button, t('.search_button'), class: 'btn btn-success' %>
+      <%= f.submit t('.search_button'), class: 'btn btn-success', name: nil %>
     </div>
   </div>
 
@@ -51,40 +55,36 @@
 <br/>
 <br/>
 
-<div class="row">
-  <div class="col-md-12">
-    <table class="table table-striped enrollment-exemptions-table">
-      <thead>
-        <tr>
-          <th class="state"><%= t(".table_headings.state") %></th>
-          <th class="submitted-at"><%= t(".table_headings.submitted_at") %></th>
-          <th class="code"><%= t(".table_headings.code") %></th>
-          <th class="organisation_name"><%= t(".table_headings.organisation_name") %></th>
-          <th class=""></th>
-          <th class="actions"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% enrollment_exemptions.each_enrollment_exemption do |ee| %>
+<% if enrollment_exemptions.present? %>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped enrollment-exemptions-table">
+        <thead>
           <tr>
-            <td><%= ee.status.humanize.capitalize %></td>
-            <td><%= ee.submitted_at %></td>
-            <td><%= ee.code %></td>
-            <td><%= ee.organisation_name %></td>
-            <td></td>
-            <td><%= link_to(t(".show"), [:admin, ee], class: 'btn btn-primary') %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate enrollment_exemptions %>
-    <%# if @enrollments.except(:order, :limit, :offset).any? %>
-      <%#= render collection: @enrollment_results.to_a.uniq(&:id), partial: 'result' %>
-      <%#= paginate @enrollment_results %>
-    <%# elsif params[:q].present? %>
-     <!--  <div class="panel panel-default">
-        <div class="panel-body"><em><%#= t(:no_results) %></em></div>
-      </div> -->
-    <%# end %>
+            <th class="state"><%= t(".table_headings.state") %></th>
+            <th class="reference_number"><%= t(".table_headings.reference_number") %></th>
+            <th class="submitted-at"><%= t(".table_headings.submitted_at") %></th>
+            <th class="code"><%= t(".table_headings.code") %></th>
+            <th class="organisation_name"><%= t(".table_headings.organisation_name") %></th>
+            <th class=""></th>
+            <th class="actions"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% enrollment_exemptions.each_enrollment_exemption do |ee| %>
+            <tr>
+              <td><%= ee.status_tag_without_popup %></td>
+              <td><%= ee.reference_number %></td>
+              <td><%= ee.submitted_at %></td>
+              <td><%= ee.code %></td>
+              <td><%= ee.organisation_name %></td>
+              <td></td>
+              <td><%= link_to(t(".show"), [:admin, ee], class: 'btn btn-primary') %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate enrollment_exemptions %>
+    </div>
   </div>
-</div>
+<% end %>

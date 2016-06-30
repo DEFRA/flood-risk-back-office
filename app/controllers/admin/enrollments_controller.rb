@@ -25,8 +25,8 @@ module Admin
 
       enrollment_exemptions = EnrollmentExemptionsQuery.perform(params)
       presenter = EnrollmentExemptionsPresenter.new(enrollment_exemptions, view_context)
-
       render :index, locals: {
+        form: SearchForm.new(params),
         enrollment_exemptions: presenter
       }
     end

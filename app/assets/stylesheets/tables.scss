@@ -4,6 +4,10 @@
       width: 30px;
     }
 
+    &.reference_number {
+      width: 100px;
+    }
+
     &.state {
       width: 100px;
     }
@@ -25,6 +29,7 @@
       text-align: right;
     }
   }
+
 }
 
 .users {

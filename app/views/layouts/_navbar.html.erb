@@ -11,7 +11,7 @@
         <% if policy(EnrollmentSearch).index? %>
           <li>
             <%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
-                        main_app.admin_enrollments_path %>
+                        main_app.root_path %>
            </li>
         <% end %>
 

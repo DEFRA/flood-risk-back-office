@@ -1,4 +1,4 @@
-
+# rubocop:disable Metrics/ClassLength
 class EnrollmentExemptionPresenter < Presenter
   include PartnershipPresenter
   include StatusTag
@@ -33,16 +33,24 @@ class EnrollmentExemptionPresenter < Presenter
     Hash[*registration_and_operator_headers.zip(registration_and_operator_values).flatten]
   end
 
+  def status
+    enrollment_exemption.status.humanize
+  end
+
   def exemption_data
     Hash[*exemption_headers.zip(exemption_values).flatten]
   end
 
-  def status_tag
-    super(enrollment_exemption.status, status_label, status_options)
+  def status_tag(options: status_options)
+    super(enrollment_exemption.status, status_label, options)
+  end
+
+  def status_tag_without_popup
+    status_tag(options: {})
   end
 
   def submitted_at
-    I18n.l(enrollment.created_at, format: :long)
+    enrollment.submitted_at && I18n.l(enrollment.submitted_at, format: :long)
   end
 
   def self.policy_class
@@ -106,7 +114,7 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def status_label
-    I18n.t(status, scope: "admin.status_label")
+    I18n.t(enrollment_exemption.status, scope: "admin.status_label")
   end
 
   def status_options
