@@ -1,0 +1,17 @@
+en:
+  admin:
+    enrollment_exemptions:
+      approve:
+        new:
+          title: Approve registration %{reference}
+          panel_title: Exemption
+          sub_heading: You are about to send an exemption approval email
+          table_headings:
+            operator: Operator
+            exemption_code: Exemption number
+          screening_comment: If the screening found relevant conditions, add them here
+          comment_clarification: "%{max} character limit"
+          submit: Confirm and send email
+          errors:
+            comment:
+              too_long: The comment must be no longer than %{max} characters
