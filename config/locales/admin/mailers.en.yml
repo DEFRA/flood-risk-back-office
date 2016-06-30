@@ -4,3 +4,6 @@ en:
     registration_rejected_mailer:
       rejected:
         subject: Flood risk activity exemption - update
+    registration_approved_mailer:
+      approved:
+        subject: Flood risk activity exemption - update

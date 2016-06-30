@@ -2,50 +2,53 @@
 We’ve registered your exemption
 -------------------------------
 
-Your reference is: <%= EXEMPTION_NUMBER %>
+Your reference is: <%= @presenter.reference_number %>
 
 Exemption registered
 --------------------
-<%= EXEMPTION_TITLE %> <%= EXEMPTION_CODE %>
-at grid reference <%= GRID_REF %>
+<%= @presenter.exemption_title %> <%= @presenter.exemption_code %>
+at grid reference <%= @presenter.grid_reference %>.
 
 Things you need to do before you start work
 -------------------------------------------
-<%= IF ASSET ########################### %>
+<% if @presenter.asset? %>
 When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet the conditions.
-<%= ENDIF ASSET ######################## %>
+<% end %>
 
 You should re-check the conditions of your exemptions in the flood risk activities guidance
 https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities
 
-<%= IF SALMONID ########################### %>
+<% if @presenter.salmonid? %>
 The location is on a river where salmon are protected
 -----------------------------------------------------
 This means you cannot do any work between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit.
-<%= ENDIF SALMONID ######################## %>
+<% end %>
 
 Date of registration
 --------------------
-<%= REG_DATE %>
+<%= @presenter.reg_date %>
 
 Exemptions don’t expire except for dredging FRA23 which expires 3 years after the registration date and dredging FRA24 which expires 1 year after the registration date.
 
 Responsible for activity (the ‘operator’)
 -----------------------------------------
-<%= OPERATOR %>
-<%= ADDRESS %>
+<%= @presenter.full_name %>
+<%= @presenter.primary_address %>
 
 Who we will contact
 -------------------
-<%= CONTACT_NAME %>, <%= CONTACT_JOBTITLE %>
-Tel: <%= CONTACT_TEL_NUMBER %>
-<%= CONTACT_EMAIL %>
+  <%=  @presenter.name %>, <%=  @presenter.position %>
+  Tel: <%=  @presenter.telephone_number %>
+  <%=  @presenter.email_address %>
+
 
 Your responsibilities
 ---------------------
 The organisation or individual responsible must keep to the description and conditions for the exemption(s). We can prosecute them if they don’t do this.
 
+
 If your activity changes
 ------------------------
 If the location changes, you will need to register a new exemption.
 If the activity or the way you are doing the work changes, you will need to check if it is still exempt.
+
