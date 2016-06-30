@@ -135,5 +135,30 @@ module FloodRiskEngine
         end
       end
     end
+
+    describe ".for" do
+      it "sends an email to each address" do
+        message_delivery = instance_double(ActionMailer::MessageDelivery)
+        expect(message_delivery).to receive(:deliver_later).exactly(:twice)
+
+        expect(mailer).to receive(:rejected)
+          .exactly(:once)
+          .with(
+            enrollment_exemption: enrollment_exemption,
+            recipient_address: correspondence_contact.email_address
+          )
+          .and_return(message_delivery)
+
+        expect(mailer).to receive(:rejected)
+          .exactly(:once)
+          .with(
+            enrollment_exemption: enrollment_exemption,
+            recipient_address: secondary_contact.email_address
+          )
+          .and_return(message_delivery)
+
+        described_class.for enrollment_exemption
+      end
+    end
   end
 end

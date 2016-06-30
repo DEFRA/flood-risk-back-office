@@ -39,7 +39,7 @@ module Admin
       def save
         create_comment if comment.present?
         enrollment_exemption.rejected!
-        # TODO: Trigger email
+        SendRegistrationRejectedEmail.for enrollment_exemption
       end
 
       def create_comment

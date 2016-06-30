@@ -41,26 +41,42 @@ module Admin
           form.validate(params)
         end
 
-        it "should add a comment" do
-          expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(1)
-        end
-
-        it "should save the comment to a Comment model" do
-          form.save
-          expect(FloodRiskEngine::Comment.last.content).to eq(comment)
-        end
-
-        it "should save the status rejected to the enrollment_exemption" do
-          form.save
-          expect(enrollment_exemption.reload.rejected?).to eq(true)
-        end
-
-        context "with a blank comment" do
-          let(:comment) { "" }
-
-          it "should not add a comment" do
-            expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(0)
+        context "with email service mocked" do
+          before do
+            allow_any_instance_of(SendRegistrationRejectedEmail)
+              .to receive(:call)
+              .and_return(true)
           end
+
+          it "should add a comment" do
+            expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(1)
+          end
+
+          it "should save the comment to a Comment model" do
+            form.save
+            expect(FloodRiskEngine::Comment.last.content).to eq(comment)
+          end
+
+          it "should save the status rejected to the enrollment_exemption" do
+            form.save
+            expect(enrollment_exemption.reload.rejected?).to eq(true)
+          end
+
+          context "with a blank comment" do
+            let(:comment) { "" }
+
+            it "should not add a comment" do
+              expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(0)
+            end
+          end
+        end
+
+        it "should send a rejection email" do
+          expect_any_instance_of(SendRegistrationRejectedEmail)
+            .to receive(:call)
+            .and_return(true)
+
+          form.save
         end
       end
     end

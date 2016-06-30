@@ -2,6 +2,10 @@ class SendRegistrationRejectedEmail
 
   include Admin::CommonMailer
 
+  def self.for(enrollment_exemption)
+    new(enrollment_exemption).call
+  end
+
   def initialize(enrollment_exemption)
     @enrollment_exemption = enrollment_exemption
   end
