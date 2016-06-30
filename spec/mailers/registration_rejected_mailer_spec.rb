@@ -6,13 +6,15 @@ RSpec.describe RegistrationRejectedMailer, type: :mailer do
     I18n.t(key, scope: mail_yaml_key)
   end
 
+  let(:enrollment_exemption) { @enrollment.enrollment_exemptions.first }
+
   describe "rejection email" do
-    let(:recipient_address) { ["test@example.com"] }
+    let(:recipient_address) { [Faker::Internet.safe_email] }
 
     # Note the enrollment is set in each per organisation section below - using factory suitable for that Org Type
 
     let(:mail) do
-      described_class.rejected(enrollment_id: @enrollment.id, recipient_address: recipient_address)
+      described_class.rejected(enrollment_exemption: enrollment_exemption, recipient_address: recipient_address)
     end
 
     let(:mail_yaml_key) { described_class.mail_yaml_key }

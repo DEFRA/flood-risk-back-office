@@ -11,7 +11,7 @@ FactoryGirl.define do
 
       after(:create) do |object|
         object.secondary_contact = build :contact
-        object.rejected! # this required .. this don't work : status :rejected
+        object.enrollment_exemptions.first.rejected! # this required .. this don't work : status :rejected
       end
     end
   end

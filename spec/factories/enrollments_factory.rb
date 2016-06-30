@@ -14,8 +14,6 @@ FactoryGirl.define do
     end
 
     step :confirmation
-
-    status "pending"
   end
 
   # Base class for BO Enrollment with a random exemption, status, and valid_from selected for EnrollmentExemption
@@ -60,7 +58,7 @@ FactoryGirl.define do
         end
 
         # this is an optional page in FO so create randomly
-        object.secondary_contact = build :contact if [true, false].sample
+        object.secondary_contact = build :contact
 
         object.save!
       end

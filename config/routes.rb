@@ -33,6 +33,12 @@ Rails.application.routes.draw do
         path_names: {new: ""},
         controller: "enrollment_exemptions/reject"
       )
+      resources(
+        :approve,
+        only: [:new, :create],
+        path_names: {new: ""},
+        controller: "enrollment_exemptions/approve"
+      )
     end
     resources :enrollment_exports, only: [:index, :create, :show]
   end

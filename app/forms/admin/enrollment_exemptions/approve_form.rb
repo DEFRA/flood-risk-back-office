@@ -1,8 +1,6 @@
-
 module Admin
   module EnrollmentExemptions
-    class RejectForm < BaseForm
-
+    class ApproveForm < BaseForm
       COMMENT_MAX_LENGTH = 500
 
       attr_reader :user
@@ -16,11 +14,11 @@ module Admin
       delegate :reference_number, to: :enrollment
 
       def params_key
-        :admin_enrollment_exemptions_reject
+        :admin_enrollment_exemptions_approve
       end
 
       def self.locale_key
-        "admin.enrollment_exemptions.reject.new"
+        "admin.enrollment_exemptions.approve.new"
       end
 
       property :comment, virtual: true
@@ -38,15 +36,15 @@ module Admin
 
       def save
         create_comment if comment.present?
-        enrollment_exemption.rejected!
-        SendRegistrationRejectedEmail.for enrollment_exemption
+        enrollment_exemption.approved!
+        # TODO: Trigger email
       end
 
       def create_comment
         enrollment_exemption.comments.create(
           content: comment,
           user: user,
-          event: "Reject exemption"
+          event: "Approve exemption"
         )
       end
     end

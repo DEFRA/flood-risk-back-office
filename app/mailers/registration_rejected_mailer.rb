@@ -4,12 +4,11 @@ class RegistrationRejectedMailer < ActionMailer::Base
 
   layout "layouts/backend_mail"
 
-  def rejected(enrollment_id:, recipient_address:)
+  def rejected(enrollment_exemption:, recipient_address:)
     i18n_scope = RegistrationRejectedMailer.mail_yaml_key
     subject = I18n.t(".subject", scope: i18n_scope)
-    underlying_enrollment = FloodRiskEngine::Enrollment.find(enrollment_id)
-
-    @presenter = EmailPresenter.new(underlying_enrollment)
+    enrollment = enrollment_exemption.enrollment
+    @presenter = EmailPresenter.new(enrollment)
 
     mail to: recipient_address, from: ENV["DEVISE_MAILER_SENDER"], subject: subject
   end
