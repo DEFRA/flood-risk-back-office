@@ -3,7 +3,6 @@ FloodRiskEngine.configure do |config|
   # because that layout may include calls to helper methods that we (as an isolated engine)
   # don;t have access to.
   config.layout = "flood_risk_engine"
-
   config.require_journey_completed_in_same_browser = false
 end
 

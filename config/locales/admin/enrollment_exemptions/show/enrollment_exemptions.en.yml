@@ -10,6 +10,7 @@ en:
           change_ad: Change AD classification
           deregister: Deregister
           reject: Reject
+          approve: Approve
         main:
           title: Registration and operator
           registration_and_operator:

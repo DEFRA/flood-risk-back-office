@@ -40,6 +40,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
             enrollment.enrollment_exemptions.first
           )
         )
+        expect(page).to have_link(
+          "Approve",
+          href: new_admin_enrollment_exemption_approve_path(
+            enrollment.enrollment_exemptions.first
+          )
+        )
         expect(page).to have_css("#change-assisted-digital")
       end
     end
@@ -62,6 +68,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
           expect(page).not_to have_link(
             "Reject",
             href: new_admin_enrollment_exemption_reject_path(enrollment_exemption)
+          )
+          expect(page).not_to have_link(
+            "Approve",
+            href: new_admin_enrollment_exemption_approve_path(
+              enrollment.enrollment_exemptions.first
+            )
           )
         end
       end

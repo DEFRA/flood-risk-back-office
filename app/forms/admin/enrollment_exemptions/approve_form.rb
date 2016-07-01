@@ -30,11 +30,15 @@ module Admin
         }
       )
 
+      property :asset_found
+      property :salmonid_river_found
+
       def comment_max_length
         COMMENT_MAX_LENGTH
       end
 
       def save
+        super
         create_comment if comment.present?
         enrollment_exemption.approved!
         # TODO: Trigger email
