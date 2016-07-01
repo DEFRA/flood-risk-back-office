@@ -47,9 +47,9 @@ module Admin
 
         context "with email service mocked" do
           before do
-            # allow_any_instance_of(SendRegistrationApprovedEmail)
-            #   .to receive(:call)
-            #   .and_return(true)
+            allow_any_instance_of(SendRegistrationApprovedEmail)
+              .to receive(:call)
+              .and_return(true)
           end
 
           it "should add a comment" do
@@ -103,7 +103,7 @@ module Admin
           end
         end
 
-        skip "should send a approval email" do
+        it "should send a approval email" do
           expect_any_instance_of(SendRegistrationApprovedEmail)
             .to receive(:call)
             .and_return(true)

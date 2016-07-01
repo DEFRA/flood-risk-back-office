@@ -41,7 +41,7 @@ module Admin
         super
         create_comment if comment.present?
         enrollment_exemption.approved!
-        # TODO: Trigger email
+        SendRegistrationApprovedEmail.for enrollment_exemption
       end
 
       def create_comment
