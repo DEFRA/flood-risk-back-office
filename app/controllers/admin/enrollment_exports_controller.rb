@@ -34,7 +34,13 @@ module Admin
 
       respond_to do |format|
         format.csv do
-          send_data ReadEnrollmentExportReport.new(export).call, type: "text/plain", filename: export.full_path
+          # Don't really like this if but not sure how to extend service object with send_data and/or redirect_to,
+          # include ActionController::DataStreaming does not do it
+          if ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
+            send_data ReadEnrollmentExportReport.run(export), type: "text/plain", filename: export.full_path
+          else
+            redirect_to ReadEnrollmentExportReport.run(export)
+          end
         end
       end
     end

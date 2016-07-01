@@ -1,6 +1,4 @@
 FactoryGirl.define do
-  # Base class for BO Enrollments - Start in PEDNING
-
   factory :base_back_office_enrollment, parent: :enrollment do
     after(:create) do |object|
       object.exemption_location = build(:location, description: "#{FFaker::Address.neighborhood}, near river.")
@@ -18,13 +16,13 @@ FactoryGirl.define do
 
   # Base class for BO Enrollment with a random exemption, status, and valid_from selected for EnrollmentExemption
 
-  factory :confirmed_random_status, parent: :base_back_office_enrollment do
+  factory :confirmed_random_pending, parent: :base_back_office_enrollment do
     after(:create) do |object|
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first || create(:exemption)
 
       object.enrollment_exemptions.build(
         exemption: exemption,
-        status: FloodRiskEngine::EnrollmentExemption.statuses.keys.sample,
+        status: %w(building pending being_processed).sample,
         valid_from: (Date.current - rand(7).days)
       )
 
@@ -34,13 +32,11 @@ FactoryGirl.define do
     trait :with_secondary_contact do
       association :secondary_contact, factory: :contact
     end
-
-    step :confirmation
   end
 
-  factory :confirmed, parent: :confirmed_random_status, traits: [:with_limited_company, :with_secondary_contact]
+  factory :confirmed, parent: :confirmed_random_pending, traits: [:with_limited_company, :with_secondary_contact]
 
-  factory :confirmed_no_secondary_contact, parent: :confirmed_random_status, traits: [:with_limited_company]
+  factory :confirmed_no_secondary_contact, parent: :confirmed_random_pending, traits: [:with_limited_company]
 
   # A suite of Enrollments that enable you to test exports and back office functions against Confirmed enrollments
   #
@@ -49,7 +45,7 @@ FactoryGirl.define do
   FloodRiskEngine::Organisation.org_types.keys.each do |ot|
     next if ot.to_sym == :unknown
 
-    factory :"confirmed_#{ot}", parent: :confirmed_random_status do
+    factory :"confirmed_#{ot}", parent: :confirmed_random_pending do
       after(:create) do |object|
         if ot.to_sym == :partnership
           object.organisation = create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)

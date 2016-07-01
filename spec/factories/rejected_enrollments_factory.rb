@@ -10,7 +10,19 @@ FactoryGirl.define do
       step :confirmation
 
       after(:create) do |object|
-        object.enrollment_exemptions.first.rejected!
+        ee = object.enrollment_exemptions.first
+
+        from = object.created_at.to_f
+        to = 1.year.from_now.to_f
+
+        ee.accept_reject_decision_at = Time.zone.at(from + rand * (to - from))
+
+        user = User.limit(1).order("RANDOM()").pluck(:id).first || create(:user).id
+
+        ee.accept_reject_decision_user_id = user
+        ee.comments << build_list(:comment, rand(5), :with_user_id, event: "Rejected exemption")
+        ee.rejected!
+
         object.update secondary_contact: create(:contact)
       end
     end

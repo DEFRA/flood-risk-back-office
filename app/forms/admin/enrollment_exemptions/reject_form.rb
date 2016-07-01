@@ -27,7 +27,11 @@ module Admin
 
       def save
         create_comment
+
+        enrollment_exemption.accept_reject_decision_user_id = user.id
+        enrollment_exemption.accept_reject_decision_at = Time.zone.now
         enrollment_exemption.rejected!
+
         SendRegistrationRejectedEmail.for enrollment_exemption
       end
 

@@ -8,39 +8,48 @@ class PrepareEnrollmentExportReport
     @csv_data = []
   end
 
+  def self.run(enrollment_export)
+    new(enrollment_export).call
+  end
+
   def call
-    @records = reportable_records
+    @records = enrollment_export.reportable_records
 
     enrollment_export.update!(record_count: records.size) if records
 
     csv_data = records.collect { |record| generate_row(record) }
 
-    Rails.logger.info("** Example Record **\n\t #{csv_data.last.inspect}")
-
     csv_data
   end
 
+  def comments(enrollment_exemption)
+    enrollment_exemption.comments.collect do |c|
+      "#{c.event}\n\t#{c.content}\n"
+    end.join("\n")
+  end
+
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  def generate_row(record)
-    enrollment = record.enrollment
+  def generate_row(enrollment_exemption)
+    enrollment = enrollment_exemption.enrollment
 
     [
-      record.status,
-      I18n.l(enrollment.submitted_at.to_date, format: :long),
-      "TBD Decision date",
-      "TBD Decision maker",
+      enrollment_exemption.status,
+      ldate(enrollment.submitted_at, format: :long),
+      ldate(enrollment_exemption.accept_reject_decision_at, format: :long),
+      enrollment_exemption.accept_reject_decision_user.try(:email),
       enrollment_export.created_by,
       # TODO: - Using '' so Excel treats it as string not number - can prob remove once proper stringified Ref in place
       "'#{enrollment.reference_number}'",
       enrollment.exemption_location.grid_reference,
       enrollment.exemption_location.description,
-      "TBD EA Area",
+      "",
       enrollment.exemptions.first.code,
       enrollment.organisation.org_type,
       enrollment.correspondence_contact.full_name,
       enrollment.correspondence_contact.email_address,
       enrollment.correspondence_contact.telephone_number,
       enrollment.organisation.name,
+      comments(enrollment_exemption),
       "#{url_prefix}/#{enrollment.id}"
     ]
   rescue => x
@@ -66,7 +75,8 @@ class PrepareEnrollmentExportReport
       "Contact email",
       "Contact phone number",
       "Operator name",
-      "Link to registration details"      # 16.
+      "Comments",
+      "Link to registration details"
     ]
   end
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
@@ -86,8 +96,8 @@ class PrepareEnrollmentExportReport
     Rails.root.join "private", "exports", enrollment_export.file_name
   end
 
-  def reportable_records
-    FloodRiskEngine::EnrollmentExemption.reportable(enrollment_export.from_date, enrollment_export.to_date)
+  def ldate(dt, hash = {})
+    dt ? I18n.l(dt, hash) : nil
   end
 
 end
