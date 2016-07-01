@@ -57,6 +57,8 @@ FactoryGirl.define do
           object.organisation = create(:organisation, :"as_#{ot}", name: Faker::Company.name)
         end
 
+        object.organisation.primary_address = build :simple_address
+
         # this is an optional page in FO so create randomly
         object.secondary_contact = build :contact
 
