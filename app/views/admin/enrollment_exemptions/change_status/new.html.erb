@@ -11,47 +11,47 @@
             </div>
 
             <div class="panel-body">
-              <h2>
-                <%= glyphicon_tag("info-sign") %>
-                <%= t(".sub_heading") %>
-              </h2>
-
-              <%= simple_form_for form,
-                                  url: admin_enrollment_exemption_approve_index_path(form.enrollment_exemption),
-                                  html: { method: :post } do |f| %>
+              <%= simple_form_for(
+                    form,
+                    url: admin_enrollment_exemption_change_status_index_path(form.enrollment_exemption),
+                    html: { method: :post }
+                  ) do |f| %>
                 <div class="table-responsive">
                   <table class="table table-bordered">
                     <tbody>
                         <tr>
                           <th class="col-md-2"><%= t(".table_headings.operator") %></th>
-                          <td class="col-md-10"><%= form.organisation_name %></td>
+                          <td class="col-md-10"><%= "Someone" %></td>
                         </tr>
                         <tr>
                           <th class="col-md-2"><%= t(".table_headings.exemption_code") %></th>
                           <td class="col-md-10"><%= form.exemption.code %></td>
                         </tr>
+                        <tr>
+                          <th class="col-md-2"><%= t(".table_headings.status") %></th>
+                          <td class="col-md-10">
+                            <%= form.status_tag %>
+                          </td>
+                        </tr>
                     </tbody>
                   </table>
                 </div>
-                <div class="col-md-12">
-                  <p>
-                    <%= t(".screening_comment") %>
-                  </p>
-                  <ul>
-                    <li>
-                      <%= f.input :asset_found, as: :boolean, boolean_style: :inline %>
-                    </li>
-                    <li>
-                      <%= f.input :salmonid_river_found, as: :boolean, boolean_style: :inline %>
-                    </li>
-                  </ul>
+                <div class="col-md-4">
+                  <%= f.input(
+                      :status,
+                      collection: form.statuses.collect{|s| [t("admin.status_label.#{s}"), s]},
+                      prompt: t(".status_selection_blank")
+                    )
+                  %>
+                </div>
+                <div class="col-md-8">
                   <%= f.input :comment, as: :text %>
                   <span>
                     <%= t(".comment_clarification", max: form.comment_max_length) %>
                   </span>
                 </div>
 
-                <%= f.button :submit, t(".submit"), class: 'btn btn-primary' %>
+                <%= f.button :submit, t(".submit"), class: 'btn btn-danger' %>
               <% end %>
             </div>
           </div>

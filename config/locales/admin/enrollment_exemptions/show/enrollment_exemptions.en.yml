@@ -6,7 +6,8 @@ en:
         contact_header: Contact details
         actions:
           title: Actions
-          update_status: Update status
+          edit: Edit registration
+          change_status: Change status
           change_ad: Change AD classification
           deregister: Deregister
           reject: Reject

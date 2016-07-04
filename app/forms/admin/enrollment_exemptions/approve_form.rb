@@ -1,17 +1,6 @@
 module Admin
   module EnrollmentExemptions
-    class ApproveForm < BaseForm
-      COMMENT_MAX_LENGTH = 500
-
-      attr_reader :user
-
-      def initialize(enrollment_exemption, user)
-        @user = user
-        super(enrollment_exemption)
-      end
-      alias enrollment_exemption model
-      delegate :enrollment, :exemption, to: :enrollment_exemption
-      delegate :reference_number, to: :enrollment
+    class ApproveForm < BaseChangeStateForm
 
       def params_key
         :admin_enrollment_exemptions_approve
@@ -33,10 +22,6 @@ module Admin
       property :asset_found
       property :salmonid_river_found
 
-      def comment_max_length
-        COMMENT_MAX_LENGTH
-      end
-
       def save
         super
         create_comment if comment.present?
@@ -45,11 +30,7 @@ module Admin
       end
 
       def create_comment
-        enrollment_exemption.comments.create(
-          content: comment,
-          user: user,
-          event: "Approve exemption"
-        )
+        super "Approve exemption"
       end
     end
   end

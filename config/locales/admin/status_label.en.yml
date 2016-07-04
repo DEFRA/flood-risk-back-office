@@ -3,7 +3,7 @@ en:
   admin:
     status_label:
       approved: Approved
-      being_processed: Being processed
+      being_processed: In progress
       rejected: Rejected
       building: Incomplete
       pending: Pending screening

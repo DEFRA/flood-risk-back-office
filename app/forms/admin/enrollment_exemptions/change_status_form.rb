@@ -1,20 +1,17 @@
-
 module Admin
   module EnrollmentExemptions
-    class DeregisterForm < BaseChangeStateForm
+    class ChangeStatusForm < BaseChangeStateForm
 
       def params_key
-        :admin_enrollment_exemptions_deregister
+        :admin_enrollment_exemptions_change_status
       end
 
       def self.statuses
-        @statuses ||= FloodRiskEngine::EnrollmentExemption.statuses.slice(
-          "expired", "withdrawn"
-        ).keys
+        @statuses ||= FloodRiskEngine::EnrollmentExemption.statuses.keys
       end
 
       def self.locale_key
-        "admin.enrollment_exemptions.deregister.new"
+        "admin.enrollment_exemptions.change_status.new"
       end
 
       property :status
@@ -26,7 +23,7 @@ module Admin
           in: statuses.collect(&:to_s),
           message: t(
             ".errors.status.inclusion",
-            statuses: statuses.join(
+            statuses: statuses.collect(&:humanize).join(
               t(".errors.status.last_word_connector")
             )
           )
@@ -35,7 +32,6 @@ module Admin
 
       validates(
         :comment,
-        presence: { message: t(".errors.comment.blank") },
         length: {
           maximum: COMMENT_MAX_LENGTH,
           message: t(".errors.comment.too_long", max: COMMENT_MAX_LENGTH)
@@ -43,7 +39,7 @@ module Admin
       )
 
       def save
-        create_comment
+        create_comment unless comment.blank?
         super
       end
 
@@ -52,9 +48,8 @@ module Admin
       end
 
       def create_comment
-        super "Deregistered exemption with #{status}"
+        super "Change exemption from #{enrollment_exemption.status} to #{status}"
       end
-
     end
   end
 end

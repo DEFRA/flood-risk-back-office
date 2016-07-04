@@ -5,9 +5,20 @@
   <div class="panel-body">
     <% if policy(presenter.enrollment).edit? %>
       <p>
-        <%= link_to t(".update_status"),
+        <%= link_to t(".edit"),
                     edit_admin_enrollment_path(presenter.enrollment),
                     id: "update-enrollment-exemption-status",
+                    class: "btn btn-danger",
+                    role: 'button' %>
+      </p>
+    <% end %>
+
+    <% if policy(presenter.enrollment_exemption).change_status? %>
+      <p>
+        <%= link_to t(".change_status"),
+                    new_admin_enrollment_exemption_change_status_path(
+                      presenter.enrollment_exemption
+                    ),
                     class: "btn btn-danger",
                     role: 'button' %>
       </p>
