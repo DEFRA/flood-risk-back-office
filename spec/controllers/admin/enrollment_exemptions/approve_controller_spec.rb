@@ -4,12 +4,14 @@ module Admin
   module EnrollmentExemptions
     RSpec.describe ApproveController, type: :controller do
       include Devise::TestHelpers
-
       render_views
+
+      let(:enrollment) { FactoryGirl.create(:enrollment, step: :confirmation) }
       let(:enrollment_exemption) do
         FactoryGirl.create(
           :enrollment_exemption,
-          status: FloodRiskEngine::EnrollmentExemption.statuses[:pending]
+          status: FloodRiskEngine::EnrollmentExemption.statuses[:pending],
+          enrollment: enrollment
         )
       end
       let(:user) do
@@ -54,6 +56,18 @@ module Admin
             expect(response).to have_http_status(:success)
             expect(response).to render_template(:new)
           end
+        end
+      end
+
+      context "enrollment incomplete" do
+        let(:first_step) { FloodRiskEngine::WorkFlow::Definitions.start.first }
+        let(:enrollment) { FactoryGirl.create(:enrollment, step: first_step) }
+
+        it "new should not be displayed" do
+          get :new, enrollment_exemption_id: enrollment_exemption
+          expect(response).to redirect_to(
+            root_path
+          )
         end
       end
     end
