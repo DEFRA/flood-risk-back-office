@@ -26,6 +26,10 @@ module FloodRiskEngine
       user.present? && user.has_any_role?
     end
 
+    def change_status?
+      user_can_edit?
+    end
+
     def process?
       user_can_edit_and_status? :pending
     end
