@@ -32,7 +32,7 @@ module Admin
       end
 
       def create_comment
-        super "Reject exemption"
+        super "Rejected exemption"
       end
     end
   end

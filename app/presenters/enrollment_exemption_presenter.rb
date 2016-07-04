@@ -137,24 +137,13 @@ class EnrollmentExemptionPresenter < Presenter
     }
   end
 
-  def status_comments
-    comments.collect do |c|
-      [
-        content_tag(:b, c.event),
-        content_tag(:p, c.content)
-      ].join("<br/>")
-    end
-  end
-
   def status_tooltip_html
-    # tooltip1 = [content_tag(:em, clazz.human_attribute_name(:deregistered_at)), deregistered_at].join(": <br/>")
-    tooltip1 = [content_tag(:em, "Deregistered At"), "TODO:"].join(": <br/>")
-
-    tooltip2 = [
-      content_tag(:em, FloodRiskEngine::EnrollmentExemption.human_attribute_name(:comments)),
-      status_comments
-    ].join(": <br/>")
-
-    [tooltip1, tooltip2].compact.join("<br/><br/>")
+    return if comments.empty?
+    comment = comments.order(:created_at).last
+    [
+      content_tag(:strong, comment.event),
+      (comment.content if comment.content.present?),
+      content_tag(:em, comment.created_at.to_s(:govuk_date_short))
+    ].compact.join("<br/>")
   end
 end

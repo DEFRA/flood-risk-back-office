@@ -49,7 +49,7 @@ module Admin
       end
 
       def create_comment
-        super "Change exemption from #{enrollment_exemption.status} to #{status}"
+        super "Changed exemption from #{enrollment_exemption.status} to #{status}"
       end
     end
   end

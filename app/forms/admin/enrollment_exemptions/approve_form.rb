@@ -31,7 +31,7 @@ module Admin
       end
 
       def create_comment
-        super "Approve exemption"
+        super "Approved exemption"
       end
     end
   end
