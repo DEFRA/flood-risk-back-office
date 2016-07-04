@@ -27,7 +27,7 @@ module FloodRiskEngine
     end
 
     def change_status?
-      user_can_edit?
+      system_user?
     end
 
     def process?

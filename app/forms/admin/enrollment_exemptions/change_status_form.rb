@@ -7,13 +7,7 @@ module Admin
       end
 
       def self.statuses
-        @statuses ||= FloodRiskEngine::EnrollmentExemption.statuses.keys.reject do |status|
-          statuses_to_exclude.include? status.to_s
-        end
-      end
-
-      def self.statuses_to_exclude
-        %w(approved rejected expired withdrawn)
+        @statuses ||= FloodRiskEngine::EnrollmentExemption.statuses.keys
       end
 
       def self.locale_key
