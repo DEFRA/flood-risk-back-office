@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160629131906) do
     t.integer  "secondary_contact_id"
     t.string   "reference_number",          limit: 12
     t.integer  "updated_by_user_id"
-    t.integer  "status",                               default: 0, null: false
     t.datetime "submitted_at"
   end
 

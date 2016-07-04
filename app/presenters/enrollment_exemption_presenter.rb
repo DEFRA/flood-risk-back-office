@@ -1,4 +1,8 @@
 # rubocop:disable Metrics/ClassLength
+
+# Note  - From the View page INCOMPLETE registrations can be found and viewed
+# So this Presenter should never assume underlying data is actually present
+#
 class EnrollmentExemptionPresenter < Presenter
   include PartnershipPresenter
   include StatusTag
@@ -6,7 +10,7 @@ class EnrollmentExemptionPresenter < Presenter
   include ActionView::Helpers::TextHelper # for simple_format
 
   attr_reader :enrollment_exemption
-  delegate :exemption, :enrollment, :id, :status, :to_model, to: :enrollment_exemption
+  delegate :comments, :exemption, :enrollment, :expires_at, :id, :status, :to_model, to: :enrollment_exemption
 
   delegate :organisation,
            :exemption_location,
@@ -15,13 +19,11 @@ class EnrollmentExemptionPresenter < Presenter
            :reference_number,
            to: :enrollment, allow_nil: true
 
-  delegate :code, :summary, to: :exemption
+  delegate :code, :summary, to: :exemption, allow_nil: true
 
-  delegate :org_type, :partners, :primary_address, to: :organisation
+  delegate :name, :org_type, :partners, :primary_address, to: :organisation, allow_nil: true
 
-  delegate :name, to: :organisation, prefix: true, allow_nil: true
-
-  delegate :grid_reference, to: :exemption_location, allow_nil: true
+  delegate :description, :grid_reference, to: :exemption_location, allow_nil: true
 
   def initialize(enrollment_exemption, view_context)
     @enrollment_exemption = enrollment_exemption
@@ -65,14 +67,26 @@ class EnrollmentExemptionPresenter < Presenter
     6
   end
 
+  def organisation_name
+    if organisation.try!(:name).present?
+      organisation.name
+    else
+      blank_value
+    end
+  end
+
   private
 
   def present_address(address)
     FloodRiskEngine::AddressPresenter.new(address).to_single_line
   end
 
+  def partnership?
+    organisation.try(&:partnership?)
+  end
+
   def registration_and_operator_headers
-    if organisation.partnership?
+    if partnership?
       partnership_headers(organisation)
     else
       @headers ||= (1..EnrollmentExemptionPresenter.reg_panel_max_row).collect do |i|
@@ -82,12 +96,12 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def registration_and_operator_values
-    if organisation.partnership?
+    if partnership?
       partnership_values(organisation)
     else
       [
-        organisation.name,
-        org_type.humanize.capitalize,
+        name,
+        org_type.to_s.humanize.capitalize,
         present_address(primary_address),
         reference_number,
         submitted_at,
@@ -104,10 +118,10 @@ class EnrollmentExemptionPresenter < Presenter
 
   def exemption_values
     [
-      exemption.code,
-      exemption.summary,
-      exemption_location.grid_reference,
-      exemption_location.description,
+      code,
+      summary,
+      grid_reference,
+      description,
       friendly_expiry_date(enrollment_exemption.expires_at),
       "TBD EA Area"
     ]
@@ -123,17 +137,23 @@ class EnrollmentExemptionPresenter < Presenter
     }
   end
 
-  def status_tooltip_html
-    # TODO: NCCC Workflow not in place yet - not sure the status/workflow to go here
-    # clazz = FloodRiskEngine::EnrollmentExemption
-    # tooltip1 = [content_tag(:em, clazz.human_attribute_name(:deregistered_at)), deregistered_at].join(": <br/>")
-    tooltip1 = [content_tag(:em, "TBD"), status].join(": <br/>")
+  def status_comments
+    comments.collect do |c|
+      [
+        content_tag(:b, c.event),
+        content_tag(:p, c.content)
+      ].join("<br/>")
+    end
+  end
 
-    # tooltip2 = if enrollment_exemption.deregistered_comment?
-    #            [content_tag(:em, clazz.human_attribute_name(:deregistered_comment)),
-    #           simple_format(enrollment_exemption.deregistered_comment)].join(": <br/>")
-    #         end
-    tooltip2 = [content_tag(:em, "TBD"), simple_format("TBC Comment")].join(": <br/>")
+  def status_tooltip_html
+    # tooltip1 = [content_tag(:em, clazz.human_attribute_name(:deregistered_at)), deregistered_at].join(": <br/>")
+    tooltip1 = [content_tag(:em, "Deregistered At"), "TODO:"].join(": <br/>")
+
+    tooltip2 = [
+      content_tag(:em, FloodRiskEngine::EnrollmentExemption.human_attribute_name(:comments)),
+      status_comments
+    ].join(": <br/>")
 
     [tooltip1, tooltip2].compact.join("<br/><br/>")
   end
