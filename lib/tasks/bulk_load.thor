@@ -29,6 +29,9 @@ module Flood
     method_option :all, aliases: "-a", type: :boolean, default: false,
                   desc: "Load <n> Enrollments for each major OrganisationType"
 
+    method_option :incomplete, aliases: "-i", type: :boolean, default: false,
+                  desc: "Include sample of INCOMPLTE Enrollments"
+
     method_option :use_transaction, aliases: "-t", type: :boolean, default: false,
                   desc: "Use ActiveRecord::Base.transaction - faster but all data lost in event of interruption"
 
@@ -85,70 +88,75 @@ module Flood
             :confirmed_local_authority, :confirmed_other, :confirmed_partnership
           ] : options["factory"]
 
+        if(options[:incomplete])
+          factories +=  FactoryGirl.factories.collect(&:name).grep(/page/).tap {|a| a.delete :page_confirmation }
+        end
+
+
         puts "Starting load of #{number} enrollments per factory(s) #{factories.inspect}"
 
-        t1 = Time.zone.now
+          t1 = Time.zone.now
 
-        if(threads == 0)
+          if(threads == 0)
 
-          1.upto(number) do |n|
-            print "." if(n % 10 == 0)
-            factories.each {|f| FactoryGirl.create(f) }
+            1.upto(number) do |n|
+              print "." if(n % 10 == 0)
+              factories.each {|f| FactoryGirl.create(f) }
+            end
+
+          else
+            puts "Running using #{threads} threads"
+
+            cycles = (number / threads).to_i
+
+            # the remainder
+            1.upto(number - (cycles * threads)).each { factories.each {|f| FactoryGirl.create(f) } }
+
+            1.upto(cycles).map do
+              1.upto(threads).map do
+                Thread.new {
+                  factories.each {|f| FactoryGirl.create(f) }
+                  ActiveRecord::Base.connection.close
+                }
+              end.each(&:join)
+            end
           end
 
-        else
-          puts "Running using #{threads} threads"
+          t2 = Time.zone.now
 
-          cycles = (number / threads).to_i
+          puts("\nBulk load of [#{options["number"] * factories.size}] Enrollments took [#{t2 - t1}] seconds")
 
-          # the remainder
-          1.upto(number - (cycles * threads)).each { factories.each {|f| FactoryGirl.create(f) } }
+        end
 
-          1.upto(cycles).map do
-            1.upto(threads).map do
-              Thread.new {
-                factories.each {|f| FactoryGirl.create(f) }
-                ActiveRecord::Base.connection.close
-              }
-            end.each(&:join)
+        # Runs VACUUM against each table, which reclaims storage occupied by dead tuples.
+        # Note it caters for when connected to a postgres database or a sqlite (for example if
+        # testing the command using the dummy app in this gem).
+        # If postgres then it uses the ANALYZE argument to update statistics, which are used
+        # by the planner to determine the most efficient way to execute a query.
+
+        def modify_after_insert(conn, postgres_cmd, default_cmd)
+          conn = ActiveRecord::Base.connection
+          cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
+                  postgres_cmd
+                else
+                  default_cmd
+                end
+
+          [:enrollments, :organisations, :contacts, :addresses].each do |t|
+            conn.execute "#{cmd} flood_risk_engine_#{t};"
           end
         end
 
-        t2 = Time.zone.now
-
-        puts("\nBulk load of [#{options["number"] * factories.size}] Enrollments took [#{t2 - t1}] seconds")
-
-      end
-
-      # Runs VACUUM against each table, which reclaims storage occupied by dead tuples.
-      # Note it caters for when connected to a postgres database or a sqlite (for example if
-      # testing the command using the dummy app in this gem).
-      # If postgres then it uses the ANALYZE argument to update statistics, which are used
-      # by the planner to determine the most efficient way to execute a query.
-
-      def modify_after_insert(conn, postgres_cmd, default_cmd)
-        conn = ActiveRecord::Base.connection
-        cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
-                postgres_cmd
-              else
-                default_cmd
-              end
-
-        [:enrollments, :organisations, :contacts, :addresses].each do |t|
-          conn.execute "#{cmd} flood_risk_engine_#{t};"
+        def vacuum_after_insert(conn)
+          modify_after_insert conn, "VACUUM (ANALYZE)", "VACUUM"
         end
+
+        def reindex_after_insert(conn)
+          modify_after_insert conn, "REINDEX TABLE", "REINDEX"
+        end
+
       end
 
-      def vacuum_after_insert(conn)
-        modify_after_insert conn, "VACUUM (ANALYZE)", "VACUUM"
-      end
+    end # class
 
-      def reindex_after_insert(conn)
-        modify_after_insert conn, "REINDEX TABLE", "REINDEX"
-      end
-
-    end
-
-  end # class
-
-end # module
+  end # module

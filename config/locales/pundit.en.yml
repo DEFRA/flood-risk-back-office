@@ -3,6 +3,7 @@ en:
     default: 'You are not authorised to perform this action.'
 
     defaults:
+      approve?: 'You are not authorised to approve %{name}!'
       index?: 'You are not authorised to view a list of %{name}!'
       list?: 'You are not authorised to view a list of %{name}!'
       read?: 'You are not authorised to view this %{name}!'
