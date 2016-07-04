@@ -37,11 +37,9 @@ module Admin
           end
         end
 
-        context "with a blank comment" do
-          let(:comment) { "" }
-          it "should validate" do
-            expect(form.validate(params)).to be(true)
-          end
+        it "should validate comment presence" do
+          expect(form).to validate_presence_of(:comment)
+            .with_message(described_class.t(".errors.comment.blank"))
         end
       end
 
@@ -52,14 +50,6 @@ module Admin
 
         it "should add a comment" do
           expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(1)
-        end
-
-        context "with a blank comment" do
-          let(:comment) { "" }
-
-          it "should not add a comment" do
-            expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(0)
-          end
         end
 
         context "after save" do
