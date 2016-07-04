@@ -39,8 +39,8 @@
                 <div class="col-md-4">
                   <%= f.input(
                       :status,
-                      collection: form.statuses.collect{|s| [s.humanize, s]},
-                      include_blank: t(".status_selection_blank")
+                      collection: form.statuses.collect{|s| [t("admin.status_label.#{s}"), s]},
+                      prompt: t(".status_selection_blank")
                     )
                   %>
                 </div>
