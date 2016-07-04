@@ -111,6 +111,25 @@ module Admin
           form.save
         end
       end
+
+      describe "#organisation_name" do
+        let(:organisation) { FactoryGirl.create(:organisation) }
+        let(:enrollment) do
+          FactoryGirl.create(:enrollment, organisation: organisation)
+        end
+
+        let(:enrollment_exemption) do
+          FactoryGirl.create(:enrollment_exemption, enrollment: enrollment)
+        end
+
+        it "should be present" do
+          expect(form.organisation_name.present?).to eq(true)
+        end
+
+        it "should be the organisation name" do
+          expect(form.organisation_name).to eq(organisation.name)
+        end
+      end
     end
   end
 end

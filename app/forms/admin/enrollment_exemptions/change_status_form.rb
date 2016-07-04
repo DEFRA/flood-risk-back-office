@@ -1,20 +1,6 @@
 module Admin
   module EnrollmentExemptions
-    class ChangeStatusForm < BaseForm
-      require_relative "concerns/form_status_tag"
-      include FormStatusTag
-
-      COMMENT_MAX_LENGTH = 500
-
-      attr_reader :user
-
-      def initialize(enrollment_exemption, user)
-        @user = user
-        super(enrollment_exemption)
-      end
-      alias enrollment_exemption model
-      delegate :enrollment, :exemption, to: :enrollment_exemption
-      delegate :reference_number, to: :enrollment
+    class ChangeStatusForm < BaseChangeStateForm
 
       def params_key
         :admin_enrollment_exemptions_change_status
@@ -63,20 +49,12 @@ module Admin
         super
       end
 
-      def comment_max_length
-        COMMENT_MAX_LENGTH
-      end
-
       def statuses
         self.class.statuses
       end
 
       def create_comment
-        enrollment_exemption.comments.create(
-          content: comment,
-          user: user,
-          event: "Change exemption from #{enrollment_exemption.status} to #{status}"
-        )
+        super "Change exemption from #{enrollment_exemption.status} to #{status}"
       end
     end
   end
