@@ -137,13 +137,20 @@ class EnrollmentExemptionPresenter < Presenter
     }
   end
 
+  def status_comments
+    comments.order(created_at: :desc)
+  end
+
   def status_tooltip_html
     return if comments.empty?
-    comment = comments.order(:created_at).last
+    status_comments.collect { |c| comment_to_html(c) }.join("<hr>")
+  end
+
+  def comment_to_html(comment)
     [
       content_tag(:strong, comment.event),
       (comment.content if comment.content.present?),
       content_tag(:em, comment.created_at.to_s(:govuk_date_short))
-    ].compact.join("<br/>")
+    ].compact.join("<br>")
   end
 end
