@@ -14,6 +14,7 @@ module Admin
       property :comment, virtual: true
       validates(
         :comment,
+        presence: { message: t(".errors.comment.blank") },
         length: {
           maximum: COMMENT_MAX_LENGTH,
           message: t(".errors.comment.too_long", max: COMMENT_MAX_LENGTH)
@@ -25,13 +26,13 @@ module Admin
       end
 
       def save
-        create_comment if comment.present?
+        create_comment
         enrollment_exemption.rejected!
         SendRegistrationRejectedEmail.for enrollment_exemption
       end
 
       def create_comment
-        super "Reject exemption"
+        super "Rejected exemption"
       end
     end
   end

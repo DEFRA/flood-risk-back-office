@@ -32,6 +32,7 @@ module Admin
 
       validates(
         :comment,
+        presence: { message: t(".errors.comment.blank") },
         length: {
           maximum: COMMENT_MAX_LENGTH,
           message: t(".errors.comment.too_long", max: COMMENT_MAX_LENGTH)
@@ -39,7 +40,7 @@ module Admin
       )
 
       def save
-        create_comment unless comment.blank?
+        create_comment
         super
       end
 
@@ -48,7 +49,7 @@ module Admin
       end
 
       def create_comment
-        super "Change exemption from #{enrollment_exemption.status} to #{status}"
+        super "Changed exemption from #{enrollment_exemption.status} to #{status}"
       end
     end
   end

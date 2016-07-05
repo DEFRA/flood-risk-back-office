@@ -22,6 +22,9 @@ module FloodRiskEngine
   # Statuses are: building, pending, being_processed, approved, rejected, expired, withdrawn
   # Note that deregistering leads to a status of either expired or withdrawn
   class EnrollmentExemptionPolicy < ApplicationPolicy
+    alias enrollment_exemption record
+    delegate :enrollment, to: :record
+
     def show?
       user.present? && user.has_any_role?
     end
@@ -46,16 +49,13 @@ module FloodRiskEngine
     alias expired? deregister?
 
     def user_can_edit_and_status?(*statuses)
+      return false unless enrollment.submitted?
       return false unless user_can_edit?
-      record_status_one_of?(*statuses)
+      enrollment_exemption.status_one_of?(*statuses)
     end
 
     def user_can_edit?
       system_user? || super_agent_user?
-    end
-
-    def record_status_one_of?(*statuses)
-      statuses.collect(&:to_s).include? record.status
     end
   end
 end

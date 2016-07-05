@@ -15,3 +15,4 @@ en:
           errors:
             comment:
               too_long: The comment must be no longer than %{max} characters
+              blank: Enter a comment

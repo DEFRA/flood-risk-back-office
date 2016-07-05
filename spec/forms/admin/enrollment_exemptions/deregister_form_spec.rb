@@ -28,7 +28,7 @@ module Admin
             .in_array(form.statuses)
         end
 
-        it "should validate comment" do
+        it "should validate comment presence" do
           expect(form).to validate_presence_of(:comment)
             .with_message(described_class.t(".errors.comment.blank"))
         end

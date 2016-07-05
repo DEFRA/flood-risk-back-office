@@ -6,7 +6,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
   end
 
   context("with secondary contact ") do
-    let(:enrollment) { create :confirmed }
+    let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
     let(:enrollment_exemption) do
       enrollment.enrollment_exemptions.first.tap(&:pending!)
     end
