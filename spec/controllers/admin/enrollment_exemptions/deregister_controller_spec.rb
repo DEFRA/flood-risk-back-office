@@ -6,7 +6,7 @@ module Admin
       include Devise::TestHelpers
       render_views
 
-      let(:enrollment) { FactoryGirl.create(:enrollment, step: :confirmation) }
+      let(:enrollment) { FactoryGirl.create(:enrollment, submitted_at: Time.zone.now) }
       let(:enrollment_exemption) do
         FactoryGirl.create(
           :enrollment_exemption,
@@ -61,7 +61,7 @@ module Admin
 
       context "enrollment incomplete" do
         let(:first_step) { FloodRiskEngine::WorkFlow::Definitions.start.first }
-        let(:enrollment) { FactoryGirl.create(:enrollment, step: first_step) }
+        let(:enrollment) { FactoryGirl.create(:enrollment) }
 
         it "new should not be displayed" do
           get :new, enrollment_exemption_id: enrollment_exemption

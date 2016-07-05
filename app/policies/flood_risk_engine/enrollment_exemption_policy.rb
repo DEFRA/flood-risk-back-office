@@ -49,17 +49,13 @@ module FloodRiskEngine
     alias expired? deregister?
 
     def user_can_edit_and_status?(*statuses)
-      return false unless enrollment.step.to_s == "confirmation"
+      return false unless enrollment.submitted?
       return false unless user_can_edit?
-      record_status_one_of?(*statuses)
+      enrollment_exemption.status_one_of?(*statuses)
     end
 
     def user_can_edit?
       system_user? || super_agent_user?
-    end
-
-    def record_status_one_of?(*statuses)
-      statuses.collect(&:to_s).include? enrollment_exemption.status
     end
   end
 end
