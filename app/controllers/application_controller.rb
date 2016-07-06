@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  before_action :set_cache_headers
+
   protected
 
   # http://jacopretorius.net/2014/01/force-page-to-reload-on-browser-back-in-rails.html
@@ -93,5 +95,14 @@ class ApplicationController < ActionController::Base
     default = I18n.t("pundit.defaults.#{act}", name: human_name) if human_name
 
     I18n.t "pundit.#{policy_name}.#{act}", default: default
+  end
+
+  def set_cache_headers
+    # Pen testing identified an issue where cached data in the users browser
+    # could potentially be stolen. Disabling caching prevents this and should
+    # have little effect due to back office pages being dynamically generated.
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
   end
 end
