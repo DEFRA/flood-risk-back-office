@@ -85,6 +85,8 @@ class EnrollmentExemptionPresenter < Presenter
     organisation.try(&:partnership?)
   end
 
+  # The top Registration details Panel
+
   def registration_and_operator_headers
     if partnership?
       partnership_headers(organisation)
@@ -109,6 +111,8 @@ class EnrollmentExemptionPresenter < Presenter
       ]
     end
   end
+
+  # Same regardless of Organisation Type
 
   def exemption_headers
     @exemption_headers ||= (1..EnrollmentExemptionPresenter.exemption_panel_max_row).collect do |i|
@@ -153,4 +157,9 @@ class EnrollmentExemptionPresenter < Presenter
       content_tag(:em, comment.created_at.to_s(:govuk_date_short))
     ].compact.join("<br>")
   end
+
+  protected
+
+  attr_accessor :headers
+
 end

@@ -48,7 +48,7 @@ Exemptions don’t expire except for dredging FRA23 which expires 3 years after 
 Responsible for activity (the ‘operator’)
 -----------------------------------------
 <%= @presenter.full_name %>
-<%= @presenter.primary_address %>
+<%= render "shared/address" , presenter: @presenter %>
 
 Who we will contact
 -------------------

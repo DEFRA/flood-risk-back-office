@@ -41,14 +41,63 @@ RSpec.describe RegistrationApprovedMailer, type: :mailer do
 
       describe "content" do
         subject { body }
+
+        let(:type) { @enrollment.organisation.org_type }
+
         it { is_expected.to_not have_body_text(/translation missing/) }
 
         context "'Registration details'" do
           let(:yaml_scope) { "confirmation_email.sections.registration_details.associations" }
 
-          describe "#Reference number", duff: true do
+          describe "#Reference number" do
             let(:value) { @enrollment.reference_number }
             it { is_expected.to have_body_text(encoder.call(value)) }
+          end
+        end
+
+        context "'Your contact details'" do
+          describe "full name" do
+            let(:value) { @enrollment.correspondence_contact.full_name }
+            it { is_expected.to have_body_text(encoder.call(value)) }
+          end
+
+          describe "telephone" do
+            let(:value) { @enrollment.correspondence_contact.telephone_number }
+            it { is_expected.to have_body_text(encoder.call(value)) }
+          end
+
+          describe "email" do
+            let(:value) { @enrollment.correspondence_contact.email_address }
+            it { is_expected.to have_body_text(encoder.call(value)) }
+          end
+
+          describe "address", duff: true do
+            it {
+              address = if type == "partnership"
+                          @enrollment.organisation.partners.first.address
+                        else
+                          @enrollment.organisation.primary_address
+                        end
+
+              is_expected.to have_body_text(encoder.call(address.premises))
+              is_expected.to have_body_text(encoder.call(address.street_address))
+              is_expected.to have_body_text(encoder.call(address.city))
+              is_expected.to have_body_text(encoder.call(address.postcode))
+            }
+          end
+        end
+
+        context "EnrollmentExemption" do
+          describe "exemption" do
+            # code: "FRA_RSPEC_47", summary: "Sleek Copper Clock", description:
+            let(:value) { @enrollment.exemptions.first }
+            it { is_expected.to have_body_text(encoder.call(value.code)) }
+            it { is_expected.to have_body_text(encoder.call(value.summary)) }
+          end
+
+          describe "grid reference" do
+            let(:value) { @enrollment.exemption_location }
+            it { is_expected.to have_body_text(encoder.call(value.grid_reference)) }
           end
         end
       end

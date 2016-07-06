@@ -1,0 +1,15 @@
+<% if(presenter.partnership?) %>
+  <% presenter.partners.each do |partner|  %>
+    <%= partner.full_name %>
+    <% presenter.address_parts_for_email(partner.address).each do |a| %>
+      <%= a %>
+    <% end %>
+
+  <% end %>
+<% else %>
+  <% presenter.address_parts_for_email(presenter.primary_address).each do |a| %>
+    <%= a %>
+  <% end %>
+
+<% end %>
+

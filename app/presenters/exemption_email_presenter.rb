@@ -2,6 +2,8 @@
 #
 class ExemptionEmailPresenter
 
+  include ActionView::Helpers::TagHelper
+
   delegate :enrollment,
            :exemption,
            :accept_reject_decision_at,
@@ -22,9 +24,7 @@ class ExemptionEmailPresenter
   delegate :grid_reference,
            to: :exemption_location, allow_nil: true
 
-  delegate :name,
-           :primary_address,
-           to: :organisation, allow_nil: true
+  delegate :name, :primary_address, :partners, to: :organisation, allow_nil: true
 
   def initialize(enrollment_exemption)
     @enrollment_exemption = enrollment_exemption
@@ -32,6 +32,28 @@ class ExemptionEmailPresenter
 
   def exemption_title
     exemption.summary
+  end
+
+  def partnership?
+    organisation.try(&:partnership?)
+  end
+
+  # For partnerships there's no organisation name
+  def organisation_name
+    return if organisation.try(&:partnership?)
+
+    organisation.name
+  end
+
+  def address_parts_for_email(address)
+    return unless address
+
+    # join house number and street address, rest as separate elements
+    street_lne = [address.premises, address.street_address].reject(&:blank?).join(", ")
+
+    parts = [street_lne, address.locality, address.city, address.postcode]
+
+    parts.reject(&:blank?)
   end
 
   # Just 'code' in the view does not give much context so prefer a longer more meaningful name

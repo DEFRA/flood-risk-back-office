@@ -14,7 +14,8 @@ FactoryGirl.define do
     step :confirmation
   end
 
-  # Base class for BO Enrollment with a random exemption, status, and valid_from selected for EnrollmentExemption
+  # Base class for BO Enrollment with pending (pending or being_processed)
+  # Exemption and random valid_from selected for EnrollmentExemption
 
   factory :confirmed_random_pending, parent: :base_back_office_enrollment do
     after(:create) do |object|
@@ -24,7 +25,7 @@ FactoryGirl.define do
 
       object.enrollment_exemptions.build(
         exemption: exemption,
-        status: %w(building pending being_processed).sample,
+        status: %w(pending being_processed).sample,
         valid_from: (Date.current - rand(7).days)
       )
     end
