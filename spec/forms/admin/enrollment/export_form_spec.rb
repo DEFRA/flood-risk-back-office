@@ -30,11 +30,19 @@ module Admin
         it do
           is_expected.to validate_presence_of(:state).strict.with_message("State can't be blank")
         end
+
+        it do
+          is_expected.to validate_presence_of(:date_field_scope).strict.with_message("Date field scope can't be blank")
+        end
       end
 
       context "form validation" do
         it "is valid if :state included in allowed states" do
           is_expected.to validate_inclusion_of(:state).in_array(%w(queued started completed failed))
+        end
+
+        it "is valid if :date_field_scope included in allowed date scopes" do
+          is_expected.to validate_inclusion_of(:date_field_scope).in_array(%w(submitted_at decision_at))
         end
 
         describe "To Date" do
@@ -82,7 +90,11 @@ module Admin
 
         describe "#save" do
           it "saves the report dates when supplied" do
-            params = { "#{form.params_key}": { from_date: Date.current - 2.days, to_date:  Date.current } }
+            params = { "#{form.params_key}": {
+              date_field_scope: "decision_at",
+              from_date: Date.current - 2.days,
+              to_date:  Date.current
+            } }
 
             expect(form.validate(params)).to eq true
             expect(form.save).to eq true
@@ -93,6 +105,8 @@ module Admin
 
             expect(expected.state).to_not be_empty
             expect(expected.created_by).to_not be_empty
+
+            expect(expected.date_field_scope).to eq "decision_at"
           end
         end
       end

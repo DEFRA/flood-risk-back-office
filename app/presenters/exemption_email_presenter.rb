@@ -4,6 +4,7 @@ class ExemptionEmailPresenter
 
   delegate :enrollment,
            :exemption,
+           :accept_reject_decision_at,
            to: :enrollment_exemption
 
   delegate :correspondence_contact,
@@ -47,12 +48,16 @@ class ExemptionEmailPresenter
     enrollment_exemption.salmonid_river_found?
   end
 
-  def reg_date
-    "TBD - what is this ??" # TODO: What date field is this ?
+  def decision_date
+    ldate(accept_reject_decision_at, format: :long)
   end
 
   private
 
   attr_reader :enrollment_exemption
+
+  def ldate(dt, hash = {})
+    dt ? I18n.l(dt, hash) : nil
+  end
 
 end

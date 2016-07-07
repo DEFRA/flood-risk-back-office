@@ -25,6 +25,11 @@ module Admin
       property :to_date, multi_params:  true
       property :state
       property :created_by
+      property :date_field_scope
+
+      def default_date_field_scope
+        "submitted_at"
+      end
 
       # validates_timeliness does not seem to support message, just over ride via
       # en.activemodel.errors.models.admin.enrollment.export.attributes.to_date.on_or_after
@@ -43,6 +48,9 @@ module Admin
       validates :state, inclusion: { allow_blank: true, in: EnrollmentExport.states.keys }
 
       validates :created_by, presence: { strict: true }
+
+      validates :date_field_scope, presence: { strict: true }
+      validates :date_field_scope, inclusion: { allow_blank: true, in: EnrollmentExport.date_field_scopes.keys }
 
       def save
         sync # need to populate model with the dates etc so we can gen good file name

@@ -105,7 +105,7 @@ class EnrollmentExemptionPresenter < Presenter
         present_address(primary_address),
         reference_number,
         submitted_at,
-        "TBD Assisted digital"
+        "" # TODO:  Assisted digital
       ]
     end
   end
@@ -123,7 +123,7 @@ class EnrollmentExemptionPresenter < Presenter
       grid_reference,
       description,
       friendly_expiry_date(enrollment_exemption.expires_at),
-      "TBD EA Area"
+      "" # TODO: EA ARea
     ]
   end
 

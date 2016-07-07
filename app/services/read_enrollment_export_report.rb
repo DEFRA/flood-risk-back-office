@@ -1,31 +1,25 @@
+# Simple service to shield Controller from actual read mechanism
+
 class ReadEnrollmentExportReport
 
   def initialize(enrollment_export)
     @enrollment_export = enrollment_export
   end
 
+  def self.run(enrollment_export)
+    new(enrollment_export).call
+  end
+
   def call
-    presigned_url
+    if ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
+      File.read(enrollment_export.full_path)
+    else
+      ReadFromAwsS3.run(enrollment_export)
+    end
   end
 
   private
 
   attr_accessor :enrollment_export
-
-  def presigned_url
-    # TOFIX - Replace with AWS
-    File.read(enrollment_export.full_path)
-
-    # TODO: - TOM STATTER - Need details of bucket from Imran Javeed
-    #     s3 = Aws::S3::Resource.new
-    #     bucket = s3.bucket ENV.fetch("AWS_MANUAL_EXPORT_BUCKET")
-    #
-    #     bucket.object(file_name).presigned_url(
-    #       :get,
-    #       expires_in: 20.minutes, secure: true,
-    #       response_content_type: "text/csv",
-    #       response_content_disposition: "attachment; filename=#{file_name}"
-    #     )
-  end
 
 end

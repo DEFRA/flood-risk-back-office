@@ -4,17 +4,27 @@
 
   <%
     date_opts = {
-      as: :date, html5: false,
-      order: %i[day month year],
-      end_year: Date.today.year,
-      start_year: 2016, # Year that waste-exemptions went live
-      wrapper_html: { class: "col-xs-6 col-md-5 col-lg-4" }
+        as: :date, html5: false,
+        order: %i[day month year],
+        end_year: Date.today.year,
+        start_year: 2016, # Year that waste-exemptions went live
+        wrapper_html: { class: "col-xs-6 col-md-5 col-lg-4" }
     }
   %>
 
   <div class="row">
     <%= f.input :from_date, date_opts.merge(prompt: :translate) %>
-    <%= f.input :to_date, date_opts.merge(default: Date.today) %>
+    <%= f.input :to_date, date_opts.merge(default: Date.today) -%>
+  </div>
+
+  <h2 style="margin-top: 0px;"><small>Date field to compare against</small></h2>
+  <div class="radio">
+    <%= f.collection_radio_buttons(:date_field_scope, EnrollmentExport.date_field_scopes, :first, :last) do |b|
+      b.label(class: "radio-inline") do
+        b.radio_button + content_tag('span', b.object.first.to_s.humanize)
+      end
+    end
+    %>
   </div>
 
   <%= f.submit class: "btn btn-success", style: "display: block", data: { disable_with: t(".please_wait_html") } %>

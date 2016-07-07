@@ -14,7 +14,7 @@ class WriteEnrollmentExportReport
     enrollment_export.update!(state: :started)
   end
 
-  def completed
+  def complete!
     enrollment_export.update!(state: :completed)
   end
 
@@ -33,9 +33,6 @@ class WriteEnrollmentExportReport
 
       csv.flush
     end
-
-    # TODO: - Need to sort out AWS
-    # perform_s3_export!
   end
 
   private

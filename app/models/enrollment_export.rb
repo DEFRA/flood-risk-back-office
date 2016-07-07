@@ -9,22 +9,41 @@ class EnrollmentExport < ActiveRecord::Base
     completed: 3
   }
 
-  def run
-    report_data = PrepareEnrollmentExportReport.new(self)
+  enum date_field_scope: {
+    submitted_at: 0,
+    decision_at: 1
+  }
 
-    csv_data = report_data.call
+  def reportable_records
+    find_klazz = FloodRiskEngine::EnrollmentExemption
 
-    begin
-
-      writer = WriteEnrollmentExportReport.new(self, csv_data)
-
-      writer.call
-
-      writer.completed
-    rescue => ex
-      writer.failed("#{ex.class}: #{ex}")
-      raise
+    case date_field_scope
+      when "submitted_at"
+        find_klazz.reportable_by_submitted_at(from_date, to_date)
+      when "decision_at"
+        find_klazz.reportable_by_decision_at(from_date, to_date)
+      else
+        find_klazz.reportable_by_submitted_at(from_date, to_date)
     end
+  end
+
+  def csv_data
+    PrepareEnrollmentExportReport.run(self)
+  end
+
+  def writer
+    @writer ||= WriteEnrollmentExportReport.new(self, csv_data)
+  end
+
+  def run
+    writer.call
+
+    WriteToAwsS3.run(self) unless ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
+
+    writer.complete!
+  rescue => ex
+    writer.failed("#{ex.class}: #{ex}")
+    raise
   end
 
   def to_s
@@ -59,17 +78,6 @@ class EnrollmentExport < ActiveRecord::Base
     return nil unless file_name?
 
     Rails.root.join("private", "exports", file_name)
-  end
-
-  private
-
-  def perform_s3_export!
-    nil
-    # TODO: - TOM STATTER - Needs investigation
-    #     s3 = Aws::S3::Resource.new
-    #     bucket = s3.bucket ENV.fetch("AWS_MANUAL_EXPORT_BUCKET")
-    #     obj = bucket.object file_name
-    #     obj.upload_file full_path
   end
 
 end
