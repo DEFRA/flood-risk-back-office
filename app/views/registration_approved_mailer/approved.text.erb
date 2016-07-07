@@ -1,34 +1,49 @@
 
-We’ve registered your exemption
--------------------------------
+We’ve registered your flood risk activity exemption
+---------------------------------------------------
 
-Your reference is: <%= @presenter.reference_number %>
+Your reference is <%= @presenter.reference_number %>
+
 
 Exemption registered
 --------------------
 <%= @presenter.exemption_title %> <%= @presenter.exemption_code %>
 at grid reference <%= @presenter.grid_reference %>.
 
-Things you need to do before you start work
--------------------------------------------
-<% if @presenter.asset? %>
-When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet the conditions.
-<% end %>
 
-You should re-check the conditions of your exemptions in the flood risk activities guidance
+Before you start work
+---------------------
+
+# Check you can meet the exemption conditions
+
+You should re-check you can meet the description and conditions of your exemption in the flood risk exemptions guidance:
 https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities
 
-<% if @presenter.salmonid? %>
-The location is on a river where salmon are protected
------------------------------------------------------
-This means you cannot do any work between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit.
+<% if @presenter.asset? %>
+# Check for flood defences, river control works or culverts
+
+When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet these conditions.
 <% end %>
+
+<% if @presenter.salmonid? %>
+# Check work dates because it’s a salmonid river
+
+The location is on a river where salmonid fish are protected.
+This means you cannot do any work under this exemption between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit:
+https://www.gov.uk/guidance/flood-risk-activities-environmental-permits
+<% end %>
+
+# Other things to check
+
+You should check if there are protected species in the area. If there are, you must make sure your activity doesn’t harm them. You may also need planning permission and to get the landowner's permission to enter the land.
+
 
 Date of registration
 --------------------
 <%= @presenter.reg_date %>
 
 Exemptions don’t expire except for dredging FRA23 which expires 3 years after the registration date and dredging FRA24 which expires 1 year after the registration date.
+
 
 Responsible for activity (the ‘operator’)
 -----------------------------------------
@@ -42,13 +57,14 @@ Who we will contact
   <%=  @presenter.email_address %>
 
 
-Your responsibilities
----------------------
-The organisation or individual responsible must keep to the description and conditions for the exemption(s). We can prosecute them if they don’t do this.
+Responsibilities of the operator
+--------------------------------
+The organisation or individual responsible must keep to the description and conditions for the exemption. We can prosecute them if they don’t do this.
 
 
 If your activity changes
 ------------------------
 If the location changes, you will need to register a new exemption.
-If the activity or the way you are doing the work changes, you will need to check if it is still exempt.
 
+If the activity or the way you are doing the work changes, you will need to check if it is still exempt. If it is not, you will have to apply for a permit:
+https://www.gov.uk/guidance/flood-risk-activities-environmental-permits
