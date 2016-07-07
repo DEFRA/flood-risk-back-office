@@ -19,13 +19,10 @@ class EnrollmentExport < ActiveRecord::Base
 
     case date_field_scope
       when "submitted_at"
-        Rails.logger.info"Running export query for submitted_at #{from_date}, #{to_date}"
         find_klazz.reportable_by_submitted_at(from_date, to_date)
       when "decision_at"
-        Rails.logger.info"Running export query for decision_at #{from_date}, #{to_date}"
         find_klazz.reportable_by_decision_at(from_date, to_date)
       else
-        Rails.logger.info"Running DEFAULT Query"
         find_klazz.reportable_by_submitted_at(from_date, to_date)
     end
   end

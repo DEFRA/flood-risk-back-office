@@ -100,7 +100,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
   end
 
   context("when organisation is partnership") do
-    let(:enrollment) { create :confirmed_partnership }
+    let(:enrollment) { create :submitted_partnership }
 
     scenario "Page has expected content for all partners", duff: true do
       visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first.id)

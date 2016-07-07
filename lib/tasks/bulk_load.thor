@@ -98,7 +98,7 @@ module Flood
 
         factories += FactoryGirl.factories.collect(&:name).grep(/approved_/) if(options[:approved])
         factories += FactoryGirl.factories.collect(&:name).grep(/rejected_/) if(options[:rejected])
-        factories += FactoryGirl.factories.collect(&:name).grep(/confirmed_/) if(options[:pending])
+        factories += FactoryGirl.factories.collect(&:name).grep(/submitted_/) if(options[:pending])
 
         if(options[:incomplete])
           factories += FactoryGirl.factories.collect(&:name).grep(/page/).tap {|a| a.delete :page_confirmation }

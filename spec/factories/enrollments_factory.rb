@@ -20,13 +20,13 @@ FactoryGirl.define do
     after(:create) do |object|
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first || create(:exemption)
 
+      object.submit
+
       object.enrollment_exemptions.build(
         exemption: exemption,
         status: %w(building pending being_processed).sample,
         valid_from: (Date.current - rand(7).days)
       )
-
-      object.submit
     end
 
     trait :with_secondary_contact do
@@ -37,29 +37,4 @@ FactoryGirl.define do
   factory :confirmed, parent: :confirmed_random_pending, traits: [:with_limited_company, :with_secondary_contact]
 
   factory :confirmed_no_secondary_contact, parent: :confirmed_random_pending, traits: [:with_limited_company]
-
-  # A suite of Enrollments that enable you to test exports and back office functions against Confirmed enrollments
-  #
-  # Named :   confirmed_#{org_type}
-  #
-  FloodRiskEngine::Organisation.org_types.keys.each do |ot|
-    next if ot.to_sym == :unknown
-
-    factory :"confirmed_#{ot}", parent: :confirmed_random_pending do
-      after(:create) do |object|
-        if ot.to_sym == :partnership
-          object.organisation = create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
-        else
-          object.organisation = create(:organisation, :"as_#{ot}", name: Faker::Company.name)
-        end
-
-        object.organisation.primary_address = build :simple_address
-
-        # this is an optional page in FO so create randomly
-        object.secondary_contact = build :contact
-
-        object.save!
-      end
-    end
-  end
 end

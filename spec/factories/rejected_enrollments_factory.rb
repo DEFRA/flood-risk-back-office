@@ -6,20 +6,10 @@ FactoryGirl.define do
   FloodRiskEngine::Organisation.org_types.keys.each do |ot|
     next if ot.to_sym == :unknown
 
-    factory :"rejected_#{ot}", parent: :"confirmed_#{ot}" do
-      step :confirmation
-
+    factory :"rejected_#{ot}", parent: :"submitted_#{ot}", traits: [:accept_reject_common] do
       after(:create) do |object|
         ee = object.enrollment_exemptions.first
 
-        from = object.created_at.to_f
-        to = 1.year.from_now.to_f
-
-        ee.accept_reject_decision_at = Time.zone.at(from + rand * (to - from))
-
-        user = User.limit(1).order("RANDOM()").pluck(:id).first || create(:user).id
-
-        ee.accept_reject_decision_user_id = user
         ee.comments << build_list(:comment, rand(5), :with_user_id, event: "Rejected exemption")
         ee.rejected!
 
