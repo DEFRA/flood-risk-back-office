@@ -9,15 +9,24 @@ class EnrollmentExemptionSearchQuery
     new.call(search_form)
   end
 
+  # rubocop:disable Metrics/AbcSize
   def initialize
-    # Note the .joins help us build the search query, and the
+    # Note the .joins (using squeel for brevity) help us build the search query, and the
     # .includes make sure we don't have any N+1 queries
     @relation = FloodRiskEngine::EnrollmentExemption
                 .joins { enrollment.organisation.outer.primary_address.outer }
                 .joins { enrollment.correspondence_contact.outer }
+                .joins { enrollment.organisation.outer.partners.outer.contact.outer }
+                .joins { enrollment.exemption_location.outer }
+                .joins { enrollment.reference_number.outer }
                 .joins { exemption }
-                .includes { exemption }
-                .includes { enrollment.organisation }
+                .includes(:exemption,
+                          enrollment: [
+                            :reference_number,
+                            organisation: [
+                              :primary_address
+                            ]
+                          ])
                 .extending(Scopes)
   end
 
@@ -26,22 +35,24 @@ class EnrollmentExemptionSearchQuery
     relation
       .having_status(search_form.status)
       .matching_query(search_form.q)
-      .sort_depending_on_status(search_form.status)
+      .sort
       .page(search_form.page)
       .per(search_form.per_page)
   end
 
   module Scopes
-    # rubocop:disable Metrics/AbcSize
+
     def matching_query(q)
       return all if q.blank?
-      fuzzy_q = "%#{q}%"
+      query = SearchTerm.new(q)
       where do
-        (exemption.code =~ q) |
-          (enrollment.organisation.name =~ fuzzy_q) |
-          (enrollment.reference_number =~ fuzzy_q) |
-          (enrollment.correspondence_contact.full_name =~ fuzzy_q) |
-          (enrollment.organisation.primary_address.postcode =~ fuzzy_q)
+        (exemption.code =~ query.q) |
+          (replace(enrollment.organisation.primary_address.postcode, " ", "") =~ query.fuzzy_without_whitespace) |
+          (replace(enrollment.exemption_location.grid_reference, " ", "") == query.without_whitespace) |
+          (enrollment.organisation.name =~ query.fuzzy) |
+          (enrollment.organisation.partners.contact.full_name =~ query.fuzzy) |
+          (enrollment.reference_number.number =~ query.fuzzy) |
+          (enrollment.correspondence_contact.full_name =~ query.fuzzy)
       end
     end
 
@@ -50,9 +61,27 @@ class EnrollmentExemptionSearchQuery
       where { status == FloodRiskEngine::EnrollmentExemption.statuses[target_status] }
     end
 
-    def sort_depending_on_status(status)
-      direction = (status.to_sym == :pending) ? :asc : :desc
-      order { enrollment.submitted_at.send(direction) }
+    def sort
+      order { [enrollment.submitted_at.asc, enrollment.created_at.asc] }
+    end
+
+    class SearchTerm
+      attr_reader :q
+      def initialize(q = "")
+        @q = q.strip
+      end
+
+      def without_whitespace
+        @without_whitespace ||= @q.delete(" ")
+      end
+
+      def fuzzy
+        @fuzzy_q ||= "%#{@q}%"
+      end
+
+      def fuzzy_without_whitespace
+        @fuzzy_without_whitespace ||= "%#{without_whitespace}%"
+      end
     end
   end
 end

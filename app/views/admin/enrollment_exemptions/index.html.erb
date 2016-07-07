@@ -62,10 +62,11 @@
         <thead>
           <tr>
             <th class="state"><%= t(".table_headings.state") %></th>
-            <th class="reference_number"><%= t(".table_headings.reference_number") %></th>
             <th class="submitted-at"><%= t(".table_headings.submitted_at") %></th>
+            <th class="reference_number"><%= t(".table_headings.reference_number") %></th>
             <th class="code"><%= t(".table_headings.code") %></th>
             <th class="organisation_name"><%= t(".table_headings.organisation_name") %></th>
+            <th class="organisation_address hidden-md"><%= t(".table_headings.organisation_address") %></th>
             <th class=""></th>
             <th class="actions"></th>
           </tr>
@@ -74,10 +75,11 @@
           <% enrollment_exemptions.each_enrollment_exemption do |ee| %>
             <tr>
               <td><%= ee.status_tag_without_popup %></td>
+              <td><%= ee.submitted_at || ee.created_at %></td>
               <td><%= ee.reference_number %></td>
-              <td><%= ee.submitted_at %></td>
               <td><%= ee.code %></td>
               <td><%= ee.organisation_name %></td>
+              <td class="hidden-md"><%= ee.organisation_address %></td>
               <td></td>
               <td><%= link_to(t(".show"), [:admin, ee], class: 'btn btn-primary') %></td>
           </tr>
