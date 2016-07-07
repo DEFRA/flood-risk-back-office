@@ -3,11 +3,11 @@
 <% end %>
 
 <%= content_for(:heading) do %>
-  We’ve registered your exemption
+  We’ve registered your flood risk activity exemption
 <% end %>
 
 <p class="panel">
-  Your reference is: <%= @presenter.reference_number %>
+  Your reference is <%= @presenter.reference_number %>
 </p>
 
 <h2 class="border-top">Exemption registered:</h2>
@@ -16,25 +16,39 @@
   at grid reference <%= @presenter.grid_reference %>.
 </p>
 
-<h2 class="border-top">Things you need to do before you start work</h2>
+<h2 class="border-top">Before you start work</h2>
+
+<h3>Check you can meet the exemption conditions</h3>
+<p>
+  You should re-check you can meet the description and
+  conditions of your exemption in the
+  <a href="https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities">flood risk exemptions guidance</a>.
+</p>
 
 <% if @presenter.asset? %>
-<p>
-  When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet the conditions.
-</p>
+<h3>Check for flood defences, river control works or culverts</h3>
+  <p>
+    When we checked the location we found flood defences, river control works or culverts within 1 kilometre. Some of the conditions of your exemption refer to these. You should check to make sure you can meet these conditions.
+  </p>
 <% end %>
-
-<p>
-  You should re-check the conditions of your exemptions in the <a href="https://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities">flood risk activities guidance</a>
-</p>
-
 
 <% if @presenter.salmonid? %>
-<h2 class="border-top">The location is on a river where salmon are protected</h2>
-<p>
-  This means you cannot do any work between 1 October and 14 March each year. If you need to work during this period, you must apply for a permit.
-</p>
+  <h3>Check work dates because it’s a salmonid river</h3>
+  <p>
+    The location is on a river where salmonid fish are protected.
+    This means you cannot do any work under this exemption between 1 October and
+    14 March each year. If you need to work during this period, you must
+    <a href="https://www.gov.uk/guidance/flood-risk-activities-environmental-permits">apply for a permit</a>.
+  </p>
 <% end %>
+
+<h3>Other things to check</h3>
+<p>
+  You should check if there are protected species in the area.
+  If there are, you must make sure your activity doesn’t harm them.
+  You may also need planning permission and to get the landowner's permission
+  to enter the land.
+</p>
 
 <h2 class="border-top">Date of registration</h2>
 
@@ -43,7 +57,9 @@
 </p>
 
 <p>
-  Exemptions don’t expire except for dredging FRA23 which expires 3 years after the registration date and dredging FRA24 which expires 1 year after the registration date.
+  Exemptions don’t expire except for dredging FRA23 which expires 3 years
+  after the registration date and dredging FRA24 which expires 1 year
+  after the registration date.
 </p>
 
 <h2 class="border-top">Responsible for activity (the ‘operator’)</h2>
@@ -59,9 +75,11 @@
   <%=  @presenter.email_address %>
 </p>
 
-<h2 class="border-top">Your responsibilities</h2>
+<h2 class="border-top">Responsibilities of the operator</h2>
 <p>
-  The organisation or individual responsible must keep to the description and conditions for the exemption(s). We can prosecute them if they don’t do this.
+  The organisation or individual responsible must keep to the description
+  and conditions for the exemption. We can prosecute them if they don’t
+  do this.
 </p>
 
 <h2 class="border-top">If your activity changes</h2>
@@ -69,5 +87,7 @@
   If the location changes, you will need to register a new exemption.
 </p>
 <p>
-  If the activity or the way you are doing the work changes, you will need to check if it is still exempt.
+  If the activity or the way you are doing the work changes, you will
+  need to check if it is still exempt. If it is not, you will have to
+  <a href="https://www.gov.uk/guidance/flood-risk-activities-environmental-permits">apply for a permit</a>.
 </p>
