@@ -1,0 +1,20 @@
+@import 'govuk-elements';
+
+.form-group {
+  float: none;
+}
+
+.error-summary > h1 {
+  color: inherit;
+  padding: 0;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.text, .panel {
+  max-width: 30em;
+}
+
+.flood_risk_engine div.form-group.error > label {
+  color: inherit;
+}
