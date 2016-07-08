@@ -30,6 +30,8 @@ class PrepareEnrollmentExportReport
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def generate_row(enrollment_exemption)
+    @current_enrollment_exemption = enrollment_exemption
+
     enrollment = enrollment_exemption.enrollment
 
     [
@@ -38,11 +40,11 @@ class PrepareEnrollmentExportReport
       ldate(enrollment_exemption.accept_reject_decision_at, format: :long),
       enrollment_exemption.accept_reject_decision_user.try(:email),
       enrollment_export.created_by,
-      # TODO: - Using '' so Excel treats it as string not number - can prob remove once proper stringified Ref in place
-      "'#{enrollment.reference_number}'",
+      enrollment.reference_number,
       enrollment.exemption_location.grid_reference,
       enrollment.exemption_location.description,
-      "",
+      "#{enrollment.exemption_location.easting},#{enrollment.exemption_location.northing}",
+      "", # TODO: EA Area
       enrollment.exemptions.first.code,
       enrollment.organisation.org_type,
       enrollment.correspondence_contact.full_name,
@@ -50,12 +52,13 @@ class PrepareEnrollmentExportReport
       enrollment.correspondence_contact.telephone_number,
       enrollment.organisation.name,
       comments(enrollment_exemption),
-      "#{url_prefix}/#{enrollment.id}"
+      linkage_url
     ]
   rescue => x
-    Rails.logger.error("Failed to report on Enrollment #{enrollment.id} (#{enrollment.reference_number})")
-    Rails.logger.error(x.inspect)
-    []
+    Rails.logger.error(
+      "Reporting failed due to issue #{x.message} with Enrollment #{enrollment.id} (#{enrollment.reference_number})"
+    )
+    raise
   end
 
   def self.column_names
@@ -68,6 +71,7 @@ class PrepareEnrollmentExportReport
       "Exemption reference number",
       "NGR",
       "Site description",
+      "Easting and Northing",
       "EA area",
       "Exemption code and description",   # 10.
       "Business type",
@@ -79,15 +83,18 @@ class PrepareEnrollmentExportReport
       "Link to registration details"
     ]
   end
-  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   private
 
   attr_writer :csv_data
-  attr_reader :records, :enrollment_export
+  attr_reader :current_enrollment_exemption, :records, :enrollment_export
+
+  def linkage_url
+    "#{url_prefix}/#{current_enrollment_exemption.id}"
+  end
 
   def url_prefix
-    Rails.application.routes.url_helpers.admin_enrollments_url
+    Rails.application.routes.url_helpers.admin_enrollment_exemptions_url
   end
 
   def full_path
