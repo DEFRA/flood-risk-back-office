@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     {
       ip: request.remote_ip,
       user_agent: request.user_agent,
-      whodunnit_email: current_user.email
+      whodunnit_email: current_user.try(:email)
     }
   end
 

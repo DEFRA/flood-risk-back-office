@@ -1,7 +1,6 @@
 
 class User < ActiveRecord::Base
   attr_accessor :assigned_role
-  has_paper_trail
 
   rolify role_cname: "Role",
          role_join_table_name: "users_roles",
