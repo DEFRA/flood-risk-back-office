@@ -64,13 +64,13 @@
 
 <h2 class="border-top">Responsible for activity (the ‘operator’)</h2>
 <p>
-  <%= @presenter.full_name %><br />
-  <%= @presenter.primary_address %>
+  <%= @presenter.organisation_name %><br />
+  <%= render "shared/address" , presenter: @presenter %>
 </p>
 
 <h2 class="border-top">Who we will contact</h2>
 <p>
-  <%=  @presenter.name %>, <%=  @presenter.position %><br />
+  <%=  @presenter.full_name %>, <%=  @presenter.position %><br />
   Tel: <%=  @presenter.telephone_number %><br />
   <%=  @presenter.email_address %>
 </p>
