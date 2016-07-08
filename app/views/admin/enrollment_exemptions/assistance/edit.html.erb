@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <h1><%= set_page_title t('.title', reference: @presenter.reference_number) %></h1>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading panel-title">
+            </div>
+
+            <div class="panel-body">
+              <%= simple_form_for @form,
+                                  url: admin_enrollment_assistance_path(enrollment_id: @presenter),
+                                  html: { method: :patch } do |f| %>
+                <div class="table-responsive">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <%= f.input :mode,
+                                      collection: @presenter.possible_assistance_modes,
+                                      required: true,
+                                      include_blank: false %>
+                        </td>
+                        <td>
+                          <% maxlength = 500 %>
+                          <%= f.input :comment,
+                                      as: :text,
+                                      required: false,
+                                      hint: t('.char_limit', count: maxlength),
+                                      input_html: { maxlength: maxlength, rows: 5 } %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <%= f.button :submit, t(".submit"), class: 'btn btn-primary' %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% # Using a custom back link as there is only one place we could have come from -
+         # the admin enrollment show page
+      %>
+      <%= link_to glyphicon_tag(:triangle_left, text: t("back_office_core.cancel")),
+                  [:admin, @presenter],
+                  class: "ignore-visited" %>
+    </div>
+  </div>
+</div>
