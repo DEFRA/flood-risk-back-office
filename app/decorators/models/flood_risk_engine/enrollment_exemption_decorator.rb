@@ -1,4 +1,6 @@
 FloodRiskEngine::EnrollmentExemption.class_eval do
+  has_paper_trail meta: { status: :status }
+
   belongs_to :accept_reject_decision_user, class_name: "User"
 
   # rubocop:disable Style/Lambda
