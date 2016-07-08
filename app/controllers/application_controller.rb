@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
 
   before_action :set_paper_trail_whodunnit
 
+  def info_for_paper_trail
+    {
+      ip: request.remote_ip,
+      user_agent: request.user_agent,
+      whodunnit_email: current_user.try(:email)
+    }
+  end
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
