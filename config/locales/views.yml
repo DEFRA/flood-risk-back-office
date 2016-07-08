@@ -1,6 +1,7 @@
 en:
   layouts:
     navbar:
+      enrollments_dropdown: Registrations
       new_enrollment: New
       export_enrollments: Export
       search_enrollments: Search
@@ -96,4 +97,3 @@ en:
   #     new:
   #       subtitle1: For your security this account may be locked if you or someone else repeatedly tries to sign in using incorrect details.
   #       subtitle2: Enter the email address used to register this account. You'll then receive account unlocking guidance by email.
-

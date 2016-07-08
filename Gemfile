@@ -7,6 +7,7 @@ gem "uglifier", "~> 3.0"      # Use Uglifier as compressor for JavaScript assets
 gem "coffee-rails", "~> 4.1"  # Use CoffeeScript for .coffee assets and views
 gem "govuk_admin_template", "~> 4.1"
 gem "govuk_frontend_toolkit", "~> 4.9" # Added this to get Tabs for Choosing Exemption working
+gem "govuk_elements_rails", "~> 1.2.1"
 gem "simple_form", "~> 3.2"
 gem "pundit", "~> 1.1"
 gem "devise", "~> 3.5"
