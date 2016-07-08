@@ -40,7 +40,7 @@ class ExemptionEmailPresenter
 
   # For partnerships there's no organisation name
   def organisation_name
-    return if organisation.try(&:partnership?)
+    return if partnership?
 
     organisation.name
   end
