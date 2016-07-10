@@ -10,7 +10,14 @@ class EnrollmentExemptionPresenter < Presenter
   include ActionView::Helpers::TextHelper # for simple_format
 
   attr_reader :enrollment_exemption
-  delegate :comments, :exemption, :enrollment, :expires_at, :id, :status, :to_model, to: :enrollment_exemption
+  delegate :comments,
+           :exemption,
+           :enrollment,
+           :expires_at,
+           :id,
+           :status,
+           :to_model,
+           to: :enrollment_exemption
 
   delegate :organisation,
            :exemption_location,
@@ -55,6 +62,10 @@ class EnrollmentExemptionPresenter < Presenter
     enrollment.submitted_at && I18n.l(enrollment.submitted_at, format: :long)
   end
 
+  def created_at
+    enrollment.created_at && I18n.l(enrollment.created_at, format: :long)
+  end
+
   def self.policy_class
     FloodRiskEngine::EnrollmentExemptionPolicy
   end
@@ -68,14 +79,30 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def organisation_name
-    if organisation.try!(:name).present?
-      organisation.name
-    else
-      blank_value
-    end
+    return blank_value unless organisation
+    organisation.partnership? ? first_partner_name : organisation.name
+  end
+
+  def organisation_address
+    address ? present_address(address) : blank_value
   end
 
   private
+
+  def address
+    return unless organisation
+    organisation.partnership? ? first_partner_address : organisation.primary_address
+  end
+
+  def first_partner_name
+    partner = organisation.partners.first
+    partner && partner.contact.full_name
+  end
+
+  def first_partner_address
+    partner = organisation.partners.first
+    partner && partner.address
+  end
 
   def present_address(address)
     FloodRiskEngine::AddressPresenter.new(address).to_single_line
