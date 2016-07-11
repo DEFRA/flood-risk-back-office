@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <h1><%= t(".title", reference: form.reference_number) %></h1>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading panel-title">
+              <%= t(".panel_title") %>
+            </div>
+
+            <div class="panel-body">
+              <%= simple_form_for(
+                    form,
+                    url: admin_enrollment_path(form.enrollment),
+                    html: { method: :put }
+                  ) do |f| %>
+
+                <%= f.input :organisation_name %>
+                <%= f.input :correspondence_contact_full_name %>
+                <%= f.input :correspondence_contact_position %>
+                <%= f.input :correspondence_contact_telephone_number %>
+                <%= f.input :correspondence_contact_email_address %>
+                <%= f.input :secondary_contact_email_address %>
+
+                <%= f.button :submit, class: 'btn btn-danger' %>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")),
+                  [:admin, form.enrollment_exemption],
+                  class: "ignore-visited" %>
+    </div>
+  </div>
+</div>

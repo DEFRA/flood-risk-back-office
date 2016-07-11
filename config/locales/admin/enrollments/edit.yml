@@ -1,0 +1,18 @@
+---
+en:
+  admin:
+    enrollments:
+      edit:
+        title: Edit Details of registration %{reference}
+        panel_title: Enrollment Details
+      errors:
+        organisation_name:
+          blank: Please enter an organisation name
+        correspondence_contact_full_name:
+          blank: Please enter a contact name
+        correspondence_contact_telephone_number:
+          blank: Please enter a contact telephone number
+          invalid: Please enter a valid telephone number
+        email_address:
+          blank: Please enter a contact %{contact} email address
+          format: Please enter a valid %{contact} email address
