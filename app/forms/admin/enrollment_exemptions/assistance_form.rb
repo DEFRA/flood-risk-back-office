@@ -1,33 +1,43 @@
 module Admin
   module EnrollmentExemptions
     class AssistanceForm < Admin::BaseForm
-      attribute :mode, String
-      attribute :comment, String
 
-      validates :mode, presence: true
-      validates :comment, length: { maximum: 500 }
-
-      def mode=(value)
-        @mode = ActiveSupport::StringInquirer.new(value || "")
+      def initialize(enrollment_exemption, user)
+        @user = user
+        super(enrollment_exemption)
       end
 
-      def save(enrollment_exemption, user)
-        valid? && persist(enrollment_exemption, user)
+      def params_key
+        :admin_enrollment_exemptions_assistance
+      end
+
+      def self.locale_key
+        "admin.enrollment_exemptions.assistance"
+      end
+
+      include Admin::EnrollmentExemptions::Concerns::CommentableForm
+
+      alias enrollment_exemption model
+
+      property :assistance_mode
+
+      validates :assistance_mode, presence: { strict: true }
+
+      validates :assistance_mode, inclusion: {
+        allow_blank: true,
+        in: FloodRiskEngine::EnrollmentExemption.assistance_modes.keys
+      }
+
+      def save
+        super
+        mode = self.class.t("modes.#{assistance_mode}")
+        create_comment("Updated Assistance Mode to #{mode}", user)
       end
 
       private
 
-      def persist(enrollment_exemption, user)
-        # We save mode as nil if 'unassisted' was selected in a dropdown
-        enrollment_exemption.assistance_mode = set_mode_to_nil? ? nil : mode
-        enrollment_exemption.assistance_comment = comment
-        enrollment_exemption.updated_by = user.email
-        enrollment_exemption.save
-      end
+      attr_reader :user
 
-      def set_mode_to_nil?
-        mode.unassisted? || mode.blank?
-      end
     end
   end
 end

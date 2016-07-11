@@ -1,64 +1,49 @@
 module Admin
   module EnrollmentExemptions
     class AssistanceController < ApplicationController
+
+      before_action :load_and_authorise_enrollment_exemption
+
       def edit
-        load_and_authorise_enrollment_exemption
-        attrs = { mode: @enrollment_exemption.assistance_mode, comment: @enrollment_exemption.assistance_comment}
-        @form = AssistanceForm.new(attrs)
+        render :edit, locals: { form: form_factory, presenter: presenter_factory }
       end
 
       def update
-        load_and_authorise_enrollment_exemption
-        @form = AssistanceForm.new(assistance_params)
-        if @form.save(@enrollment_exemption, current_user)
-          notice = FlashUpdateI18nNotice.new(@enrollment_exemption.assistance_mode)
-          redirect_to [:admin, @enrollment_exemption], notice: t(notice.key, notice.options)
+        form = form_factory
+        if form.validate(params) && form.save
+
+          display_mode = t("admin.enrollment_exemptions.assistance.modes.#{assistance_mode}")
+
+          redirect_to [:admin, enrollment_exemption], notice: t(".notice", mode: display_mode)
         else
-          render :edit
+          render :edit, locals: { form: form, presenter: presenter_factory }
         end
       end
 
       private
 
+      def enrollment_exemption
+        @enrollment_exemption ||= FloodRiskEngine::EnrollmentExemption.find(params[:enrollment_exemption_id])
+      end
+      delegate :assistance_mode, :enrollment, to: :enrollment_exemption
+
+      def form_factory
+        AssistanceForm.new(enrollment_exemption, current_user)
+      end
+
+      def presenter_factory
+        EnrollmentExemptionPresenter.new(enrollment_exemption, view_context)
+      end
+
       def load_and_authorise_enrollment_exemption
-        @enrollment_exemption = FloodRiskEngine::EnrollmentExemption.find(params[:id])
-        authorize enrollment_exemption, :edit?
+        enrollment_exemption
+        authorize enrollment_exemption, :assistance?
       end
 
       def assistance_params
-        params
-          .require(:admin_enrollment_assistance_form)
-          .permit(:mode, :comment)
+        params.require(:admin_enrollment_assistance_form).permit(:mode, :comment)
       end
 
-      #
-      # Helper class for building a flash notice when details are updated.
-      #
-      class FlashUpdateI18nNotice
-        attr_reader :assistance_mode
-
-        def initialize(assistance_mode)
-          @assistance_mode = assistance_mode
-        end
-
-        def key
-          unassisted? ? ".notice" : ".notice_with_mode"
-        end
-
-        def options
-          { mode: assistance_mode_text } unless unassisted?
-        end
-
-        private
-
-        def assistance_mode_text
-          I18n.t(".#{assistance_mode}", scope: "assistance_modes")
-        end
-
-        def unassisted?
-          assistance_mode.blank? || assistance_mode == "unassisted"
-        end
-      end
     end
   end
 end

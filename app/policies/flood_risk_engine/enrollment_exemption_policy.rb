@@ -49,6 +49,10 @@ module FloodRiskEngine
     alias expired? deregister?
     alias resend_approval_email? deregister?
 
+    def assistance?
+      user_can_edit? && enrollment.submitted?
+    end
+
     def user_can_edit_and_status?(*statuses)
       return false unless enrollment.submitted?
       return false unless user_can_edit?

@@ -42,6 +42,14 @@ class EnrollmentExemptionPresenter < Presenter
     Hash[*registration_and_operator_headers.zip(registration_and_operator_values).flatten]
   end
 
+  def assistance_modes
+    locale = "admin.enrollment_exemptions.assistance.modes"
+
+    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
+      [t("#{locale}.#{s}"), s]
+    end
+  end
+
   def status
     enrollment_exemption.status.humanize
   end
