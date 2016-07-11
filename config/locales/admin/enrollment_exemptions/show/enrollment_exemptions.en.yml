@@ -12,6 +12,7 @@ en:
           deregister: Deregister
           reject: Reject
           approve: Approve
+          resend_approval_email: Reissue approval email
         main:
           title: Registration and operator
           registration_and_operator:

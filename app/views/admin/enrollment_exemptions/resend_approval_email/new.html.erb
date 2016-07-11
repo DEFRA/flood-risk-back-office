@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <h1><%= t(".title", reference: form.reference_number) %></h1>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading panel-title">
+              <%= t(".panel_title") %>
+            </div>
+
+            <div class="panel-body">
+              <h2>
+                <%= glyphicon_tag("info-sign") %>
+                <%= t(".sub_heading") %>
+              </h2>
+
+              <%= simple_form_for form,
+                                  url: admin_enrollment_exemption_resend_approval_email_index_path(form.enrollment_exemption),
+                                  html: { method: :post } do |f| %>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                          <th class="col-md-2"><%= t(".table_headings.operator") %></th>
+                          <td class="col-md-10"><%= form.organisation_name %></td>
+                        </tr>
+                        <tr>
+                          <th class="col-md-2"><%= t(".table_headings.exemption_code") %></th>
+                          <td class="col-md-10"><%= form.exemption.code %></td>
+                        </tr>
+                        <tr>
+                          <th class="col-md-2"><%= t(".table_headings.asset_found") %></th>
+                          <td class="col-md-10"><%= t(".#{form.asset_found}") %></td>
+                        </tr>
+                        <tr>
+                          <th class="col-md-2"><%= t(".table_headings.salmonid_river_found") %></th>
+                          <td class="col-md-10"><%= t(".#{form.salmonid_river_found}") %></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="col-md-12">
+                  <%= f.input :comment, as: :text %>
+                  <span>
+                    <%= t(".comment_clarification", max: form.comment_max_length) %>
+                  </span>
+                </div>
+
+                <%= f.button :submit, t(".submit"), class: 'btn btn-primary' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")),
+                  [:admin, form.enrollment_exemption],
+                  class: "ignore-visited" %>
+    </div>
+  </div>
+</div>

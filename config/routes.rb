@@ -40,6 +40,12 @@ Rails.application.routes.draw do
         controller: "enrollment_exemptions/approve"
       )
       resources(
+        :resend_approval_email,
+        only: [:new, :create],
+        path_names: {new: ""},
+        controller: "enrollment_exemptions/resend_approval_email"
+      )
+      resources(
         :change_status,
         only: [:new, :create],
         path_names: {new: ""},
