@@ -13,7 +13,14 @@
   content_for :app_title, t('.title')
   page_title t('.title')
 
-  render 'layouts/navbar'
+  # The FloodRiskEngine ApplicationController does not inherit from the host
+  # ApplicationController and therefore helpers (like glyphicon_tag) are not
+  # available. Workaround for now is simply to not render views containing
+  # helpers such as this navbar.
+  #
+  # A better solution is outlined here:
+  # https://github.com/EnvironmentAgency/flood-risk-engine/issues/200
+  render 'layouts/navbar' unless controller.class.ancestors.include?(FloodRiskEngine::ApplicationController)
 -%>
 
 <%- content_for :content do %>

@@ -15,6 +15,11 @@
   max-width: 30em;
 }
 
-.flood_risk_engine div.form-group.error > label {
-  color: inherit;
+.flood_risk_engine {
+  input[type="email"] {
+    width: 30em;
+  }
+  div.form-group.error > label {
+    color: inherit;
+  }
 }
