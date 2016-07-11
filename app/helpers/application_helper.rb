@@ -33,16 +33,20 @@ module ApplicationHelper
   def full_devise_error_messages!
     return "" if resource.errors.empty?
 
-    messages = resource.errors.messages.map do |_k, msgs|
-      content_tag(:li, msgs.to_sentence) if msgs.any?
-    end
+    messages = resource.errors.messages.values.compact.map(&:to_sentence)
 
-    html = <<-HTML.strip_heredoc
-      <div class="#{SimpleForm.error_notification_class}">
-        <ul>#{messages.reject(&:blank?).join}</ul>
-      </div>
-      HTML
+    render "shared/validation_errors", messages: messages
+  end
 
-    html
+  def bootstrap_alert_class_for(flash_type)
+    {
+      not_authorized: "alert-danger",
+      success: "alert-success",
+      error: "alert-danger",
+      alert: "alert-danger",
+      notice: "alert-success",
+      info: "alert-info",
+      warn: "warning"
+    }[flash_type.to_sym] || flash_type.to_s
   end
 end
