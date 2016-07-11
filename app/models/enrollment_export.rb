@@ -54,20 +54,20 @@ class EnrollmentExport < ActiveRecord::Base
   end
 
   def date_for_filename(date)
+    return unless date
     date.strftime("%Y%m%d")
   end
 
   def populate_file_name
-    from = date_for_filename(from_date) if from_date
-    to = date_for_filename(to_date) if to_date
+    from = date_for_filename(from_date)
+    to = date_for_filename(to_date)
 
-    prefix = [from, to].reject(&:blank?).join("-")
-    ext = "csv"
+    prefix = [date_field_scope, from, to].reject(&:blank?).join("-")
     count = 0
 
     self.file_name =
       loop do
-        name = [prefix, (count == 0 ? "" : count.to_s), ext].reject(&:blank?).join(".")
+        name = [prefix, (count == 0 ? "" : count.to_s), "csv"].reject(&:blank?).join(".")
 
         break name unless self.class.exists?(file_name: name)
         count += 1
