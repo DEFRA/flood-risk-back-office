@@ -26,7 +26,7 @@
                           <td class="col-md-10"><%= form.exemption.code %></td>
                         </tr>
                         <tr>
-                          <th class="col-md-2"><%= t(".table_headings.status") %></th>
+                          <th class="col-md-2"><%= t(".table_headings.deregister_reason") %></th>
                           <td class="col-md-10">
                             <%= form.status_tag %>
                           </td>
@@ -36,9 +36,9 @@
                 </div>
                 <div class="col-md-4">
                   <%= f.input(
-                      :status,
-                      collection: form.statuses,
-                      include_blank: t(".status_selection_blank")
+                      :deregister_reason,
+                      collection: form.reasons.collect{|r| [r.to_s.humanize, r]},
+                      include_blank: t(".deregister_reason_selection_blank")
                     )
                   %>
                 </div>

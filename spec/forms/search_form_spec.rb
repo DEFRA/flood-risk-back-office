@@ -9,7 +9,7 @@ RSpec.describe SearchForm, type: :form do
 
   describe "#status_filter_options" do
     it "returns the correct statuses" do
-      expected_options = %w(building pending being_processed approved rejected expired withdrawn)
+      expected_options = FloodRiskEngine::EnrollmentExemption.statuses.keys
       expect(subject.status_filter_options).to eq(expected_options)
     end
   end

@@ -7,26 +7,24 @@ module Admin
         :admin_enrollment_exemptions_deregister
       end
 
-      def self.statuses
-        @statuses ||= FloodRiskEngine::EnrollmentExemption.statuses.slice(
-          "expired", "withdrawn"
-        ).keys
+      def self.reasons
+        @reasons ||= FloodRiskEngine::EnrollmentExemption.deregister_reasons.keys
       end
 
       def self.locale_key
         "admin.enrollment_exemptions.deregister.new"
       end
 
-      property :status
+      property :deregister_reason
       property :comment, virtual: true
 
       validates(
-        :status,
+        :deregister_reason,
         inclusion: {
-          in: statuses.collect(&:to_s),
+          in: reasons.collect(&:to_s),
           message: t(
             ".errors.status.inclusion",
-            statuses: statuses.join(
+            reasons: reasons.join(
               t(".errors.status.last_word_connector")
             )
           )
@@ -43,16 +41,17 @@ module Admin
       )
 
       def save
+        model.status = :deregistered
         create_comment
         super
       end
 
-      def statuses
-        self.class.statuses
+      def reasons
+        self.class.reasons
       end
 
       def create_comment
-        super "Deregistered exemption with #{status}"
+        super "Deregistered exemption with #{deregister_reason.to_s.humanize}"
       end
 
     end
