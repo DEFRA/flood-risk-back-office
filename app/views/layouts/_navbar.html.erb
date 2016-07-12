@@ -8,12 +8,10 @@
         <span class="caret"></span></a>
 
       <ul class="dropdown-menu">
-        <% if policy(EnrollmentSearch).index? %>
-          <li>
-            <%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
-                        main_app.root_path %>
-           </li>
-        <% end %>
+        <li>
+          <%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
+                      main_app.root_path %>
+         </li>
 
         <% if policy(FloodRiskEngine::Enrollment).create? %>
           <li><%= link_to glyphicon_tag('plus', text: t('.new_enrollment')),

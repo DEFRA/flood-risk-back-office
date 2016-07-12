@@ -27,8 +27,6 @@ gem "dotenv-rails" # , groups: [:development, :test]
 
 gem "pg", "~> 0.18.4"           # Use Postgres for the DB
 gem "quiet_assets", "~> 1.1.0"  # Mutes assets pipeline log messages
-gem "textacular", "~> 3.2.2"    # Postgres free-text search utilities
-gem "scenic", "~> 1.3.0" # Versioned database views for Rails
 # instances with optional information about types - used in Presenters
 gem "validates_timeliness", "~> 4.0.2" # date/time validator for Rails and ActiveModel
 gem "rolify", "~> 5.0"
@@ -55,7 +53,6 @@ group :development do
   gem "rack-mini-profiler"
   gem "web-console", "~> 3.0" # Access an IRB console on exception pages or by using <%= console %> in views
   gem "foreman", require: false # for use with Procfile.development
-  #  gem "mail_safe", "~> 0.3" # provides a safety net while developing an application that uses ActionMailer
   gem "awesome_print", require: false
 end
 
@@ -73,7 +70,7 @@ group :test do
   gem "email_spec"
 end
 
-group :production, :qa, :staging do
+group :production do
   gem "whenever" # for creating chron jobs
   gem "rails_12factor", "~> 0.0" # Useful if deploying to Heroku
   gem "airbrake", "~> 5.0" # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
