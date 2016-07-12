@@ -10,7 +10,8 @@ class EnrollmentExemptionPresenter < Presenter
   include ActionView::Helpers::TextHelper # for simple_format
 
   attr_reader :enrollment_exemption
-  delegate :comments,
+  delegate :assistance_mode,
+           :comments,
            :exemption,
            :enrollment,
            :expires_at,
@@ -40,6 +41,21 @@ class EnrollmentExemptionPresenter < Presenter
 
   def registration_and_operator_data
     Hash[*registration_and_operator_headers.zip(registration_and_operator_values).flatten]
+  end
+
+  def assistance_modes_map
+    EnrollmentExemptionPresenter.assistance_modes_map
+  end
+
+  def self.assistance_mode_text(mode)
+    @assistance_mode_text_locale ||= "admin.enrollment_exemptions.assistance.modes"
+    I18n.t("#{@assistance_mode_text_locale}.#{mode}")
+  end
+
+  def self.assistance_modes_map
+    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
+      [assistance_mode_text(s), s]
+    end
   end
 
   def status
@@ -134,7 +150,7 @@ class EnrollmentExemptionPresenter < Presenter
         present_address(primary_address),
         reference_number,
         submitted_at,
-        "" # TODO:  Assisted digital
+        self.class.assistance_mode_text(assistance_mode)
       ]
     end
   end

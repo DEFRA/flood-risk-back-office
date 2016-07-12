@@ -65,7 +65,7 @@ module Flood
 
       # 10000 ~ 15 mins
       begin
-        # FloodRiskEngine::Enrollment.paper_trail_off!
+        FloodRiskEngine::Enrollment.paper_trail_off!
         # FloodRiskEngine::Address.paper_trail_off!
 
         if(options["use_transaction"])
@@ -86,7 +86,7 @@ module Flood
         reindex_after_insert(conn)
 
       ensure
-        #FloodRiskEngine::Enrollment.paper_trail_on!
+        FloodRiskEngine::Enrollment.paper_trail_on!
         #FloodRiskEngine::Address.paper_trail_on!
       end
     end

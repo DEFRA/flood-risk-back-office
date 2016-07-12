@@ -51,6 +51,9 @@ Rails.application.routes.draw do
         path_names: {new: ""},
         controller: "enrollment_exemptions/change_status"
       )
+
+      resource :assistance, only: [:edit, :update], controller: "enrollment_exemptions/assistance"
+
     end
     resources :enrollment_exports, only: [:index, :create, :show]
   end

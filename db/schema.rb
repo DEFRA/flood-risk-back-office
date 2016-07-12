@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160711111533) do
+ActiveRecord::Schema.define(version: 201607111338823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(version: 20160711111533) do
     t.integer  "accept_reject_decision_user_id"
     t.datetime "accept_reject_decision_at"
     t.integer  "deregister_reason"
+    t.integer  "assistance_mode",                default: 0
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["deregister_reason"], name: "by_deregister_reason", using: :btree

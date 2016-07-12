@@ -2,7 +2,7 @@
   <div class="panel-heading panel-title">
     <%= glyphicon_tag :cog, text: t('.title') %>
   </div>
-  <div class="panel-body">
+  <div id="actions" class="panel-body">
     <% if policy(presenter.enrollment).edit? %>
       <p>
         <%= link_to t(".edit"),
@@ -71,7 +71,7 @@
     <% if policy(presenter.enrollment).change_assisted_digital? %>
       <p>
         <%= link_to t(".change_ad"),
-                    edit_admin_enrollment_path(presenter.enrollment),
+                    edit_admin_enrollment_exemption_assistance_path(presenter.enrollment_exemption),
                     id: "change-assisted-digital",
                     class: "btn btn-info",
                     role: 'button' %>
