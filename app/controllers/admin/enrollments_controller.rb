@@ -13,7 +13,7 @@ module Admin
     def update
       load_and_authorise_enrollment
       if form.validate(params) && form.save
-        redirect_to [:admin, form.enrollment_exemption]
+        redirect_to admin_enrollment_exemption_path(form.enrollment_exemption)
       else
         render :edit
       end

@@ -18,6 +18,12 @@ require "email_spec"
 require "email_spec/rspec"
 require "support/database_cleaner"
 
+# Set faker so it uses British formats for postcodes, telephone numbers etc.
+# Moved to spec_helper as not always taking effect before factories are built,
+# so moved to earlier in load path.
+require "faker"
+Faker::Config.locale = "en-GB"
+
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
