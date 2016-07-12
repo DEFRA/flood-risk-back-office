@@ -10,8 +10,10 @@ class EnrollmentExemptionPresenter < Presenter
   include ActionView::Helpers::TextHelper # for simple_format
 
   attr_reader :enrollment_exemption
+
   delegate :assistance_mode,
            :comments,
+           :deregister_reason,
            :exemption,
            :enrollment,
            :expires_at,
@@ -51,15 +53,20 @@ class EnrollmentExemptionPresenter < Presenter
     EnrollmentExemptionPresenter.assistance_modes_map
   end
 
+  def self.assistance_modes_map
+    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
+      [assistance_mode_text(s), s]
+    end
+  end
+
   def self.assistance_mode_text(mode)
     @assistance_mode_text_locale ||= "admin.enrollment_exemptions.assistance.modes"
     I18n.t("#{@assistance_mode_text_locale}.#{mode}")
   end
 
-  def self.assistance_modes_map
-    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
-      [assistance_mode_text(s), s]
-    end
+  def self.deregister_reason_text(deregister_reason)
+    return "" unless deregister_reason
+    deregister_reason.humanize
   end
 
   def status

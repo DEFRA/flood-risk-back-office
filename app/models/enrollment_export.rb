@@ -32,11 +32,11 @@ class EnrollmentExport < ActiveRecord::Base
   end
 
   def writer
-    @writer ||= WriteEnrollmentExportReport.new(self, csv_data)
+    @writer ||= WriteEnrollmentExportReport.new(self)
   end
 
   def run
-    writer.call
+    writer.run(csv_data)
 
     WriteToAwsS3.run(self) unless ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
 

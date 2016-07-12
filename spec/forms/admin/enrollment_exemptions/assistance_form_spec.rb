@@ -18,7 +18,7 @@ module Admin
         {
           form.params_key => {
             comment: comment,
-            assistance_mode: "fully"
+            assistance_mode: "fully_assisted"
           }
         }
       end
@@ -61,7 +61,7 @@ module Admin
           end
 
           it "should save the status approved to the enrollment_exemption" do
-            expect(enrollment_exemption.reload.fully?).to eq true
+            expect(enrollment_exemption.reload.fully_assisted?).to eq true
           end
         end
       end

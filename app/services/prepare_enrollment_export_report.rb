@@ -32,7 +32,8 @@ class PrepareEnrollmentExportReport
   def generate_row(enrollment_exemption)
     @current_enrollment_exemption = enrollment_exemption
 
-    enrollment = enrollment_exemption.enrollment
+    enrollment         = enrollment_exemption.enrollment
+    exemption_location = enrollment.exemption_location
 
     [
       enrollment_exemption.status,
@@ -40,11 +41,13 @@ class PrepareEnrollmentExportReport
       ldate(enrollment_exemption.accept_reject_decision_at, format: :long),
       enrollment_exemption.accept_reject_decision_user.try(:email),
       enrollment_export.created_by,
+      EnrollmentExemptionPresenter.deregister_reason_text(enrollment_exemption.deregister_reason),
+      EnrollmentExemptionPresenter.assistance_mode_text(enrollment_exemption.assistance_mode),
       enrollment.reference_number,
-      enrollment.exemption_location.grid_reference,
-      enrollment.exemption_location.description,
-      "#{enrollment.exemption_location.easting},#{enrollment.exemption_location.northing}",
-      "", # TODO: EA Area
+      exemption_location.grid_reference,
+      exemption_location.description,
+      "#{exemption_location.easting},#{exemption_location.northing}",
+      exemption_location.water_boundary_area_long_name,
       enrollment.exemptions.first.code,
       enrollment.organisation.org_type,
       enrollment.correspondence_contact.full_name,
@@ -63,17 +66,19 @@ class PrepareEnrollmentExportReport
 
   def self.column_names
     [
-      "Registration status",              # 1.
+      "Registration status",
       "Submitted date",
       "Decision date",
       "Decision maker",
       "Created by",
+      "Deregister reason",
+      "Assistance mode",
       "Exemption reference number",
       "NGR",
-      "Site description",
+      "Site description",  # 10
       "Easting and Northing",
       "EA area",
-      "Exemption code and description",   # 10.
+      "Exemption code and description",
       "Business type",
       "Contact name",
       "Contact email",
