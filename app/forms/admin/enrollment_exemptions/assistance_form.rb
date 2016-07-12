@@ -18,6 +18,7 @@ module Admin
       include Admin::EnrollmentExemptions::Concerns::CommentableForm
 
       alias enrollment_exemption model
+      delegate :enrollment, to: :enrollment_exemption
 
       property :assistance_mode
 
@@ -30,6 +31,9 @@ module Admin
 
       def save
         super
+
+        enrollment.update(updated_by_user_id: user.id) unless assistance_mode == "unassisted"
+
         mode = self.class.t("modes.#{assistance_mode}")
         create_comment("Updated Assistance Mode to #{mode}", user)
       end

@@ -1,9 +1,8 @@
 
 class WriteEnrollmentExportReport
 
-  def initialize(enrollment_export, csv_data)
+  def initialize(enrollment_export)
     @enrollment_export = enrollment_export
-    @csv_data = csv_data
   end
 
   def column_names
@@ -22,8 +21,10 @@ class WriteEnrollmentExportReport
     enrollment_export.update!(state: :failed, failure_text: message)
   end
 
-  def call
+  def run(csv_data)
     started
+
+    @csv_data = csv_data
 
     CSV.open(enrollment_export.full_path, "wb", force_quotes: true) do |csv|
       csv << column_names

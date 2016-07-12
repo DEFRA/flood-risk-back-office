@@ -10,8 +10,10 @@ class EnrollmentExemptionPresenter < Presenter
   include ActionView::Helpers::TextHelper # for simple_format
 
   attr_reader :enrollment_exemption
+
   delegate :assistance_mode,
            :comments,
+           :deregister_reason,
            :exemption,
            :enrollment,
            :expires_at,
@@ -51,15 +53,30 @@ class EnrollmentExemptionPresenter < Presenter
     EnrollmentExemptionPresenter.assistance_modes_map
   end
 
+  def self.assistance_modes_map
+    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
+      [assistance_mode_text(s), s]
+    end
+  end
+
   def self.assistance_mode_text(mode)
     @assistance_mode_text_locale ||= "admin.enrollment_exemptions.assistance.modes"
     I18n.t("#{@assistance_mode_text_locale}.#{mode}")
   end
 
-  def self.assistance_modes_map
-    FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
-      [assistance_mode_text(s), s]
-    end
+  def assistance_mode_text
+    self.class.assistance_mode_text(assistance_mode)
+  end
+
+  def assistance_user
+    # Used in FO/engine which has no devise User hence an ID not a User association
+    # only filled in for Assisted enrollments so nil perfectly acceptable
+    User.find_by(id: enrollment.updated_by_user_id).try(:email)
+  end
+
+  def deregister_reason_text
+    return "" unless enrollment_exemption.deregister_reason
+    enrollment_exemption.deregister_reason.humanize
   end
 
   def status
@@ -154,7 +171,7 @@ class EnrollmentExemptionPresenter < Presenter
         present_address(primary_address),
         reference_number,
         submitted_at,
-        self.class.assistance_mode_text(assistance_mode)
+        assistance_mode_text
       ]
     end
   end
