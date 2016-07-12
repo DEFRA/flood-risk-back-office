@@ -141,6 +141,18 @@ class EnrollmentExemptionPresenter < Presenter
     FloodRiskEngine::AddressPresenter.new(address).to_single_line
   end
 
+  def editable_present_address(address)
+    with_edit_button(
+      text: present_address(address),
+      url: edit_enrollment_address_path(enrollment, address)
+    ) if address
+  end
+
+  def with_edit_button(text:, url:)
+    link = link_to(I18n.t(".edit"), url, class: "btn btn-xs btn-primary")
+    sanitize [text, link].join(" "), tags: ["a"]
+  end
+
   def partnership?
     organisation.try(&:partnership?)
   end
@@ -162,7 +174,7 @@ class EnrollmentExemptionPresenter < Presenter
       [
         name,
         org_type.to_s.humanize.capitalize,
-        present_address(primary_address),
+        editable_present_address(primary_address),
         reference_number,
         submitted_at,
         assistance_mode_text
