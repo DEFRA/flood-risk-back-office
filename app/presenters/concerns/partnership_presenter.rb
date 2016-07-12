@@ -29,7 +29,7 @@ module PartnershipPresenter
       address_label = I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.partnership.address")
 
       node = content_tag(:p, "#{name_label} #{partner.full_name}") +
-             content_tag(:p, "#{address_label} #{present_address(partner.address)}")
+             content_tag(:p, sanitize("#{address_label} #{address_for(partner)}", tag: ["a"]))
 
       values << node
     end
@@ -41,6 +41,16 @@ module PartnershipPresenter
     ]
 
     values
+  end
+
+  def address_for(partner)
+    # Checking that `link_to` is available is a hack to allow this spec to work:
+    #   spec/presenters/enrollment_exemption_presenter_spec.rb
+    if respond_to?(:link_to)
+      editable_present_address(partner.address)
+    else
+      present_address(partner.address)
+    end
   end
 
 end
