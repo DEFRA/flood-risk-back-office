@@ -33,6 +33,10 @@ class EnrollmentExemptionPresenter < Presenter
 
   delegate :description, :grid_reference, to: :exemption_location, allow_nil: true
 
+  delegate :water_boundary_area, to: :exemption_location, allow_nil: true
+
+  delegate :long_name, to: :water_boundary_area, prefix: true, allow_nil: true
+
   def initialize(enrollment_exemption, view_context)
     @enrollment_exemption = enrollment_exemption
     @enrollment = enrollment_exemption.enrollment
@@ -170,7 +174,7 @@ class EnrollmentExemptionPresenter < Presenter
       grid_reference,
       description,
       friendly_expiry_date(enrollment_exemption.expires_at),
-      "" # TODO: EA ARea
+      water_boundary_area_long_name
     ]
   end
 
