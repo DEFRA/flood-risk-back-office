@@ -2,7 +2,7 @@
   <div class="panel-heading panel-title">
     <%= glyphicon_tag :cog, text: t('.title') %>
   </div>
-  <div class="panel-body">
+  <div id="actions" class="panel-body">
     <% if policy(presenter.enrollment).edit? %>
       <p>
         <%= link_to t(".edit"),

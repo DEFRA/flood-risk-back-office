@@ -12,7 +12,7 @@ module Admin
         form = form_factory
         if form.validate(params) && form.save
 
-          display_mode = t("admin.enrollment_exemptions.assistance.modes.#{assistance_mode}")
+          display_mode = EnrollmentExemptionPresenter.assistance_mode_text(assistance_mode)
 
           redirect_to [:admin, enrollment_exemption], notice: t(".notice", mode: display_mode)
         else

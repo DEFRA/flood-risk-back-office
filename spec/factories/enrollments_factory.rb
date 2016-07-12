@@ -23,7 +23,7 @@ FactoryGirl.define do
 
       object.submit
 
-      object.enrollment_exemptions.build(
+      object.enrollment_exemptions.create(
         exemption: exemption,
         status: %w(pending being_processed).sample,
         valid_from: (Date.current - rand(7).days)
