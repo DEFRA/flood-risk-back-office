@@ -12,7 +12,7 @@ en:
             blank: Enter a comment
         modes:
           unassisted: Unassisted
-          full: Fully assisted
+          fully: Fully assisted
           partial: Partially assisted
           admin_intervention: Admin Intervention
         update:

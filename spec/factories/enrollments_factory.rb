@@ -19,7 +19,9 @@ FactoryGirl.define do
 
   factory :confirmed_random_pending, parent: :base_back_office_enrollment do
     after(:create) do |object|
-      exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first || create(:exemption)
+      create(:exemption) if FloodRiskEngine::Exemption.count == 0
+
+      exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first
 
       object.submit
 
