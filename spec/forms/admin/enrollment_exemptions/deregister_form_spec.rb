@@ -8,12 +8,14 @@ module Admin
       let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
       let(:form) { described_class.new(enrollment_exemption, user) }
       let(:comment) { Faker::Lorem.paragraph }
-      let(:status) { described_class.statuses.last }
+      let(:status) { :deregistered }
+      let(:deregister_reasons) { enrollment_exemption.class.deregister_reasons.keys }
+      let(:deregister_reason) { deregister_reasons.last }
       let(:params) do
         {
           form.params_key => {
             comment: comment,
-            status: status
+            deregister_reason: deregister_reason
           }
         }
       end
@@ -24,8 +26,8 @@ module Admin
         end
 
         it "should validate status" do
-          expect(form).to validate_inclusion_of(:status)
-            .in_array(form.statuses)
+          expect(form).to validate_inclusion_of(:deregister_reason)
+            .in_array(form.reasons)
         end
 
         it "should validate comment presence" do
@@ -50,32 +52,26 @@ module Admin
           expect { form.save }.to change { FloodRiskEngine::Comment.count }.by(1)
         end
 
-        it "should save the comment to a Comment model" do
-          form.save
-          expect(FloodRiskEngine::Comment.last.content).to eq(comment)
-        end
+        context "after save" do
+          before { form.save }
 
-        it "should save the status to the enrollment_exemption" do
-          form.save
-          expect(enrollment_exemption.reload.status).to eq(status)
+          it "should save the comment to a Comment model" do
+            expect(FloodRiskEngine::Comment.last.content).to eq(comment)
+          end
+
+          it "should save the status to the enrollment_exemption" do
+            expect(enrollment_exemption.reload.status).to eq(status.to_s)
+          end
+
+          it "should save the deregister reason" do
+            expect(enrollment_exemption.reload.deregister_reason).to eq(deregister_reason)
+          end
         end
       end
 
-      describe "#statuses" do
-        it "should return an array of valid statuses" do
-          expect(described_class.statuses.sort).to eq(%w(expired withdrawn))
-        end
-
-        context "a status is removed" do
-          let(:fake_class) { double(statuses: { "expired" => 1 }) }
-          before do
-            stub_const("FloodRiskEngine::EnrollmentExemption", fake_class)
-            described_class.remove_instance_variable(:@statuses)
-          end
-
-          it "should return an array of valid statuses" do
-            expect(described_class.statuses.sort).to eq(["expired"])
-          end
+      describe "#reasons" do
+        it "should return an array of valid deregister reasons" do
+          expect(described_class.reasons).to eq(deregister_reasons)
         end
       end
     end

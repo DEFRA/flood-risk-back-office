@@ -8,7 +8,8 @@ module StatusTag
     approved: "success",
     rejected: "danger",
     expired:  "danger",
-    withdrawn: "danger"
+    withdrawn: "danger",
+    deregistered: "info"
   }.freeze
 
   def status_tag_css_class(status)

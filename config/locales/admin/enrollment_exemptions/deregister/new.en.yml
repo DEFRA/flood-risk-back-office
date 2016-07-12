@@ -8,15 +8,15 @@ en:
           table_headings:
             operator: Operator
             exemption_code: Exemption number
-            status: Status
-          status_selection_blank: Select a reason
+            deregister_reason: Deregister reason
+          deregister_reason_selection_blank: Select a reason
           comment_clarification: "%{max} character limit"
           submit: Deregister registration
           errors:
             comment:
               too_long: The comment must be no longer than %{max} characters
               blank: Enter a comment
-            status:
-              inclusion: "The status must be one of: %{statuses}"
+            deregister_reason:
+              inclusion: "The status must be one of: %{reasons}"
               last_word_connector: " or "
 
