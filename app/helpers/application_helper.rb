@@ -37,16 +37,4 @@ module ApplicationHelper
 
     render "shared/validation_errors", messages: messages
   end
-
-  def bootstrap_alert_class_for(flash_type)
-    {
-      not_authorized: "alert-danger",
-      success: "alert-success",
-      error: "alert-danger",
-      alert: "alert-danger",
-      notice: "alert-success",
-      info: "alert-info",
-      warn: "warning"
-    }[flash_type.to_sym] || flash_type.to_s
-  end
 end
