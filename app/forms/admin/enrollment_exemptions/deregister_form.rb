@@ -23,9 +23,9 @@ module Admin
         inclusion: {
           in: reasons.collect(&:to_s),
           message: t(
-            ".errors.status.inclusion",
-            reasons: reasons.join(
-              t(".errors.status.last_word_connector")
+            ".errors.deregister_reason.inclusion",
+            reasons: reasons.collect { |r| "'#{r.to_s.humanize}'" }.join(
+              t(".errors.deregister_reason.last_word_connector")
             )
           )
         }
