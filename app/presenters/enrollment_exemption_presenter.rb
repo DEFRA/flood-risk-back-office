@@ -111,6 +111,12 @@ class EnrollmentExemptionPresenter < Presenter
     6
   end
 
+  # For partnerships we sometimes need ALL names not just the first
+  def organisation_details
+    return blank_value unless organisation
+    organisation.partnership? ? partner_names : organisation.name
+  end
+
   def organisation_name
     return blank_value unless organisation
     organisation.partnership? ? first_partner_name : organisation.name
@@ -125,6 +131,10 @@ class EnrollmentExemptionPresenter < Presenter
   def address
     return unless organisation
     organisation.partnership? ? first_partner_address : organisation.primary_address
+  end
+
+  def partner_names
+    organisation.partners.collect { |p| p.contact.full_name }.join(",")
   end
 
   def first_partner_name

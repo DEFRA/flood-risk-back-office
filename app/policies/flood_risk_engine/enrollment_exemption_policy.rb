@@ -35,6 +35,7 @@ module FloodRiskEngine
     def process?
       user_can_edit_and_status? :pending
     end
+    alias in_progress? process?
 
     def withdraw?
       user_can_edit_and_status? :pending, :being_processed

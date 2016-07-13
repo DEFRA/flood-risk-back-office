@@ -7,8 +7,7 @@ module Admin
       include ActiveModel::Validations
       include Reform::Form::ActiveModel
 
-      require_relative "concerns/form_status_tag"
-      include FormStatusTag
+      include Concerns::FormStatusTag
 
       def self.t(locale, args = {})
         I18n.t locale, args.merge(scope: locale_key)

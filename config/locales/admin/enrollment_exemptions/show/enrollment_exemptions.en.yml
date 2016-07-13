@@ -11,6 +11,7 @@ en:
           change_ad: Change AD classification
           withdraw: Withdraw
           deregister: Deregister
+          in_progress: In Progress
           reject: Reject
           approve: Approve
           resend_approval_email: Reissue approval email
