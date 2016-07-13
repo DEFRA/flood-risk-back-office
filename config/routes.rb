@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { :invitations => 'invitations' }
 
-  mount FloodRiskEngine::Engine => "/fre"
+  authenticate :user do
+    mount FloodRiskEngine::Engine => "/fre"
+  end
 
   authenticated :user do
     root to: 'admin/enrollment_exemptions#index'
