@@ -58,6 +58,19 @@ Rails.application.routes.draw do
     resources :enrollment_exports, only: [:index, :create, :show]
   end
 
+  resources :enrollments, only: [:new, :create] do
+    resources(
+      :addresses,
+      only: [:edit, :update],
+      controller: "enrollments/addresses"
+    )
+    resources(
+      :partners,
+      only: [:edit, :update],
+      controller: "enrollments/partners"
+    )
+  end
+
   # We use high voltage to manage static content including error-pages
   #get "/pages/*id" => 'high_voltage/pages#show', as: :page, format: false
 

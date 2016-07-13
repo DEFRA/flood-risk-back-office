@@ -107,7 +107,6 @@ ActiveRecord::Schema.define(version: 20160712104613) do
     t.string   "token"
     t.integer  "secondary_contact_id"
     t.datetime "submitted_at"
-    t.integer  "updated_by_user_id"
     t.integer  "reference_number_id"
     t.integer  "updated_by_user_id"
   end

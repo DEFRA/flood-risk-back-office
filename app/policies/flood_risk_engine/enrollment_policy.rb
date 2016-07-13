@@ -12,13 +12,6 @@ module FloodRiskEngine
       create? && record.present? && !record.complete?
     end
 
-    # Determines visibility of for instance the Resume button on the enrollment's page
-    # in the back office. It is only possible to resume an enrollment if it is not
-    # complete - otherwise the Edit button applies i.e. Resume is hidden and Edit is visible,
-    def resume?
-      create? && record.present? # TODO: && !record.submitted?
-    end
-
     def show?
       super && user.present? && user.has_any_role?
     end
