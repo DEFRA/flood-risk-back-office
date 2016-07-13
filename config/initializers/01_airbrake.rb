@@ -53,7 +53,40 @@ if Rails.env.production?
     # Airbrake. By default, all "password" attributes will have their contents
     # replaced.
     # https://github.com/airbrake/airbrake-ruby#blacklist_keys
-    c.blacklist_keys = [/password/i]
+    c.blacklist_keys = [
+      # Catch-all "safety net" regexes.
+      /password/i,
+      /postcode/i,
+
+      :name,
+      :address,
+      :address_list,
+      :premises,
+      :street_address,
+      :locality,
+      :city,
+
+      :full_name,
+      :position,
+      :org_type,
+
+      :name,
+      :telephone_number,
+
+      :email,
+      :email_address,
+      :email_address_confirmation,
+
+      :reset_password_token,
+      :confirmation_token,
+      :unconfirmed_email,
+      :unlock_token,
+
+      # Other things we'll filter beacuse we're super-diligent.
+      :_csrf_token,
+      :session_id,
+      :authenticity_token
+    ]
   end
 
   # If Airbrake doesn't send any expected exceptions, we suggest to uncomment the
