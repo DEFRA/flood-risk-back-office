@@ -1,6 +1,10 @@
 module Enrollments
   class PartnerForm < AddressForm
 
+    def self.t(locale, args = {})
+      I18n.t "enrollments.partners#{locale}", args
+    end
+
     attr_reader :partner, :contact
 
     def initialize(enrollment, partner)

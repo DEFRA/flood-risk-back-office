@@ -5,16 +5,9 @@ en:
       edit:
         heading: Update the address?
       form:
-        postcode:
-          prefix: Postcode
-          separator: ":"
-          change_button:
-            text: Change %{hidden}
-            hidden: postcode
+        postcode: Postcode
         legend: Enter address
-        premises:
-          label: Building name or number
-          hint: For example, a business premises name or house number
+        premises: Building name or number
         street_address: Address line 1
         locality: Address line 2 (optional)
         city: Town or city
@@ -24,7 +17,7 @@ en:
           blank: Enter a building name or number
           too_long: The building name or number must be no longer than %{max} characters
         street_address:
-          blank: Enter an address line 1
+          blank: Enter a street address
           too_long: Address line 1 must be no longer than %{max} characters
         locality:
           too_long: Address line 2 must be no longer than %{max} characters

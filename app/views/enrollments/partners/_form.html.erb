@@ -1,7 +1,7 @@
-<%= f.input :full_name %>
-<%= f.input :premises %>
-<%= f.input :street_address  %>
-<%= f.input :locality %>
-<%= f.input :city %>
-<%= f.input :postcode %>
+<%= f.input :full_name, label: form.t(".form.full_name") %>
+<%= f.input :premises, label: form.t(".form.premises") %>
+<%= f.input :street_address, label: form.t(".form.street_address")  %>
+<%= f.input :locality, label: form.t(".form.locality") %>
+<%= f.input :city, label: form.t(".form.city") %>
+<%= f.input :postcode, label: form.t(".form.postcode") %>
 <%= f.submit t("global.continue"), class: "button"  %>

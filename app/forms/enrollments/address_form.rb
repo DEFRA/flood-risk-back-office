@@ -1,5 +1,12 @@
 module Enrollments
   class AddressForm < FloodRiskEngine::Enrollments::AddressForm
+    def self.t(locale, args = {})
+      I18n.t "enrollments.addresses#{locale}", args
+    end
+
+    def t(*args)
+      self.class.t(*args)
+    end
 
     property :postcode
 
