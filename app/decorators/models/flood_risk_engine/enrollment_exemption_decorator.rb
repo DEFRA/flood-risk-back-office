@@ -1,13 +1,6 @@
 FloodRiskEngine::EnrollmentExemption.class_eval do
   belongs_to :accept_reject_decision_user, class_name: "User"
 
-  enum assistance_mode: {
-    unassisted: 0,
-    full: 1,
-    partial: 2,
-    admin_intervention: 3
-  }
-
   # rubocop:disable Style/Lambda
 
   scope :by_submitted_at, ->(start_date, end_date) {

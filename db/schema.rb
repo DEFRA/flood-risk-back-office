@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160712104613) do
     t.datetime "submitted_at"
     t.integer  "updated_by_user_id"
     t.integer  "reference_number_id"
+    t.integer  "updated_by_user_id"
   end
 
   add_index "flood_risk_engine_enrollments", ["applicant_contact_id"], name: "index_flood_risk_engine_enrollments_on_applicant_contact_id", using: :btree
@@ -299,7 +300,6 @@ ActiveRecord::Schema.define(version: 20160712104613) do
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "applicant_contact_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_contacts", column: "secondary_contact_id"
   add_foreign_key "flood_risk_engine_enrollments", "flood_risk_engine_organisations", column: "organisation_id"
-  add_foreign_key "flood_risk_engine_enrollments", "users", column: "updated_by_user_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_enrollments", column: "enrollment_id"
   add_foreign_key "flood_risk_engine_enrollments_exemptions", "flood_risk_engine_exemptions", column: "exemption_id"
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"

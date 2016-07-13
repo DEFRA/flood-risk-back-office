@@ -37,7 +37,7 @@ module PartnershipPresenter
     values += [
       reference_number,
       submitted_at,
-      "" # TODO:  Assisted digital
+      assistance_mode_text
     ]
 
     values
