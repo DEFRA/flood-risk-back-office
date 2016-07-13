@@ -39,11 +39,6 @@ en:
               - Grid reference
               - Site description
               - EA admin area
-            header_row1: Exemption number
-            header_row2: Exemption
-            header_row3: Grid reference
-            header_row4: Site description
-            header_row5: EA admin area
             status: Status
             status_label:
               approved: Approved
