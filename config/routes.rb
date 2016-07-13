@@ -64,6 +64,11 @@ Rails.application.routes.draw do
       only: [:edit, :update],
       controller: "enrollments/addresses"
     )
+    resources(
+      :partners,
+      only: [:edit, :update],
+      controller: "enrollments/partners"
+    )
   end
 
   # We use high voltage to manage static content including error-pages

@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe EnrollmentExemptionPresenter, type: :presenter do
   subject do
-    described_class.new(enrollment_exemption, nil)
+    template = double("template")
+    allow(template).to receive(:link_to) { "" }
+    described_class.new(enrollment_exemption, template)
   end
 
   context "headers" do

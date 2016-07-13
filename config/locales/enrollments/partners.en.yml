@@ -1,9 +1,9 @@
 ---
 en:
   enrollments:
-    addresses:
+    partners:
       edit:
-        heading: Update the address?
+        heading: Update the partners address
       form:
         postcode:
           prefix: Postcode

@@ -1,4 +1,3 @@
-
 <%= render(
       "flood_risk_engine/enrollments/header",
       title_text: t(".heading")
@@ -9,7 +8,7 @@
 <%= simple_form_for(
       form,
       as: :address,
-      url: enrollment_address_path(form.enrollment, form.address),
+      url: enrollment_partner_path(form.enrollment, form.partner),
       class: "form"
     ) do |f| %>
 

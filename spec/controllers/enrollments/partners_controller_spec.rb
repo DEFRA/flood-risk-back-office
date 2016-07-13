@@ -1,9 +1,12 @@
 require "rails_helper"
 
 module Enrollments
-  RSpec.describe AddressesController, type: :controller do
+  RSpec.describe PartnersController, type: :controller do
     include Devise::TestHelpers
 
+    let(:partner) { FactoryGirl.create(:partner_with_contact) }
+    let(:contact) { partner.contact }
+    let(:address) { contact.address }
     let(:enrollment) do
       FactoryGirl.create(
         :enrollment,
@@ -17,7 +20,6 @@ module Enrollments
         enrollment: enrollment
       )
     end
-    let(:address) { FactoryGirl.create(:simple_address) }
     let(:user) do
       user = FactoryGirl.create(:user)
       user.add_role :system
@@ -31,7 +33,7 @@ module Enrollments
 
     describe "edit action" do
       before do
-        get :edit, id: address, enrollment_id: enrollment
+        get :edit, id: partner, enrollment_id: enrollment
       end
 
       it "should render page sucessfully" do
@@ -41,14 +43,14 @@ module Enrollments
 
     describe "update action" do
       before do
-        expect_any_instance_of(AddressForm).to(
+        expect_any_instance_of(PartnerForm).to(
           receive(:validate).and_return(validation_result)
         )
         put(
           :update,
-          id: address,
+          id: partner,
           enrollment_id: enrollment,
-          flood_risk_engine_address: address.attributes
+          flood_risk_engine_partner: address.attributes
         )
       end
 
