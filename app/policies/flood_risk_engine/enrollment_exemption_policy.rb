@@ -20,7 +20,6 @@ module FloodRiskEngine
   # Converted to text with http://www.tablesgenerator.com/text_tables (via LibreOffice Calc)
   #
   # Statuses are: building, pending, being_processed, approved, rejected, expired, withdrawn
-  # Note that deregistering leads to a status of either expired or withdrawn
   class EnrollmentExemptionPolicy < ApplicationPolicy
     alias enrollment_exemption record
     delegate :enrollment, to: :record
