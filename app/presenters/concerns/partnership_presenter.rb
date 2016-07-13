@@ -23,36 +23,40 @@ module PartnershipPresenter
 
   def partnership_values(organisation)
     values = [organisation.org_type.humanize.capitalize]
-
-    organisation.partners.each do |partner|
-      name_label = I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.partnership.name")
-      address_label = I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.partnership.address")
-
-      node = content_tag(:p, "#{name_label} #{partner.full_name}") +
-             content_tag(:p, "#{address_label} #{present_address(partner.address)}") +
-             content_tag(:p, edit_link(partner))
-
-      values << node
-    end
-
-    values += [
+    values << organisation.partners.collect { |partner| node_for(partner) }
+    values << [
       reference_number,
       submitted_at,
       assistance_mode_text
     ]
-
-    values
+    values.flatten!
   end
 
   def edit_link(partner)
-    sanitize(
-      link_to(
-        I18n.t(".edit"),
-        edit_enrollment_partner_path(enrollment, partner),
-        class: "btn btn-xs btn-primary"
-      ),
-      tag: ["a"]
+    link_to(
+      I18n.t(".edit"),
+      edit_enrollment_partner_path(enrollment, partner),
+      class: "btn btn-xs btn-primary"
     )
+  end
+
+  def node_for(partner)
+    sanitize(
+      [
+        content_tag(:p, "#{name_label} #{partner.full_name}"),
+        content_tag(:p, "#{address_label} #{present_address(partner.address)}"),
+        content_tag(:p, edit_link(partner))
+      ].join,
+      tag: %w(a p)
+    )
+  end
+
+  def name_label
+    I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.partnership.name")
+  end
+
+  def address_label
+    I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.partnership.address")
   end
 
 end
