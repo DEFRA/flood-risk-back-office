@@ -24,20 +24,21 @@ en:
               header_row2: Reference number
               header_row3: Submitted on
               header_row4: Assisted digital
-            header_row1: Operator name
-            header_row2: Business type
-            header_row3: Address
-            header_row4: Reference number
-            header_row5: Submitted on
-            header_row6: Assisted digital
+            headers:
+              - Operator name
+              - Business type
+              - Address
+              - Reference number
+              - Submitted on
+              - Assisted digital
           exemption_panel:
             title: Exemption details
-            header_row1: Exemption number
-            header_row2: Exemption
-            header_row3: Grid reference
-            header_row4: Site description
-            header_row5: Expiry date
-            header_row6: EA admin area
+            headers:
+              - Exemption number
+              - Exemption
+              - Grid reference
+              - Site description
+              - EA admin area
             status: Status
             status_label:
               approved: Approved
