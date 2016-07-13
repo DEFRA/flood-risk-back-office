@@ -24,6 +24,17 @@
       </p>
     <% end %>
 
+    <% if policy(presenter.enrollment_exemption).withdraw? %>
+      <p>
+        <%= link_to t(".withdraw"),
+                    new_admin_enrollment_exemption_withdraw_path(
+                      presenter.enrollment_exemption
+                    ),
+                    class: "btn btn-danger",
+                    role: 'button' %>
+      </p>
+    <% end %>
+
     <% if policy(presenter.enrollment_exemption).deregister? %>
       <p>
         <%= link_to t(".deregister"),

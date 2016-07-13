@@ -9,6 +9,7 @@ en:
           edit: Edit registration
           change_status: Change status
           change_ad: Change AD classification
+          withdraw: Withdraw
           deregister: Deregister
           reject: Reject
           approve: Approve
