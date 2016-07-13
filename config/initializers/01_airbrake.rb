@@ -82,6 +82,10 @@ if Rails.env.production?
       :unconfirmed_email,
       :unlock_token,
 
+      :q,
+      :search,
+      :comment,
+
       # Other things we'll filter beacuse we're super-diligent.
       :_csrf_token,
       :session_id,
