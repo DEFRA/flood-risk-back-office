@@ -111,10 +111,6 @@ class EnrollmentExemptionPresenter < Presenter
     6
   end
 
-  def self.exemption_panel_max_row
-    6
-  end
-
   def organisation_name
     return blank_value unless organisation
     organisation.partnership? ? first_partner_name : organisation.name
@@ -155,9 +151,7 @@ class EnrollmentExemptionPresenter < Presenter
     if partnership?
       partnership_headers(organisation)
     else
-      @headers ||= (1..EnrollmentExemptionPresenter.reg_panel_max_row).collect do |i|
-        t("admin.enrollment_exemptions.show.main.registration_and_operator.header_row#{i}")
-      end
+      @headers ||= I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.headers").to_a
     end
   end
 
@@ -179,9 +173,7 @@ class EnrollmentExemptionPresenter < Presenter
   # Same regardless of Organisation Type
 
   def exemption_headers
-    @exemption_headers ||= (1..EnrollmentExemptionPresenter.exemption_panel_max_row).collect do |i|
-      t("admin.enrollment_exemptions.show.main.exemption_panel.header_row#{i}")
-    end
+    @exemption_headers ||= I18n.t("admin.enrollment_exemptions.show.main.exemption_panel.headers").to_a
   end
 
   def exemption_values
@@ -190,7 +182,6 @@ class EnrollmentExemptionPresenter < Presenter
       summary,
       grid_reference,
       description,
-      friendly_expiry_date(enrollment_exemption.expires_at),
       water_boundary_area_long_name
     ]
   end
