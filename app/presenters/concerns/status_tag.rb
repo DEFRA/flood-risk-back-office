@@ -9,7 +9,7 @@ module StatusTag
     rejected: "danger",
     expired:  "danger",
     withdrawn: "danger",
-    deregistered: "info"
+    deregistered: "warning"
   }.freeze
 
   def status_tag_css_class(status)

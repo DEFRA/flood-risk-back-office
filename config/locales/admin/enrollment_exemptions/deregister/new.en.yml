@@ -19,4 +19,3 @@ en:
             deregister_reason:
               inclusion: "The status must be one of: %{reasons}"
               last_word_connector: " or "
-
