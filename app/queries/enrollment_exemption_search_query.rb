@@ -16,7 +16,6 @@ class EnrollmentExemptionSearchQuery
     @relation = FloodRiskEngine::EnrollmentExemption
                 .joins { enrollment.organisation.outer.primary_address.outer }
                 .joins { enrollment.correspondence_contact.outer }
-                .joins { enrollment.organisation.outer.partners.outer.contact.outer }
                 .joins { enrollment.exemption_location.outer }
                 .joins { enrollment.reference_number.outer }
                 .joins { exemption }
@@ -50,7 +49,7 @@ class EnrollmentExemptionSearchQuery
           (replace(enrollment.organisation.primary_address.postcode, " ", "") =~ query.fuzzy_without_whitespace) |
           (replace(enrollment.exemption_location.grid_reference, " ", "") == query.without_whitespace) |
           (enrollment.organisation.name =~ query.fuzzy) |
-          (enrollment.organisation.partners.contact.full_name =~ query.fuzzy) |
+          (enrollment.organisation.searchable_content =~ query.fuzzy) |
           (enrollment.reference_number.number =~ query.fuzzy) |
           (enrollment.correspondence_contact.full_name =~ query.fuzzy)
       end
