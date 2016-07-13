@@ -50,7 +50,7 @@ class PrepareEnrollmentExportReport
       presenter.grid_reference,
       presenter.description,
       "#{exemption_location.easting},#{exemption_location.northing}",
-      presenter.water_boundary_area_long_name,
+      presenter.water_management_area_long_name,
       presenter.code,
       presenter.org_type,
       enrollment.correspondence_contact.full_name,
@@ -81,7 +81,7 @@ class PrepareEnrollmentExportReport
       "NGR",
       "Site description", # 10
       "Easting and Northing",
-      "EA area",
+      "Water management area",
       "Exemption code and description",
       "Business type",
       "Contact name",
