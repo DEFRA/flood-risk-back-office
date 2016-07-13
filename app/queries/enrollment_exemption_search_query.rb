@@ -47,7 +47,7 @@ class EnrollmentExemptionSearchQuery
       where do
         (exemption.code =~ query.q) |
           (replace(enrollment.organisation.primary_address.postcode, " ", "") =~ query.fuzzy_without_whitespace) |
-          (replace(enrollment.exemption_location.grid_reference, " ", "") == query.without_whitespace) |
+          (replace(enrollment.exemption_location.grid_reference, " ", "") =~ query.without_whitespace) |
           (enrollment.organisation.name =~ query.fuzzy) |
           (enrollment.organisation.searchable_content =~ query.fuzzy) |
           (enrollment.reference_number.number =~ query.fuzzy) |

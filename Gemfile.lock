@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: f2b68768900bcd9253903090081d9dd9e8df1282
+  revision: 053219753fdd1869907c593ec9a7fd1b39c83ecc
   branch: develop
   specs:
     flood_risk_engine (0.0.1)
@@ -10,7 +10,7 @@ GIT
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
       ea-address_lookup (~> 0.3.0)
-      ea-area_lookup (~> 0.1.1)
+      ea-area_lookup (~> 0.2.1)
       finite_machine (~> 0.10)
       has_secure_token (~> 1.0.0)
       high_voltage (~> 3.0)
@@ -150,7 +150,7 @@ GEM
       activesupport (>= 4.2)
       nesty (~> 1.0)
       rest-client (~> 2.0.0.rc2)
-    ea-area_lookup (0.1.2)
+    ea-area_lookup (0.2.1)
       nokogiri (~> 1.6.8)
     easy_translate (0.5.0)
       json

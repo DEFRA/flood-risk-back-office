@@ -35,9 +35,9 @@ class EnrollmentExemptionPresenter < Presenter
 
   delegate :description, :grid_reference, to: :exemption_location, allow_nil: true
 
-  delegate :water_boundary_area, to: :exemption_location, allow_nil: true
+  delegate :water_management_area, to: :exemption_location, allow_nil: true
 
-  delegate :long_name, to: :water_boundary_area, prefix: true, allow_nil: true
+  delegate :long_name, to: :water_management_area, prefix: true, allow_nil: true
 
   def initialize(enrollment_exemption, view_context)
     @enrollment_exemption = enrollment_exemption
@@ -194,7 +194,7 @@ class EnrollmentExemptionPresenter < Presenter
       summary,
       grid_reference,
       description,
-      water_boundary_area_long_name
+      water_management_area_long_name
     ]
   end
 
