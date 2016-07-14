@@ -20,13 +20,21 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="<%= heading_id %>">
                   <div class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#comment-history" href="#<%= element_id %>" aria-expanded="<%= expanded.to_s %>" aria-controls="<%= element_id %>">
+                    <a role="button"
+                       data-toggle="collapse"
+                       data-parent="#comment-history"
+                       href="#<%= element_id %>"
+                       aria-expanded="<%= expanded.to_s %>"
+                       aria-controls="<%= element_id %>">
                       <%= comment.event %>
                     </a>
                     <small class="date"><%= comment.created_at.to_s(:long) %></small>
                   </div>
                 </div>
-                <div id="<%= element_id %>" class="panel-collapse <%= " in" if expanded %> collapse" role="tabpanel" aria-labelledby="<%= heading_id %>">
+                <div id="<%= element_id %>"
+                     class="panel-collapse <%= ' in' if expanded %> collapse"
+                     role="tabpanel"
+                     aria-labelledby="<%= heading_id %>">
                   <div class="panel-body"><%= comment.content %></div>
                   <div class="panel-footer">
                     <%= comment.user.email %>
