@@ -56,6 +56,10 @@ class ApplicationPolicy
 
   private
 
+  #  system == system user
+  #  super_agent == Administrative super user
+  #  admin_agent == administrative user
+  #  data_agent == data user
   def system_user?
     user_has_role?(:system)
   end
