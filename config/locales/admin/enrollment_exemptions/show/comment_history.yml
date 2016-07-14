@@ -1,0 +1,7 @@
+---
+en:
+  admin:
+    enrollment_exemptions:
+      show:
+        comment_history:
+          title: History

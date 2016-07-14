@@ -2,8 +2,9 @@
 <div class="container-fluid" id="admin-enrollment-exemptions-show">
   <div class="row">
     <div class="col-xs-12 col-sm-9">
-      <%= render("flood_risk_engine/enrollments/header", title_text: t(".heading")) %>
+      <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
       <%= render "admin/enrollment_exemptions/show/main", form: form, presenter: presenter %>
+      <%= render "admin/enrollment_exemptions/show/comment_history", comments: presenter.comments %>
     </div>
 
     <div class="col-xs-12 col-sm-3">

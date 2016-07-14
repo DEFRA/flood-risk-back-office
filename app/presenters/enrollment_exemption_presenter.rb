@@ -224,7 +224,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   def status_tooltip_html
     return if comments.empty?
-    status_comments.collect { |c| comment_to_html(c) }.join("<hr>")
+    comment_to_html status_comments.first
   end
 
   def comment_to_html(comment)

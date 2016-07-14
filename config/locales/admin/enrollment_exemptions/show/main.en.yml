@@ -1,20 +1,8 @@
+---
 en:
   admin:
     enrollment_exemptions:
       show:
-        heading: View registration details
-        contact_header: Contact details
-        actions:
-          title: Actions
-          edit: Edit registration
-          change_status: Change status
-          change_ad: Change AD classification
-          withdraw: Withdraw
-          deregister: Deregister
-          in_progress: In Progress
-          reject: Reject
-          approve: Approve
-          resend_approval_email: Reissue approval email
         main:
           title: Registration and operator
           registration_and_operator:
@@ -50,8 +38,3 @@ en:
               pending: Pending
               expired:  Expired
               withdrawn: Withdrawn
-        correspondant:
-          title: Contact
-          position: 'Position:'
-          secondary_contact:
-            title: Alternative contact

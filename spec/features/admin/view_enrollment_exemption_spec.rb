@@ -169,4 +169,25 @@ RSpec.feature "View Enrollment Exemption Detail" do
       end
     end
   end
+
+  context("with comment history") do
+    let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
+    let(:user) { create :user }
+    let(:comment) { create :comment, user: user }
+    let(:enrollment_exemption) do
+      create(
+        :enrollment_exemption,
+        enrollment: enrollment,
+        comments: [comment]
+      )
+    end
+
+    scenario "Page has the comment content" do
+      visit admin_enrollment_exemption_path(enrollment_exemption)
+
+      within "#comment-history" do
+        expect(page).to have_text comment.event
+      end
+    end
+  end
 end
