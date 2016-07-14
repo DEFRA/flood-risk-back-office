@@ -56,7 +56,7 @@ class PrepareEnrollmentExportReport
       enrollment.correspondence_contact.full_name,
       enrollment.correspondence_contact.email_address,
       enrollment.correspondence_contact.telephone_number,
-      presenter.organisation_name,
+      presenter.organisation_details,
       comments(enrollment_exemption),
       linkage_url
     ]

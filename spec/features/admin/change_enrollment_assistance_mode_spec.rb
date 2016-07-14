@@ -31,6 +31,13 @@ RSpec.feature "Change enrollment's assistance mode" do
     expect(page).to have_select("admin_enrollment_exemptions_assistance_assistance_mode", selected: mode_text)
   end
 
+  scenario "The form displays previously set AD classification" do
+    mode_text = EnrollmentExemptionPresenter.assistance_mode_text enrollment_exemption.assistance_mode
+
+    expect(page).to have_css("h1:first", text: I18n.t(".edit.title", scope: scope))
+    expect(page).to have_select("admin_enrollment_exemptions_assistance_assistance_mode", selected: mode_text)
+  end
+
   EnrollmentExemptionPresenter.assistance_modes_map.each do |mode_text, mode_name|
     scenario "Change enrollment mode to '#{mode_text}'" do
       expect(page).to have_css("h1:first", text: I18n.t(".edit.title", scope: scope))
@@ -47,8 +54,6 @@ RSpec.feature "Change enrollment's assistance mode" do
       expect(enrollment_exemption.assistance_mode).to eq mode_name
 
       display_mode = EnrollmentExemptionPresenter.assistance_mode_text(enrollment_exemption.assistance_mode)
-
-      # redirect_to [:admin, enrollment_exemption], notice: t(".notice", mode: display_mode)
 
       msg = I18n.t(".update.notice", scope: scope, mode: display_mode)
 
