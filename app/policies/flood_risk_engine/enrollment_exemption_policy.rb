@@ -29,7 +29,7 @@ module FloodRiskEngine
     end
 
     def change_status?
-      system_user?
+      system_user? || super_agent_user?
     end
 
     def process?

@@ -53,10 +53,7 @@ module FloodRiskEngine
     private
 
     def enrollment_submitted?
-      # TODO
-      record.present? # &&
-      # record.status_active? &&
-      # record.submitted_at?
+      record.present? && record.submitted?
     end
   end
 end
