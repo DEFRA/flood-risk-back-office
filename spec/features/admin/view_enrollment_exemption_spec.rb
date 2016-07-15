@@ -1,11 +1,11 @@
 RSpec.feature "View Enrollment Exemption Detail" do
-  context("Enrollment NOT Submitted") do
-    before(:each) do
-      user = create :user
-      user.add_role :system
-      login_as user
-    end
+  background do
+    user = create :user
+    user.add_role :system
+    login_as user
+  end
 
+  context "Enrollment NOT Submitted" do
     incomplete = FactoryGirl.factories.collect(&:name).grep(/page/).tap do |a| a.delete :page_confirmation end
 
     enrollments = incomplete.collect do |f| FactoryGirl.create(f) end
@@ -35,14 +35,8 @@ RSpec.feature "View Enrollment Exemption Detail" do
     end
   end
 
-  context("COMPLETE") do
-    background do
-      user = create :user
-      user.add_role :system
-      login_as user
-    end
-
-    context("When Enrollment Submitted") do
+  context "COMPLETE" do
+    context "When Enrollment Submitted" do
       let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
       let(:enrollment_exemption) do
         enrollment.enrollment_exemptions.first.tap(&:pending!)
@@ -132,7 +126,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       end
     end
 
-    context("without secondary contact ") do
+    context "without secondary contact " do
       let(:enrollment) { create :confirmed_no_secondary_contact }
       let(:enrollment_exemption) do
         create(
@@ -151,7 +145,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       end
     end
 
-    context("when organisation is partnership") do
+    context "when organisation is partnership" do
       let(:enrollment) { create :submitted_partnership }
 
       scenario "Page has expected content for all partners" do
@@ -166,6 +160,37 @@ RSpec.feature "View Enrollment Exemption Detail" do
             expect(page).to have_text "Partner #{i + 1}"
           end
         end
+      end
+    end
+  end
+
+  context "with comment history" do
+    let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
+    let(:user) { create :user }
+    let(:comment) { create :comment, user: user }
+    let(:enrollment_exemption) do
+      create(
+        :enrollment_exemption,
+        enrollment: enrollment,
+        comments: [comment]
+      )
+    end
+
+    scenario "Page has comment content" do
+      visit admin_enrollment_exemption_path(enrollment_exemption)
+
+      within "#comment-history" do
+        expect(page).to have_text comment.event
+      end
+    end
+
+    context "unless accessed by user without sufficent rights" do
+      let(:non_system_user) { create(:user) }
+
+      scenario "Page has the no comment content" do
+        login_as non_system_user
+        visit admin_enrollment_exemption_path(enrollment_exemption)
+        expect(page).to_not have_css("#comment-history")
       end
     end
   end

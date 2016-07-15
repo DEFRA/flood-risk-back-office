@@ -23,45 +23,40 @@ Rails.application.routes.draw do
     end
     resources :enrollments, only: [:index, :show, :edit, :update, :new]
     resources :enrollment_exemptions, only: [:index, :show] do
-
-      scope path_names: { new: "" } do
+      scope only: [:new, :create], path_names: { new: "" } do
         resources(
           :deregister,
-          only: [:new, :create],
           controller: "enrollment_exemptions/deregister"
         )
         resources(
           :reject,
-          only: [:new, :create],
           controller: "enrollment_exemptions/reject"
         )
         resources(
           :approve,
-          only: [:new, :create],
           controller: "enrollment_exemptions/approve"
         )
         resources(
           :resend_approval_email,
-          only: [:new, :create],
           controller: "enrollment_exemptions/resend_approval_email"
         )
         resources(
           :change_status,
-          only: [:new, :create],
           controller: "enrollment_exemptions/change_status"
         )
         resources(
           :withdraw,
-          only: [:new, :create],
           controller: "enrollment_exemptions/withdraw"
         )
 
-        resources :in_progress, only: [:new, :create], controller: "enrollment_exemptions/in_progress"
+        resources(
+          :in_progress,
+          controller: "enrollment_exemptions/in_progress"
+        )
       end
-
       resource :assistance, only: [:edit, :update], controller: "enrollment_exemptions/assistance"
-
     end
+
     resources :enrollment_exports, only: [:index, :create, :show]
   end
 

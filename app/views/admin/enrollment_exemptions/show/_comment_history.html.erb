@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="panel panel-default">
+      <div class="panel-heading panel-title">
+        <div class="row">
+          <div class="col-xs-11">
+            <%= glyphicon_tag :comment, text: t('.title') %>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-group"
+           id="comment-history"
+           role="tablist"
+           aria-multiselectable="true">
+        <% comments.each do |comment| %>
+          <% element_id = "comment-#{comment.id}" %>
+          <% heading_id = "#{element_id}-heading" %>
+          <% expanded = comment == comments.first %>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="<%= heading_id %>">
+                  <div class="panel-title">
+                    <a role="button"
+                       data-toggle="collapse"
+                       data-parent="#comment-history"
+                       href="#<%= element_id %>"
+                       aria-expanded="<%= expanded.to_s %>"
+                       aria-controls="<%= element_id %>">
+                      <%= comment.event %>
+                    </a>
+                    <small class="date">
+                      <%= comment.created_at.to_s(:long) %>
+                    </small>
+                  </div>
+                </div>
+                <div id="<%= element_id %>"
+                     class="panel-collapse <%= ' in' if expanded %> collapse"
+                     role="tabpanel"
+                     aria-labelledby="<%= heading_id %>">
+                  <div class="panel-body"><%= comment.content %></div>
+                  <div class="panel-footer">
+                    <%= comment.user.email %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

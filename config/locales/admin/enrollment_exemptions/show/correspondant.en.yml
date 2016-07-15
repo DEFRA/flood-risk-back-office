@@ -1,0 +1,10 @@
+---
+en:
+  admin:
+    enrollment_exemptions:
+      show:
+        correspondant:
+          title: Contact
+          position: 'Position:'
+          secondary_contact:
+            title: Alternative contact
