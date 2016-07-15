@@ -1,5 +1,7 @@
 module FloodRiskEngine
   class EnrollmentPolicy < ApplicationPolicy
+    alias enrollment record
+
     def index?
       user.present? && user.has_any_role?
     end
@@ -9,7 +11,7 @@ module FloodRiskEngine
     end
 
     def show_continue_button?
-      create? && record.present? && !record.complete?
+      create? && enrollment.present? && !enrollment.complete?
     end
 
     def show?
@@ -32,14 +34,6 @@ module FloodRiskEngine
       deregister?
     end
 
-    # Whether we can edit an erollment's exemptions.
-    # This needs to live here rather than in the enrollment_exemptions policy
-    # as here we have an enrollment, but there we would have neither an instantiated
-    # enrollment_exemptions or enrollment.
-    def edit_exemptions?
-      !record.submitted?
-    end
-
     class Scope < Scope
       def resolve
         if user.try! :has_any_role?
@@ -53,7 +47,7 @@ module FloodRiskEngine
     private
 
     def enrollment_submitted?
-      record.present? && record.submitted?
+      enrollment.present? && enrollment.submitted?
     end
   end
 end

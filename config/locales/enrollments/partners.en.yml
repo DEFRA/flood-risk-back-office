@@ -14,6 +14,11 @@ en:
         city: Town or city
         submit_button: Continue
       errors:
+        full_name:
+          blank: Enter a full name
+          too_long: |-
+            Check the name you entered - it should have no more
+            than %{max} characters
         premises:
           blank: Enter a building name or number
           too_long: The building name or number must be no longer than %{max} characters

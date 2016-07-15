@@ -47,7 +47,10 @@ module FloodRiskEngine
       user_can_edit_and_status? :approved
     end
     alias expired? deregister?
-    alias resend_approval_email? deregister?
+
+    def resend_approval_email?
+      user_can_edit_or_admin_and_status? :approved
+    end
 
     def assistance?
       user_can_edit? && enrollment.submitted?
@@ -60,6 +63,12 @@ module FloodRiskEngine
     def user_can_edit_and_status?(*statuses)
       return false unless enrollment.submitted?
       return false unless user_can_edit?
+      enrollment_exemption.status_one_of?(*statuses)
+    end
+
+    def user_can_edit_or_admin_and_status?(*statuses)
+      return false unless enrollment.submitted?
+      return false unless user_can_edit? || admin_agent_user?
       enrollment_exemption.status_one_of?(*statuses)
     end
 
