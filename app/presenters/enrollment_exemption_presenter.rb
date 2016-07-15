@@ -31,7 +31,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   delegate :code, :summary, to: :exemption, allow_nil: true
 
-  delegate :name, :org_type, :partners, :primary_address, to: :organisation, allow_nil: true
+  delegate :name, :org_type, :partners, :primary_address, :registration_number, to: :organisation, allow_nil: true
 
   delegate :description, :grid_reference, to: :exemption_location, allow_nil: true
 
@@ -183,13 +183,21 @@ class EnrollmentExemptionPresenter < Presenter
     else
       [
         name,
-        org_type.to_s.humanize.capitalize,
+        organisation_type,
         editable_present_address(primary_address),
         reference_number,
         submitted_at,
         assistance_mode_text
       ]
     end
+  end
+
+  def organisation_type
+    [humanized_org_type, registration_number].select(&:present?).join(" - ")
+  end
+
+  def humanized_org_type
+    org_type.to_s.humanize.capitalize
   end
 
   # Same regardless of Organisation Type

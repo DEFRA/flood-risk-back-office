@@ -18,3 +18,5 @@ end
 
 User.has_paper_trail
 Role.has_paper_trail
+
+FloodRiskEngine::Enrollments::StepsController.before_action :set_paper_trail_whodunnit

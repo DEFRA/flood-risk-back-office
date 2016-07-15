@@ -149,7 +149,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       let(:enrollment) { create :submitted_partnership }
 
       scenario "Page has expected content for all partners" do
-        visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first.id)
+        visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first)
 
         within "#admin-enrollment-exemptions-show" do
           expect(enrollment.organisation.partners.size).to be > 0
@@ -159,6 +159,19 @@ RSpec.feature "View Enrollment Exemption Detail" do
             expect(page).to have_text p.full_name
             expect(page).to have_text "Partner #{i + 1}"
           end
+        end
+      end
+    end
+
+    context "with organisation as limited company" do
+      let(:enrollment) { create :submitted_limited_company }
+      let(:organisation) { enrollment.organisation }
+      let(:registration_number) { "WW123456" }
+      before { organisation.update_attribute :registration_number, registration_number }
+      scenario "Page has expected content for all partners" do
+        visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first)
+        within "#registration-details" do
+          expect(page).to have_text registration_number
         end
       end
     end
