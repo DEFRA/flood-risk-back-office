@@ -37,7 +37,7 @@ module Admin
 
       def load_and_authorise_enrollment_exemption
         enrollment_exemption
-        authorize enrollment_exemption, :assistance?
+        authorize enrollment_exemption, :change_assisted_digital?
       end
 
       def assistance_params
