@@ -4,7 +4,11 @@
     <div class="col-xs-12 col-sm-9">
       <%= render "flood_risk_engine/enrollments/header", title_text: t(".heading") %>
       <%= render "admin/enrollment_exemptions/show/main", form: form, presenter: presenter %>
-      <%= render "admin/enrollment_exemptions/show/comment_history", comments: presenter.comments %>
+      <%= render(
+            "admin/enrollment_exemptions/show/comment_history",
+            comments: presenter.comments
+          ) if policy(presenter.enrollment_exemption).view_comment_history?
+      %>
     </div>
 
     <div class="col-xs-12 col-sm-3">

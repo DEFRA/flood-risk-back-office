@@ -10,7 +10,10 @@
         </div>
       </div>
 
-      <div class="panel-group" id="comment-history" role="tablist" aria-multiselectable="true">
+      <div class="panel-group"
+           id="comment-history"
+           role="tablist"
+           aria-multiselectable="true">
         <% comments.each do |comment| %>
           <% element_id = "comment-#{comment.id}" %>
           <% heading_id = "#{element_id}-heading" %>
@@ -28,7 +31,9 @@
                        aria-controls="<%= element_id %>">
                       <%= comment.event %>
                     </a>
-                    <small class="date"><%= comment.created_at.to_s(:long) %></small>
+                    <small class="date">
+                      <%= comment.created_at.to_s(:long) %>
+                    </small>
                   </div>
                 </div>
                 <div id="<%= element_id %>"

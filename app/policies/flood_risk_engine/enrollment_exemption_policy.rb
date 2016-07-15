@@ -53,6 +53,10 @@ module FloodRiskEngine
       user_can_edit? && enrollment.submitted?
     end
 
+    def view_comment_history?
+      system_user? || super_agent_user?
+    end
+
     def user_can_edit_and_status?(*statuses)
       return false unless enrollment.submitted?
       return false unless user_can_edit?
