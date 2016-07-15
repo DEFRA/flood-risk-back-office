@@ -14,6 +14,7 @@ en:
       create?: 'You are not authorised to create a %{name}!'
       destroy?: 'You are not authorised to delete this %{name}!'
       change_status?: 'You are not authorised to change the status of this %{name}!'
+      change_assisted_digital?: 'You are not authorised to change assisted mode of this %{name}!'
       process?: 'You are not authorised to process this %{name}!'
       withdraw?: 'You are not authorised to withdraw this %{name}!'
       deregister?: 'You are not authorised to deregister this %{name}!'

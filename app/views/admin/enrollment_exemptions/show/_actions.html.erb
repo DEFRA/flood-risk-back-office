@@ -88,7 +88,7 @@
       </p>
     <% end %>
 
-    <% if policy(presenter.enrollment).change_assisted_digital? %>
+    <% if policy(presenter.enrollment_exemption).change_assisted_digital? %>
       <p>
         <%= link_to t(".change_ad"),
                     edit_admin_enrollment_exemption_assistance_path(presenter.enrollment_exemption),
