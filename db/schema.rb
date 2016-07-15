@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160713141801) do
+ActiveRecord::Schema.define(version: 201607111338823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 20160713141801) do
     t.boolean  "salmonid_river_found",           default: false
     t.integer  "accept_reject_decision_user_id"
     t.datetime "accept_reject_decision_at"
-    t.integer  "deregister_reason"
     t.integer  "assistance_mode",                default: 0
+    t.integer  "deregister_reason"
   end
 
   add_index "flood_risk_engine_enrollments_exemptions", ["accept_reject_decision_user_id"], name: "by_change_user", using: :btree
@@ -255,6 +255,7 @@ ActiveRecord::Schema.define(version: 20160713141801) do
     t.string   "role_names"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.string   "unique_session_id",      limit: 20
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
