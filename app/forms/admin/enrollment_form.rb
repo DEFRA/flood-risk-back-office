@@ -27,7 +27,7 @@ module Admin
       to: :enrollment
     )
 
-    delegate :name, :name=, to: :organisation, prefix: true
+    delegate :name, :name=, :org_type, to: :organisation, prefix: true
     delegate(
       :email_address, :email_address=,
       :position, :position=,
@@ -37,6 +37,10 @@ module Admin
       prefix: true
     )
 
+    def edit_name?
+      organisation_org_type.to_sym != :partnership
+    end
+
     def secondary_contact
       @secondary_contact ||= enrollment.secondary_contact || enrollment.secondary_contact.build
     end
@@ -44,7 +48,10 @@ module Admin
 
     validates(
       :organisation_name,
-      presence: { message: t(".errors.organisation_name.blank") }
+      presence: {
+        message: t(".errors.organisation_name.blank"),
+        if: :edit_name?
+      }
     )
 
     validates(

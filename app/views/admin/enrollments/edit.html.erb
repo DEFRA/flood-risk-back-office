@@ -17,7 +17,7 @@
                     html: { method: :put }
                   ) do |f| %>
 
-                <%= f.input :organisation_name %>
+                <%= f.input(:organisation_name) if form.edit_name? %>
                 <%= f.input :correspondence_contact_full_name %>
                 <%= f.input :correspondence_contact_position %>
                 <%= f.input :correspondence_contact_telephone_number %>
