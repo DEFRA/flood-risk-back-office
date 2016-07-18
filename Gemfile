@@ -16,6 +16,7 @@ gem "simple_form", "~> 3.2.1"
 gem "pundit", "~> 1.1.0"
 gem "devise", "~> 3.5.10"
 gem "devise_invitable", "~> 1.6.0"
+gem "devise_security_extension", "~> 0.10.0" # Allows limiting multiple logins to the same account
 gem "aws-sdk-resources", "~> 2.3.9" # Amazon S3 API access (e.g. data exports)
 gem "before_commit", "~> 0.8"
 gem "paper_trail", "~> 5.1.1"

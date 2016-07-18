@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
          :validatable,
          :lockable,
          :invitable,
-         :recoverable
+         :recoverable,
+         :session_limitable
 
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }
