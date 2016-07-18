@@ -4,7 +4,7 @@ ruby "2.3.1"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
-    branch: "develop"
+    tag: "v1.0.0"
 
 gem "rails", "4.2.7"
 gem "sass-rails", "~> 5.0.4"    # Use SCSS for stylesheets

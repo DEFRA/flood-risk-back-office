@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: ab998b7662d89bac5833011ce7563aed0121ec08
-  branch: develop
+  revision: 0d72f18320150bbe014d34c91863ae757bd7ad9f
+  tag: v1.0.0
   specs:
-    flood_risk_engine (0.0.1)
+    flood_risk_engine (1.0.0)
       activerecord-session_store (~> 1.0)
       airbrake (~> 5.3.0)
       airbrake-ruby (~> 1.3.2)
