@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
          :lockable,
          :invitable,
          :recoverable,
-         :session_limitable
+         :session_limitable,
+         :timeoutable,
+         timeout_in: Rails.application.secrets.session_timeout_minutes.minutes
 
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }
