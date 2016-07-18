@@ -44,7 +44,7 @@ module Admin
       }
     end
 
-    describe "#validate" do
+    describe ".validate" do
       it "should return true if params valid" do
         expect(form.validate(params)).to be(true)
       end
@@ -70,9 +70,18 @@ module Admin
             described_class.t(".errors.email_address.blank", contact: :correspondence)
           )
       end
+
+      context "with partnership" do
+        let(:organisation) { FactoryGirl.create(:organisation, :as_partnership) }
+        let(:organisation_name) { nil }
+
+        it "should not validate organisation_name presence" do
+          expect(form.validate(params)).to be(true)
+        end
+      end
     end
 
-    describe "save" do
+    describe ".save" do
       before { form.validate(params) }
 
       it "should return true" do
@@ -90,6 +99,20 @@ module Admin
         expect(correspondence_contact.telephone_number).to eq(correspondence_contact_telephone_number)
         expect(correspondence_contact.email_address).to eq(correspondence_contact_email_address)
         expect(secondary_contact.email_address).to eq(secondary_contact_email_address)
+      end
+    end
+
+    describe ".edit_name?" do
+      it "should normally return true" do
+        expect(form.edit_name?).to be_truthy
+      end
+
+      context "with partnership" do
+        let(:organisation) { FactoryGirl.create(:organisation, :as_partnership) }
+
+        it "should not validate organisation_name presence" do
+          expect(form.edit_name?).to be_falsey
+        end
       end
     end
   end
