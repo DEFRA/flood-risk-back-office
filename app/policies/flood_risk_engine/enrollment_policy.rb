@@ -31,7 +31,7 @@ module FloodRiskEngine
     end
 
     def update?
-      deregister?
+      edit?
     end
 
     class Scope < Scope
