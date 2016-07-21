@@ -1,6 +1,6 @@
 #  As an NCCC System user, I want to be able to invite users
 RSpec.feature "User accepts invitation" do
-  let(:email_addr) { FFaker::Internet.email }
+  let(:email_addr) { Faker::Internet.safe_email }
 
   context "user views the accept invitation page" do
     let(:user) { User.new(email: email_addr) }

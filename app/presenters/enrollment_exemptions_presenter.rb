@@ -6,9 +6,6 @@ class EnrollmentExemptionsPresenter < Presenter
            :total_pages,
            :limit_value, to: :enrollment_exemptions
 
-  # delegate :sort_column,
-  #:sort_direction, to: :search_params
-
   def initialize(enrollment_exemptions, view_context)
     @enrollment_exemptions = enrollment_exemptions
     super(view_context)

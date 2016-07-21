@@ -4,7 +4,6 @@ namespace :db do
     puts "## Seeding production users..."
 
     Rails.application.config.active_job.queue_adapter = :inline
-    User.destroy_all
 
     conn = ActiveRecord::Base.connection
     if conn.instance_values["config"][:adapter].in? %w(postgres postgis)
@@ -23,8 +22,7 @@ namespace :db do
 
       emails.each do |email|
         puts email
-
-        raise "User with email #{email} already exists! Huh?" if User.where(email: email).exists?
+        next if User.where(email: email).exists?
         invited = User.invite! email: email do |user|
           user.skip_invitation = true if Rails.env.development?
           user.add_role role
