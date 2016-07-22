@@ -2,7 +2,7 @@
 #
 require "thor"
 require "factory_girl"
-require "ffaker"
+require "faker"
 
 module Flood
 

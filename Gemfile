@@ -36,7 +36,6 @@ group :development, :test do
   gem "spring", "~> 1.7.1" # Spring speeds up development by keeping your application running in the background.
   gem "spring-commands-rspec", "~> 1.0.4", require: false # allow spring to wrap the rspec command
   gem "bullet", "~> 5.1.1" # ActiveRecord N+1 detection
-  gem "ffaker", "~> 2.2.0"
   gem "faker", "~> 1.6.3"
 end
 

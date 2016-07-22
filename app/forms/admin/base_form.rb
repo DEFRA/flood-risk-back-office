@@ -7,9 +7,6 @@ module Admin
     include ActiveModel::Validations
     include Reform::Form::ActiveModel
 
-    # delegate :model_name, to: :model
-    # delegate :to_model, to: :model
-
     def self.t(locale, args = {})
       I18n.t locale, args.merge(scope: locale_key)
     end
