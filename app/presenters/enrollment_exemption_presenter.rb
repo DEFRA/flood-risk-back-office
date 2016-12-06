@@ -152,10 +152,11 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def editable_present_address(address)
+    return unless address
     with_edit_button(
       text: present_address(address),
       url: edit_enrollment_address_path(enrollment, address)
-    ) if address
+    )
   end
 
   def with_edit_button(text:, url:)

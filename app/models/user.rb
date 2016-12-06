@@ -1,4 +1,3 @@
-
 class User < ActiveRecord::Base
   attr_accessor :assigned_role
 
@@ -63,16 +62,19 @@ class User < ActiveRecord::Base
     # If the user is diabled, and Devise "paranoid mode" is on,
     # display the message "Invalid email or password",
     # instead of the default "Your account is not activated yet" message
-    (Devise.paranoid && disabled?) ? :invalid : super
+    Devise.paranoid && disabled? ? :invalid : super
   end
 
   def password_meets_minimum_requirements
-    if password.present? && errors[:password].empty?
-      # Password must have at least 1 uppercase, 1 lowercase and 1 number character
-      unless password =~ /[A-Z]+/ && password =~ /[A-Z]+/ && password =~ /[0-9]+/
-        errors.add :password, :invalid
-      end
-    end
+    return unless password.present? && errors[:password].empty?
+
+    # Password must have at least 1 uppercase, 1 lowercase and 1 number character
+    return if password =~ /[A-Z]+/ && password =~ /[A-Z]+/ && password =~ /[0-9]+/
+
+    errors.add :password, :invalid
+    # unless password =~ /[A-Z]+/ && password =~ /[A-Z]+/ && password =~ /[0-9]+/
+    #   errors.add :password, :invalid
+    # end
   end
 
   def add_to_role_names(role)

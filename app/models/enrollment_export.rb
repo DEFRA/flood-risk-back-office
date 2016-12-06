@@ -67,7 +67,7 @@ class EnrollmentExport < ActiveRecord::Base
 
     self.file_name =
       loop do
-        name = [prefix, (count == 0 ? "" : count.to_s), "csv"].reject(&:blank?).join(".")
+        name = [prefix, (count.zero? ? "" : count.to_s), "csv"].reject(&:blank?).join(".")
 
         break name unless self.class.exists?(file_name: name)
         count += 1

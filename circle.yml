@@ -6,14 +6,19 @@ machine:
 
 dependencies:
   post:
-    - bundle exec rake before_commit:run
-    - git config --global user.email test@example.com # overcommit AuthorEmail
-    - git config --global user.name "Test Example" # overcommit AuthorName
-    - npm install -g jshint coffeelint htmlhint # overcommit packages
+    - gem install brakeman --no-ri --no-rdoc
+    - gem install i18n-tasks -v 0.9.6 --no-ri --no-rdoc
+    - gem install overcommit -v 0.37.0 --no-ri --no-rdoc
+    - overcommit --sign
+    - npm install -g htmlhint
 
 test:
-  override:
-    - >-
-      BUNDLE_PATH=vendor/overcommit_bundle BUNDLE_GEMFILE=.overcommit_gems.rb bundle exec overcommit --run &&
-      htmlhint -c ./.htmlhintrc ./app/**/*.html.erb &&
-      bundle exec rspec --color --require rails_helper -r rspec_junit_formatter --format progress --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+  pre:
+    - brakeman
+    # Currently we have 38 keys being reported as unused. That's a high number
+    # that needs investigating to understand is this correct, or are we just
+    # using them in a way i18n-tasks matcher doesn't understand
+    #- i18n-tasks unused
+    - overcommit --run
+    - htmlhint ./app/**/*.html.erb
+    - bundle exec rubocop

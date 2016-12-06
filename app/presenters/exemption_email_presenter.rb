@@ -57,7 +57,6 @@ class ExemptionEmailPresenter
   end
 
   # Just 'code' in the view does not give much context so prefer a longer more meaningful name
-  # rubocop:disable Rails/Delegate
   def exemption_code
     exemption.code
   end

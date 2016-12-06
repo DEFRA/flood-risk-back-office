@@ -29,13 +29,18 @@ class SendRegistrationRejectedEmail
   def validate_enrollment
     raise(ArgumentError, "Enrollment Exemption argument not supplied") unless enrollment_exemption.present?
 
-    raise(
-      FloodRiskEngine::InvalidEnrollmentStateError, "Exemption not in rejected state"
-    ) unless enrollment_exemption.rejected?
+    unless enrollment_exemption.rejected?
+      raise(
+        FloodRiskEngine::InvalidEnrollmentStateError,
+        "Exemption not in rejected state"
+      )
+    end
 
+    return unless primary_contact_email.blank?
     raise(
-      FloodRiskEngine::MissingEmailAddressError, "Missing contact email address"
-    ) if primary_contact_email.blank?
+      FloodRiskEngine::MissingEmailAddressError,
+      "Missing contact email address"
+    )
   end
 
 end

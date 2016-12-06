@@ -1,11 +1,10 @@
-# rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity
+# rubocop:disable Metrics/PerceivedComplexity
 class InvitationsController < ::Devise::InvitationsController
   before_action :configure_permitted_parameters
 
   # Adapted from https://github.com/scambra/devise_invitable/blob/v1.5.3/app/controllers/devise/invitations_controller.rb#L39
   # TODO: refactor this!
   # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
   def update
     raw_invitation_token = update_resource_params[:invitation_token]
     self.resource = accept_resource
@@ -45,8 +44,12 @@ class InvitationsController < ::Devise::InvitationsController
         res.add_role res.assigned_role
       end
 
-      # rubocop:disable Performance/RedundantBlockCall
+      # rubocop:disable Performance/RedundantBlockCall, Style/SafeNavigation
+      # TODO: Tried changing this to use rubocop suggested Safe navigation format
+      # e.g. block&.call but then Enrollments::PartnersController edit action should render page sucessfully
+      # failed. So have excluded it for now until we understand better whats going on
       block.call if block
+      # rubocop:enable Performance/RedundantBlockCall, Style/SafeNavigation
     end
   end
 
