@@ -37,7 +37,7 @@ module Admin
     end
 
     # TODO: refactor!
-    # rubocop:disable Metrics/AbcSize, Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
     def update
       @user.assign_attributes params.require(:user).permit(:assigned_role)
 

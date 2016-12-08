@@ -19,8 +19,7 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV['PG_TEST_DATABASE'] || 'flood_risk_back_office_test' %>
+  database: <%= ENV['PG_TEST_DATABASE'] || 'flood_risk_test' %>
 
 production:
   <<: *default
-

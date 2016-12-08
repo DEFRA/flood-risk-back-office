@@ -85,7 +85,6 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referer || path)
   end
 
-  # rubocop:disable Metrics/AbcSize
   def pundit_message(exception)
     act = exception.query
     policy_name = exception.policy.class.to_s.underscore

@@ -21,8 +21,8 @@ module Admin
         :admin_enrollment_export
       end
 
-      property :from_date, multi_params:  true
-      property :to_date, multi_params:  true
+      property :from_date, multi_params: true
+      property :to_date, multi_params: true
       property :state
       property :created_by
       property :date_field_scope
