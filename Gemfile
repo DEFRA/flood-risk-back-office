@@ -14,7 +14,7 @@ gem "dotenv-rails", "~> 2.1.1"
 
 gem "flood_risk_engine",
     git: "https://github.com/EnvironmentAgency/flood-risk-engine",
-    branch: "master"
+    tag: "v1.0.2"
 
 gem "govuk_admin_template", "~> 4.2.0"
 gem "govuk_elements_rails", "~> 1.2.1"
