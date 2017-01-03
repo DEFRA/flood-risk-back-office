@@ -89,6 +89,32 @@ Then navigate to [http://127.0.0.1:1080](http://127.0.0.1:1080) in your browser.
 
 > Note that [mail_safe](https://github.com/myronmarston/mail_safe) maybe also be running in which case any development email will seem to be sent to your global git config email address.
 
+## Users and roles
+
+Being a back office system you need to have a valid user account to access it. It also features different roles which have different levels of access to the features in the system.
+
+### Roles
+
+The following roles exist
+
+| Name                       | Symbol       | Description  |
+|----------------------------|--------------|---|
+| System user                | :system      | Can do anything including inviting new users. |
+| Administrative super user  | :super_agent | Approve or reject registrations. Edit all registrations. Export data. |
+| Administrative user        | :admin_agent | View, edit in-progress registrations and add new. |
+| Data user                  | :data_agent  | Can only search, view and export registrations. |
+
+### Seeded users
+
+When seeding the development environment databases a number of generic accounts (one per role) will created for you.
+
+The email for each is in the format of **[symbol]_user@example.gov.uk**, and the password for all is **Abcde12345**.
+
+So for example the login for the data user is
+
+- email **data_agent_user@example.gov.uk**
+- password **Abcde12345**
+
 ## Tests
 
 We use [RSpec](http://rspec.info/) and the project contains both feature and unit tests which focus on the functionality added specifically for internal users. Unit testing for the application process is generally done in [flood _risk_engine](https://github.com/EnvironmentAgency/flood-risk-engine) and acceptance tests in [Flood risk acceptance tests](https://github.com/EnvironmentAgency/flood-risk-acceptance-tests).
