@@ -1,10 +1,10 @@
 # Flood Risk Back Office
 
-[![CircleCI](https://circleci.com/gh/EnvironmentAgency/flood-risk-back-office.svg?style=svg&circle-token=690d1e5fe311a8bbc2b80af8bb70a0d0876b072e)](https://circleci.com/gh/EnvironmentAgency/flood-risk-back-office)
+[![CircleCI](https://circleci.com/gh/DEFRA/flood-risk-back-office.svg?style=svg&circle-token=690d1e5fe311a8bbc2b80af8bb70a0d0876b072e)](https://circleci.com/gh/DEFRA/flood-risk-back-office)
 
 A Ruby on Rails application delivering the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
 
-This is a thin, host application which mounts and provides styling for the [flood_risk_engine](https://github.com/EnvironmentAgency/flood-risk-engine) rails engine, and adds functionality specific to internal users. The engine is responsible for the service implementation.
+This is a thin, host application which mounts and provides styling for the [flood_risk_engine](https://github.com/DEFRA/flood-risk-engine) rails engine, and adds functionality specific to internal users. The engine is responsible for the service implementation.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ Please make sure the following are installed:
 Clone the repository and install its gem dependencies
 
 ```bash
-git clone https://github.com/EnvironmentAgency/flood-risk-back-office.git
+git clone https://github.com/DEFRA/flood-risk-back-office.git
 cd flood-risk-back-office
 bundle
 ```
@@ -117,7 +117,7 @@ So for example the login for the data user is
 
 ## Tests
 
-We use [RSpec](http://rspec.info/) and the project contains both feature and unit tests which focus on the functionality added specifically for internal users. Unit testing for the application process is generally done in [flood _risk_engine](https://github.com/EnvironmentAgency/flood-risk-engine) and acceptance tests in [Flood risk acceptance tests](https://github.com/EnvironmentAgency/flood-risk-acceptance-tests).
+We use [RSpec](http://rspec.info/) and the project contains both feature and unit tests which focus on the functionality added specifically for internal users. Unit testing for the application process is generally done in [flood _risk_engine](https://github.com/DEFRA/flood-risk-engine) and acceptance tests in [Flood risk acceptance tests](https://github.com/DEFRA/flood-risk-acceptance-tests).
 
 To run the rspec test suite
 
@@ -127,7 +127,7 @@ bundle exec rake
 
 ## Quality and conventions
 
-The project is linked to [Circle CI](https://circleci.com/gh/EnvironmentAgency/flood-risk-back-office) and all pushes to the **GitHub** are automatically checked.
+The project is linked to [Circle CI](https://circleci.com/gh/DEFRA/flood-risk-back-office) and all pushes to the **GitHub** are automatically checked.
 
 The checks include running all tests plus **Rubocop**, but also tools like [HTLMHint](https://github.com/yaniswang/HTMLHint) and [i18n-tasks](https://github.com/glebm/i18n-tasks). Check the `circle.yml` for full details, specifically the `test:pre` section.
 

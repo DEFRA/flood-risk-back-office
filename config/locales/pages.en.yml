@@ -3,7 +3,7 @@ en:
     version:
       heading: Flood Risk Back Office
       app_version: Application Version
-      repository_url: 'https://github.com/EnvironmentAgency/flood_risk_back_office/commit/%{sha}'
+      repository_url: 'https://github.com/DEFRA/flood_risk_back_office/commit/%{sha}'
       app_version: 'Application version:'
       commit: 'Commit hash:'
       render_time: 'Page rendered at:'
