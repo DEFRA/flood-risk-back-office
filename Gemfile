@@ -13,7 +13,7 @@ gem "devise_security_extension", "~> 0.10.0"
 gem "dotenv-rails", "~> 2.1.1"
 
 gem "flood_risk_engine",
-    git: "https://github.com/EnvironmentAgency/flood-risk-engine",
+    git: "https://github.com/DEFRA/flood-risk-engine",
     tag: "v1.0.2"
 
 gem "govuk_admin_template", "~> 4.2.0"

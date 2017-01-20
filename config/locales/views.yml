@@ -12,7 +12,7 @@ en:
       title: "Flood Risk Admin System"
   pages:
     version:
-      back_office_repository_url: 'https://github.com/EnvironmentAgency/flood-risk-back-office/commit/%{sha}'
+      back_office_repository_url: 'https://github.com/DEFRA/flood-risk-back-office/commit/%{sha}'
       back_office_heading: GOV.UK Flood Risk admin system
   admin:
     enrollments:
