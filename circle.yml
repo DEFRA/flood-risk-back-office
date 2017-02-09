@@ -1,24 +1,29 @@
 machine:
   node:
-    version: 4.4.5
+    version: 6.0.0
   ruby:
     version: 2.3.1
 
 dependencies:
   post:
+    # Install brakeman. We always go with the latest (unlike rubocop where we
+    # include the dependency in the project tied to a version) because we want
+    # to check the project against the latest known vulnerabilities.
     - gem install brakeman --no-ri --no-rdoc
-    - gem install i18n-tasks -v 0.9.6 --no-ri --no-rdoc
+    # Install overcommit.
+    # This will run the following checks
+    #   - CoffeeLint
+    #   - YamlSyntax
+    #   - TrailingWhitespace
+    #   - HardTabs
     - gem install overcommit -v 0.37.0 --no-ri --no-rdoc
     - overcommit --sign
+    # Install htmlhint
     - npm install -g htmlhint
 
 test:
   pre:
     - brakeman
-    # Currently we have 38 keys being reported as unused. That's a high number
-    # that needs investigating to understand is this correct, or are we just
-    # using them in a way i18n-tasks matcher doesn't understand
-    #- i18n-tasks unused
     - overcommit --run
     - htmlhint ./app/**/*.html.erb
     - bundle exec rubocop

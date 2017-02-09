@@ -28,11 +28,7 @@
 # For a complete list of options that you can use to customize hooks, see:
 # https://github.com/brigade/overcommit#configuration
 
-# Whether to check if a hook plugin has changed since Overcommit last ran it.
-# This is a defense mechanism when working with repositories which can contain
-# untrusted code (e.g. when you fetch a pull request from a third party).
-# See https://github.com/brigade/overcommit#security for more information.
-# This also lets us run the tests without having to install the hooks.
+# This lets us run the tests without having to install the hooks.
 verify_signatures: false
 
 PreCommit:
@@ -42,9 +38,6 @@ PreCommit:
     enabled: false
   AuthorName:
     enabled: false
-
-  CoffeeLint:
-    enabled: true
 
   YamlSyntax:
     enabled: true
@@ -63,3 +56,4 @@ PreCommit:
     exclude:
       - '**/vendor/assets/javascripts/**/*.js'
       - '**/spec/fixtures/attachments/**/*'
+      - '**/db/migrate/*.rb'

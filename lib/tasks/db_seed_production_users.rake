@@ -1,3 +1,6 @@
+require "rake"
+
+# rubocop:disable Metrics/BlockLength
 namespace :db do
   desc "Seed production users"
   task seed_production_users: :environment do
@@ -38,3 +41,4 @@ namespace :db do
     Rails.logger.info msg
   end
 end
+# rubocop:enable Metrics/BlockLength

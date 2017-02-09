@@ -11,8 +11,7 @@ module Admin
       end
 
       # create_comment expects content via comment property but we've no comment panel and nothing else to say
-      def comment
-      end
+      def comment; end
 
       def save
         enrollment_exemption.accept_reject_decision_user_id = user.id
