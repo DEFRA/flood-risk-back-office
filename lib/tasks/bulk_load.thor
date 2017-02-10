@@ -1,11 +1,9 @@
 # This is a development tool for creating multiple Enrollments
-#
 require "thor"
 require "factory_girl"
-require "faker"
 
 module Flood
-
+  # rubocop:disable Metrics/ClassLength
   class BulkLoad < Thor
 
     desc "clear", "Clear DB of major model data"
@@ -24,7 +22,6 @@ module Flood
       end
     end
 
-
     desc "list", "List all available factories"
 
     def list
@@ -37,26 +34,61 @@ module Flood
 
     desc "import", "Generate and import Enrollments"
 
-    method_option :number, aliases: "-n", type: :numeric, default: 50,
-                  desc: "Number of Enrollments to generate"
+    method_option(
+      :number,
+      aliases: "-n",
+      type: :numeric,
+      default: 50,
+      desc: "Number of Enrollments to generate"
+    )
 
-    method_option :factory, aliases: "-f", default: [:approved_individual], type: :array,
-                  desc: "Factories to use to generate Enrollments"
+    method_option(
+      :factory,
+      aliases: "-f",
+      default: [:approved_individual],
+      type: :array,
+      desc: "Factories to use to generate Enrollments"
+    )
 
-    method_option :pending, aliases: "-p", type: :boolean, default: false,
-                  desc: "Load <n> Pending Enrollments for each major OrganisationType"
+    method_option(
+      :pending,
+      aliases: "-p",
+      type: :boolean,
+      default: false,
+      desc: "Load <n> Pending Enrollments for each major OrganisationType"
+    )
 
-    method_option :approved, aliases: "-a", type: :boolean, default: false,
-                  desc: "Load <n> Approved Enrollments for each major OrganisationType"
+    method_option(
+      :approved,
+      aliases: "-a",
+      type: :boolean,
+      default: false,
+      desc: "Load <n> Approved Enrollments for each major OrganisationType"
+    )
 
-    method_option :rejected, aliases: "-r", type: :boolean, default: false,
-                  desc: "Load <n> Rejected Enrollments for each major OrganisationType"
+    method_option(
+      :rejected,
+      aliases: "-r",
+      type: :boolean,
+      default: false,
+      desc: "Load <n> Rejected Enrollments for each major OrganisationType"
+    )
 
-    method_option :incomplete, aliases: "-i", type: :boolean, default: false,
-                  desc: "Include sample of INCOMPLTE Enrollments"
+    method_option(
+      :incomplete,
+      aliases: "-i",
+      type: :boolean,
+      default: false,
+      desc: "Include sample of INCOMPLTE Enrollments"
+    )
 
-    method_option :use_transaction, aliases: "-t", type: :boolean, default: false,
-                  desc: "Use ActiveRecord::Base.transaction - faster but all data lost in event of interruption"
+    method_option(
+      :use_transaction,
+      aliases: "-t",
+      type: :boolean,
+      default: false,
+      desc: "Use ActiveRecord::Base.transaction - faster but all data lost in event of interruption"
+    )
 
     def import
       init
@@ -68,7 +100,7 @@ module Flood
         FloodRiskEngine::Enrollment.paper_trail_off!
         # FloodRiskEngine::Address.paper_trail_off!
 
-        if(options["use_transaction"])
+        if options["use_transaction"]
           puts("\nRunning within single transaction - Ctrl-C will roll back all loaded Enrollments")
           ActiveRecord::Base.transaction do
             run
@@ -87,21 +119,21 @@ module Flood
 
       ensure
         FloodRiskEngine::Enrollment.paper_trail_on!
-        #FloodRiskEngine::Address.paper_trail_on!
       end
     end
 
+    # rubocop:disable Metrics/BlockLength
     no_commands do
 
       def build_factory_list
         factories = []
 
-        factories += FactoryGirl.factories.collect(&:name).grep(/approved_/) if(options[:approved])
-        factories += FactoryGirl.factories.collect(&:name).grep(/rejected_/) if(options[:rejected])
-        factories += FactoryGirl.factories.collect(&:name).grep(/submitted_/) if(options[:pending])
+        factories += FactoryGirl.factories.collect(&:name).grep(/approved_/) if options[:approved]
+        factories += FactoryGirl.factories.collect(&:name).grep(/rejected_/) if options[:rejected]
+        factories += FactoryGirl.factories.collect(&:name).grep(/submitted_/) if options[:pending]
 
-        if(options[:incomplete])
-          factories += FactoryGirl.factories.collect(&:name).grep(/page/).tap {|a| a.delete :page_confirmation }
+        if options[:incomplete]
+          factories += FactoryGirl.factories.collect(&:name).grep(/page/).tap { |a| a.delete :page_confirmation }
         end
 
         factories
@@ -115,12 +147,15 @@ module Flood
         FactoryGirl.reload
       end
 
+      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/PerceivedComplexity
       def run
         number = options["number"].to_i
 
         threads = options["max_threads"].to_i
 
-        factories = if(options[:approved] || options[:rejected] || options[:pending]  || options[:incomplete])
+        factories = if options[:approved] || options[:rejected] || options[:pending] || options[:incomplete]
                       build_factory_list
                     else
                       options["factory"]
@@ -130,36 +165,36 @@ module Flood
 
         t1 = Time.zone.now
 
-        if(threads == 0)
-
+        if threads.zero?
           1.upto(number) do |n|
-            print "." if(n % 10 == 0)
-            factories.each {|f| FactoryGirl.create(f) }
+            print "." if (n % 10).zero?
+            factories.each { |f| FactoryGirl.create(f) }
           end
-
         else
           puts "Running using #{threads} threads"
 
           cycles = (number / threads).to_i
 
           # the remainder
-          1.upto(number - (cycles * threads)).each { factories.each {|f| FactoryGirl.create(f) } }
+          1.upto(number - (cycles * threads)).each { factories.each { |f| FactoryGirl.create(f) } }
 
           1.upto(cycles).map do
             1.upto(threads).map do
-              Thread.new {
-                factories.each {|f| FactoryGirl.create(f) }
+              Thread.new do
+                factories.each { |f| FactoryGirl.create(f) }
                 ActiveRecord::Base.connection.close
-              }
+              end
             end.each(&:join)
           end
         end
 
         t2 = Time.zone.now
 
-        puts("\nBulk load of [#{options["number"] * factories.size}] Enrollments took [#{t2 - t1}] seconds")
-
+        puts("\nBulk load of [#{options['number'] * factories.size}] Enrollments took [#{t2 - t1}] seconds")
       end
+      # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/CyclomaticComplexity
+      # rubocop:enable Metrics/PerceivedComplexity
 
       # Runs VACUUM against each table, which reclaims storage occupied by dead tuples.
       # Note it caters for when connected to a postgres database or a sqlite (for example if
@@ -169,7 +204,7 @@ module Flood
 
       def modify_after_insert(conn, postgres_cmd, default_cmd)
         conn = ActiveRecord::Base.connection
-        cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
+        cmd = if conn.instance_values["config"][:adapter].in? %w(postgresql postgres postgis)
                 postgres_cmd
               else
                 default_cmd
@@ -189,7 +224,7 @@ module Flood
       end
 
     end
-
-  end # class
-
-end # module
+    # rubocop:enable Metrics/BlockLength
+  end
+  # rubocop:enable Metrics/ClassLength
+end
