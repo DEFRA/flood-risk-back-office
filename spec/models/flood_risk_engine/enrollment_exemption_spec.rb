@@ -6,7 +6,7 @@ module FloodRiskEngine
     it { is_expected.to belong_to(:accept_reject_decision_user) }
 
     describe "approval" do
-      let(:enrollment) { FactoryGirl.create(:approved_individual) }
+      let(:enrollment) { FactoryBot.create(:approved_individual) }
 
       let(:ee) { enrollment.enrollment_exemptions.first }
 
@@ -22,11 +22,11 @@ module FloodRiskEngine
 
     describe "scopes" do
       before(:each) do
-        FactoryGirl.create_list(:submitted_local_authority, 5)
-        FactoryGirl.create_list(:submitted_partnership, 5)
+        FactoryBot.create_list(:submitted_local_authority, 5)
+        FactoryBot.create_list(:submitted_partnership, 5)
 
-        FactoryGirl.create_list(:approved_individual, 4)
-        FactoryGirl.create_list(:rejected_other, 2)
+        FactoryBot.create_list(:approved_individual, 4)
+        FactoryBot.create_list(:rejected_other, 2)
       end
 
       let(:from_date) { 1.year.ago }

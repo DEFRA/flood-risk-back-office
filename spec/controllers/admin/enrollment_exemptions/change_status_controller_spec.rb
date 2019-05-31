@@ -7,13 +7,13 @@ module Admin
 
       render_views
       let(:enrollment_exemption) do
-        FactoryGirl.create(
+        FactoryBot.create(
           :enrollment_exemption,
           status: FloodRiskEngine::EnrollmentExemption.statuses[:pending]
         )
       end
       let(:user) do
-        user = FactoryGirl.create(:user)
+        user = FactoryBot.create(:user)
         user.add_role :system
         user
       end

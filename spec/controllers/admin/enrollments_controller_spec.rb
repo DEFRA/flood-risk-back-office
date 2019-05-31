@@ -3,13 +3,13 @@ require "rails_helper"
 module Admin
   RSpec.describe EnrollmentsController, type: :controller do
     include Devise::TestHelpers
-    let(:correspondence_contact) { FactoryGirl.create(:contact) }
-    let(:secondary_contact) { FactoryGirl.create(:contact) }
+    let(:correspondence_contact) { FactoryBot.create(:contact) }
+    let(:secondary_contact) { FactoryBot.create(:contact) }
     let(:organisation) do
-      FactoryGirl.create :organisation
+      FactoryBot.create :organisation
     end
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         submitted_at: Time.zone.now,
         correspondence_contact: correspondence_contact,
@@ -18,14 +18,14 @@ module Admin
       )
     end
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: FloodRiskEngine::EnrollmentExemption.statuses[:pending],
         enrollment: enrollment
       )
     end
     let(:user) do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.add_role :system
       user
     end

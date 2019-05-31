@@ -1,5 +1,5 @@
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence :user_authentication_token do |n|
     "xxxx#{Time.zone.now.to_i}#{rand(1000)}#{n}xxxxxxxxxxxxx"
   end

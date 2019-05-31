@@ -5,21 +5,21 @@ module Enrollments
     include Devise::TestHelpers
 
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         submitted_at: Time.zone.now
       )
     end
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: FloodRiskEngine::EnrollmentExemption.statuses[:pending],
         enrollment: enrollment
       )
     end
-    let(:address) { FactoryGirl.create(:simple_address) }
+    let(:address) { FactoryBot.create(:simple_address) }
     let(:user) do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.add_role :system
       user
     end

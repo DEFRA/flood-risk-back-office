@@ -13,8 +13,8 @@ gem "devise_security_extension", "~> 0.10.0"
 gem "dotenv-rails", "~> 2.1.1"
 
 gem "flood_risk_engine",
-    git: "https://github.com/EnvironmentAgency/flood-risk-engine",
-    tag: "v1.0.2"
+    git: "https://github.com/DEFRA/flood-risk-engine",
+    branch: "master"
 
 gem "govuk_admin_template", "~> 4.2.0"
 gem "govuk_elements_rails", "~> 1.2.1"
@@ -43,7 +43,7 @@ gem "validates_timeliness", "~> 4.0.2"
 
 group :development, :test do
   # also enables "build_dummy_data" functionality in dev
-  gem "factory_girl_rails", "~> 4.6"
+  gem "factory_bot_rails", "~> 4.6"
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug", "~> 9.0.5"

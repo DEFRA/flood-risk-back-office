@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :base_back_office_enrollment, parent: :enrollment do
     after(:create) do |object|
       object.exemption_location = build(:location, description: "#{Faker::Lorem.sentence}, near river.")

@@ -2,10 +2,10 @@ require "rails_helper"
 require "shoulda/matchers"
 module Enrollments
   RSpec.describe PartnerForm, type: :form do
-    let(:partner) { FactoryGirl.create(:partner_with_contact) }
+    let(:partner) { FactoryBot.create(:partner_with_contact) }
     let(:contact) { partner.contact }
     let(:address) { contact.address }
-    let(:enrollment) { FactoryGirl.create(:enrollment) }
+    let(:enrollment) { FactoryBot.create(:enrollment) }
 
     let(:form) { described_class.new(enrollment, partner) }
 

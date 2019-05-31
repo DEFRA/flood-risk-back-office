@@ -4,24 +4,24 @@ module Enrollments
   RSpec.describe PartnersController, type: :controller do
     include Devise::TestHelpers
 
-    let(:partner) { FactoryGirl.create(:partner_with_contact) }
+    let(:partner) { FactoryBot.create(:partner_with_contact) }
     let(:contact) { partner.contact }
     let(:address) { contact.address }
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         submitted_at: Time.zone.now
       )
     end
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: FloodRiskEngine::EnrollmentExemption.statuses[:pending],
         enrollment: enrollment
       )
     end
     let(:user) do
-      user = FactoryGirl.create(:user)
+      user = FactoryBot.create(:user)
       user.add_role :system
       user
     end
