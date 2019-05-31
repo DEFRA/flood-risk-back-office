@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/EnvironmentAgency/flood-risk-engine
-  revision: c2e2f5845de94480e1b2f85010ce6dbc72264c9e
-  tag: v1.0.2
+  remote: https://github.com/DEFRA/flood-risk-engine
+  revision: 6eb9403216f1508c38de25905eccbd912ae04eb1
+  branch: master
   specs:
     flood_risk_engine (1.0.2)
       activerecord-session_store (~> 1.0)
@@ -58,12 +58,12 @@ GEM
       activemodel (= 4.2.7)
       activesupport (= 4.2.7)
       arel (~> 6.0)
-    activerecord-session_store (1.0.0)
-      actionpack (>= 4.0, < 5.1)
-      activerecord (>= 4.0, < 5.1)
+    activerecord-session_store (1.1.3)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
       multi_json (~> 1.11, >= 1.11.2)
       rack (>= 1.5.2, < 3)
-      railties (>= 4.0, < 5.1)
+      railties (>= 4.0)
     activesupport (4.2.7)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
@@ -111,8 +111,8 @@ GEM
     daemons (1.2.3)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
-    declarative (0.0.8)
-      uber (>= 0.0.15)
+    declarative (0.0.10)
+    declarative-option (0.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (3.5.10)
@@ -128,14 +128,14 @@ GEM
     devise_security_extension (0.10.0)
       devise (>= 3.0.0, < 4.0)
       railties (>= 3.2.6, < 5.0)
-    dibber (0.5.0)
+    dibber (0.6.0)
     diff-lcs (1.2.5)
     disposable (0.2.6)
       declarative (~> 0.0.6)
       representable (>= 2.4.0, <= 3.1.0)
       uber
     docile (1.1.5)
-    domain_name (0.5.20161129)
+    domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
@@ -159,14 +159,15 @@ GEM
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     execjs (2.7.0)
-    factory_girl (4.7.0)
+    factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.7.0)
-      factory_girl (~> 4.7.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     faker (1.6.5)
       i18n (~> 0.5)
-    finite_machine (0.11.3)
+    finite_machine (0.12.0)
+      concurrent-ruby (~> 1.0)
     fuubar (2.0.0)
       rspec (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -185,7 +186,7 @@ GEM
       sass (>= 3.2.0)
     has_secure_token (1.0.0)
       activerecord (>= 3.0)
-    high_voltage (3.0.0)
+    high_voltage (3.1.2)
     highline (1.7.8)
     htmlentities (4.3.4)
     http-cookie (1.0.3)
@@ -227,7 +228,7 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-    os_map_ref (0.4.1)
+    os_map_ref (0.4.2)
     paper_trail (5.1.1)
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
@@ -238,7 +239,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.8)
+    phonelib (0.6.34)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -292,13 +293,14 @@ GEM
       representable (>= 2.4.0, < 3.1.0)
       uber (~> 0.0.11)
     reform-rails (0.1.0)
-    representable (3.0.2)
-      declarative (~> 0.0.5)
-      uber (>= 0.0.15, < 0.2.0)
+    representable (3.0.4)
+      declarative (< 0.1.0)
+      declarative-option (< 0.2.0)
+      uber (< 0.2.0)
     request_store (1.3.1)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
-    rest-client (2.0.0)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -369,7 +371,7 @@ GEM
       activerecord (>= 3.0)
       activesupport (>= 3.0)
       polyamorous (~> 1.1.0)
-    sucker_punch (2.0.2)
+    sucker_punch (2.0.4)
       concurrent-ruby (~> 1.0.0)
     term-ansicolor (1.3.2)
       tins (~> 1.0)
@@ -389,10 +391,10 @@ GEM
     uber (0.0.15)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
-    uk_postcode (2.1.1)
+    uk_postcode (2.1.3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.2)
+    unf_ext (0.0.7.6)
     unicode-display_width (1.1.1)
     uniform_notifier (1.10.0)
     validates_email_format_of (1.6.3)
@@ -434,7 +436,7 @@ DEPENDENCIES
   devise_security_extension (~> 0.10.0)
   dotenv-rails (~> 2.1.1)
   email_spec (~> 2.1.0)
-  factory_girl_rails (~> 4.6)
+  factory_bot_rails (~> 4.6)
   faker (~> 1.6.3)
   flood_risk_engine!
   fuubar
@@ -475,4 +477,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.6
+   1.17.3
