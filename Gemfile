@@ -22,7 +22,7 @@ gem "pg", "~> 0.18.4"
 gem "pundit", "~> 1.1.0"
 # Mutes assets pipeline log messages
 gem "quiet_assets", "~> 1.1.0"
-gem "rails", "4.2.7"
+gem "rails", "~> 4.2"
 gem "rolify", "~> 5.1.0"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0.4"
