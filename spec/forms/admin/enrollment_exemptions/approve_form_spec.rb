@@ -4,8 +4,8 @@ require "shoulda/matchers"
 module Admin
   module EnrollmentExemptions
     RSpec.describe ApproveForm, type: :form do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:enrollment_exemption) { FactoryBot.create(:enrollment_exemption) }
       let(:form) { described_class.new(enrollment_exemption, user) }
       let(:comment) { Faker::Lorem.paragraph }
       let(:asset_found) { true }
@@ -103,13 +103,13 @@ module Admin
       end
 
       describe "#organisation_name" do
-        let(:organisation) { FactoryGirl.create(:organisation) }
+        let(:organisation) { FactoryBot.create(:organisation) }
         let(:enrollment) do
-          FactoryGirl.create(:enrollment, organisation: organisation)
+          FactoryBot.create(:enrollment, organisation: organisation)
         end
 
         let(:enrollment_exemption) do
-          FactoryGirl.create(:enrollment_exemption, enrollment: enrollment)
+          FactoryBot.create(:enrollment_exemption, enrollment: enrollment)
         end
 
         it "should be present" do

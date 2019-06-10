@@ -57,9 +57,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug"
-  # Provides Rails integration for factory_girl. Enables "build_dummy_data"
+  # Provides Rails integration for factory_bot. Enables "build_dummy_data"
   # functionality in dev
-  gem "factory_girl_rails", "~> 4.6"
+  gem "factory_bot_rails", "~> 4.6"
   # Used to generate fake data e.g. in the specs
   gem "faker", "~> 1.7"
   # A testing framework for Rails 3.x, 4.x and 5.0

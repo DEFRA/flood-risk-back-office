@@ -2,8 +2,8 @@ require "rails_helper"
 require "shoulda/matchers"
 module Enrollments
   RSpec.describe AddressForm, type: :form do
-    let(:enrollment) { FactoryGirl.create(:enrollment) }
-    let(:address) { FactoryGirl.create(:simple_address) }
+    let(:enrollment) { FactoryBot.create(:enrollment) }
+    let(:address) { FactoryBot.create(:simple_address) }
 
     let(:form) { described_class.new(enrollment, address) }
 

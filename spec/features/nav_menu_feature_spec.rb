@@ -13,7 +13,7 @@ RSpec.feature "Admin menu" do
   end
 
   context "Logged in" do
-    let(:user) { FactoryGirl.create :user }
+    let(:user) { FactoryBot.create :user }
     background { login_as user }
 
     scenario "View logged-in admin menu (user with NCC super-agent role)" do
