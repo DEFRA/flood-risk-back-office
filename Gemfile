@@ -47,9 +47,6 @@ gem "dotenv-rails", "~> 2.1.1", groups: [:development, :test]
 group :development do
   # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
-  # A toy SMTP server run on port 1025 catching emails, displaying them on
-  # http://localhost:1080.
-  gem "mailcatcher", "~> 0.6"
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop", "~> 0.47"
 end
