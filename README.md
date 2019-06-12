@@ -123,14 +123,6 @@ To run the rspec test suite
 bundle exec rake
 ```
 
-## Quality and conventions
-
-The project is linked to [Circle CI](https://circleci.com/gh/DEFRA/flood-risk-back-office) and all pushes to the **GitHub** are automatically checked.
-
-The checks include running all tests plus **Rubocop**, but also tools like [HTLMHint](https://github.com/yaniswang/HTMLHint) and [i18n-tasks](https://github.com/glebm/i18n-tasks). Check the `circle.yml` for full details, specifically the `test:pre` section.
-
-It is left to each developer to setup their environment such that these checks all pass before presenting their code for review and merging.
-
 ## Contributing to this project
 
 If you have an idea you'd like to contribute please log an issue.
