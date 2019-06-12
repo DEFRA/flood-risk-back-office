@@ -87,6 +87,4 @@ group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile)	  # via Procfile)
   gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
-  # Useful if deploying to Heroku
-  gem "rails_12factor", "~> 0.0.3"
 end
