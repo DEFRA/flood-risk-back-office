@@ -1,6 +1,4 @@
-# Flood Risk Back Office
-
-[![CircleCI](https://circleci.com/gh/DEFRA/flood-risk-back-office.svg?style=svg&circle-token=690d1e5fe311a8bbc2b80af8bb70a0d0876b072e)](https://circleci.com/gh/DEFRA/flood-risk-back-office)
+# Flood risk back office
 
 A Ruby on Rails application delivering the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
 
