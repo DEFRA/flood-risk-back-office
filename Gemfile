@@ -14,9 +14,6 @@ gem "govuk_frontend_toolkit", "~> 4.12.0"
 # A Scope & Engine based paginator for Ruby webapps
 gem "kaminari", "~> 0.17.0"
 gem "paper_trail", "~> 5.1.1"
-# Use Passenger on AWS via Upstart, Heroku via Procfile, and locally via
-# Procfile.development
-gem "passenger", "~> 5.0.25", require: false
 # Use Postgres for the DB
 gem "pg", "~> 0.18.4"
 gem "pundit", "~> 1.1.0"
@@ -87,6 +84,9 @@ end
 group :production do
   # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
   gem "airbrake", "~> 5.3.0"
+  # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
+  # via Procfile)	  # via Procfile)
+  gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
   # Useful if deploying to Heroku
   gem "rails_12factor", "~> 0.0.3"
 end
