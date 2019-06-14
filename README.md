@@ -44,19 +44,6 @@ bundle exec rake db:seed
 
 Add `RAILS_ENV=test` to the commands when preparing the test database.
 
-#### Seeding in Heroku
-
-To seed on Heroku where the environment is PRODUCTION, connect to a non-visitor and non-office network and run
-
-```bash
-heroku run bash -a [heroku_app_name]
-bundle exec rails c
-require './db/seeds/development.rb'
-FloodRiskEngine::Engine.load_seed # loads exemptions seed data
-exit
-exit
-```
-
 ## Running the app
 
 To start the service locally run
