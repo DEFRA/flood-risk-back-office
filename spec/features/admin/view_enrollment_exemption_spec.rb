@@ -6,9 +6,9 @@ RSpec.feature "View Enrollment Exemption Detail" do
   end
 
   context "Enrollment NOT Submitted" do
-    incomplete = FactoryGirl.factories.collect(&:name).grep(/page/).tap do |a| a.delete :page_confirmation end
+    incomplete = FactoryBot.factories.collect(&:name).grep(/page/).tap do |a| a.delete :page_confirmation end
 
-    enrollments = incomplete.collect do |f| FactoryGirl.create(f) end
+    enrollments = incomplete.collect do |f| FactoryBot.create(f) end
 
     enrollments.each do |enrollment|
       next unless enrollment.enrollment_exemptions.first

@@ -14,15 +14,12 @@ gem "govuk_frontend_toolkit", "~> 4.12.0"
 # A Scope & Engine based paginator for Ruby webapps
 gem "kaminari", "~> 0.17.0"
 gem "paper_trail", "~> 5.1.1"
-# Use Passenger on AWS via Upstart, Heroku via Procfile, and locally via
-# Procfile.development
-gem "passenger", "~> 5.0.25", require: false
 # Use Postgres for the DB
 gem "pg", "~> 0.18.4"
 gem "pundit", "~> 1.1.0"
 # Mutes assets pipeline log messages
 gem "quiet_assets", "~> 1.1.0"
-gem "rails", "4.2.7"
+gem "rails", "~> 4.2"
 gem "rolify", "~> 5.1.0"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0.4"
@@ -47,9 +44,6 @@ gem "dotenv-rails", "~> 2.1.1", groups: [:development, :test]
 group :development do
   # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
-  # A toy SMTP server run on port 1025 catching emails, displaying them on
-  # http://localhost:1080.
-  gem "mailcatcher", "~> 0.6"
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop", "~> 0.47"
 end
@@ -60,9 +54,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger
   # console
   gem "byebug"
-  # Provides Rails integration for factory_girl. Enables "build_dummy_data"
+  # Provides Rails integration for factory_bot. Enables "build_dummy_data"
   # functionality in dev
-  gem "factory_girl_rails", "~> 4.6"
+  gem "factory_bot_rails", "~> 4.6"
   # Used to generate fake data e.g. in the specs
   gem "faker", "~> 1.7"
   # A testing framework for Rails 3.x, 4.x and 5.0
@@ -90,6 +84,9 @@ end
 group :production do
   # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
   gem "airbrake", "~> 5.3.0"
+  # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
+  # via Procfile)	  # via Procfile)
+  gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
   # Useful if deploying to Heroku
   gem "rails_12factor", "~> 0.0.3"
 end

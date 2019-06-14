@@ -4,8 +4,8 @@ require "shoulda/matchers"
 module Admin
   module EnrollmentExemptions
     RSpec.describe InProgressForm, type: :form do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:enrollment_exemption) { FactoryBot.create(:enrollment_exemption) }
       let(:form) { described_class.new(enrollment_exemption, user) }
 
       let(:params) do

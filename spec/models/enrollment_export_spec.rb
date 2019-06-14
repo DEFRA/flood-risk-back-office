@@ -24,13 +24,13 @@ RSpec.describe EnrollmentExport do
     let(:export) { create(:enrollment_export, :with_dates, :with_file_name) }
 
     before(:each) do
-      FactoryGirl.create_list(:page_declaration, 5) # not submitted - should never appear
+      FactoryBot.create_list(:page_declaration, 5) # not submitted - should never appear
 
-      FactoryGirl.create_list(:submitted_individual, 3)
-      FactoryGirl.create_list(:submitted_partnership, 3)
+      FactoryBot.create_list(:submitted_individual, 3)
+      FactoryBot.create_list(:submitted_partnership, 3)
 
-      FactoryGirl.create_list(:approved_individual, 4)
-      FactoryGirl.create_list(:rejected_limited_company, 2)
+      FactoryBot.create_list(:approved_individual, 4)
+      FactoryBot.create_list(:rejected_limited_company, 2)
     end
 
     it "should select all submitted records" do

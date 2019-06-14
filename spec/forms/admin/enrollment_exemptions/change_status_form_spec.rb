@@ -5,8 +5,8 @@ module Admin
   module EnrollmentExemptions
 
     RSpec.describe ChangeStatusForm, type: :form do
-      let(:user) { FactoryGirl.create(:user) }
-      let(:enrollment_exemption) { FactoryGirl.create(:enrollment_exemption) }
+      let(:user) { FactoryBot.create(:user) }
+      let(:enrollment_exemption) { FactoryBot.create(:enrollment_exemption) }
       let(:form) { described_class.new(enrollment_exemption, user) }
       let(:comment) { Faker::Lorem.paragraph }
       let(:status) { "being_processed" }

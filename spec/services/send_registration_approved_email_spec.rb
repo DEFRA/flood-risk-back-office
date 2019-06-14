@@ -66,7 +66,7 @@ module FloodRiskEngine
 
       context "when correspondence contact and secondary contact have the same email addresses" do
         let(:secondary_contact) do
-          FactoryGirl.create(:contact, email_address: enrollment.correspondence_contact.email_address)
+          FactoryBot.create(:contact, email_address: enrollment.correspondence_contact.email_address)
         end
 
         it "sends one email to the shared address" do

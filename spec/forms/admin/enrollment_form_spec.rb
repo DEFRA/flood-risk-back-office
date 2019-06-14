@@ -3,13 +3,13 @@ require "shoulda/matchers"
 
 module Admin
   RSpec.describe EnrollmentForm, type: :form do
-    let(:correspondence_contact) { FactoryGirl.create(:contact) }
-    let(:secondary_contact) { FactoryGirl.create(:contact) }
+    let(:correspondence_contact) { FactoryBot.create(:contact) }
+    let(:secondary_contact) { FactoryBot.create(:contact) }
     let(:organisation) do
-      FactoryGirl.create :organisation
+      FactoryBot.create :organisation
     end
     let(:enrollment) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment,
         submitted_at: Time.zone.now,
         correspondence_contact: correspondence_contact,
@@ -18,7 +18,7 @@ module Admin
       )
     end
     let(:enrollment_exemption) do
-      FactoryGirl.create(
+      FactoryBot.create(
         :enrollment_exemption,
         status: FloodRiskEngine::EnrollmentExemption.statuses[:pending],
         enrollment: enrollment
@@ -72,7 +72,7 @@ module Admin
       end
 
       context "with partnership" do
-        let(:organisation) { FactoryGirl.create(:organisation, :as_partnership) }
+        let(:organisation) { FactoryBot.create(:organisation, :as_partnership) }
         let(:organisation_name) { nil }
 
         it "should not validate organisation_name presence" do
@@ -108,7 +108,7 @@ module Admin
       end
 
       context "with partnership" do
-        let(:organisation) { FactoryGirl.create(:organisation, :as_partnership) }
+        let(:organisation) { FactoryBot.create(:organisation, :as_partnership) }
 
         it "should not validate organisation_name presence" do
           expect(form.edit_name?).to be_falsey

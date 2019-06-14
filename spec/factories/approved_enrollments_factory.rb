@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   # A suite of Enrollments that enable you to test exports and back office functions against Approved enrollments
   #
   # Named :approved_#{org_type}
