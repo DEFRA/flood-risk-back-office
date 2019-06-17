@@ -1,21 +1,19 @@
+# frozen_string_literal: true
+
+# Require this to support automatically cleaning the database when testing
+require "database_cleaner"
+
 RSpec.configure do |config|
-  config.before :suite do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
+  # Clean the database before running tests. Setup as per
+  # https://github.com/DatabaseCleaner/database_cleaner#rspec-example
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.before do |ex|
-    # rubocop:disable Style/ConditionalAssignment
-    if ex.metadata[:type] == :feature
-      DatabaseCleaner.strategy = :truncation
-    else
-      DatabaseCleaner.strategy = :transaction
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
     end
-
-    DatabaseCleaner.start
-  end
-
-  config.after do
-    DatabaseCleaner.clean
   end
 end
