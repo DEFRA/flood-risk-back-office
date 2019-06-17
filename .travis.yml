@@ -1,0 +1,43 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=979aae828b3d597b1901b0e990c4f6b47613581f98307aef9a2c9da4cb5a35f2
+
+language: ruby
+rvm: 2.3.1
+cache: bundler
+
+addons:
+-  postgresql: "9.4"
+
+# Travis CI clones repositories to a depth of 50 commits, which is only really
+# useful if you are performing git operations.
+# https://docs.travis-ci.com/user/customizing-the-build/#Git-Clone-Depth
+git:
+  depth: 3
+
+before_install:
+  - export TZ=UTC
+  - gem install -v 1.17.3 bundler --no-document
+
+before_script:
+  # Setup to support the CodeClimate test coverage submission
+  # As per CodeClimate's documentation, they suggest only running
+  # ./cc-test-reporter commands on travis-ci push builds only. Hence we wrap all
+  # the codeclimate test coverage related commands in a check that tests if we
+  # are in a pull request or not.
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then chmod +x ./cc-test-reporter; fi
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter before-build; fi
+  # Run rubocop. It's installed as a dependency (hence no install step) as this
+  # allows projects to control the version they are using (rather than getting)
+  # surprise build failures.
+  - bundle exec rubocop
+  # Replace database.yml with database.travis.yml (but leave filename as
+  # database.yml). database.travis.yml is the config needed for Travis, and it
+  # needs to be in place before we run the migrations.
+  - cp config/database.travis.yml config/database.yml
+  - RAILS_ENV=test bundle exec rake db:create --trace
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+
+after_script:
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
