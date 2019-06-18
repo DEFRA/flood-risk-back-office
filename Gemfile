@@ -65,7 +65,7 @@ end
 
 group :test do
   gem "capybara", "~> 2.6.2"
-  gem "database_cleaner", "~> 1.5.1"
+  gem "database_cleaner"
   gem "email_spec", "~> 2.1.0"
   # Enhanced rspec progress formatter
   gem "fuubar"

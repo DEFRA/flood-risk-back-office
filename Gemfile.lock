@@ -398,7 +398,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (~> 2.6.2)
-  database_cleaner (~> 1.5.1)
+  database_cleaner
   devise (~> 3.5.10)
   devise_invitable (~> 1.6.0)
   devise_security_extension (~> 0.10.0)
