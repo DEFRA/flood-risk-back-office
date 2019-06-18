@@ -78,7 +78,7 @@ GEM
     ast (2.3.0)
     autoprefixer-rails (6.3.6.2)
       execjs
-    awesome_print (1.7.0)
+    awesome_print (1.8.0)
     aws-sdk-core (2.3.22)
       jmespath (~> 1.0)
     aws-sdk-resources (2.3.22)
