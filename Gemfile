@@ -36,6 +36,17 @@ gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
     branch: "master"
 
+# Allows us to automatically generate the change log from the tags, issues,
+# labels and pull requests on GitHub. Added as a dependency so all dev's have
+# access to it to generate a log, and so they are using the same version.
+# New dev's should first create GitHub personal app token and add it to their
+# ~/.bash_profile (or equivalent)
+# https://github.com/skywinder/github-changelog-generator#github-token
+# Then simply run `bundle exec rake changelog` to update CHANGELOG.md
+# Should be in the :development group however when it is it breaks deployment.
+# Hence moved outside group till we can understand why.
+gem "github_changelog_generator", require: false
+
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
 # variables being available
@@ -44,14 +55,6 @@ gem "dotenv-rails", "~> 2.1.1", groups: [:development, :test]
 group :development do
   # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
-  # Allows us to automatically generate the change log from the tags, issues,
-  # labels and pull requests on GitHub. Added as a dependency so all dev's have
-  # access to it to generate a log, and so they are using the same version.
-  # New dev's should first create GitHub personal app token and add it to their
-  # ~/.bash_profile (or equivalent)
-  # https://github.com/skywinder/github-changelog-generator#github-token
-  # Then simply run `bundle exec rake changelog` to update CHANGELOG.md
-  gem "github_changelog_generator", require: false
   # Used to ensure the code base matches our agreed styles and conventions
   gem "rubocop", "~> 0.47"
 end
