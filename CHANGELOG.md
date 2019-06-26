@@ -3,13 +3,23 @@
 ## [v1.1.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.1.0) (2019-06-26)
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.0.1...v1.1.0)
 
+**Implemented enhancements:**
+
+- Inherit engine styles [\#118](https://github.com/DEFRA/flood-risk-back-office/pull/118) ([irisfaraway](https://github.com/irisfaraway))
+- Housekeeping and standardisation across projects [\#93](https://github.com/DEFRA/flood-risk-back-office/pull/93) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update db seeds to create generic account per role [\#91](https://github.com/DEFRA/flood-risk-back-office/pull/91) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Fixed bugs:**
+
+- Move github changelog generator to main group [\#124](https://github.com/DEFRA/flood-risk-back-office/pull/124) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update EA references after org name change [\#92](https://github.com/DEFRA/flood-risk-back-office/pull/92) ([Cruikshanks](https://github.com/Cruikshanks))
+
 **Merged pull requests:**
 
 - Add github changelog generator to the project [\#123](https://github.com/DEFRA/flood-risk-back-office/pull/123) ([Cruikshanks](https://github.com/Cruikshanks))
 - Bump bullet from 6.0.0 to 6.0.1 [\#122](https://github.com/DEFRA/flood-risk-back-office/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `0fa1d92` to `98fdead` [\#120](https://github.com/DEFRA/flood-risk-back-office/pull/120) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `00ead6e` to `0fa1d92` [\#119](https://github.com/DEFRA/flood-risk-back-office/pull/119) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- Inherit engine styles [\#118](https://github.com/DEFRA/flood-risk-back-office/pull/118) ([irisfaraway](https://github.com/irisfaraway))
 - Bump flood\_risk\_engine from `1e69358` to `00ead6e` [\#117](https://github.com/DEFRA/flood-risk-back-office/pull/117) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump faker from 1.9.3 to 1.9.4 [\#116](https://github.com/DEFRA/flood-risk-back-office/pull/116) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `527fc75` to `1e69358` [\#115](https://github.com/DEFRA/flood-risk-back-office/pull/115) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -31,12 +41,14 @@
 - Remove overcommit from repo [\#97](https://github.com/DEFRA/flood-risk-back-office/pull/97) ([Cruikshanks](https://github.com/Cruikshanks))
 - Remove circle-ci from repo [\#96](https://github.com/DEFRA/flood-risk-back-office/pull/96) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update dependencies [\#95](https://github.com/DEFRA/flood-risk-back-office/pull/95) ([irisfaraway](https://github.com/irisfaraway))
-- Housekeeping and standardisation across projects [\#93](https://github.com/DEFRA/flood-risk-back-office/pull/93) ([Cruikshanks](https://github.com/Cruikshanks))
-- Update EA references after org name change [\#92](https://github.com/DEFRA/flood-risk-back-office/pull/92) ([Cruikshanks](https://github.com/Cruikshanks))
-- Update db seeds to create generic account per role [\#91](https://github.com/DEFRA/flood-risk-back-office/pull/91) ([Cruikshanks](https://github.com/Cruikshanks))
 
 ## [v1.0.1](https://github.com/DEFRA/flood-risk-back-office/tree/v1.0.1) (2016-12-21)
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.0.0...v1.0.1)
+
+**Implemented enhancements:**
+
+- Add OS places notice and T&C's to service [\#89](https://github.com/DEFRA/flood-risk-back-office/pull/89) ([Cruikshanks](https://github.com/Cruikshanks))
+- Remove dependency on before\_commit for CI checks [\#88](https://github.com/DEFRA/flood-risk-back-office/pull/88) ([Cruikshanks](https://github.com/Cruikshanks))
 
 **Closed issues:**
 
@@ -45,11 +57,14 @@
 **Merged pull requests:**
 
 - Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
-- Add OS places notice and T&C's to service [\#89](https://github.com/DEFRA/flood-risk-back-office/pull/89) ([Cruikshanks](https://github.com/Cruikshanks))
-- Remove dependency on before\_commit for CI checks [\#88](https://github.com/DEFRA/flood-risk-back-office/pull/88) ([Cruikshanks](https://github.com/Cruikshanks))
 - Housekeeping [\#87](https://github.com/DEFRA/flood-risk-back-office/pull/87) ([woodpigeon](https://github.com/woodpigeon))
 
 ## [v1.0.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.0.0) (2016-07-18)
+**Implemented enhancements:**
+
+- Fixes following review of approval and rejection processes [\#37](https://github.com/DEFRA/flood-risk-back-office/pull/37) ([reggieb](https://github.com/reggieb))
+- Add change status action [\#33](https://github.com/DEFRA/flood-risk-back-office/pull/33) ([reggieb](https://github.com/reggieb))
+
 **Closed issues:**
 
 - Change displayed text 'Enrollment' to 'Registration' [\#11](https://github.com/DEFRA/flood-risk-back-office/issues/11)
@@ -102,11 +117,9 @@
 - RIP-243 Update javascript config for engine [\#40](https://github.com/DEFRA/flood-risk-back-office/pull/40) ([lewispb](https://github.com/lewispb))
 - RIP-306 Add facility to resend approval email [\#39](https://github.com/DEFRA/flood-risk-back-office/pull/39) ([reggieb](https://github.com/reggieb))
 - Disable caching [\#38](https://github.com/DEFRA/flood-risk-back-office/pull/38) ([lewispb](https://github.com/lewispb))
-- Fixes following review of approval and rejection processes [\#37](https://github.com/DEFRA/flood-risk-back-office/pull/37) ([reggieb](https://github.com/reggieb))
 - Fixes for View specific EnrollmentExemption details - RIP-212 [\#36](https://github.com/DEFRA/flood-risk-back-office/pull/36) ([autotelik](https://github.com/autotelik))
 - Complete Export fields and AWS - RIP-247 [\#35](https://github.com/DEFRA/flood-risk-back-office/pull/35) ([autotelik](https://github.com/autotelik))
 - Update RIP-163-164 update flood\_risk\_engine [\#34](https://github.com/DEFRA/flood-risk-back-office/pull/34) ([woodpigeon](https://github.com/woodpigeon))
-- Add change status action [\#33](https://github.com/DEFRA/flood-risk-back-office/pull/33) ([reggieb](https://github.com/reggieb))
 - Send email on approval [\#32](https://github.com/DEFRA/flood-risk-back-office/pull/32) ([reggieb](https://github.com/reggieb))
 - add primary address to org factory [\#31](https://github.com/DEFRA/flood-risk-back-office/pull/31) ([autotelik](https://github.com/autotelik))
 - Add Approve form, link and functionality. [\#29](https://github.com/DEFRA/flood-risk-back-office/pull/29) ([reggieb](https://github.com/reggieb))
