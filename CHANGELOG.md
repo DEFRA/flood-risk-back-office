@@ -1,6 +1,6 @@
 # Change Log
 
-## [v1.1.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.1.0) (2019-06-26)
+## [v1.1.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.1.0) (2019-06-27)
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.0.1...v1.1.0)
 
 **Implemented enhancements:**
@@ -16,6 +16,8 @@
 
 **Merged pull requests:**
 
+- Bump flood\_risk\_engine from `6e15808` to `1f1a8ec` [\#126](https://github.com/DEFRA/flood-risk-back-office/pull/126) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `98fdead` to `6e15808` [\#125](https://github.com/DEFRA/flood-risk-back-office/pull/125) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Add github changelog generator to the project [\#123](https://github.com/DEFRA/flood-risk-back-office/pull/123) ([Cruikshanks](https://github.com/Cruikshanks))
 - Bump bullet from 6.0.0 to 6.0.1 [\#122](https://github.com/DEFRA/flood-risk-back-office/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `0fa1d92` to `98fdead` [\#120](https://github.com/DEFRA/flood-risk-back-office/pull/120) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
