@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 61bde8e349491a5aeaa00dd8f6633d19f5feda89
+  revision: 163c62cd54093f90c793e733aa7e0f24f8343761
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -134,7 +134,7 @@ GEM
       representable (>= 2.4.0, <= 3.1.0)
       uber
     docile (1.1.5)
-    domain_name (0.5.20180417)
+    domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.2)
     dotenv-rails (2.1.2)
