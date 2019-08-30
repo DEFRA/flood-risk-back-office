@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: f14c53d34f4fc03016ecddacf9d9e57ac0f0feac
+  revision: 92681dd8ca0fdf08114bd7faa08ae144dbaf7124
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -112,8 +112,8 @@ GEM
     database_cleaner (1.5.3)
     declarative (0.0.10)
     declarative-option (0.1.0)
-    defra_ruby_area (1.1.0)
-      nokogiri (~> 1.10.3)
+    defra_ruby_area (2.0.0)
+      nokogiri (~> 1.10.4)
       rest-client (~> 2.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
