@@ -29,5 +29,5 @@ set :job_template, "/bin/bash -l -c 'eval \"$(rbenv init -)\" && :job'"
 
 # This will run daily and update EA areas for addresses with x and y but without Area.
 every :day, at: (ENV["EA_AREA_LOOKUP"] || "1:05"), roles: [:db] do
-  rake ""
+  rake "ea_lookups:update:area"
 end
