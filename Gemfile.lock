@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: cf686e2296eefdf852b37f705b6d6b12363bfe26
+  revision: f8bf2a5948418f54d8f03ceee3de3c546f51070d
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -215,12 +215,12 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mime-types (3.2.2)
+    mime-types (3.3)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.0331)
+    mime-types-data (3.2019.0904)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.12.0)
     multi_json (1.13.1)
     multipart-post (2.1.1)
     nesty (1.0.2)
