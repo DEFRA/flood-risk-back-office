@@ -34,7 +34,7 @@ module FloodRiskBackOffice
     config.time_zone = 'London'
 
     # Minutes the EA area lookup job should run for
-    config.ea_area_lookup_run_for = ENV["EA_AREA_LOOKUP_RUN_FOR"] || 60
+    config.area_lookup_run_for = ENV["AREA_LOOKUP_RUN_FOR"] || 60
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
