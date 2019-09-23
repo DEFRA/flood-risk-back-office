@@ -28,6 +28,6 @@ set :job_template, "/bin/bash -l -c 'eval \"$(rbenv init -)\" && :job'"
 # so only creating cronjobs on that server, otherwise all jobs would be duplicated everyday!
 
 # This will run daily and update EA areas for addresses with x and y but without Area.
-every :day, at: (ENV["EA_AREA_LOOKUP"] || "1:05"), roles: [:db] do
+every :day, at: (ENV["AREA_LOOKUP"] || "1:05"), roles: [:db] do
   rake "ea_lookups:update:area"
 end
