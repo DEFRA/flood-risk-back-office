@@ -2,7 +2,7 @@
 
 namespace :ea_lookups do
   namespace :update do
-    desc "Populate EA Area information in all FloodRiskEngine::Location objects missing it."
+    desc "Populate the water management area in all FloodRiskEngine::Location objects missing it."
     task area: :environment do
       run_for = FloodRiskBackOffice::Application.config.ea_area_lookup_run_for.to_i
       run_until = run_for.minutes.from_now
