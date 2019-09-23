@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe "EA lookups task" do
-  describe "ea_lookups:update:area" do
+  describe "lookups:update:missing_area" do
     include_context "rake"
 
     let(:run_for) { 10 }
 
     before do
-      expect(FloodRiskBackOffice::Application.config).to receive(:ea_area_lookup_run_for).and_return(run_for)
+      expect(FloodRiskBackOffice::Application.config).to receive(:area_lookup_run_for).and_return(run_for)
     end
 
     it "update area info into locations missing it" do

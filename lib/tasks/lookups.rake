@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-namespace :ea_lookups do
+namespace :lookups do
   namespace :update do
     desc "Populate the water management area in all FloodRiskEngine::Location objects missing it."
-    task area: :environment do
-      run_for = FloodRiskBackOffice::Application.config.ea_area_lookup_run_for.to_i
+    task missing_area: :environment do
+      run_for = FloodRiskBackOffice::Application.config.area_lookup_run_for.to_i
       run_until = run_for.minutes.from_now
       locations_scope = FloodRiskEngine::Location.missing_ea_area.with_easting_and_northing
 
