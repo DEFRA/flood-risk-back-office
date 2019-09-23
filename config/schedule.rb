@@ -18,3 +18,16 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+log_output_path = ENV["EXPORT_SERVICE_CRON_LOG_OUTPUT_PATH"] || "/srv/ruby/flood-risk-back-office/shared/log/"
+set :output, File.join(log_output_path, "whenever_cron.log")
+set :job_template, "/bin/bash -l -c 'eval \"$(rbenv init -)\" && :job'"
+
+# Only one of the AWS app servers has a role of "db"
+# see https://gitlab-dev.aws-int.defra.cloud/open/rails-deployment/blob/master/config/deploy.rb#L69
+# so only creating cronjobs on that server, otherwise all jobs would be duplicated everyday!
+
+# This will run daily and update EA areas for addresses with x and y but without Area.
+every :day, at: (ENV["EA_AREA_LOOKUP"] || "1:05"), roles: [:db] do
+  rake ""
+end
