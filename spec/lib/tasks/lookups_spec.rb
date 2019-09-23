@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "EA lookups task" do
+RSpec.describe "Lookups task" do
   describe "lookups:update:missing_area" do
     include_context "rake"
 
