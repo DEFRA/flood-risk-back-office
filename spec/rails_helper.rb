@@ -6,10 +6,19 @@ require "spec_helper"
 require "rspec/rails"
 require "capybara/poltergeist"
 require "shoulda/matchers"
-require "support/factory_bot"
-require "support/shoulda"
-require "support/matchers/have_flash"
-require "support/matchers/have_form_error"
+
+# Requires supporting ruby files with custom matchers and macros, etc, in
+# spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
+# run as spec files by default. This means that files in spec/support that end
+# in _spec.rb will both be required and run as specs, causing the specs to be
+# run twice. It is recommended that you do not name files matching this glob to
+# end with _spec.rb. You can configure this pattern with the --pattern
+# option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
+#
+# We make an exception for simplecov because that will already have been
+# required and run at the very top of spec_helper.rb
+support_files = Dir["./spec/support/**/*.rb"].reject { |file| file == "./spec/support/simplecov.rb" }
+support_files.each { |f| require f }
 
 Capybara.javascript_driver = :poltergeist
 
