@@ -6,7 +6,7 @@ namespace :lookups do
     task missing_area: :environment do
       run_for = FloodRiskBackOffice::Application.config.area_lookup_run_for.to_i
       run_until = run_for.minutes.from_now
-      locations_scope = FloodRiskEngine::Location.missing_ea_area.with_easting_and_northing
+      locations_scope = FloodRiskEngine::Location.missing_area.with_easting_and_northing
 
       locations_scope.find_each do |location|
         break if Time.now > run_until
