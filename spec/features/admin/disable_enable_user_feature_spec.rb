@@ -44,9 +44,11 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       fill_in "Email", with: other_user.email
       fill_in "Password", with: other_user.password
 
+      # rubocop:disable Lint/AmbiguousBlockAssociation
       expect do
         click_button "Sign in"
-      end.to_not change(other_user.reload.sign_in_count)
+      end.to_not change { other_user.reload.sign_in_count }
+      # rubocop:enable Lint/AmbiguousBlockAssociation
 
       # Devise "paranoid mode" is on, so display the message "Invalid email or password",
       # instead of the default "Your account is not activated yet" message
