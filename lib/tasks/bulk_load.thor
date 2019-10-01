@@ -200,7 +200,7 @@ module Flood
       # testing the command using the dummy app in this gem).
       # If postgres then it uses the ANALYZE argument to update statistics, which are used
       # by the planner to determine the most efficient way to execute a query.
-
+      # rubocop:disable Lint/ShadowedArgument
       def modify_after_insert(conn, postgres_cmd, default_cmd)
         conn = ActiveRecord::Base.connection
         cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
@@ -213,6 +213,7 @@ module Flood
           conn.execute "#{cmd} flood_risk_engine_#{t};"
         end
       end
+      # rubocop:enable Lint/ShadowedArgument
 
       def vacuum_after_insert(conn)
         modify_after_insert conn, "VACUUM (ANALYZE)", "VACUUM"

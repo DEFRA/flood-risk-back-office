@@ -2,6 +2,9 @@
 module ActionView
   module Helpers
     module UrlHelper
+
+      protected
+
       # Back-ported from Rails 5. We have had to port this update in order to close a XSS
       # vulnerability with the use of the http referer. This can be changed on the client side
       # and used as a means to inject malicious code into a page, for example in the case where
@@ -14,7 +17,6 @@ module ActionView
       def _back_url
         _filtered_referrer || "javascript:history.back()"
       end
-      protected :_back_url
 
       def _filtered_referrer
         if controller.respond_to?(:request)
@@ -23,7 +25,6 @@ module ActionView
         end
       rescue URI::InvalidURIError
       end
-      protected :_filtered_referrer
     end
   end
 end
