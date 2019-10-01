@@ -78,7 +78,7 @@ class ExemptionEmailPresenter
   attr_reader :enrollment_exemption
 
   def ldate(date, hash = {})
-    date ? I18n.l(dt, hash) : nil
+    date ? I18n.l(date, hash) : nil
   end
 
 end
