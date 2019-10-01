@@ -22,6 +22,19 @@ AllCops:
     - "**/db/migrate/*"
     - "**/vendor/**/*"
 
+# Rubymine disagrees and not sure how to fix Rubymine indentation right now
+Layout/CaseIndentation:
+  Enabled: false
+
+# We believe it looks cluttered not having the ability to have empty lines after
+# the module, class, and block declarations
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
 # TODO: Understand what the issue is and whether this needs to be more formally disabled (i.e. the dev team agree)
 # We don't understand this for now - seems to prevent perfectly reasonable meta-programming
 Lint/NestedMethodDefinition:
@@ -73,23 +86,10 @@ Style/BlockDelimiters:
   Exclude:
     - "**/spec/**/*_spec.rb"
 
-# Rubymine disagrees and not sure how to fix Rubymine indentation right now
-Style/CaseIndentation:
-  Enabled: false
-
 # As a web app, as long as the team commit to using well named classes for
 # controllers, models etc it should not be necessary to add top-level class
 # documentation.
 Style/Documentation:
-  Enabled: false
-
-# We believe it looks cluttered not having the ability to have empty lines after
-# the module, class, and block declarations
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
-Style/EmptyLinesAroundModuleBody:
-  Enabled: false
-Style/EmptyLinesAroundClassBody:
   Enabled: false
 
 # We've found the sprintf style for formatting strings can be useful when storing a formatted string as a template,
@@ -115,7 +115,10 @@ Style/MethodCalledOnDoEndBlock:
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
-# Rubocop 0.42 introduced this cop - disabling for now until we have time to resolve
-# the issues it raises.
-Style/MethodMissing:
+# Rubocop 0.42 introduced Style/MethodMissing then 0.75 split it into 2 new
+# cops - disabling them for now until we have time to resolve the issues they
+# raise
+Style/MethodMissingSuper:
+  Enabled: false
+Style/MissingRespondToMissing:
   Enabled: false
