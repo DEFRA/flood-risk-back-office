@@ -12,7 +12,7 @@ User.destroy_all
 # in those environments. We have different db config for each environment
 # so setting that flag will mean rake is attempting to connect to db's that
 # don't exist.
-[:system, :super_agent, :admin_agent, :data_agent].each do |role_key|
+%i[system super_agent admin_agent data_agent].each do |role_key|
   user = User.create!(
     email: "#{role_key}_user@example.gov.uk",
     password: "Abcde12345"

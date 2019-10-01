@@ -1,6 +1,6 @@
 module Admin
   class UsersController < ::ApplicationController
-    before_action :find_user, only: %i(edit update disable enable)
+    before_action :find_user, only: %i[edit update disable enable]
 
     def index
       authorize User
@@ -62,6 +62,7 @@ module Admin
         render :edit
       end
     end
+    # rubocop:enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
     private
 

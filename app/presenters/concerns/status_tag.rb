@@ -7,13 +7,14 @@ module StatusTag
     being_processed: "info",
     approved: "success",
     rejected: "danger",
-    expired:  "danger",
+    expired: "danger",
     withdrawn: "danger",
     deregistered: "warning"
   }.freeze
 
   def status_tag_css_class(status)
     return unless status
+
     suffix = STATUS_TO_CSS_CLASS_MAP.fetch(status.to_sym) { "default" }
     "label-#{suffix}"
   end

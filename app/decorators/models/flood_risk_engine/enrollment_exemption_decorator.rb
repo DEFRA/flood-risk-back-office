@@ -21,13 +21,14 @@ FloodRiskEngine::EnrollmentExemption.class_eval do
   class << self
     def reportable_by_submitted_at(from_date, to_date)
       by_submitted_at(from_date, to_date)
-        .includes(:comments, enrollment: [:exemptions, :organisation, :correspondence_contact, :exemption_location])
+        .includes(:comments, enrollment: %i[exemptions organisation correspondence_contact exemption_location])
     end
 
     def reportable_by_decision_at(from_date, to_date)
       by_decision_at(from_date, to_date)
-        .includes(:comments, enrollment: [:exemptions, :organisation, :correspondence_contact, :exemption_location])
+        .includes(:comments, enrollment: %i[exemptions organisation correspondence_contact exemption_location])
     end
 
   end
+  # rubocop:enable Style/Lambda
 end

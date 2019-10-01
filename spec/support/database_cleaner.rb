@@ -11,6 +11,7 @@ RSpec.configure do |config|
     else
       DatabaseCleaner.strategy = :transaction
     end
+    # rubocop:enable Style/ConditionalAssignment
 
     DatabaseCleaner.start
   end

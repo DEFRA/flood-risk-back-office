@@ -35,6 +35,7 @@ module Enrollments
 
     def save_form!
       return false unless form.validate(params)
+
       form.save
     end
   end

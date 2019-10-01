@@ -9,7 +9,6 @@ class EnrollmentExemptionSearchQuery
     new.call(search_form)
   end
 
-  # rubocop:disable Metrics/AbcSize
   def initialize
     # Note the .joins (using squeel for brevity) help us build the search query, and the
     # .includes make sure we don't have any N+1 queries
@@ -41,8 +40,11 @@ class EnrollmentExemptionSearchQuery
 
   module Scopes
 
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Naming/UncommunicativeMethodParamName
     def matching_query(q)
       return all if q.blank?
+
       query = SearchTerm.new(q)
       where do
         (exemption.code =~ query.q) |
@@ -54,9 +56,11 @@ class EnrollmentExemptionSearchQuery
           (enrollment.correspondence_contact.full_name =~ query.fuzzy)
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def having_status(target_status)
       return all if target_status.blank?
+
       where { status == FloodRiskEngine::EnrollmentExemption.statuses[target_status] }
     end
 
@@ -75,12 +79,13 @@ class EnrollmentExemptionSearchQuery
       end
 
       def fuzzy
-        @fuzzy_q ||= "%#{@q}%"
+        @fuzzy ||= "%#{@q}%"
       end
 
       def fuzzy_without_whitespace
         @fuzzy_without_whitespace ||= "%#{without_whitespace}%"
       end
     end
+    # rubocop:enable Naming/UncommunicativeMethodParamName
   end
 end

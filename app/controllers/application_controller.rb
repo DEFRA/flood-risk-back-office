@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
     act = exception.query
     policy_name = exception.policy.class.to_s.underscore
 
-    count = act.to_sym.in?(%i(index? list?)) ? 2 : 1
+    count = act.to_sym.in?(%i[index? list?]) ? 2 : 1
 
     model_name =
       if exception.record.is_a?(Class)

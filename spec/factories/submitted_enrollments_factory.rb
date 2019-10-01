@@ -10,11 +10,11 @@ FactoryBot.define do
 
     factory :"submitted_#{ot}", parent: :confirmed_random_pending do
       after(:create) do |object|
-        if ot.to_sym == :partnership
-          object.organisation = create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
-        else
-          object.organisation = create(:organisation, :"as_#{ot}", name: Faker::Company.name)
-        end
+        object.organisation = if ot.to_sym == :partnership
+                                create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
+                              else
+                                create(:organisation, :"as_#{ot}", name: Faker::Company.name)
+                              end
 
         object.organisation.primary_address = build :simple_address
 

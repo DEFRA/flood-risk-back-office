@@ -27,6 +27,7 @@ module Admin
 
     def enrollment_exemptions_for(search_form)
       return [] unless params[:search]
+
       enrollment_exemptions = EnrollmentExemptionSearchQuery.call(search_form)
       EnrollmentExemptionsPresenter.new(enrollment_exemptions, view_context)
     end

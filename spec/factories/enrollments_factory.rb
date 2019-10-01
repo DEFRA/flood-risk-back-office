@@ -27,7 +27,7 @@ FactoryBot.define do
 
       object.enrollment_exemptions.create(
         exemption: exemption,
-        status: %w(pending being_processed).sample,
+        status: %w[pending being_processed].sample,
         valid_from: (Date.current - rand(7).days)
       )
     end
@@ -37,7 +37,7 @@ FactoryBot.define do
     end
   end
 
-  factory :confirmed, parent: :confirmed_random_pending, traits: [:with_limited_company, :with_secondary_contact]
+  factory :confirmed, parent: :confirmed_random_pending, traits: %i[with_limited_company with_secondary_contact]
 
   factory :confirmed_no_secondary_contact, parent: :confirmed_random_pending, traits: [:with_limited_company]
 end

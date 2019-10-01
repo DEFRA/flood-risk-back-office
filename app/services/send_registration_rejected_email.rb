@@ -37,6 +37,7 @@ class SendRegistrationRejectedEmail
     end
 
     return unless primary_contact_email.blank?
+
     raise(
       FloodRiskEngine::MissingEmailAddressError,
       "Missing contact email address"

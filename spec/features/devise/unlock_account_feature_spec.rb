@@ -1,6 +1,6 @@
-include ActiveSupport::Testing::TimeHelpers
-
 RSpec.feature "As a user, I want to be unlock my account" do
+  include ActiveSupport::Testing::TimeHelpers
+
   let(:user) { create :user, password: "Xyz12345678" }
 
   background do

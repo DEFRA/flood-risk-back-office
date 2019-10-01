@@ -38,11 +38,11 @@ module Admin
 
       context "form validation" do
         it "is valid if :state included in allowed states" do
-          is_expected.to validate_inclusion_of(:state).in_array(%w(queued started completed failed))
+          is_expected.to validate_inclusion_of(:state).in_array(%w[queued started completed failed])
         end
 
         it "is valid if :date_field_scope included in allowed date scopes" do
-          is_expected.to validate_inclusion_of(:date_field_scope).in_array(%w(submitted_at decision_at))
+          is_expected.to validate_inclusion_of(:date_field_scope).in_array(%w[submitted_at decision_at])
         end
 
         describe "To Date" do
@@ -93,7 +93,7 @@ module Admin
             params = { "#{form.params_key}": {
               date_field_scope: "decision_at",
               from_date: Date.current - 2.days,
-              to_date:  Date.current
+              to_date: Date.current
             } }
 
             expect(form.validate(params)).to eq true

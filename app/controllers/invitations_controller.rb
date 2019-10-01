@@ -28,6 +28,7 @@ class InvitationsController < ::Devise::InvitationsController
       respond_with_navigational(resource) { render :edit }
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   protected
 
@@ -40,16 +41,14 @@ class InvitationsController < ::Devise::InvitationsController
         res.errors.add :assigned_role, :inclusion
       end
 
-      if res.errors.empty? && res.assigned_role.present?
-        res.add_role res.assigned_role
-      end
+      res.add_role res.assigned_role if res.errors.empty? && res.assigned_role.present?
 
-      # rubocop:disable Performance/RedundantBlockCall, Style/SafeNavigation
+      # rubocop:disable Style/SafeNavigation
       # TODO: Tried changing this to use rubocop suggested Safe navigation format
       # e.g. block&.call but then Enrollments::PartnersController edit action should render page sucessfully
       # failed. So have excluded it for now until we understand better whats going on
       block.call if block
-      # rubocop:enable Performance/RedundantBlockCall, Style/SafeNavigation
+      # rubocop:enable Style/SafeNavigation
     end
   end
 
@@ -68,3 +67,4 @@ class InvitationsController < ::Devise::InvitationsController
     admin_users_path
   end
 end
+# rubocop:enable Metrics/PerceivedComplexity
