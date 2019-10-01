@@ -50,7 +50,7 @@ gem "github_changelog_generator", require: false
 # Automatically loads environment variables from .env into ENV. Specified here
 # rather than in the group in case any of the gems we add depend on env
 # variables being available
-gem "dotenv-rails", "~> 2.1.1", groups: [:development, :test]
+gem "dotenv-rails", "~> 2.1.1", groups: %i[development test]
 
 group :development do
   # Pretty prints objects in console. Usage `$ ap some_object`
@@ -96,6 +96,6 @@ group :production do
   # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
   gem "airbrake", "~> 5.3.0"
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
-  # via Procfile)	  # via Procfile)
+  # via Procfile) # via Procfile)
   gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
 end

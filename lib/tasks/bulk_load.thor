@@ -116,7 +116,6 @@ module Flood
         conn = ActiveRecord::Base.connection
         vacuum_after_insert(conn)
         reindex_after_insert(conn)
-
       ensure
         FloodRiskEngine::Enrollment.paper_trail_on!
       end
@@ -204,13 +203,13 @@ module Flood
 
       def modify_after_insert(conn, postgres_cmd, default_cmd)
         conn = ActiveRecord::Base.connection
-        cmd = if conn.instance_values["config"][:adapter].in? %w(postgresql postgres postgis)
+        cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
                 postgres_cmd
               else
                 default_cmd
               end
 
-        [:enrollments, :organisations, :contacts, :addresses].each do |t|
+        %i[enrollments organisations contacts addresses].each do |t|
           conn.execute "#{cmd} flood_risk_engine_#{t};"
         end
       end

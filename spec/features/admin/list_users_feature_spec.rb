@@ -32,7 +32,7 @@ RSpec.feature "As an System user, I want to view a list of users" do
       expect(page).to have_flash(I18n.t("pundit.defaults.index?", name: "users"), key: :alert)
     end
 
-    %i(super_agent admin_agent data_agent).each do |role|
+    %i[super_agent admin_agent data_agent].each do |role|
       scenario "#{role.to_s.humanize} user is denied access" do
         user = create :user
         user.add_role role

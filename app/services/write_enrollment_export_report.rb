@@ -1,4 +1,3 @@
-
 class WriteEnrollmentExportReport
 
   def initialize(enrollment_export)

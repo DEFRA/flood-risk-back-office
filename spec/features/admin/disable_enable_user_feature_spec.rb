@@ -109,7 +109,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       expect(page).to have_flash(I18n.t("pundit.user_policy.disable?", name: "user"), key: :alert)
     end
 
-    %i(super_agent admin_agent data_agent).each do |role|
+    %i[super_agent admin_agent data_agent].each do |role|
       scenario "#{role.to_s.humanize} user is denied access" do
         pending "FIX ME!"
         user = create :user

@@ -60,12 +60,13 @@ class PrepareEnrollmentExportReport
       comments(enrollment_exemption),
       linkage_url
     ]
-  rescue => x
+  rescue StandardError => e
     Rails.logger.error(
-      "Reporting failed due to issue #{x.message} with Enrollment #{enrollment.id} (#{enrollment.reference_number})"
+      "Reporting failed due to issue #{e.message} with Enrollment #{enrollment.id} (#{enrollment.reference_number})"
     )
     raise
   end
+  # rubocop:enable Metrics/MethodLength
 
   def self.column_names
     [
@@ -112,8 +113,8 @@ class PrepareEnrollmentExportReport
     Rails.root.join "private", "exports", enrollment_export.file_name
   end
 
-  def ldate(dt, hash = {})
-    dt ? I18n.l(dt, hash) : nil
+  def ldate(date, hash = {})
+    date ? I18n.l(date, hash) : nil
   end
 
 end

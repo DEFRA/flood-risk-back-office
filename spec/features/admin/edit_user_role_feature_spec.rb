@@ -28,7 +28,7 @@ RSpec.feature "As an System user, I want to edit another user's role" do
           click_button "Update user"
           expect(page).to have_flash I18n.t("user_update_success", name: other_user.email)
         end.to change { other_user.roles(true).pluck(:name) }.from(["admin_agent"]).to(["data_agent"])
-      end # .to change { other_user.reload.versions.count }.by(2)
+      end
       expect(current_path).to eq admin_users_path
 
       expect(other_user.role_names).to eq "data_agent"
@@ -62,7 +62,7 @@ RSpec.feature "As an System user, I want to edit another user's role" do
       expect(page).to have_flash(I18n.t("pundit.defaults.edit?", name: "user"), key: :alert)
     end
 
-    %i(super_agent admin_agent data_agent).each do |role|
+    %i[super_agent admin_agent data_agent].each do |role|
       scenario "#{role.to_s.humanize} user is denied access" do
         user = create :user
         user.add_role role

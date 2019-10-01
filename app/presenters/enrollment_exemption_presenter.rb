@@ -76,6 +76,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   def deregister_reason_text
     return "" unless enrollment_exemption.deregister_reason
+
     enrollment_exemption.deregister_reason.humanize
   end
 
@@ -114,11 +115,13 @@ class EnrollmentExemptionPresenter < Presenter
   # For partnerships we sometimes need ALL names not just the first
   def organisation_details
     return blank_value unless organisation
+
     organisation.partnership? ? partner_names : organisation.name
   end
 
   def organisation_name
     return blank_value unless organisation
+
     organisation.partnership? ? first_partner_name : organisation.name
   end
 
@@ -130,6 +133,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   def address
     return unless organisation
+
     organisation.partnership? ? first_partner_address : organisation.primary_address
   end
 
@@ -139,12 +143,12 @@ class EnrollmentExemptionPresenter < Presenter
 
   def first_partner_name
     partner = organisation.partners.first
-    partner && partner.contact.full_name
+    partner&.contact&.full_name
   end
 
   def first_partner_address
     partner = organisation.partners.first
-    partner && partner.address
+    partner&.address
   end
 
   def present_address(address)
@@ -153,6 +157,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   def editable_present_address(address)
     return unless address
+
     with_edit_button(
       text: present_address(address),
       url: edit_enrollment_address_path(enrollment, address)
@@ -233,6 +238,7 @@ class EnrollmentExemptionPresenter < Presenter
 
   def status_tooltip_html
     return if comments.empty?
+
     comment_to_html status_comments.first
   end
 
@@ -249,3 +255,4 @@ class EnrollmentExemptionPresenter < Presenter
   attr_accessor :headers
 
 end
+# rubocop:enable Metrics/ClassLength

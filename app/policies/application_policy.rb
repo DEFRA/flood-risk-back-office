@@ -1,6 +1,5 @@
-
 class ApplicationPolicy
-  CRUD_ACTIONS = %i(new create edit update destroy show index).freeze
+  CRUD_ACTIONS = %i[new create edit update destroy show index].freeze
 
   attr_reader :user, :record
 
@@ -78,6 +77,7 @@ class ApplicationPolicy
 
   def user_has_role?(role)
     return false unless user.present?
+
     user.has_cached_role?(role) || user.has_role?(role)
   end
 

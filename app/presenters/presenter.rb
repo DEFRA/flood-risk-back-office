@@ -81,6 +81,7 @@ class Presenter < SimpleDelegator
 
   def friendly_expiry_date(date)
     return t("presenters.no_expiry_date_present") unless date
+
     I18n.l(date.to_date, format: :long)
   end
 

@@ -27,3 +27,4 @@ module ActionView
     end
   end
 end
+# rubocop:enable Lint/HandleExceptions

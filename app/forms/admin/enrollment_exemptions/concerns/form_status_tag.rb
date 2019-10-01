@@ -13,6 +13,7 @@ module Admin
 
         def status_label
           return unless enrollment_exemption.status.present?
+
           I18n.t(enrollment_exemption.status, scope: "admin.status_label")
         end
 

@@ -1,4 +1,3 @@
-
 module Admin
   module EnrollmentExemptions
     class DeregisterForm < BaseChangeStateForm

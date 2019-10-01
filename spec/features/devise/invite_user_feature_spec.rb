@@ -22,7 +22,7 @@ RSpec.feature "Invite user" do
       expect(page).to have_flash(I18n.t("pundit.user_policy.invite?"), key: :alert)
     end
 
-    %i(super_agent admin_agent data_agent).each do |role|
+    %i[super_agent admin_agent data_agent].each do |role|
       scenario "#{role.to_s.humanize} user is denied access" do
         user = create :user
         user.add_role role

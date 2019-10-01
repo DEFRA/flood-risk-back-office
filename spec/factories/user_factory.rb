@@ -8,9 +8,7 @@ FactoryBot.define do
     password "Secret08"
     password_confirmation { password }
 
-    if User.attribute_method? :authentication_token
-      authentication_token { generate(:user_authentication_token) }
-    end
+    authentication_token { generate(:user_authentication_token) } if User.attribute_method? :authentication_token
   end
 
   factory :disabled_user, parent: :user do

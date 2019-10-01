@@ -47,7 +47,7 @@ module PartnershipPresenter
         content_tag(:p, "#{address_label} #{present_address(partner.address)}"),
         content_tag(:p, edit_link(partner))
       ].join,
-      tag: %w(a p)
+      tag: %w[a p]
     )
   end
 

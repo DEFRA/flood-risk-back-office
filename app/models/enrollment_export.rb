@@ -41,8 +41,8 @@ class EnrollmentExport < ActiveRecord::Base
     WriteToAwsS3.run(self) unless ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
 
     writer.complete!
-  rescue => ex
-    writer.failed("#{ex.class}: #{ex}")
+  rescue StandardError => e
+    writer.failed("#{e.class}: #{e}")
     raise
   end
 
@@ -55,6 +55,7 @@ class EnrollmentExport < ActiveRecord::Base
 
   def date_for_filename(date)
     return unless date
+
     date.strftime("%Y%m%d")
   end
 
@@ -70,6 +71,7 @@ class EnrollmentExport < ActiveRecord::Base
         name = [prefix, (count.zero? ? "" : count.to_s), "csv"].reject(&:blank?).join(".")
 
         break name unless self.class.exists?(file_name: name)
+
         count += 1
       end
   end
