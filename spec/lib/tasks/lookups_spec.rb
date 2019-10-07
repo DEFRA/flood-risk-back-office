@@ -11,8 +11,7 @@ RSpec.describe "Lookups task" do
     end
 
     it "update area info into locations missing it" do
-      address = create(:address, :site)
-      location_to_update = create(:location, locatable: address)
+      location_to_update = create(:location)
       area = double(:area, code: "123", area_id: 123, area_name: "Foo", short_name: "Bar", long_name: "Baz")
       result = double(:result, areas: [area], successful?: true)
       water_management_area_count = FloodRiskEngine::WaterManagementArea.count + 1
