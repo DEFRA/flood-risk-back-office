@@ -60,17 +60,7 @@ Airbrake.configure do |c|
     /password/i,
     /postcode/i,
 
-    :name,
-    :address,
-    :address_list,
-    :premises,
-    :street_address,
-    :locality,
-    :city,
-
     :full_name,
-    :position,
-    :org_type,
 
     :name,
     :telephone_number,
@@ -84,8 +74,6 @@ Airbrake.configure do |c|
     :unconfirmed_email,
     :unlock_token,
 
-    :q,
-    :search,
     :comment,
 
     # Other things we'll filter beacuse we're super-diligent.
