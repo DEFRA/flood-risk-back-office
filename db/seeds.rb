@@ -1,13 +1,25 @@
-# We have attempted to make seeding flexible depending on the environment the seed is occuring. This allows us to,
-# for example add dummy records into a User Testing or staging environment that we wouldn't want in development. This
-# works by having a file for each environment within db/seeds which handles anything specific to that environment.
-# Anything that is mutual to all goes in db/seeds/all.rb. db/seeds.rb then simply becomes a function that calls all.rb
-# and the relevant environment specific file. This solution and the code below were taken from
-# https://archive.dennisreimann.de/blog/seeds-for-different-environments/
-["all", Rails.env].each do |seed|
-  seed_file = Rails.root.join("db", "seeds", "#{seed}.rb")
-  if File.exist?(seed_file)
-    Rails.logger.info "SEED MSG: Loading #{seed} data"
-    require seed_file
+# frozen_string_literal: true
+
+FloodRiskEngine::Engine.load_seed
+
+def create_user(email, role)
+  user = User.create!(
+    email: email,
+    password: ENV["DEFAULT_PASSWORD"] || "Secret123"
+  )
+  user.add_role role
+end
+
+def seed_users
+  seeds = JSON.parse(File.read("#{Rails.root}/db/seeds/users.json"))
+  users = seeds["users"]
+
+  users.each do |user|
+    next if User.where(email: user["email"]).exists?
+
+    create_user(user["email"], user["role"])
   end
 end
+
+# Only seed if not running in production or we specifically require it, eg. for Heroku
+seed_users if !Rails.env.production? || ENV["ALLOW_SEED"]
