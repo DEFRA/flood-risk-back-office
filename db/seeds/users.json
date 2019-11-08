@@ -1,117 +1,20 @@
-system:
-  - tim.stone@environment-agency.gov.uk
-  - tim.crowe@environment-agency.gov.uk
-  - alan.cruikshanks@environment-agency.gov.uk
-  - johnathan.austin@environment-agency.gov.uk
-  - chrisd.jackson@environment-agency.gov.uk
-  - Paula.french@environment-agency.gov.uk
-  - thomas.brabbs@environment-agency.gov.uk
-  - Emma.morton@environment-agency.gov.uk
-  - Ianj.blackburn@environment-agency.gov.uk
-super_agent:
-  - farah.hussain@environment-agency.gov.uk
-  - bruno.carette@environment-agency.gov.uk
-  - christopher.cumming@environment-agency.gov.uk
-  - matt.robinson1@environment-agency.gov.uk
-data_agent: []
-admin_agent:
-  - anna.goss@environment-agency.gov.uk
-  - alan.brown01@environment-agency.gov.uk
-  - john.k.williams@environment-agency.gov.uk
-  - lissie.robinson@environment-agency.gov.uk
-  - laura.harper@environment-agency.gov.uk
-  - zoe.woods@environment-agency.gov.uk
-  - margaret.stones@environment-agency.gov.uk
-  - linda.morris@environment-agency.gov.uk
-  - lorraine.mendez@environment-agency.gov.uk
-  - kerry.wagstaff@environment-agency.gov.uk
-  - kathryn.hughes@environment-agency.gov.uk
-  - jill.rhodes@environment-agency.gov.uk
-  - Shabnam.aftab@environment-agency.gov.uk
-  - diane.fogg@environment-agency.gov.uk
-  - jacqueline.hempshall@environment-agency.gov.uk
-  - belinda.peacegood@environment-agency.gov.uk
-  - aimee.reed@environment-agency.gov.uk
-  - d.west@environment-agency.gov.uk
-  - christopher.brown1@environment-agency.gov.uk
-  - rebecca.ball@environment-agency.gov.uk
-  - jamie.gilbert@environment-agency.gov.uk
-  - david.jackson@environment-agency.gov.uk
-  - gary.hickey@environment-agency.gov.uk
-  - heather.farr@environment-agency.gov.uk
-  - joanne.walker@environment-agency.gov.uk
-  - joanne.carney@environment-agency.gov.uk
-  - eileen.roffe@environment-agency.gov.uk
-  - jayne.leng@environment-agency.gov.uk
-  - Michaele.ramsden@environment-agency.gov.uk
-  - Lewis.copeland@environment-agency.gov.uk
-  - stewart.riley@environment-agency.gov.uk
-  - maria.bisby@environment-agency.gov.uk
-  - helen.mosley@environment-agency.gov.uk
-  - ben.sewell@environment-agency.gov.uk
-  - Rebecca.foster@environment-agency.gov.uk
-  - jason.cardwell@environment-agency.gov.uk
-  - kathryn.foers@environment-agency.gov.uk
-  - hazel.haywood@environment-agency.gov.uk
-  - martin.ashton@environment-agency.gov.uk
-  - lisa.pilcher@environment-agency.gov.uk
-  - mathew.bennett@environment-agency.gov.uk
-  - darren.turner@environment-agency.gov.uk
-  - kay.hall@environment-agency.gov.uk
-  - richard.melbourne@environment-agency.gov.uk
-  - sheila.pearson@environment-agency.gov.uk
-  - katie.richardson@environment-agency.gov.uk
-  - robert.dagnall@environment-agency.gov.uk
-  - david.powell01@environment-agency.gov.uk
-  - james.allcock@environment-agency.gov.uk
-  - andrew.concannon@environment-agency.gov.uk
-  - gill.morton@environnment-agency.gov.uk
-  - rosalind.mcgarrie-lound@environment-agency.gov.uk
-  - steven.middleton@environment-agency.gov.uk
-  - amy.reed@environnment-agency.gov.uk
-  - rachael.tarron@environment-agency.gov.uk
-  - meher.spandana@environment-agency.gov.uk
-  - catherine.drewery@environment-agency.gov.uk
-  - steven.whittingslow@environment-agency.gov.uk
-  - susan.vizard@environment-agency.gov.uk
-  - arshid.iqbal@environment-agency.gov.uk
-  - robert.longden@environment-agency.gov.uk
-  - dominic.murphy@environment-agency.gov.uk
-  - matthew.bembridge@environment-agency.gov.uk
-  - peter.greaves@environnment-agency.gov.uk
-  - peter.reeves@environment-agency.gov.uk
-  - tony.faley@environment-agency.gov.uk
-  - danielle.rogers@environnment-agency.gov.uk
-  - angelina.abel@environment-agency.gov.uk
-  - rose.newsome@environment-agency.gov.uk
-  - joseph.burgess@environment-agency.gov.uk
-  - amy.hattersley@environment-agency.gov.uk
-  - adam.farrell@environment-agency.gov.uk
-  - C.McCormack-Croft@environment-agency.gov.uk
-  - faye.bratley@environment-agency.gov.uk
-  - Kathryn.speight@environment-agency.gov.uk
-  - colleen.buckley@environment-agency.gov.uk
-  - Roxi.Hinchcliffe@environment-agency.gov.uk
-  - emma.rodgers@environment-agency.gov.uk
-  - Jacquie.Batty@environment-agency.gov.uk
-  - amy.booker@environment-agency.gov.uk
-  - kyle.craib@environment-agency.gov.uk
-  - louise.craib@environment-agency.gov.uk
-  - nikita.hull@environment-agency.gov.uk
-  - kirsty.johnson@environment-agency.gov.uk
-  - Dan.Moss@environment-agency.gov.uk
-  - laura.parker@environment-agency.gov.uk
-  - terry.marsden@environment-agency.gov.uk
-  - jake.brennan@environment-agency.gov.uk
-  - claire.joyce@environment-agency.gov.uk
-  - lauren.riley@environment-agency.gov.uk
-  - Craig.Utley@environment-agency.gov.uk
-  - Mathilde.Fontanive@environment-agency.gov.uk
-  - Harriet.Shaw@environment-agency.gov.uk
-  - Beth.Allott@environment-agency.gov.uk
-  - Jayne.Firth@environment-agency.gov.uk
-  - Em-J.Fletcher@environment-agency.gov.uk
-  - Ian.Collier@environment-agency.gov.uk
-  - Shelley.Radford@environment-agency.gov.uk
-  - Nathan.Wong@environment-agency.gov.uk
-  - Cat.Warren@environment-agency.gov.uk
+{
+  "users" : [
+    {
+      "email" : "system@frae.gov.uk",
+      "role" : "system"
+    },
+    {
+      "email" : "super_agent@frae.gov.uk",
+      "role" : "super_agent"
+    },
+    {
+      "email" : "admin_agent@frae.gov.uk",
+      "role" : "admin_agent"
+    },
+    {
+      "email" : "data_agent@frae.gov.uk",
+      "role" : "data_agent"
+    }
+  ]
+}
