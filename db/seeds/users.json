@@ -1,0 +1,20 @@
+{
+  "users" : [
+    {
+      "email" : "system@frae.gov.uk",
+      "role" : "system"
+    },
+    {
+      "email" : "super_agent@frae.gov.uk",
+      "role" : "super_agent"
+    },
+    {
+      "email" : "admin_agent@frae.gov.uk",
+      "role" : "admin_agent"
+    },
+    {
+      "email" : "data_agent@frae.gov.uk",
+      "role" : "data_agent"
+    }
+  ]
+}
