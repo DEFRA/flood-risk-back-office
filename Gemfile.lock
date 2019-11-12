@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 49eb1ed6c5e02d26b9723046fb688848ba308093
+  revision: 609277189b5ba146f196c4e993140588dbe7fc3e
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -284,7 +284,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.0)
+    rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
