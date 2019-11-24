@@ -1,12 +1,11 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 7c9fcbfcebd106c819faf247c97b4390cfaeae18
-  branch: master
+  revision: 1edea4cc3026e7f5b5f78260c17ba313439f9c4d
+  branch: use-defra-ruby-alert-for-airbrake
   specs:
     flood_risk_engine (1.0.2)
       activerecord-session_store (~> 1.0)
-      airbrake (~> 5.3.0)
-      airbrake-ruby (~> 1.3.2)
+      defra_ruby_alert (~> 0.1.0)
       defra_ruby_area
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
@@ -112,6 +111,8 @@ GEM
     database_cleaner (1.5.3)
     declarative (0.0.10)
     declarative-option (0.1.0)
+    defra_ruby_alert (0.1.0)
+      airbrake (~> 5.3.0)
     defra_ruby_area (2.0.0)
       nokogiri (~> 1.10.4)
       rest-client (~> 2.0)
