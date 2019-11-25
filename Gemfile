@@ -34,7 +34,7 @@ gem "whenever", "~> 0.9.4", require: false
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "use-defra-ruby-alert-for-airbrake"
+    branch: "master"
 
 # Allows us to automatically generate the change log from the tags, issues,
 # labels and pull requests on GitHub. Added as a dependency so all dev's have
