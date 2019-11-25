@@ -38,5 +38,4 @@ FloodRiskEngine.configure do |config|
     :authenticity_token
   ]
 end
-byebug
 FloodRiskEngine.start_airbrake
