@@ -13,8 +13,6 @@ namespace :lookups do
 
         FloodRiskEngine::UpdateWaterManagementAreaJob.perform_now(location)
       end
-
-      Airbrake.close
     end
   end
 end

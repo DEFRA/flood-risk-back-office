@@ -93,8 +93,6 @@ group :test do
 end
 
 group :production do
-  # Airbrake catches exceptions, sends them to https://dst-errbit.herokuapp.com
-  gem "airbrake", "~> 5.3.0"
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
   gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
