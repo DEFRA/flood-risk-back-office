@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-log_output_path = ENV["EXPORT_SERVICE_CRON_LOG_OUTPUT_PATH"] || "/srv/ruby/flood-risk-back-office/shared/log/"
+log_output_path = ENV["EXPORT_SERVICE_CRON_LOG_OUTPUT_PATH"] || "/srv/ruby/flood-risk-activity-exemption-back-office/shared/log/"
 set :output, File.join(log_output_path, "whenever_cron.log")
 set :job_template, "/bin/bash -l -c 'eval \"$(rbenv init -)\" && :job'"
 
