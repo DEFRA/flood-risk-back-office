@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # A query object to rapw up the nasty gubbins behind pseudo full-text searching
 # for enrollment exemptions. In an ideal world you might do this using elastic search.
 # Here we use squeel to make to querying less painful, and the pattern of mixing
@@ -41,7 +43,7 @@ class EnrollmentExemptionSearchQuery
   module Scopes
 
     # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Naming/UncommunicativeMethodParamName
+    # rubocop:disable Naming/MethodParameterName
     def matching_query(q)
       return all if q.blank?
 
@@ -57,6 +59,7 @@ class EnrollmentExemptionSearchQuery
       end
     end
     # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Naming/MethodParameterName
 
     def having_status(target_status)
       return all if target_status.blank?
@@ -70,9 +73,12 @@ class EnrollmentExemptionSearchQuery
 
     class SearchTerm
       attr_reader :q
+
+      # rubocop:disable Naming/MethodParameterName
       def initialize(q = "")
         @q = q.strip
       end
+      # rubocop:enable Naming/MethodParameterName
 
       def without_whitespace
         @without_whitespace ||= @q.delete(" ")
@@ -86,6 +92,5 @@ class EnrollmentExemptionSearchQuery
         @fuzzy_without_whitespace ||= "%#{without_whitespace}%"
       end
     end
-    # rubocop:enable Naming/UncommunicativeMethodParamName
   end
 end
