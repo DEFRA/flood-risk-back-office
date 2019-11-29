@@ -1,4 +1,5 @@
-# rubocop:disable Lint/HandleExceptions
+# frozen_string_literal: true
+
 module ActionView
   module Helpers
     module UrlHelper
@@ -18,6 +19,7 @@ module ActionView
         _filtered_referrer || "javascript:history.back()"
       end
 
+      # rubocop:disable Lint/SuppressedException
       def _filtered_referrer
         if controller.respond_to?(:request)
           referrer = controller.request.env["HTTP_REFERER"]
@@ -25,7 +27,7 @@ module ActionView
         end
       rescue URI::InvalidURIError
       end
+      # rubocop:enable Lint/SuppressedException
     end
   end
 end
-# rubocop:enable Lint/HandleExceptions
