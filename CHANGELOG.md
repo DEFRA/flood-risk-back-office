@@ -1,7 +1,63 @@
-# Change Log
+# Changelog
+
+## [Unreleased](https://github.com/DEFRA/flood-risk-back-office/tree/HEAD)
+
+[Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.2.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump flood\_risk\_engine from `9388075` to `e7d9811` [\#180](https://github.com/DEFRA/flood-risk-back-office/pull/180) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `7c6e2cd` to `9388075` [\#179](https://github.com/DEFRA/flood-risk-back-office/pull/179) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+## [v1.2.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.2.0) (2019-11-29)
+
+[Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.1.1...v1.2.0)
+
+**Implemented enhancements:**
+
+- Add scope on site addresses to Area Lookup [\#155](https://github.com/DEFRA/flood-risk-back-office/pull/155) ([cintamani](https://github.com/cintamani))
+- Add scheduled task to add missing Area information [\#152](https://github.com/DEFRA/flood-risk-back-office/pull/152) ([cintamani](https://github.com/cintamani))
+
+**Fixed bugs:**
+
+- Fix default whenever log path [\#178](https://github.com/DEFRA/flood-risk-back-office/pull/178) ([Cruikshanks](https://github.com/Cruikshanks))
+- Use defra-ruby-alert for airbrake mgmt [\#174](https://github.com/DEFRA/flood-risk-back-office/pull/174) ([Cruikshanks](https://github.com/Cruikshanks))
+- Fix airbrake project env var reference [\#173](https://github.com/DEFRA/flood-risk-back-office/pull/173) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Security fixes:**
+
+- \[Security\] Bump loofah from 2.3.0 to 2.3.1 [\#162](https://github.com/DEFRA/flood-risk-back-office/pull/162) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- \[Security\] Bump rubocop from 0.47.1 to 0.75.0 [\#156](https://github.com/DEFRA/flood-risk-back-office/pull/156) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+**Merged pull requests:**
+
+- Bump rubocop from 0.76.0 to 0.77.0 [\#177](https://github.com/DEFRA/flood-risk-back-office/pull/177) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `6092771` to `7c9fcbf` [\#175](https://github.com/DEFRA/flood-risk-back-office/pull/175) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `49eb1ed` to `6092771` [\#172](https://github.com/DEFRA/flood-risk-back-office/pull/172) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Update production user seeds with test emails [\#171](https://github.com/DEFRA/flood-risk-back-office/pull/171) ([Cruikshanks](https://github.com/Cruikshanks))
+- Alter airbrake config to allow use in development [\#170](https://github.com/DEFRA/flood-risk-back-office/pull/170) ([Cruikshanks](https://github.com/Cruikshanks))
+- Bump flood\_risk\_engine from `4cb2f22` to `49eb1ed` [\#169](https://github.com/DEFRA/flood-risk-back-office/pull/169) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `25a87f1` to `4cb2f22` [\#168](https://github.com/DEFRA/flood-risk-back-office/pull/168) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `d5ba849` to `25a87f1` [\#167](https://github.com/DEFRA/flood-risk-back-office/pull/167) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rubocop from 0.75.1 to 0.76.0 [\#166](https://github.com/DEFRA/flood-risk-back-office/pull/166) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump github\_changelog\_generator from 1.14.3 to 1.15.0 [\#165](https://github.com/DEFRA/flood-risk-back-office/pull/165) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump fuubar from 2.4.1 to 2.5.0 [\#164](https://github.com/DEFRA/flood-risk-back-office/pull/164) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `3d0f7e9` to `d5ba849` [\#163](https://github.com/DEFRA/flood-risk-back-office/pull/163) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rubocop from 0.75.0 to 0.75.1 [\#161](https://github.com/DEFRA/flood-risk-back-office/pull/161) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `a4e68e9` to `3d0f7e9` [\#160](https://github.com/DEFRA/flood-risk-back-office/pull/160) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Revert "Add scope on site addresses to Area Lookup" [\#158](https://github.com/DEFRA/flood-risk-back-office/pull/158) ([Cruikshanks](https://github.com/Cruikshanks))
+- Bump flood\_risk\_engine from `5bec682` to `a4e68e9` [\#157](https://github.com/DEFRA/flood-risk-back-office/pull/157) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `55dc5b1` to `5bec682` [\#154](https://github.com/DEFRA/flood-risk-back-office/pull/154) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `f8bf2a5` to `55dc5b1` [\#153](https://github.com/DEFRA/flood-risk-back-office/pull/153) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `cf686e2` to `f8bf2a5` [\#151](https://github.com/DEFRA/flood-risk-back-office/pull/151) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 ## [v1.1.1](https://github.com/DEFRA/flood-risk-back-office/tree/v1.1.1) (2019-09-04)
+
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.1.0...v1.1.1)
+
+**Security fixes:**
+
+- \[Security\] Bump nokogiri from 1.10.3 to 1.10.4 [\#139](https://github.com/DEFRA/flood-risk-back-office/pull/139) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 **Merged pull requests:**
 
@@ -14,7 +70,6 @@
 - Bump bullet from 6.0.1 to 6.0.2 [\#143](https://github.com/DEFRA/flood-risk-back-office/pull/143) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `d8df389` to `99a5326` [\#141](https://github.com/DEFRA/flood-risk-back-office/pull/141) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `56d2db4` to `d8df389` [\#140](https://github.com/DEFRA/flood-risk-back-office/pull/140) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- \[Security\] Bump nokogiri from 1.10.3 to 1.10.4 [\#139](https://github.com/DEFRA/flood-risk-back-office/pull/139) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump flood\_risk\_engine from `862eaa5` to `56d2db4` [\#138](https://github.com/DEFRA/flood-risk-back-office/pull/138) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Update Travis config [\#137](https://github.com/DEFRA/flood-risk-back-office/pull/137) ([irisfaraway](https://github.com/irisfaraway))
 - Bump flood\_risk\_engine from `163c62c` to `862eaa5` [\#136](https://github.com/DEFRA/flood-risk-back-office/pull/136) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -24,6 +79,7 @@
 - Bump flood\_risk\_engine from `1f1a8ec` to `61bde8e` [\#127](https://github.com/DEFRA/flood-risk-back-office/pull/127) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 ## [v1.1.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.1.0) (2019-06-27)
+
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.0.1...v1.1.0)
 
 **Implemented enhancements:**
@@ -68,6 +124,7 @@
 - Update dependencies [\#95](https://github.com/DEFRA/flood-risk-back-office/pull/95) ([irisfaraway](https://github.com/irisfaraway))
 
 ## [v1.0.1](https://github.com/DEFRA/flood-risk-back-office/tree/v1.0.1) (2016-12-21)
+
 [Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/v1.0.0...v1.0.1)
 
 **Implemented enhancements:**
@@ -75,25 +132,19 @@
 - Add OS places notice and T&C's to service [\#89](https://github.com/DEFRA/flood-risk-back-office/pull/89) ([Cruikshanks](https://github.com/Cruikshanks))
 - Remove dependency on before\_commit for CI checks [\#88](https://github.com/DEFRA/flood-risk-back-office/pull/88) ([Cruikshanks](https://github.com/Cruikshanks))
 
-**Closed issues:**
-
-- Consolidate on ffaker or faker [\#86](https://github.com/DEFRA/flood-risk-back-office/issues/86)
-
 **Merged pull requests:**
 
 - Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
 - Housekeeping [\#87](https://github.com/DEFRA/flood-risk-back-office/pull/87) ([woodpigeon](https://github.com/woodpigeon))
 
 ## [v1.0.0](https://github.com/DEFRA/flood-risk-back-office/tree/v1.0.0) (2016-07-18)
+
+[Full Changelog](https://github.com/DEFRA/flood-risk-back-office/compare/f3d29b9cf17e3379c1a0c971531afe2af711c548...v1.0.0)
+
 **Implemented enhancements:**
 
 - Fixes following review of approval and rejection processes [\#37](https://github.com/DEFRA/flood-risk-back-office/pull/37) ([reggieb](https://github.com/reggieb))
 - Add change status action [\#33](https://github.com/DEFRA/flood-risk-back-office/pull/33) ([reggieb](https://github.com/reggieb))
-
-**Closed issues:**
-
-- Change displayed text 'Enrollment' to 'Registration' [\#11](https://github.com/DEFRA/flood-risk-back-office/issues/11)
-- Pin down gem versions to patch level before go live [\#7](https://github.com/DEFRA/flood-risk-back-office/issues/7)
 
 **Merged pull requests:**
 
@@ -174,4 +225,4 @@
 
 
 
-\* *This Change Log was automatically generated by [github_changelog_generator](https://github.com/skywinder/Github-Changelog-Generator)*
+\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
