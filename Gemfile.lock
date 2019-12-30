@@ -91,7 +91,7 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.4)
-    bullet (6.0.2)
+    bullet (6.1.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
@@ -381,7 +381,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.9)
     timeliness (0.3.8)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uber (0.0.15)
     uglifier (3.2.0)
@@ -391,7 +391,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode-display_width (1.6.0)
-    uniform_notifier (1.12.1)
+    uniform_notifier (1.13.0)
     validates_email_format_of (1.6.3)
       i18n
     validates_timeliness (4.0.2)
