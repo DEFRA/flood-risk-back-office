@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 19e91db96879663e6fa9375196c4a60f12432d01
+  revision: 364d2719a993739e382bcee9717c0a591e12c607
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -107,7 +107,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.0.5)
-    crass (1.0.5)
+    crass (1.0.6)
     database_cleaner (1.5.3)
     declarative (0.0.10)
     declarative-option (0.1.0)
@@ -222,7 +222,7 @@ GEM
     mime-types-data (3.2019.1009)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     multi_json (1.14.1)
     multipart-post (2.1.1)
     nesty (1.0.2)
@@ -244,7 +244,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.40)
+    phonelib (0.6.41)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
