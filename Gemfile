@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "2.3.1"
 
 # Amazon S3 API access (e.g. data exports)
-gem "aws-sdk-resources", "~> 2.3.9"
+gem "aws-sdk-resources"
 gem "devise", "~> 3.5.10"
 gem "devise_invitable", "~> 1.6.0"
 # Allows limiting multiple logins to the same account
@@ -35,6 +35,8 @@ gem "whenever", "~> 0.9.4", require: false
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
     branch: "master"
+
+gem "defra_ruby_aws"
 
 # Allows us to automatically generate the change log from the tags, issues,
 # labels and pull requests on GitHub. Added as a dependency so all dev's have
