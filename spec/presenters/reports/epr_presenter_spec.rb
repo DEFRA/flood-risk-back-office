@@ -12,7 +12,8 @@ module Reports
       it "returns a formatted date" do
         date = Date.new 2018, 1, 1
 
-        expect(object).to receive(:accept_reject_decision_at).and_return(date)
+        allow(object).to receive(:accept_reject_decision_at).and_return(date)
+
         expect(subject.accept_reject_decision_at).to eq("2018-01-01")
       end
     end
