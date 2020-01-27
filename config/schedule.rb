@@ -31,3 +31,11 @@ set :job_template, "/bin/bash -l -c 'eval \"$(rbenv init -)\" && :job'"
 every :day, at: (ENV["AREA_LOOKUP"] || "1:05"), roles: [:db] do
   rake "lookups:update:missing_area"
 end
+
+# This is the EPR export job. When run this will create a single CSV file of all
+# active exemptions and put this into an AWS S3 bucket from which the company
+# that provides and maintains the Electronis Public Register will grab it
+every :day, at: (ENV["EXPORT_SERVICE_EPR_EXPORT_TIME"] || "21:05"), roles: [:db] do
+  rake "reports:export:epr"
+end
+
