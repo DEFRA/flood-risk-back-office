@@ -36,7 +36,6 @@ module Reports
         end
       end
 
-
       context "when the organisation is a partnership" do
         let(:organisation) { double(:organisation, partnership?: true) }
         before do
