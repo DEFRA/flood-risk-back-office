@@ -46,6 +46,11 @@ Lint/NestedMethodDefinition:
 Metrics/AbcSize:
   Max: 40
 
+# https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Naming/MemoizedInstanceVariableName
+# We want to allow memoized instance variable names to be created with @_ and without.
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional
+
 # We don't feel we can help having a large gemspec, hence we exclude it.
 # We don't feel it makes sense to split specs and factories over multiple files,
 # or when in a context be forced to try and come up with slightly different ones
