@@ -36,6 +36,10 @@ module FloodRiskBackOffice
     # Minutes the EA area lookup job should run for
     config.area_lookup_run_for = ENV["AREA_LOOKUP_RUN_FOR"] || 60
 
+    # Data export config
+    config.epr_reports_bucket_name = ENV["AWS_DAILY_EXPORT_BUCKET"]
+    config.epr_export_filename = ENV["EPR_DAILY_REPORT_FILE_NAME"] || "flood_risk_epr_daily_full"
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
