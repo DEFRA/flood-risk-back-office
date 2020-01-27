@@ -6,14 +6,14 @@ module Reports
   RSpec.describe EprExportService do
     describe ".run" do
       it "creates a csv file and load it to AWS" do
-        # epr_serializer = double(:epr_serializer)
-        # epr_report = double(:epr_report)
+        epr_serializer = double(:epr_serializer)
+        epr_report = double(:epr_report)
         result = double(:result, successful?: true)
         file = double(:file)
         bucket = double(:bucket)
 
-        # expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
-        # expect(EprSerializer).to receive(:new).and_return(epr_serializer)
+        expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
+        expect(EprSerializer).to receive(:new).and_return(epr_serializer)
 
         expect(File).to receive(:open).and_yield(file)
         expect(file).to receive(:write)
@@ -31,14 +31,14 @@ module Reports
 
     context "if the load to AWS fails 3 times" do
       it "logs an error" do
-        # epr_serializer = double(:epr_serializer)
-        # epr_report = double(:epr_report)
+        epr_serializer = double(:epr_serializer)
+        epr_report = double(:epr_report)
         result = double(:result, successful?: false)
         file = double(:file)
         bucket = double(:bucket)
 
-        # expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
-        # expect(EprSerializer).to receive(:new).and_return(epr_serializer)
+        expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
+        expect(EprSerializer).to receive(:new).and_return(epr_serializer)
 
         expect(File).to receive(:open).and_yield(file)
         expect(file).to receive(:write)

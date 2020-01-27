@@ -20,19 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  date:
-    formats:
-      long: "%d %B %Y"
-      medium: "%d %b %y"
-  time:
-    formats:
-      long: "%d %B %Y %H:%M"
-      medium: "%d %b %y %H:%M"
-  datetime:
-    prompts:
-      day: '- day -'
-      month: '- month -'
-      year: '- year -'
   refresh: Refresh
   cancel: Cancel
   search: Search

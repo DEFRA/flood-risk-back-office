@@ -1,0 +1,15 @@
+en:
+  date:
+    formats:
+      long: "%d %B %Y"
+      medium: "%d %b %y"
+      year_month_day_hyphens: "%Y-%m-%d"
+  time:
+    formats:
+      long: "%d %B %Y %H:%M"
+      medium: "%d %b %y %H:%M"
+  datetime:
+    prompts:
+      day: '- day -'
+      month: '- month -'
+      year: '- year -'
