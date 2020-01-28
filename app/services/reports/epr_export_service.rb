@@ -32,9 +32,7 @@ module Reports
     end
 
     def epr_report
-      # TODO
-      # EprSerializer.new.to_csv
-      ""
+      @_epr_report ||= EprSerializer.new.to_csv
     end
 
     def bucket_name
