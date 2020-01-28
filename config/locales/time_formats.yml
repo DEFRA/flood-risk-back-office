@@ -8,6 +8,7 @@ en:
     formats:
       long: "%d %B %Y %H:%M"
       medium: "%d %b %y %H:%M"
+      year_month_day_hyphens: "%Y-%m-%d"
   datetime:
     prompts:
       day: '- day -'
