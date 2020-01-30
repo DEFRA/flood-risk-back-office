@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: e1661baafbb871bd24890a9d72adcd7769cd64af
+  revision: c137252fa1baa2a3b416674f0896ba9798bc1c23
   branch: master
   specs:
     flood_risk_engine (1.0.2)
