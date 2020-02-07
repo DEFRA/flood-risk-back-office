@@ -14,7 +14,8 @@ class ReadFromAwsS3
 
     bucket.object(enrollment_export.file_name).presigned_url(
       :get,
-      expires_in: 20.minutes, secure: true,
+      expires_in: 20 * 60, # 20 minutes in seconds
+      secure: true,
       response_content_type: "text/csv",
       response_content_disposition: "attachment; filename=#{enrollment_export.file_name}"
     )
