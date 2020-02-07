@@ -41,7 +41,7 @@ Rails.application.configure do
 
   ## Default URL config
   host = ENV["DEFAULT_URL_HOST"] || "localhost"
-  port = ENV["SSL_PORT"].try!(:to_i) || ENV["PORT"].try!(:to_i) || 3000
+  port = ENV["SSL_PORT"].try!(:to_i) || ENV["PORT"].try!(:to_i) || 8000
   protocol = ENV["SSL_PORT"].present? ? "https" : "http"
 
   Rails.application.routes.default_url_options =
