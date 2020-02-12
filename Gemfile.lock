@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: ce71b0555ac21a79ec6e6e732154c384cc0140f2
+  revision: d7d99d71b037f9cdfc71f4c6024eeb17be4e3aef
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -1117,7 +1117,7 @@ GEM
     multipart-post (2.1.1)
     nesty (1.0.2)
     netrc (0.11.0)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     octokit (4.14.0)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -1134,7 +1134,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.41)
+    phonelib (0.6.42)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -1147,7 +1147,7 @@ GEM
       activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.12)
+    rack (1.6.13)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11.1)
