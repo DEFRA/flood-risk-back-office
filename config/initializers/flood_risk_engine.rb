@@ -7,6 +7,9 @@ FloodRiskEngine.configure do |config|
   config.layout = "flood_risk_engine"
   config.require_journey_completed_in_same_browser = false
 
+  # Last email cache config
+  config.use_last_email_cache = ENV["USE_LAST_EMAIL_CACHE"] || false
+
   # Configure airbrake, which is done via the engine use defra_ruby_alert
   config.airbrake_enabled = ENV["USE_AIRBRAKE"]
   config.airbrake_host = Rails.application.secrets.airbrake_host
