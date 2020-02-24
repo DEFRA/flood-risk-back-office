@@ -73,6 +73,8 @@ Rails.application.routes.draw do
     )
   end
 
+  mount DefraRubyEmail::Engine => "/email"
+
   # We use high voltage to manage static content including error-pages
   #get "/pages/*id" => 'high_voltage/pages#show', as: :page, format: false
 
