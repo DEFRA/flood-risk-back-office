@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 5732407449f9eb3d8ba53b525888ef1f5489626c
+  revision: 3799176fb513a1224ff6975e30f5780ce97d0e31
   branch: master
   specs:
     flood_risk_engine (1.0.2)
@@ -1120,7 +1120,7 @@ GEM
     multipart-post (2.1.1)
     nesty (1.0.2)
     netrc (0.11.0)
-    nokogiri (1.10.8)
+    nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     octokit (4.14.0)
       sawyer (~> 0.8.0, >= 0.5.3)
