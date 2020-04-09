@@ -91,7 +91,7 @@ group :test do
   gem "rspec_junit_formatter", "~> 0.2.3"
   gem "shoulda-matchers", "~> 3.1.1", require: false
   # Tool for checking code coverage
-  gem "simplecov", "~> 0.11.2", require: false
+  gem "simplecov", "~> 0.17.1", require: false
 end
 
 group :production do
