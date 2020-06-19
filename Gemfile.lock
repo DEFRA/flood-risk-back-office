@@ -1021,7 +1021,7 @@ GEM
     defra_ruby_area (2.0.0)
       nokogiri (~> 1.10.4)
       rest-client (~> 2.0)
-    defra_ruby_aws (0.2.0)
+    defra_ruby_aws (0.3.0)
       aws-sdk-s3
     defra_ruby_email (0.2.0)
       rails (~> 4.2.11.1)
