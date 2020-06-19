@@ -34,7 +34,7 @@ gem "whenever", "~> 0.9.4", require: false
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "master"
+    branch: "main"
 
 gem "defra_ruby_aws"
 
