@@ -1,5 +1,51 @@
 # Changelog
 
+## [v1.3.1](https://github.com/defra/flood-risk-back-office/tree/v1.3.1) (2020-06-25)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.0...v1.3.1)
+
+**Implemented enhancements:**
+
+- Update defra-ruby-aws to AWS:KMS version [\#238](https://github.com/DEFRA/flood-risk-back-office/pull/238) ([Cruikshanks](https://github.com/Cruikshanks))
+- Enable defra-ruby-email in the project [\#209](https://github.com/DEFRA/flood-risk-back-office/pull/209) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Security fixes:**
+
+- \[Security\] Bump websocket-extensions from 0.1.2 to 0.1.5 [\#232](https://github.com/DEFRA/flood-risk-back-office/pull/232) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Fix json dependency security issue [\#222](https://github.com/DEFRA/flood-risk-back-office/pull/222) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Merged pull requests:**
+
+- Bump aws-sdk-resources from 3.74.1 to 3.75.0 [\#239](https://github.com/DEFRA/flood-risk-back-office/pull/239) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Switch frae engine branch reference to master [\#237](https://github.com/DEFRA/flood-risk-back-office/pull/237) ([Cruikshanks](https://github.com/Cruikshanks))
+- Update project to support AWS S3 encryption [\#236](https://github.com/DEFRA/flood-risk-back-office/pull/236) ([Cruikshanks](https://github.com/Cruikshanks))
+- Bump aws-sdk-resources from 3.74.0 to 3.74.1 [\#235](https://github.com/DEFRA/flood-risk-back-office/pull/235) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.73.0 to 3.74.0 [\#234](https://github.com/DEFRA/flood-risk-back-office/pull/234) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `f9db044` to `7a00188` [\#233](https://github.com/DEFRA/flood-risk-back-office/pull/233) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `9d51bc7` to `f9db044` [\#231](https://github.com/DEFRA/flood-risk-back-office/pull/231) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rails from 4.2.11.1 to 4.2.11.3 [\#230](https://github.com/DEFRA/flood-risk-back-office/pull/230) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.72.0 to 3.73.0 [\#229](https://github.com/DEFRA/flood-risk-back-office/pull/229) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `46d538b` to `9d51bc7` [\#228](https://github.com/DEFRA/flood-risk-back-office/pull/228) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `49165b0` to `46d538b` [\#227](https://github.com/DEFRA/flood-risk-back-office/pull/227) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.71.0 to 3.72.0 [\#226](https://github.com/DEFRA/flood-risk-back-office/pull/226) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `c6a4b67` to `49165b0` [\#225](https://github.com/DEFRA/flood-risk-back-office/pull/225) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Use multiple rubocop formats in Travis build [\#224](https://github.com/DEFRA/flood-risk-back-office/pull/224) ([Cruikshanks](https://github.com/Cruikshanks))
+- Bump aws-sdk-resources from 3.70.0 to 3.71.0 [\#223](https://github.com/DEFRA/flood-risk-back-office/pull/223) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `3c9d0c0` to `c6a4b67` [\#221](https://github.com/DEFRA/flood-risk-back-office/pull/221) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump github\_changelog\_generator from 1.15.1 to 1.15.2 [\#220](https://github.com/DEFRA/flood-risk-back-office/pull/220) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `f45fc15` to `3c9d0c0` [\#219](https://github.com/DEFRA/flood-risk-back-office/pull/219) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump github\_changelog\_generator from 1.15.0 to 1.15.1 [\#218](https://github.com/DEFRA/flood-risk-back-office/pull/218) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rubocop from 0.80.1 to 0.81.0 [\#217](https://github.com/DEFRA/flood-risk-back-office/pull/217) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `790f425` to `f45fc15` [\#216](https://github.com/DEFRA/flood-risk-back-office/pull/216) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `49b697c` to `790f425` [\#215](https://github.com/DEFRA/flood-risk-back-office/pull/215) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `3799176` to `49b697c` [\#214](https://github.com/DEFRA/flood-risk-back-office/pull/214) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Switch to SonarCloud from CodeClimate [\#213](https://github.com/DEFRA/flood-risk-back-office/pull/213) ([Cruikshanks](https://github.com/Cruikshanks))
+- Bump flood\_risk\_engine from `5732407` to `3799176` [\#212](https://github.com/DEFRA/flood-risk-back-office/pull/212) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rubocop from 0.80.0 to 0.80.1 [\#211](https://github.com/DEFRA/flood-risk-back-office/pull/211) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `29fdf86` to `5732407` [\#210](https://github.com/DEFRA/flood-risk-back-office/pull/210) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `ab620b7` to `29fdf86` [\#208](https://github.com/DEFRA/flood-risk-back-office/pull/208) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump rubocop from 0.79.0 to 0.80.0 [\#207](https://github.com/DEFRA/flood-risk-back-office/pull/207) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v1.3.0](https://github.com/defra/flood-risk-back-office/tree/v1.3.0) (2020-02-13)
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.2.0...v1.3.0)
