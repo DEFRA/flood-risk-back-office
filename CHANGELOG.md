@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.3.2](https://github.com/defra/flood-risk-back-office/tree/v1.3.2) (2020-07-10)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.1...v1.3.2)
+
+**Implemented enhancements:**
+
+- Update defra-ruby-aws to encryption configurable [\#242](https://github.com/DEFRA/flood-risk-back-office/pull/242) ([Cruikshanks](https://github.com/Cruikshanks))
+
+**Merged pull requests:**
+
+- Bump flood\_risk\_engine from `ecab819` to `c264182` [\#241](https://github.com/DEFRA/flood-risk-back-office/pull/241) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `5cd04ac` to `ecab819` [\#240](https://github.com/DEFRA/flood-risk-back-office/pull/240) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v1.3.1](https://github.com/defra/flood-risk-back-office/tree/v1.3.1) (2020-06-25)
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.0...v1.3.1)
