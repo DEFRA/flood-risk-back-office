@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 8fd96d8756f3de8fb8415f92b2b52c5806424d93
+  revision: 712ca28b8056debf0532d0592758235e0a6b7956
   branch: main
   specs:
     flood_risk_engine (1.0.2)
@@ -1133,7 +1133,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.6.0)
+    loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -1310,7 +1310,7 @@ GEM
     uber (0.0.15)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
-    uk_postcode (2.1.5)
+    uk_postcode (2.1.6)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.7)
