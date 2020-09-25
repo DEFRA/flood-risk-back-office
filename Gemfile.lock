@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: b481fa819c26145c6a64637bb2c340fb42117bd6
+  revision: 25ec0f3547b24ed51fe1988a55237c5203f1e0e4
   branch: main
   specs:
     flood_risk_engine (1.0.2)
@@ -1303,7 +1303,7 @@ GEM
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.1)
+    sprockets-rails (3.2.2)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
