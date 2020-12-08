@@ -9,7 +9,9 @@ module Reports
     def run
       populate_temp_file
 
-      load_file_to_aws_bucket
+      options = { s3_directory: "EPR" }
+
+      load_file_to_aws_bucket(options)
     rescue StandardError => e
       Airbrake.notify e, file_name: file_name
       Rails.logger.error "Generate EPR export csv error for #{file_name}:\n#{e}"

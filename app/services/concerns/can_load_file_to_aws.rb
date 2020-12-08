@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module CanLoadFileToAws
-  def load_file_to_aws_bucket
+  def load_file_to_aws_bucket(options = {})
     result = nil
 
     3.times do
-      result = bucket.load(File.new(file_path, "r"))
+      result = bucket.load(File.new(file_path, "r"), options)
 
       break if result.successful?
     end

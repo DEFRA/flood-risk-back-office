@@ -36,7 +36,7 @@ gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
     branch: "main"
 
-gem "defra_ruby_aws"
+gem "defra_ruby_aws", "~> 0.4"
 
 # Allows us to automatically generate the change log from the tags, issues,
 # labels and pull requests on GitHub. Added as a dependency so all dev's have

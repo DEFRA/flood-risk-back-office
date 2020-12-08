@@ -21,7 +21,7 @@ module Reports
         expect(DefraRuby::Aws).to receive(:get_bucket).and_return(bucket)
         expect(File).to receive(:new).and_return(file)
         expect(File).to receive(:exist?).and_return(true)
-        expect(bucket).to receive(:load).with(file).and_return(result)
+        expect(bucket).to receive(:load).with(file, { s3_directory: "EPR" }).and_return(result)
 
         expect(File).to receive(:unlink)
 
@@ -46,7 +46,7 @@ module Reports
         expect(DefraRuby::Aws).to receive(:get_bucket).and_return(bucket)
         expect(File).to receive(:new).and_return(file).exactly(3).times
         expect(File).to receive(:exist?).and_return(true)
-        expect(bucket).to receive(:load).with(file).and_return(result).exactly(3).times
+        expect(bucket).to receive(:load).with(file, { s3_directory: "EPR" }).and_return(result).exactly(3).times
 
         expect(result).to receive(:error)
         expect(Airbrake).to receive(:notify)
