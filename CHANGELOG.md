@@ -1,5 +1,35 @@
 # Changelog
 
+## [v1.4.0](https://github.com/defra/flood-risk-back-office/tree/v1.4.0) (2020-12-10)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.2...v1.4.0)
+
+**Implemented enhancements:**
+
+- Upload EPR exports to EPR folder [\#267](https://github.com/DEFRA/flood-risk-back-office/pull/267) ([irisfaraway](https://github.com/irisfaraway))
+
+**Merged pull requests:**
+
+- Bump flood\_risk\_engine from `418ca9e` to `188df5e` [\#269](https://github.com/DEFRA/flood-risk-back-office/pull/269) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.90.0 to 3.91.0 [\#268](https://github.com/DEFRA/flood-risk-back-office/pull/268) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `2771974` to `418ca9e` [\#266](https://github.com/DEFRA/flood-risk-back-office/pull/266) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Create Dependabot config file [\#265](https://github.com/DEFRA/flood-risk-back-office/pull/265) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Switch CI from Travis CI to GitHub Actions [\#264](https://github.com/DEFRA/flood-risk-back-office/pull/264) ([irisfaraway](https://github.com/irisfaraway))
+- Bump aws-sdk-resources from 3.84.0 to 3.90.0 [\#262](https://github.com/DEFRA/flood-risk-back-office/pull/262) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `25ec0f3` to `2771974` [\#256](https://github.com/DEFRA/flood-risk-back-office/pull/256) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.82.0 to 3.84.0 [\#255](https://github.com/DEFRA/flood-risk-back-office/pull/255) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `b481fa8` to `25ec0f3` [\#253](https://github.com/DEFRA/flood-risk-back-office/pull/253) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.81.0 to 3.82.0 [\#252](https://github.com/DEFRA/flood-risk-back-office/pull/252) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.80.0 to 3.81.0 [\#251](https://github.com/DEFRA/flood-risk-back-office/pull/251) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `712ca28` to `b481fa8` [\#250](https://github.com/DEFRA/flood-risk-back-office/pull/250) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `8fd96d8` to `712ca28` [\#249](https://github.com/DEFRA/flood-risk-back-office/pull/249) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.79.0 to 3.80.0 [\#248](https://github.com/DEFRA/flood-risk-back-office/pull/248) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.78.0 to 3.79.0 [\#247](https://github.com/DEFRA/flood-risk-back-office/pull/247) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.77.0 to 3.78.0 [\#246](https://github.com/DEFRA/flood-risk-back-office/pull/246) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.76.0 to 3.77.0 [\#245](https://github.com/DEFRA/flood-risk-back-office/pull/245) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump aws-sdk-resources from 3.75.0 to 3.76.0 [\#244](https://github.com/DEFRA/flood-risk-back-office/pull/244) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- Bump flood\_risk\_engine from `c264182` to `8fd96d8` [\#243](https://github.com/DEFRA/flood-risk-back-office/pull/243) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
 ## [v1.3.2](https://github.com/defra/flood-risk-back-office/tree/v1.3.2) (2020-07-10)
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.1...v1.3.2)
@@ -145,6 +175,10 @@
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.1.0...v1.1.1)
 
+**Fixed bugs:**
+
+- Move github changelog generator to main group [\#124](https://github.com/DEFRA/flood-risk-back-office/pull/124) ([Cruikshanks](https://github.com/Cruikshanks))
+
 **Security fixes:**
 
 - \[Security\] Bump nokogiri from 1.10.3 to 1.10.4 [\#139](https://github.com/DEFRA/flood-risk-back-office/pull/139) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -180,7 +214,6 @@
 
 **Fixed bugs:**
 
-- Move github changelog generator to main group [\#124](https://github.com/DEFRA/flood-risk-back-office/pull/124) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update EA references after org name change [\#92](https://github.com/DEFRA/flood-risk-back-office/pull/92) ([Cruikshanks](https://github.com/Cruikshanks))
 
 **Merged pull requests:**
@@ -212,6 +245,7 @@
 - Remove overcommit from repo [\#97](https://github.com/DEFRA/flood-risk-back-office/pull/97) ([Cruikshanks](https://github.com/Cruikshanks))
 - Remove circle-ci from repo [\#96](https://github.com/DEFRA/flood-risk-back-office/pull/96) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update dependencies [\#95](https://github.com/DEFRA/flood-risk-back-office/pull/95) ([irisfaraway](https://github.com/irisfaraway))
+- Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
 
 ## [v1.0.1](https://github.com/defra/flood-risk-back-office/tree/v1.0.1) (2016-12-21)
 
@@ -224,7 +258,6 @@
 
 **Merged pull requests:**
 
-- Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
 - Housekeeping [\#87](https://github.com/DEFRA/flood-risk-back-office/pull/87) ([woodpigeon](https://github.com/woodpigeon))
 
 ## [v1.0.0](https://github.com/defra/flood-risk-back-office/tree/v1.0.0) (2016-07-18)
