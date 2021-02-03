@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 1f7e384970ade52e404f96d483161748893a7458
+  revision: eb3a1d6e2919dfc51fbacf5a9a79bcfe9d8ddcfa
   branch: main
   specs:
     flood_risk_engine (1.0.2)
@@ -1257,7 +1257,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -1290,7 +1290,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.47)
+    phonelib (0.6.48)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -1425,7 +1425,7 @@ GEM
       polyamorous (~> 1.1.0)
     sucker_punch (2.0.4)
       concurrent-ruby (~> 1.0.0)
-    thor (1.0.1)
+    thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.9)
     timeliness (0.3.8)
