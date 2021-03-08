@@ -78,7 +78,7 @@ GEM
     ast (2.4.0)
     autoprefixer-rails (6.3.6.2)
       execjs
-    awesome_print (1.8.0)
+    awesome_print (1.9.2)
     aws-eventstream (1.1.1)
     aws-partitions (1.431.0)
     aws-sdk-accessanalyzer (1.16.0)
