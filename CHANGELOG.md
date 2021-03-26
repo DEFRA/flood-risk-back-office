@@ -1,5 +1,29 @@
 # Changelog
 
+## [v1.4.1](https://github.com/defra/flood-risk-back-office/tree/v1.4.1) (2021-03-26)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.4.0...v1.4.1)
+
+**Merged pull requests:**
+
+- Bump aws-sdk-resources from 3.95.0 to 3.96.0 [\#288](https://github.com/DEFRA/flood-risk-back-office/pull/288) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `2ec87d3` to `a45b4aa` [\#287](https://github.com/DEFRA/flood-risk-back-office/pull/287) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.94.1 to 3.95.0 [\#286](https://github.com/DEFRA/flood-risk-back-office/pull/286) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.94.0 to 3.94.1 [\#284](https://github.com/DEFRA/flood-risk-back-office/pull/284) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `04dbe2c` to `2ec87d3` [\#283](https://github.com/DEFRA/flood-risk-back-office/pull/283) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `3779b5e` to `04dbe2c` [\#282](https://github.com/DEFRA/flood-risk-back-office/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 6.1.3 to 6.1.4 [\#281](https://github.com/DEFRA/flood-risk-back-office/pull/281) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `eb3a1d6` to `3779b5e` [\#280](https://github.com/DEFRA/flood-risk-back-office/pull/280) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `1f7e384` to `eb3a1d6` [\#279](https://github.com/DEFRA/flood-risk-back-office/pull/279) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update Postgres image in CI build [\#278](https://github.com/DEFRA/flood-risk-back-office/pull/278) ([irisfaraway](https://github.com/irisfaraway))
+- Bump aws-sdk-resources from 3.93.0 to 3.94.0 [\#277](https://github.com/DEFRA/flood-risk-back-office/pull/277) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 6.1.2 to 6.1.3 [\#276](https://github.com/DEFRA/flood-risk-back-office/pull/276) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `19e17a7` to `1f7e384` [\#275](https://github.com/DEFRA/flood-risk-back-office/pull/275) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump fuubar from 2.5.0 to 2.5.1 [\#274](https://github.com/DEFRA/flood-risk-back-office/pull/274) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.91.0 to 3.93.0 [\#273](https://github.com/DEFRA/flood-risk-back-office/pull/273) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `188df5e` to `19e17a7` [\#271](https://github.com/DEFRA/flood-risk-back-office/pull/271) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 6.1.0 to 6.1.2 [\#270](https://github.com/DEFRA/flood-risk-back-office/pull/270) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.4.0](https://github.com/defra/flood-risk-back-office/tree/v1.4.0) (2020-12-10)
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.3.2...v1.4.0)
@@ -175,10 +199,6 @@
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.1.0...v1.1.1)
 
-**Fixed bugs:**
-
-- Move github changelog generator to main group [\#124](https://github.com/DEFRA/flood-risk-back-office/pull/124) ([Cruikshanks](https://github.com/Cruikshanks))
-
 **Security fixes:**
 
 - \[Security\] Bump nokogiri from 1.10.3 to 1.10.4 [\#139](https://github.com/DEFRA/flood-risk-back-office/pull/139) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -214,6 +234,7 @@
 
 **Fixed bugs:**
 
+- Move github changelog generator to main group [\#124](https://github.com/DEFRA/flood-risk-back-office/pull/124) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update EA references after org name change [\#92](https://github.com/DEFRA/flood-risk-back-office/pull/92) ([Cruikshanks](https://github.com/Cruikshanks))
 
 **Merged pull requests:**
@@ -245,7 +266,6 @@
 - Remove overcommit from repo [\#97](https://github.com/DEFRA/flood-risk-back-office/pull/97) ([Cruikshanks](https://github.com/Cruikshanks))
 - Remove circle-ci from repo [\#96](https://github.com/DEFRA/flood-risk-back-office/pull/96) ([Cruikshanks](https://github.com/Cruikshanks))
 - Update dependencies [\#95](https://github.com/DEFRA/flood-risk-back-office/pull/95) ([irisfaraway](https://github.com/irisfaraway))
-- Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
 
 ## [v1.0.1](https://github.com/defra/flood-risk-back-office/tree/v1.0.1) (2016-12-21)
 
@@ -258,6 +278,7 @@
 
 **Merged pull requests:**
 
+- Update version to 1.0.1 ready for release [\#90](https://github.com/DEFRA/flood-risk-back-office/pull/90) ([Cruikshanks](https://github.com/Cruikshanks))
 - Housekeeping [\#87](https://github.com/DEFRA/flood-risk-back-office/pull/87) ([woodpigeon](https://github.com/woodpigeon))
 
 ## [v1.0.0](https://github.com/defra/flood-risk-back-office/tree/v1.0.0) (2016-07-18)
