@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: a45b4aa1a855b20c8630f43b54b15c51bcf44e36
+  revision: 9fc788b729e869b1340d49394379e3c5966031b8
   branch: main
   specs:
     flood_risk_engine (1.0.2)
@@ -1285,7 +1285,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.9.0)
+    loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -1293,7 +1293,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mini_mime (1.0.2)
+    mini_mime (1.1.0)
     mini_portile2 (2.4.0)
     minitest (5.14.4)
     multi_json (1.15.0)
@@ -1318,7 +1318,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (0.18.4)
-    phonelib (0.6.49)
+    phonelib (0.6.50)
     poltergeist (1.9.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
