@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Enrollments
   RSpec.describe PartnersController, type: :controller do
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
     let(:partner) { FactoryBot.create(:partner_with_contact) }
     let(:contact) { partner.contact }

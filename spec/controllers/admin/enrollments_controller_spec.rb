@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Admin
   RSpec.describe EnrollmentsController, type: :controller do
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
     let(:correspondence_contact) { FactoryBot.create(:contact) }
     let(:secondary_contact) { FactoryBot.create(:contact) }
     let(:organisation) do

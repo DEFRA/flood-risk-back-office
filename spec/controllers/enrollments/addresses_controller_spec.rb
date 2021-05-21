@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Enrollments
   RSpec.describe AddressesController, type: :controller do
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
     let(:enrollment) do
       FactoryBot.create(

@@ -3,7 +3,7 @@ require "rails_helper"
 module Admin
   module EnrollmentExemptions
     RSpec.describe RejectController, type: :controller do
-      include Devise::TestHelpers
+      include Devise::Test::ControllerHelpers
       render_views
 
       let(:enrollment) { FactoryBot.create(:enrollment, submitted_at: Time.zone.now) }

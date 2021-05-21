@@ -3,7 +3,7 @@ require "rails_helper"
 module Admin
   module EnrollmentExemptions
     RSpec.describe ChangeStatusController, type: :controller do
-      include Devise::TestHelpers
+      include Devise::Test::ControllerHelpers
 
       render_views
       let(:enrollment_exemption) do
