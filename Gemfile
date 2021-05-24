@@ -17,7 +17,12 @@ gem "rails", "~> 6.0"
 gem "rolify"
 gem "sass-rails"
 gem "simple_form"
-# gem "squeel"
+
+# replaces squeel (deprecated)
+gem "baby_squeel", git: "https://github.com/vitalinfo/baby_squeel.git"
+gem "ransack", require: false # because we need 'polyamorous' (see ransack initializer)
+
+gem "record_tag_helper" # supports the deprecated `content_tag_for`
 gem "uglifier"
 gem "validates_timeliness"
 gem "whenever"
@@ -52,6 +57,7 @@ group :test do
   gem "fuubar"
   gem "launchy", require: false
   gem "poltergeist"
+  gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
   gem "shoulda-matchers"

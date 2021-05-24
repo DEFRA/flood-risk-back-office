@@ -53,7 +53,7 @@ class InvitationsController < ::Devise::InvitationsController
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:invite).concat [:assigned_role]
+    devise_parameter_sanitizer.permit(:invite).concat [:assigned_role]
   end
 
   def authenticate_inviter!
