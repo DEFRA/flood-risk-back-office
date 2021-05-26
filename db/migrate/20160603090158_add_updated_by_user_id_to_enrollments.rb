@@ -1,4 +1,4 @@
-class AddUpdatedByUserIdToEnrollments < ActiveRecord::Migration
+class AddUpdatedByUserIdToEnrollments < ActiveRecord::Migration[4.2]
   def change
     add_column :flood_risk_engine_enrollments, :updated_by_user_id, :integer
     add_index :flood_risk_engine_enrollments, :updated_by_user_id
