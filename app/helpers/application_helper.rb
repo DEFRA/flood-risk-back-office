@@ -1,11 +1,4 @@
 module ApplicationHelper
-
-  def open_close_tag(target, open = false)
-    icon = glyphicon_tag(open ? :chevron_up : :chevron_down)
-    link_to icon, "##{target}", role: "button", "data-toggle" => "collapse",
-                                "aria-expanded" => "true", "aria-controls" => target
-  end
-
   def cancel_go_back_link
     if request.referer.present?
       link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")), :back, class: "ignore-visited"

@@ -6,9 +6,9 @@ gem "devise"
 gem "devise_invitable"
 gem "devise-security"
 gem "govuk_admin_template"
-gem "govuk_template"
 gem "govuk_elements_rails"
-gem 'govuk_frontend_toolkit', :git => "https://github.com/alphagov/govuk_frontend_toolkit_gem.git", :submodules => true
+gem "govuk_frontend_toolkit", git: "https://github.com/alphagov/govuk_frontend_toolkit_gem.git", submodules: true
+gem "govuk_template"
 gem "kaminari"
 gem "paper_trail"
 gem "pg"

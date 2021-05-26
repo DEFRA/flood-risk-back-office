@@ -3,6 +3,7 @@ class SearchForm
   STATUS_ALL = nil
 
   attr_reader :q, :status, :page, :per_page
+
   delegate :model_name, to: FloodRiskEngine::EnrollmentExemption
 
   # Note that params[:search] are the fields in the search html form.

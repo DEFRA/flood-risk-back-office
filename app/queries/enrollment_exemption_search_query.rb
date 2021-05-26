@@ -23,9 +23,9 @@ class EnrollmentExemptionSearchQuery
                 .includes(:exemption,
                           enrollment: [
                             :reference_number,
-                            organisation: [
-                              :primary_address
-                            ]
+                            {
+                              organisation: [:primary_address]
+                            }
                           ])
                 .extending(Scopes)
   end

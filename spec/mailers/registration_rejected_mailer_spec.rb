@@ -34,7 +34,7 @@ RSpec.describe RegistrationRejectedMailer, type: :mailer do
         expect(ENV["DEVISE_MAILER_SENDER"]).to_not be_blank
         # Need to extract email part of sender address from entries like:
         #   "No reply <no-reply@environment-agency.gov.uk>"
-        email_pattern = /[\w\-\.]+@[\w\-\.]+/
+        email_pattern = /[\w\-.]+@[\w\-.]+/
         email = ENV["DEVISE_MAILER_SENDER"][email_pattern]
         expect(mail.from).to eql([email])
       end
@@ -54,7 +54,7 @@ RSpec.describe RegistrationRejectedMailer, type: :mailer do
       end
     end
 
-    FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+    FloodRiskEngine::Organisation.org_types.each_key do |ot|
       next if ot.to_sym == :unknown
 
       context "#{ot.humanize.capitalize} organisation" do

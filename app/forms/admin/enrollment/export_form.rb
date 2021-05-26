@@ -13,10 +13,6 @@ module Admin
 
       extend ::ActiveModel::Validations::HelperMethods
 
-      def initialize(model)
-        super(model)
-      end
-
       def params_key
         :admin_enrollment_export
       end

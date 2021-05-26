@@ -2,7 +2,6 @@
 class InvitationsController < ::Devise::InvitationsController
   # Adapted from https://github.com/scambra/devise_invitable/blob/v1.5.3/app/controllers/devise/invitations_controller.rb#L39
   # TODO: refactor this!
-  # rubocop:disable Metrics/CyclomaticComplexity
   def update
     raw_invitation_token = update_resource_params[:invitation_token]
     self.resource = accept_resource
@@ -26,7 +25,6 @@ class InvitationsController < ::Devise::InvitationsController
       respond_with_navigational(resource) { render :edit }
     end
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   protected
 

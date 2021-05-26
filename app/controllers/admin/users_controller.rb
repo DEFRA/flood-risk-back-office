@@ -37,7 +37,7 @@ module Admin
     end
 
     # TODO: refactor!
-    # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def update
       @user.assign_attributes params.require(:user).permit(:assigned_role)
 
@@ -62,7 +62,7 @@ module Admin
         render :edit
       end
     end
-    # rubocop:enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
 
     private
 
