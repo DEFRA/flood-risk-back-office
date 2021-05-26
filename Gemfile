@@ -13,7 +13,7 @@ gem "kaminari"
 gem "paper_trail"
 gem "pg"
 gem "pundit"
-gem "rails", "~> 6.0"
+gem "rails", "~> 6.0.3"
 gem "rolify"
 gem "sass-rails"
 gem "simple_form"
@@ -67,5 +67,5 @@ end
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
-  gem "passenger"#, "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
+  gem "passenger", require: "phusion_passenger/rack_handler"
 end
