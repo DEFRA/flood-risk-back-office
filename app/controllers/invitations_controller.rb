@@ -1,7 +1,5 @@
 # rubocop:disable Metrics/PerceivedComplexity
 class InvitationsController < ::Devise::InvitationsController
-  before_action :configure_permitted_parameters
-
   # Adapted from https://github.com/scambra/devise_invitable/blob/v1.5.3/app/controllers/devise/invitations_controller.rb#L39
   # TODO: refactor this!
   # rubocop:disable Metrics/CyclomaticComplexity
@@ -52,8 +50,8 @@ class InvitationsController < ::Devise::InvitationsController
     end
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:invite).concat [:assigned_role]
+  def invite_params
+    params.require(:user).permit(:email, :assigned_role)
   end
 
   def authenticate_inviter!

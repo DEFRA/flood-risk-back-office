@@ -24,7 +24,7 @@ module Admin
 
       describe "new action" do
         it "renders page" do
-          get :new, enrollment_exemption_id: enrollment_exemption
+          get :new, params: { enrollment_exemption_id: enrollment_exemption }
           expect(response).to have_http_status(:success)
         end
       end
@@ -37,7 +37,7 @@ module Admin
           end
 
           it "redirects to enrollment_exemption show" do
-            post :create, enrollment_exemption_id: enrollment_exemption
+            post :create, params: { enrollment_exemption_id: enrollment_exemption }
             expect(response).to redirect_to(
               admin_enrollment_exemption_path(enrollment_exemption)
             )
@@ -50,7 +50,7 @@ module Admin
           end
 
           it "renders new template" do
-            post :create, enrollment_exemption_id: enrollment_exemption
+            post :create, params: { enrollment_exemption_id: enrollment_exemption }
             expect(response).to have_http_status(:success)
             expect(response).to render_template(:new)
           end

@@ -1569,8 +1569,8 @@ GEM
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
-    shoulda-matchers (4.5.1)
-      activesupport (>= 4.2.0)
+    shoulda-matchers (3.1.3)
+      activesupport (>= 4.0.0)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -1671,7 +1671,7 @@ DEPENDENCIES
   rspec_junit_formatter
   rubocop
   sass-rails
-  shoulda-matchers
+  shoulda-matchers (~> 3.1.1)
   simple_form
   simplecov
   uglifier

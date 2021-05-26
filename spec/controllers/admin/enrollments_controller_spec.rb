@@ -47,7 +47,7 @@ module Admin
 
     describe "edit action" do
       before do
-        get :edit, id: enrollment
+        get :edit, params: { id: enrollment }
       end
 
       it "should render page sucessfully" do
@@ -67,7 +67,7 @@ module Admin
           receive(:save).and_return(true)
         )
         enrollment_exemption # To ensure object built
-        put :update, id: enrollment, form.params_key => {}
+        put :update, params: { id: enrollment, form.params_key => {} }
       end
 
       it "should redirect to enrollment_exemption" do

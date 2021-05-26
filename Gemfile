@@ -60,8 +60,8 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
-  gem "shoulda-matchers"
-  gem "simplecov"#
+  gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
+  gem "simplecov", require: false
 end
 
 group :production do
