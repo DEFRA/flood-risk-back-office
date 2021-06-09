@@ -1,13 +1,13 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 7d688f75ae339ce74429cb320a07aced6162a1aa
+  revision: bd183ede46465f3952301091f17ba9a0c72e2c13
   branch: chore/upgrade-to-rails-6
   specs:
     flood_risk_engine (1.1)
       activerecord-session_store (~> 2.0)
       defra_ruby_alert (~> 2.1.1)
       defra_ruby_area (~> 2.0)
-      defra_ruby_email
+      defra_ruby_email (~> 1.1)
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
       ea-address_lookup (~> 0.3.3)
@@ -1362,7 +1362,7 @@ GEM
       activerecord (>= 3.0)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
-    http-cookie (1.0.3)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
@@ -1389,7 +1389,7 @@ GEM
     kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -1400,14 +1400,14 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
     mini_mime (1.1.0)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
     nesty (1.0.2)
     netrc (0.11.0)
     nio4r (2.5.7)
-    nokogiri (1.11.5)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     notifications-ruby-client (5.3.0)
@@ -1618,7 +1618,7 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.9)
       rack (>= 2.0.9)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (1.0.0)
