@@ -25,6 +25,7 @@ class SendRegistrationApprovedEmail
   private
 
   attr_reader :enrollment_exemption
+
   delegate :enrollment, to: :enrollment_exemption
 
   def validate_enrollment

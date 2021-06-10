@@ -1,4 +1,4 @@
-class CreateUsers < ActiveRecord::Migration
+class CreateUsers < ActiveRecord::Migration[4.2]
   def self.up
     db_adapter = ActiveRecord::Base.connection.instance_values["config"][:adapter]
     is_postgres_adapter = db_adapter.in? %w[postgres postgis]

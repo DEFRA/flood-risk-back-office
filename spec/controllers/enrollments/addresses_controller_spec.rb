@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Enrollments
   RSpec.describe AddressesController, type: :controller do
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
     let(:enrollment) do
       FactoryBot.create(
@@ -31,7 +31,7 @@ module Enrollments
 
     describe "edit action" do
       before do
-        get :edit, id: address, enrollment_id: enrollment
+        get :edit, params: { id: address, enrollment_id: enrollment }
       end
 
       it "should render page sucessfully" do
@@ -46,9 +46,11 @@ module Enrollments
         )
         put(
           :update,
-          id: address,
-          enrollment_id: enrollment,
-          flood_risk_engine_address: address.attributes
+          params: {
+            id: address,
+            enrollment_id: enrollment,
+            flood_risk_engine_address: address.attributes
+          }
         )
       end
 

@@ -123,7 +123,7 @@ module Flood
 
     # rubocop:disable Metrics/BlockLength
     no_commands do
-
+      # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       def build_factory_list
         factories = []
 
@@ -137,6 +137,7 @@ module Flood
 
         factories
       end
+      # rubocop:enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
       def init
         # assume run from Rails.root

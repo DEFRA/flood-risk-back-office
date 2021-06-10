@@ -5,7 +5,7 @@ FactoryBot.define do
   #
   # Named :   submitted_#{org_type}
   #
-  FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+  FloodRiskEngine::Organisation.org_types.each_key do |ot|
     next if ot.to_sym == :unknown
 
     factory :"submitted_#{ot}", parent: :confirmed_random_pending do

@@ -11,7 +11,7 @@ FactoryBot.define do
       association :secondary_contact, factory: :contact
     end
 
-    step :confirmation
+    step { :confirmation }
   end
 
   # Base class for BO Enrollment with pending (pending or being_processed)

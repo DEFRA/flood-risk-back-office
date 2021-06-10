@@ -1,4 +1,4 @@
-class CreateUserVersions < ActiveRecord::Migration
+class CreateUserVersions < ActiveRecord::Migration[4.2]
   # The largest text column available in all supported RDBMS is
   # 1024^3 - 1 bytes, roughly one gibibyte.  We specify a size
   # so that MySQL will use `longtext` instead of `text`.  Otherwise,

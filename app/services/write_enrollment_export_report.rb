@@ -37,7 +37,5 @@ class WriteEnrollmentExportReport
 
   private
 
-  attr_accessor :csv_data
-  attr_accessor :enrollment_export
-
+  attr_accessor :csv_data, :enrollment_export
 end

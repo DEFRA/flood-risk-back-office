@@ -179,7 +179,8 @@ class EnrollmentExemptionPresenter < Presenter
     if partnership?
       partnership_headers(organisation)
     else
-      @headers ||= I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.headers").to_a
+      @_registration_and_operator_headers ||=
+        I18n.t("admin.enrollment_exemptions.show.main.registration_and_operator.headers").to_a
     end
   end
 
