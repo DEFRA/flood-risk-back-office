@@ -10,7 +10,7 @@
 
 <%= simple_form_for [:admin, @user] do |f| %>
   <%= f.input :assigned_role, collection: t("allowed_roles").map(&:reverse),
-              required: true, include_blank: false,
+              include_blank: false,
               disabled: (@user == current_user), readonly: (@user == current_user),
               input_html: { class: 'input-md-4' } %>
 

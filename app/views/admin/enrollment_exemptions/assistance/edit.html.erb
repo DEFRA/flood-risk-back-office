@@ -17,8 +17,7 @@
                 <div class="col-md-4">
                   <%= f.input :assistance_mode,
                               collection: presenter.assistance_modes_map,
-                              required: true,
-                              include_blank: false %>
+                              required: true %>
                 </div>
                 <div class="col-md-8">
                   <%= f.input :comment, as: :text %>

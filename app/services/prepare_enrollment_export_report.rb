@@ -17,9 +17,7 @@ class PrepareEnrollmentExportReport
 
     enrollment_export.update!(record_count: records.size) if records
 
-    csv_data = records.collect { |record| generate_row(record) }
-
-    csv_data
+    records.collect { |record| generate_row(record) }
   end
 
   def comments(enrollment_exemption)

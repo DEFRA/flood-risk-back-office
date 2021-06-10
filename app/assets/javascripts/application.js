@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require details.polyfill
+// from govuk_frontend_toolkit gem
+//= require vendor/polyfills/bind
+//= require govuk_toolkit
 //= require flood_risk_engine
 //= require_tree .

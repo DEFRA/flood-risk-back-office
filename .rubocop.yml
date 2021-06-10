@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.7
   # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
   # use it to investigate what the fix may be.
   DisplayCopNames: true
@@ -123,7 +123,7 @@ Style/StringLiterals:
 # Rubocop 0.42 introduced Style/MethodMissing then 0.75 split it into 2 new
 # cops - disabling them for now until we have time to resolve the issues they
 # raise
-Style/MethodMissingSuper:
+Lint/MissingSuper:
   Enabled: false
 Style/MissingRespondToMissing:
   Enabled: false

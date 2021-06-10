@@ -3,7 +3,7 @@ require "rails_helper"
 module Admin
   module EnrollmentExemptions
     RSpec.describe RejectController, type: :controller do
-      include Devise::TestHelpers
+      include Devise::Test::ControllerHelpers
       render_views
 
       let(:enrollment) { FactoryBot.create(:enrollment, submitted_at: Time.zone.now) }
@@ -26,7 +26,7 @@ module Admin
 
       describe "new action" do
         it "renders page" do
-          get :new, enrollment_exemption_id: enrollment_exemption
+          get :new, params: { enrollment_exemption_id: enrollment_exemption }
           expect(response).to have_http_status(:success)
         end
       end
@@ -39,7 +39,7 @@ module Admin
           end
 
           it "redirects to enrollment_exemption show" do
-            post :create, enrollment_exemption_id: enrollment_exemption
+            post :create, params: { enrollment_exemption_id: enrollment_exemption }
             expect(response).to redirect_to(
               admin_enrollment_exemption_path(enrollment_exemption)
             )
@@ -52,7 +52,7 @@ module Admin
           end
 
           it "renders new template" do
-            post :create, enrollment_exemption_id: enrollment_exemption
+            post :create, params: { enrollment_exemption_id: enrollment_exemption }
             expect(response).to have_http_status(:success)
             expect(response).to render_template(:new)
           end
@@ -64,7 +64,7 @@ module Admin
         let(:enrollment) { FactoryBot.create(:enrollment) }
 
         it "new should not be displayed" do
-          get :new, enrollment_exemption_id: enrollment_exemption
+          get :new, params: { enrollment_exemption_id: enrollment_exemption }
           expect(response).to redirect_to(
             root_path
           )

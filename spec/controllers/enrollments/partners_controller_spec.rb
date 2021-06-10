@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Enrollments
   RSpec.describe PartnersController, type: :controller do
-    include Devise::TestHelpers
+    include Devise::Test::ControllerHelpers
 
     let(:partner) { FactoryBot.create(:partner_with_contact) }
     let(:contact) { partner.contact }
@@ -33,7 +33,7 @@ module Enrollments
 
     describe "edit action" do
       before do
-        get :edit, id: partner, enrollment_id: enrollment
+        get :edit, params: { id: partner, enrollment_id: enrollment }
       end
 
       it "should render page sucessfully" do
@@ -48,9 +48,11 @@ module Enrollments
         )
         put(
           :update,
-          id: partner,
-          enrollment_id: enrollment,
-          flood_risk_engine_partner: address.attributes
+          params: {
+            id: partner,
+            enrollment_id: enrollment,
+            flood_risk_engine_partner: address.attributes
+          }
         )
       end
 

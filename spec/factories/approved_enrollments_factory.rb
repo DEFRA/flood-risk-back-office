@@ -6,7 +6,7 @@ FactoryBot.define do
   # The submitted_at date will be 6 months ago
   # The approval date will be a random date between the submitted_at date and NOW
   #
-  FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+  FloodRiskEngine::Organisation.org_types.each_key do |ot|
     next if ot.to_sym == :unknown
 
     factory :"approved_#{ot}", parent: :"submitted_#{ot}", traits: [:accept_reject_common] do

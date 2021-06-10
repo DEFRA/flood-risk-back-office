@@ -1,8 +1,3 @@
-PaperTrail.configure do |config|
-  config.track_associations = true
-end
-
-
 require "paper_trail"
 
 module FloodRiskEngine

@@ -33,7 +33,7 @@ RSpec.feature "As an System user, I want to edit another user's role" do
 
       expect(other_user.role_names).to eq "data_agent"
 
-      # Note: 2 "paper-trail" versions records are created,
+      # NOTE: 2 "paper-trail" versions records are created,
       #       as any existing user role(s) are deleted before the new role is added
       #       which results in two updates to the user record
       # last_version = other_user.versions.last

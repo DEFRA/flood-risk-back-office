@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :enrollment_export do
-    state "queued"
+    state { "queued" }
     created_by { Faker::Internet.safe_email }
 
     trait :with_dates do
-      from_date 1.year.ago
-      to_date Date.current
+      from_date { 1.year.ago }
+      to_date { Date.current }
     end
 
     trait :with_file_name do
@@ -14,8 +14,8 @@ FactoryBot.define do
 
     trait :completed do
       with_dates
-      record_count 5
-      state :completed
+      record_count { 5 }
+      state { :completed }
 
       after(:build, &:populate_file_name)
     end

@@ -1,101 +1,71 @@
 source "https://rubygems.org"
-ruby "2.3.1"
+ruby "2.7.1"
 
-# Amazon S3 API access (e.g. data exports)
 gem "aws-sdk-resources"
-gem "devise", "~> 3.5.10"
-gem "devise_invitable", "~> 1.6.0"
-# Allows limiting multiple logins to the same account
-gem "devise_security_extension", "~> 0.10.0"
-gem "govuk_admin_template", "~> 4.2.0"
-gem "govuk_elements_rails", "~> 1.2.1"
-# Added this to get Tabs for Choosing Exemption working
-gem "govuk_frontend_toolkit", "~> 4.12.0"
-# A Scope & Engine based paginator for Ruby webapps
-gem "kaminari", "~> 0.17.0"
-gem "paper_trail", "~> 5.1.1"
-# Use Postgres for the DB
-gem "pg", "~> 0.18.4"
-gem "pundit", "~> 1.1.0"
-# Mutes assets pipeline log messages
-gem "quiet_assets", "~> 1.1.0"
-gem "rails", "~> 4.2"
-gem "rolify", "~> 5.1.0"
-# Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0.4"
-gem "simple_form", "~> 3.2.1"
-gem "squeel", "~> 1.2.3"
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", "~> 3.0"
-# date/time validator for Rails and ActiveModel
-gem "validates_timeliness", "~> 4.0.2"
-# Gem that provides a clear syntax for writing and deploying cron jobs.
-gem "whenever", "~> 0.9.4", require: false
+gem "devise"
+gem "devise_invitable"
+gem "devise-security"
+gem "govuk_admin_template"
+gem "govuk_elements_rails"
+gem "govuk_frontend_toolkit", git: "https://github.com/alphagov/govuk_frontend_toolkit_gem.git", submodules: true
+gem "govuk_template"
+gem "kaminari"
+gem "paper_trail"
+gem "pg"
+gem "pundit"
+gem "rails", "~> 6.0.3"
+gem "rolify"
+gem "sass-rails"
+gem "simple_form"
+
+# replaces squeel (deprecated)
+gem "baby_squeel", git: "https://github.com/vitalinfo/baby_squeel.git"
+gem "ransack", require: false # because we need 'polyamorous' (see ransack initializer)
+
+gem "record_tag_helper" # supports the deprecated `content_tag_for`
+gem "uglifier"
+gem "validates_timeliness"
+gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "main"
+    branch: "rails6"
 
-gem "defra_ruby_aws", "~> 0.4"
-
-# Allows us to automatically generate the change log from the tags, issues,
-# labels and pull requests on GitHub. Added as a dependency so all dev's have
-# access to it to generate a log, and so they are using the same version.
-# New dev's should first create GitHub personal app token and add it to their
-# ~/.bash_profile (or equivalent)
-# https://github.com/skywinder/github-changelog-generator#github-token
-# Then simply run `bundle exec rake changelog` to update CHANGELOG.md
-# Should be in the :development group however when it is it breaks deployment.
-# Hence moved outside group till we can understand why.
+gem "defra_ruby_aws"
+gem "defra_ruby_email"
 gem "github_changelog_generator", require: false
 
-# Automatically loads environment variables from .env into ENV. Specified here
-# rather than in the group in case any of the gems we add depend on env
-# variables being available
-gem "dotenv-rails", "~> 2.1.1", groups: %i[development test]
+gem "dotenv-rails"
 
 group :development do
-  # Pretty prints objects in console. Usage `$ ap some_object`
   gem "awesome_print"
-  # Used to ensure the code base matches our agreed styles and conventions
-  gem "rubocop", "~> 0.47"
+  gem "rubocop"
 end
 
 group :development, :test do
-  # ActiveRecord N+1 detection
   gem "bullet"
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger
-  # console
   gem "byebug"
-  # Provides Rails integration for factory_bot. Enables "build_dummy_data"
-  # functionality in dev
-  gem "factory_bot_rails", "~> 4.6"
-  # Used to generate fake data e.g. in the specs
-  gem "faker", "~> 1.7"
-  # A testing framework for Rails 3.x, 4.x and 5.0
-  gem "rspec-rails", "~> 3.4.2"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "rspec-rails"
 end
 
 group :test do
-  gem "capybara", "~> 2.6.2"
-  gem "database_cleaner", "~> 1.5.1"
-  gem "email_spec", "~> 2.1.0"
-  # Enhanced rspec progress formatter
+  gem "capybara"
+  gem "database_cleaner"
+  gem "email_spec"
   gem "fuubar"
-  # save_and_open_page
   gem "launchy", require: false
-  # Needed for headless testing with Javascript or pages that ref external sites
-  gem "poltergeist", "~> 1.9.0"
-  gem "rspec-activemodel-mocks", "~> 1.0.3"
-  # For CircleCI metadata reports
-  gem "rspec_junit_formatter", "~> 0.2.3"
-  gem "shoulda-matchers", "~> 3.1.1", require: false
-  # Tool for checking code coverage
-  gem "simplecov", "~> 0.17.1", require: false
+  gem "poltergeist"
+  gem "rails-controller-testing"
+  gem "rspec-activemodel-mocks"
+  gem "rspec_junit_formatter"
+  gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
+  gem "simplecov", require: false
 end
 
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
-  gem "passenger", "~> 5.0", ">= 5.0.30", require: "phusion_passenger/rack_handler"
+  gem "passenger", require: "phusion_passenger/rack_handler"
 end
