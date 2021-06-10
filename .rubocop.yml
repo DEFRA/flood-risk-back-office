@@ -97,6 +97,12 @@ Style/BlockDelimiters:
 Style/Documentation:
   Enabled: false
 
+# This tries to enforce:
+# expand_path('config/environment', __dir__) instead of expand_path('../config/environment', __FILE__)
+# But the app doesn't boot up.
+Style/ExpandPathArguments:
+  Enabled: false
+
 # We've found the sprintf style for formatting strings can be useful when storing a formatted string as a template,
 # and passing in strings that can vary with context. Therefore we chose to disable this rule.
 Style/FormatString:
