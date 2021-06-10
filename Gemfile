@@ -29,7 +29,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "chore/upgrade-to-rails-6"
+    branch: "rails6"
 
 gem "defra_ruby_aws"
 gem "defra_ruby_email"

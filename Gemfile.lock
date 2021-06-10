@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: bd183ede46465f3952301091f17ba9a0c72e2c13
-  branch: chore/upgrade-to-rails-6
+  revision: c89414e2e43c7dd95d1a5f72c18824f0ff7b794b
+  branch: rails6
   specs:
     flood_risk_engine (1.1)
       activerecord-session_store (~> 2.0)
