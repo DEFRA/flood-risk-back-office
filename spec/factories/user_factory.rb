@@ -5,7 +5,7 @@ FactoryBot.define do
 
   factory :user do
     email { generate(:random_email) }
-    password "Secret08"
+    password { "Secret08" }
     password_confirmation { password }
 
     authentication_token { generate(:user_authentication_token) } if User.attribute_method? :authentication_token

@@ -69,12 +69,9 @@ class User < ActiveRecord::Base
     return unless password.present? && errors[:password].empty?
 
     # Password must have at least 1 uppercase, 1 lowercase and 1 number character
-    return if password =~ /[A-Z]+/ && password =~ /[A-Z]+/ && password =~ /[0-9]+/
+    return if password =~ /[A-Z]+/ && password =~ /[0-9]+/
 
     errors.add :password, :invalid
-    # unless password =~ /[A-Z]+/ && password =~ /[A-Z]+/ && password =~ /[0-9]+/
-    #   errors.add :password, :invalid
-    # end
   end
 
   def add_to_role_names(role)

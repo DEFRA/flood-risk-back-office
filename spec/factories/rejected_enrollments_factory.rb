@@ -3,7 +3,7 @@ FactoryBot.define do
   #
   # Named :rejected_#{org_type}
   #
-  FloodRiskEngine::Organisation.org_types.keys.each do |ot|
+  FloodRiskEngine::Organisation.org_types.each_key do |ot|
     next if ot.to_sym == :unknown
 
     factory :"rejected_#{ot}", parent: :"submitted_#{ot}", traits: [:accept_reject_common] do

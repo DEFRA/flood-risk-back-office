@@ -1,4 +1,4 @@
-class AddEnrollmentExports < ActiveRecord::Migration
+class AddEnrollmentExports < ActiveRecord::Migration[4.2]
   def change
     create_table :enrollment_exports do |t|
       t.date :from_date, null: false
