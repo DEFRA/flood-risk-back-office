@@ -1,16 +1,16 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 9fc788b729e869b1340d49394379e3c5966031b8
+  revision: afa75f480473a4d15da4fe29bce57d055384b491
   branch: main
   specs:
     flood_risk_engine (1.0.2)
       activerecord-session_store (~> 1.0)
+      defra_ruby_address
       defra_ruby_alert (~> 0.1.0)
       defra_ruby_area
       defra_ruby_email
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
-      ea-address_lookup (~> 0.3.0)
       finite_machine (~> 0.11.3)
       has_secure_token (~> 1.0.0)
       high_voltage (~> 3.0)
@@ -1196,6 +1196,8 @@ GEM
     database_cleaner (1.5.3)
     declarative (0.0.20)
     declarative-option (0.1.0)
+    defra_ruby_address (0.1.0)
+      rest-client (~> 2.0)
     defra_ruby_alert (0.1.0)
       airbrake (~> 5.3.0)
     defra_ruby_area (2.0.0)
@@ -1233,10 +1235,6 @@ GEM
     dotenv-rails (2.1.2)
       dotenv (= 2.1.2)
       railties (>= 3.2, < 5.1)
-    ea-address_lookup (0.3.3)
-      activesupport (>= 4.2)
-      nesty (~> 1.0)
-      rest-client (~> 2.0.0.rc2)
     email_spec (2.1.2)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -1285,7 +1283,8 @@ GEM
       activerecord (>= 3.0)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
-    http-cookie (1.0.3)
+    http-accept (1.7.0)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -1301,7 +1300,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -1314,7 +1313,6 @@ GEM
     minitest (5.14.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
-    nesty (1.0.2)
     netrc (0.11.0)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -1392,7 +1390,8 @@ GEM
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
