@@ -1,5 +1,25 @@
 # Changelog
 
+## [v1.5.0](https://github.com/defra/flood-risk-back-office/tree/v1.5.0) (2021-06-15)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.4.1...v1.5.0)
+
+**Merged pull requests:**
+
+- Bump flood\_risk\_engine from `d4a5e4b` to `c4b1403` [\#303](https://github.com/DEFRA/flood-risk-back-office/pull/303) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `afa75f4` to `d4a5e4b` [\#302](https://github.com/DEFRA/flood-risk-back-office/pull/302) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `9fc788b` to `afa75f4` [\#301](https://github.com/DEFRA/flood-risk-back-office/pull/301) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Upgrade back office to Rails 6 [\#298](https://github.com/DEFRA/flood-risk-back-office/pull/298) ([tobyprivett](https://github.com/tobyprivett))
+- Bump aws-sdk-resources from 3.103.0 to 3.104.0 [\#297](https://github.com/DEFRA/flood-risk-back-office/pull/297) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.102.0 to 3.103.0 [\#296](https://github.com/DEFRA/flood-risk-back-office/pull/296) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.101.0 to 3.102.0 [\#295](https://github.com/DEFRA/flood-risk-back-office/pull/295) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `a45b4aa` to `9fc788b` [\#294](https://github.com/DEFRA/flood-risk-back-office/pull/294) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.99.0 to 3.101.0 [\#293](https://github.com/DEFRA/flood-risk-back-office/pull/293) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rexml from 3.2.4 to 3.2.5 [\#292](https://github.com/DEFRA/flood-risk-back-office/pull/292) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.98.0 to 3.99.0 [\#291](https://github.com/DEFRA/flood-risk-back-office/pull/291) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.97.0 to 3.98.0 [\#290](https://github.com/DEFRA/flood-risk-back-office/pull/290) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-resources from 3.96.0 to 3.97.0 [\#289](https://github.com/DEFRA/flood-risk-back-office/pull/289) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v1.4.1](https://github.com/defra/flood-risk-back-office/tree/v1.4.1) (2021-03-26)
 
 [Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v1.4.0...v1.4.1)
@@ -74,7 +94,6 @@
 **Implemented enhancements:**
 
 - Update defra-ruby-aws to AWS:KMS version [\#238](https://github.com/DEFRA/flood-risk-back-office/pull/238) ([Cruikshanks](https://github.com/Cruikshanks))
-- Enable defra-ruby-email in the project [\#209](https://github.com/DEFRA/flood-risk-back-office/pull/209) ([Cruikshanks](https://github.com/Cruikshanks))
 
 **Security fixes:**
 
@@ -119,6 +138,7 @@
 
 **Implemented enhancements:**
 
+- Enable defra-ruby-email in the project [\#209](https://github.com/DEFRA/flood-risk-back-office/pull/209) ([Cruikshanks](https://github.com/Cruikshanks))
 - Schedule EPR export [\#196](https://github.com/DEFRA/flood-risk-back-office/pull/196) ([cintamani](https://github.com/cintamani))
 - Add EPR export serializer and persenter [\#195](https://github.com/DEFRA/flood-risk-back-office/pull/195) ([cintamani](https://github.com/cintamani))
 - Add epr rake task and service [\#193](https://github.com/DEFRA/flood-risk-back-office/pull/193) ([cintamani](https://github.com/cintamani))
