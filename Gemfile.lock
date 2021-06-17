@@ -1,16 +1,16 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: c89414e2e43c7dd95d1a5f72c18824f0ff7b794b
+  revision: bd218b3a28f81df3ff0b388cf05326879919bc16
   branch: rails6
   specs:
     flood_risk_engine (1.1)
       activerecord-session_store (~> 2.0)
+      defra_ruby_address
       defra_ruby_alert (~> 2.1.1)
       defra_ruby_area (~> 2.0)
       defra_ruby_email (~> 1.1)
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
-      ea-address_lookup (~> 0.3.3)
       finite_machine (~> 0.11.3)
       has_secure_token (~> 1.0.0)
       high_voltage (~> 3.0)
@@ -1262,6 +1262,8 @@ GEM
     declarative (0.0.20)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
+    defra_ruby_address (0.1.0)
+      rest-client (~> 2.0)
     defra_ruby_alert (2.1.1)
       airbrake
     defra_ruby_area (2.0.1)
@@ -1300,10 +1302,6 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    ea-address_lookup (0.3.3)
-      activesupport (>= 4.2)
-      nesty (~> 1.0)
-      rest-client (~> 2.0.0.rc2)
     email_spec (2.2.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -1362,6 +1360,7 @@ GEM
       activerecord (>= 3.0)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
+    http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     i18n (1.8.10)
@@ -1404,7 +1403,6 @@ GEM
     minitest (5.14.4)
     multi_json (1.15.0)
     multipart-post (2.1.1)
-    nesty (1.0.2)
     netrc (0.11.0)
     nio4r (2.5.7)
     nokogiri (1.11.7)
@@ -1427,7 +1425,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.2.3)
-    phonelib (0.6.50)
+    phonelib (0.6.51)
     plek (4.0.0)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -1508,7 +1506,8 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -1618,7 +1617,7 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.9)
       rack (>= 2.0.9)
-    websocket-driver (0.7.4)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (1.0.0)
