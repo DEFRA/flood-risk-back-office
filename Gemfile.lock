@@ -1176,7 +1176,7 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.4)
-    bullet (6.1.4)
+    bullet (6.1.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
@@ -1482,7 +1482,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
-    uniform_notifier (1.14.1)
+    uniform_notifier (1.14.2)
     validates_email_format_of (1.6.3)
       i18n
     validates_timeliness (4.0.2)
