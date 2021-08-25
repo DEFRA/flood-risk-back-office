@@ -1,0 +1,66 @@
+// Cribbed from https://home-office-digital-patterns.herokuapp.com/components/pagination
+.pagination .pagination_list-items {
+
+  li {
+    display: inline-block;
+    a {
+      // @extend .bold-small;
+      color: $govuk-brand-colour;
+      display: inline-block;
+      margin-right: 15px;
+      padding: 15px 5px 10px 5px;
+      text-decoration: none;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+    &.active a,
+    &.active a:hover {
+      -webkit-box-shadow: inset 0px -5px 0px 0px $govuk-brand-colour;
+      -moz-box-shadow: inset 0px -5px 0px 0px $govuk-brand-colour;
+      box-shadow: inset 0px -5px 0px 0px $govuk-brand-colour;
+      color: $govuk-brand-colour;
+    }
+  }
+}
+
+.pagination {
+  margin-bottom: 30px;
+  padding: 0;
+}
+.pagination__item {
+  display: inline-block;
+  list-style: none;
+}
+.pagination__link {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    background: govuk-colour("light-grey");
+    outline: 3px solid $govuk-focus-colour;
+  }
+
+  &.current {
+    border: none;
+    color: $govuk-link-active-colour;
+    cursor: default;
+    font-weight: 700;
+    pointer-events: none;
+
+    &:hover, &:focus {
+      background: none;
+      color: $govuk-link-active-colour;
+    }
+  }
+}
+
+.pagination__summary {
+  padding: 15px 0;
+
+  @media (min-width: 642px) {
+    float: right;
+  }
+}

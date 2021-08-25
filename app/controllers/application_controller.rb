@@ -46,11 +46,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :high_voltage_controller?
 
-  def govuk_admin_template_controlller?
-    self.class.to_s =~ /^GovukAdminTemplate::/
-  end
-  helper_method :govuk_admin_template_controlller?
-
   def dsc_errors_controller?
     self.class.to_s =~ /^ErrorsController/
   end
@@ -59,14 +54,12 @@ class ApplicationController < ActionController::Base
   def skip_user_authenticate?
     devise_controller? ||
       high_voltage_controller? ||
-      govuk_admin_template_controlller? ||
       dsc_errors_controller?
   end
 
   def skip_pundit_verify?
     devise_controller? ||
       high_voltage_controller? ||
-      govuk_admin_template_controlller? ||
       dsc_errors_controller?
   end
 
