@@ -43,5 +43,10 @@ module FloodRiskBackOffice
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Fix sass compilation error in govuk_frontend:
+    # SassC::SyntaxError: Error: "calc(0px)" is not a number for `max'
+    # https://github.com/alphagov/govuk-frontend/issues/1350
+    config.assets.css_compressor = nil
   end
 end
