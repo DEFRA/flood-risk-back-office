@@ -74,20 +74,4 @@ Rails.application.routes.draw do
   end
 
   mount DefraRubyEmail::Engine => "/email"
-
-  # We use high voltage to manage static content including error-pages
-  #get "/pages/*id" => 'high_voltage/pages#show', as: :page, format: false
-
-  # get "/dsc/enrollments/:state/:id", to: 'digital_services_core/enrollments#update'
-  # get "/dsc/enrollments/:id", to: 'digital_services_core/enrollments#update'
-  # match "(errors)/:status", to: 'digital_services_core/errors#show', via: :all, constraints: { status: /\d{3}/ }
-
-  if Rails.env.development?
-    mount GovukAdminTemplate::Engine, at: "/style-guide"
-
-    # if ENV["ADD_STATE_JUMPER_TOOLBAR"] == "true"
-    #   get "/enrollment_builder/:factory", to: 'enrollment_builder#build_dummy_data', as: :build_dummy_data
-    #   get "/enrollment_builder/bulk/:number", to: 'enrollment_builder#bulk_load', as: :bulk_load
-    # end
-  end
 end

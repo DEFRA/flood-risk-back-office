@@ -1,66 +1,44 @@
-<%- content_for :navbar_items do -%>
-  <% if user_signed_in? %>
-
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-         role="button"><%= glyphicon_tag :file %>
-        <%= t('.enrollments_dropdown') %>
-        <span class="caret"></span></a>
-
-      <ul class="dropdown-menu">
-        <li>
-          <%= link_to glyphicon_tag('search', text: t('.search_enrollments')),
-                      main_app.root_path %>
-         </li>
-
-        <% if policy(FloodRiskEngine::Enrollment).create? %>
-          <li><%= link_to glyphicon_tag('plus', text: t('.new_enrollment')),
-                          main_app.new_admin_enrollment_path %></li>
-        <% end %>
-
-        <% if true # policy(FloodRiskEngine::Enrollment).export? %>
-          <li>
-            <%= link_to glyphicon_tag('download-alt', text: t('.export_enrollments')),
-                        main_app.admin_enrollment_exports_path %>
-          </li>
-        <% end %>
-      </ul>
-    </li>
-
-    <% if policy(User).index? %>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-           role="button"><%= glyphicon_tag 'user' %>
-          <%= User.model_name.human(count: 2) %>
-          <span class="caret"></span></a>
-
-        <ul class="dropdown-menu">
-          <% if policy(User).index? %>
-            <li>
-              <%= link_to glyphicon_tag('list', text: t('.view_users')), admin_users_path %>
-            </li>
-          <% end %>
-
-          <% if policy(User).invite? %>
-            <li>
-              <%= link_to glyphicon_tag('plus-sign', text: t('devise.invite_user')),
-                  new_user_invitation_path %>
-            </li>
-          <% end %>
-        </ul>
+<% if user_signed_in? %>
+  <nav>
+    <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+      <li class="govuk-header__navigation-item">
+        <%= link_to t(".search_enrollments"),
+            main_app.root_path,
+            class: "govuk-header__link" %>
       </li>
-    <% end %>
 
-    <li>
-      <%= link_to glyphicon_tag('log-out', text: t('devise.sign_out')),
-                  destroy_user_session_path,
-                  method: :delete %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to glyphicon_tag('log-in', text: t('devise.sign_in')), new_user_session_path %>
-    </li>
-  <% end %>
-<%- end -%>
+      <% if policy(FloodRiskEngine::Enrollment).create? %>
+        <li class="govuk-header__navigation-item">
+          <%= link_to t('.new_enrollment'),
+              main_app.new_admin_enrollment_path,
+              class: "govuk-header__link" %>
+        </li>
+      <% end %>
 
-<%- content_for(:navbar_right, current_user.email) if user_signed_in? -%>
+      <li class="govuk-header__navigation-item">
+        <%= link_to t(".export"),
+            main_app.admin_enrollment_exports_path,
+            class: "govuk-header__link" %>
+      </li>
+
+      <% if policy(User).index? %>
+        <li class="govuk-header__navigation-item">
+          <%= link_to t(".users"),
+              admin_users_path,
+              class: "govuk-header__link" %>
+        </li>
+      <% end %>
+
+      <li class="govuk-header__navigation-item">
+        <%= link_to t('devise.sign_out'),
+                destroy_user_session_path,
+                method: :delete,
+                class: "govuk-header__link" %>
+      </li>
+
+      <li class="govuk-header__navigation-item">
+        <%= current_user.email %>
+      </li>
+    </ul>
+  </nav>
+<% end %>

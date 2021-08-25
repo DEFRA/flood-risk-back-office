@@ -3,8 +3,7 @@ RSpec.feature "Admin menu" do
     scenario "View logged-out admin menu" do
       visit main_app.root_path
 
-      within "nav[role=navigation] ul.navbar-nav" do
-        expect(page).to have_css("li", count: 1)
+      within "#navigation" do
         click_link t("devise.sign_in")
       end
 
@@ -22,10 +21,11 @@ RSpec.feature "Admin menu" do
 
       expect(page).to have_no_content t("devise.invite_user")
 
-      within "nav[role=navigation] ul.navbar-nav" do
-        expect(page).to have_css("> li", count: 2)
-
-        expect(page).to have_css("ul.dropdown-menu > li", count: 3)
+      within "#navigation" do
+        expect(page).to have_link("Search")
+        expect(page).to have_link("New")
+        expect(page).to have_link("Export")
+        expect(page).not_to have_link("Users")
 
         click_link t("devise.sign_out")
       end
@@ -37,17 +37,17 @@ RSpec.feature "Admin menu" do
       user.add_role :system
       visit main_app.root_path
 
-      expect(page).to have_content t("devise.invite_user")
+      within "#navigation" do
+        expect(page).to have_link("Search")
+        expect(page).to have_link("New")
+        expect(page).to have_link("Export")
+        expect(page).to have_link("Users")
+        expect(page).to have_link("Invite user")
 
-      within "nav[role=navigation] ul.navbar-nav" do
-        expect(page).to have_css("> li", count: 3)
-
-        expect(page).to have_css("ul.dropdown-menu > li", count: 5)
-
-        click_link t("devise.invite_user")
+        click_link t("devise.sign_out")
       end
 
-      expect(current_path).to eq new_user_invitation_path
+      expect(current_path).to eq root_path
     end
   end
 end
