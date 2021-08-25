@@ -1,11 +1,10 @@
 en:
   layouts:
     navbar:
-      enrollments_dropdown: Registrations
+      export: Export
       new_enrollment: New
-      export_enrollments: Export
       search_enrollments: Search
-      view_users: View users
+      users: Users
     application:
       title: "Flood Risk Admin System"
     flood_risk_engine:

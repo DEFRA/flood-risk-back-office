@@ -5,10 +5,7 @@ gem "aws-sdk-resources"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
-gem "govuk_admin_template"
-gem "govuk_elements_rails"
-gem "govuk_frontend_toolkit", git: "https://github.com/alphagov/govuk_frontend_toolkit_gem.git", submodules: true
-gem "govuk_template"
+gem "jquery-rails"
 gem "kaminari"
 gem "paper_trail"
 gem "pg"
@@ -17,10 +14,6 @@ gem "rails", "~> 6.0.3"
 gem "rolify"
 gem "sass-rails"
 gem "simple_form"
-
-# replaces squeel (deprecated)
-gem "baby_squeel", git: "https://github.com/vitalinfo/baby_squeel.git"
-gem "ransack", require: false # because we need 'polyamorous' (see ransack initializer)
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
 gem "uglifier"
@@ -33,6 +26,7 @@ gem "flood_risk_engine",
 
 gem "defra_ruby_aws"
 gem "defra_ruby_email"
+gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
 
 gem "dotenv-rails"
