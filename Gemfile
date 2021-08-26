@@ -28,6 +28,7 @@ gem "defra_ruby_aws"
 gem "defra_ruby_email"
 gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
+gem "govuk_design_system_formbuilder"
 
 gem "dotenv-rails"
 
