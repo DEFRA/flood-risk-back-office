@@ -1240,6 +1240,7 @@ GEM
     declarative (0.0.20)
     declarative-builder (0.2.0)
       trailblazer-option (~> 0.1.0)
+    deep_merge (1.2.1)
     defra_ruby_address (0.1.0)
       rest-client (~> 2.0)
     defra_ruby_alert (2.1.1)
@@ -1324,6 +1325,11 @@ GEM
       retriable (~> 3.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    govuk_design_system_formbuilder (2.7.2)
+      actionview (>= 6.0)
+      activemodel (>= 6.0)
+      activesupport (>= 6.0)
+      deep_merge (~> 1.2.1)
     has_secure_token (1.0.0)
       activerecord (>= 3.0)
     high_voltage (3.1.2)
@@ -1600,6 +1606,7 @@ DEPENDENCIES
   flood_risk_engine!
   fuubar
   github_changelog_generator
+  govuk_design_system_formbuilder
   jquery-rails
   kaminari
   launchy

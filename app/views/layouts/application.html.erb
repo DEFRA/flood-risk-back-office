@@ -4,7 +4,7 @@
   <%= csrf_meta_tags %>
 <% end %>
 
-<% content_for :page_title, t('.title') %>
+<% content_for :page_title, [@page_title, t(".title")].compact.join(" - ") %>
 
 <% content_for :header_content do %>
 

@@ -27,7 +27,12 @@
               admin_users_path,
               class: "govuk-header__link" %>
         </li>
+        <li class="govuk-header__navigation-item">
+          <%= link_to t('devise.invite_user'),
+              new_user_invitation_path,
+              class: "govuk-header__link" %>
       <% end %>
+
 
       <li class="govuk-header__navigation-item">
         <%= link_to t('devise.sign_out'),
@@ -38,6 +43,16 @@
 
       <li class="govuk-header__navigation-item">
         <%= current_user.email %>
+      </li>
+    </ul>
+  </nav>
+<% else %>
+   <nav>
+    <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+      <li class="govuk-header__navigation-item">
+        <%= link_to t('devise.sign_in'),
+            new_user_session_path,
+            class: "govuk-header__link" %>
       </li>
     </ul>
   </nav>

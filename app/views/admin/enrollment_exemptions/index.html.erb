@@ -1,92 +1,81 @@
-<% content_for(:page_title1) { t('.heading') } %>
+<% @page_title = t(".heading") %>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="header">
-      <h1><%= t('.heading') %></h1>
-      <br/>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-l"><%= t(".heading") %></h1>
 
-      <p class="text-muted"><%= t '.bullet_list' %></p>
-      <ul class="text-muted">
-        <% t('.bullets').each do |str| %>
-          <li><%= str %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</div>
-<%= simple_form_for(form, url: admin_enrollment_exemptions_path, method: :get, as: :search) do |f| %>
-  <div class="row">
-    <div class="col-md-5">
-      <div class="form-group">
-        <label class="sr-only" for="search" id="search">
-          <%= t '.search_label' %>
-        </label>
-        <div class="input-group">
-          <span class="input-group-addon">
-            <%= glyphicon_tag 'search' %>
-          </span>
-          <%= f.search_field :q,
-                             class: "form-control",
-                             id: "search",
-                             placeholder: t(:search) %>
+    <p class="govuk-hint"><%= t(".bullet_list") %></p>
+    <ul class="govuk-list govuk-list--bullet govuk-hint">
+      <% t(".bullets").each do |str| %>
+        <li><%= str %></li>
+      <% end %>
+    </ul>
+
+    <%= form_for form,
+        url: admin_enrollment_exemptions_path,
+        method: :get,
+        as: :search,
+        builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-three-quarters">
+            <div class="govuk-grid-row">
+              <div class="govuk-grid-column-one-half">
+                <%= f.govuk_text_field :q,
+                    label: { text: "" },
+                    width: 20,
+                    id: "search",
+                    placeholder: t(:search) %>
+              </div>
+              <div class="govuk-grid-column-one-quarter">
+                <%= f.govuk_collection_select :status,
+                    form.status_filter_options,
+                    ->(key) { key },
+                    ->(key) { t(key, scope: "admin.status_label") },
+                    width: 20,
+                    inline: true,
+                    include_blank: true,
+                    label: { text: "" } %>
+              </div>
+              <div class="govuk-grid-column-one-quarter">
+                <%= f.govuk_submit t(".search_button") %>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <fieldset>
-        <%= f.collection_select :status,
-                                form.status_filter_options,
-                                ->(key) { key },
-                                ->(key) { t(key, scope: "admin.status_label") } ,
-                                { include_blank: "Any" },
-                                class: "form-control"
-                                %>
-      </fieldset>
-    </div>
 
-    <div class="col-md-3">
-      <%= f.submit t('.search_button'), class: 'btn btn-success', name: nil %>
-    </div>
-  </div>
+    <% end %>
 
-<% end %>
+    <br/>
+    <br/>
 
-<br/>
-<br/>
-
-<% if enrollment_exemptions.present? %>
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-striped enrollment-exemptions-table">
-        <thead>
-          <tr>
-            <th class="state"><%= t(".table_headings.state") %></th>
-            <th class="submitted-at"><%= t(".table_headings.submitted_at") %></th>
-            <th class="reference_number"><%= t(".table_headings.reference_number") %></th>
-            <th class="code"><%= t(".table_headings.code") %></th>
-            <th class="organisation_name"><%= t(".table_headings.organisation_name") %></th>
-            <th class="organisation_address hidden-md"><%= t(".table_headings.organisation_address") %></th>
-            <th class=""></th>
-            <th class="actions"></th>
+    <% if enrollment_exemptions.present? %>
+      <table class="govuk-table" aria-label="<%= t(".table_description") %>">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header"><%= t(".table_headings.state") %></th>
+            <th scope="col" class="govuk-table__header"><%= t(".table_headings.submitted_at") %></th>
+            <th scope="col" class="govuk-table__header"><%= t(".table_headings.reference_number") %></th>
+            <th scope="col" class="govuk-table__header"><%= t(".table_headings.code") %></th>
+            <th scope="col" class="govuk-table__header" colspan="2"><%= t(".table_headings.organisation_name") %></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="govuk-table__body">
           <% enrollment_exemptions.each_enrollment_exemption do |ee| %>
-            <tr>
-              <td><%= ee.status_tag_without_popup %></td>
-              <td><%= ee.submitted_at || ee.created_at %></td>
-              <td><%= ee.reference_number %></td>
-              <td><%= ee.code %></td>
-              <td><%= ee.organisation_name %></td>
-              <td class="hidden-md"><%= ee.organisation_address %></td>
-              <td></td>
-              <td><%= link_to(t(".show"), [:admin, ee], class: 'btn btn-primary') %></td>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell govuk-table__header"><%= ee.status_tag_without_popup %></td>
+              <td class="govuk-table__cell"><%= ee.submitted_at || ee.created_at %></td>
+              <td class="govuk-table__cell"><%= ee.reference_number %></td>
+              <td class="govuk-table__cell"><%= ee.code %></td>
+              <td class="govuk-table__cell"><%= ee.organisation_name %></td>
+              <td class="govuk-table__cell"><%= link_to(t(".show"), [:admin, ee], class: "btn btn-primary") %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate enrollment_exemptions %>
-    </div>
+      <div class="govuk-body">
+        <%= paginate enrollment_exemptions %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

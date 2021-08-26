@@ -14,28 +14,28 @@ class EnrollmentExemptionSearchQuery
   def initialize
     # Note the .joins (using squeel for brevity) help us build the search query, and the
     # .includes make sure we don't have any N+1 queries
-    @relation = FloodRiskEngine::EnrollmentExemption
-                .joins { enrollment.organisation.outer.primary_address.outer }
-                .joins { enrollment.correspondence_contact.outer }
-                .joins { enrollment.exemption_location.outer }
-                .joins { enrollment.reference_number.outer }
-                .joins { exemption }
-                .includes(:exemption,
-                          enrollment: [
-                            :reference_number,
-                            {
-                              organisation: [:primary_address]
-                            }
-                          ])
-                .extending(Scopes)
+    @relation = FloodRiskEngine::EnrollmentExemption.limit(100)
+    # .joins { enrollment.organisation.outer.primary_address.outer }
+    # .joins { enrollment.correspondence_contact.outer }
+    # .joins { enrollment.exemption_location.outer }
+    # .joins { enrollment.reference_number.outer }
+    # .joins { exemption }
+    # .includes(:exemption,
+    #           enrollment: [
+    #             :reference_number,
+    #             {
+    #               organisation: [:primary_address]
+    #             }
+    #           ])
+    # .extending(Scopes)
   end
 
   # Note .page and .per_page are kaminari methods
   def call(search_form)
     relation
-      .having_status(search_form.status)
-      .matching_query(search_form.q)
-      .sort
+      # .having_status(search_form.status)
+      # .matching_query(search_form.q)
+      # .sort
       .page(search_form.page)
       .per(search_form.per_page)
   end

@@ -88,8 +88,8 @@ class EnrollmentExemptionPresenter < Presenter
     Hash[*exemption_headers.zip(exemption_values).flatten]
   end
 
-  def status_tag(options: status_options)
-    super(enrollment_exemption.status, status_label, options)
+  def status_tag(*)
+    status_label
   end
 
   def status_tag_without_popup
