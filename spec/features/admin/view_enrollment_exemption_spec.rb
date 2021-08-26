@@ -24,7 +24,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
 
         expect(page).to have_css("#exemption-details")
 
-        within ".panel.actions" do
+        within "#actions" do
           expect(page).not_to have_link("Edit registration")
           expect(page).not_to have_link("Deregister")
           expect(page).not_to have_link("Reject")
@@ -50,16 +50,16 @@ RSpec.feature "View Enrollment Exemption Detail" do
         end
 
         within "#correspondence-contact-details" do
-          expect(page).to have_css("strong", text: enrollment.correspondence_contact.full_name)
+          expect(page).to have_text(enrollment.correspondence_contact.full_name)
         end
 
         within "#secondary-contact-details" do
-          expect(page).to have_css("strong", text: enrollment.secondary_contact.full_name)
+          expect(page).to have_text(enrollment.secondary_contact.full_name)
         end
 
         ee = enrollment.enrollment_exemptions.first
 
-        within ".panel.actions" do
+        within "#actions" do
           expect(page).to have_css("#update-enrollment-exemption-status")
           expect(page).not_to have_link(
             "Deregister", href: new_admin_enrollment_exemption_deregister_path(ee)
@@ -97,7 +97,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
         scenario "Page has the modified content" do
           visit admin_enrollment_exemption_path(enrollment_exemption)
 
-          within ".panel.actions" do
+          within "#actions" do
             expect(page).to have_link(
               "Deregister",
               href: new_admin_enrollment_exemption_deregister_path(enrollment_exemption)
