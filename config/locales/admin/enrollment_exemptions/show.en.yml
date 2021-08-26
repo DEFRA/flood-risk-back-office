@@ -4,7 +4,6 @@ en:
     enrollment_exemptions:
       show:
         heading: View registration details
-        contact_header: Contact details
         actions:
           title: Actions
           edit: Edit registration

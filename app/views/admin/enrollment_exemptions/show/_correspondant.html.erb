@@ -1,51 +1,37 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading panel-title"><%= glyphicon_tag :user, text: t('.title') %></div>
-      <div class="panel-body" id="correspondence-contact-details">
-        <% contact = presenter.correspondence_contact %>
+<div id="correspondence-contact-details" class="govuk-!-padding-bottom-2">
+  <h2 class="govuk-heading-m"><%= t ".contact_header" %></h2>
 
-        <% if contact %>
-          <strong><%= contact.full_name %></strong>
-          <% if contact.position? %>
-            <br/>
-            <%= t('.position') %> <%= contact.position %>
-          <% end %>
-          <br/>
-          <% if contact.email_address? %>
-            <br/>
-            <%= mail_to contact.email_address %>
-          <% end %>
-          <% if contact.telephone_number? %>
-            <br/>
-            <%= link_to(contact.telephone_number, "tel:#{contact.telephone_number.gsub(/[^0-9]/, '')}") %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <% contact = presenter.correspondence_contact %>
+  <p><%= contact.full_name %></p>
+
+  <% if contact.position? %>
+    <p><%= t('.position') %> <%= contact.position %></p>
+  <% end %>
+
+  <% if contact.email_address? %>
+    <p><%= mail_to contact.email_address %></p>
+  <% end %>
+
+  <% if contact.telephone_number? %>
+    <p><%= link_to(contact.telephone_number, "tel:#{contact.telephone_number.gsub(/[^0-9]/, '')}") %></p>
+  <% end %>
 </div>
 
-<% if presenter.secondary_contact %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-heading panel-title"><%= glyphicon_tag :user, text: t('.secondary_contact.title') %></div>
-        <div class="panel-body" id="secondary-contact-details">
-          <% secondary_contact = presenter.secondary_contact %>
-          <strong><%= secondary_contact.full_name %></strong>
-          <br/>
-          <% if secondary_contact.email_address? %>
-            <br/>
-            <%= mail_to secondary_contact.email_address %>
-          <% end %>
-          <% if secondary_contact.telephone_number? %>
-            <br/>
-            <%= link_to(secondary_contact.telephone_number,
-                        "tel:#{secondary_contact.telephone_number.gsub(/[^0-9]/, '')}") %>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<hr>
+
+<% secondary_contact = presenter.secondary_contact %>
+<% if secondary_contact %>
+  <div id="secondary-contact-details" class="govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+    <h2 class="govuk-heading-m"><%= t('.secondary_contact.title') %></h2>
+    <p><%= secondary_contact.full_name %></p>
+
+    <% if secondary_contact.email_address? %>
+      <p><%= mail_to secondary_contact.email_address %></p>
+    <% end %>
+
+    <% if secondary_contact.telephone_number? %>
+      <p><%= link_to(secondary_contact.telephone_number,
+                  "tel:#{secondary_contact.telephone_number.gsub(/[^0-9]/, '')}") %></p>
+    <% end %>
   </div>
 <% end %>

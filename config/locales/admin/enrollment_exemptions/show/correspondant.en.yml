@@ -4,6 +4,7 @@ en:
     enrollment_exemptions:
       show:
         correspondant:
+          contact_header: Contact details
           title: Contact
           position: 'Position:'
           secondary_contact:
