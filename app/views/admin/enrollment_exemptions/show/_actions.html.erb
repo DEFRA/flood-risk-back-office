@@ -1,101 +1,98 @@
-<div class="panel panel-default actions">
-  <div class="panel-heading panel-title">
-    <%= glyphicon_tag :cog, text: t('.title') %>
-  </div>
-  <div id="actions" class="panel-body">
-    <% if policy(presenter.enrollment).edit? %>
-      <p>
-        <%= link_to t(".edit"),
-                    edit_admin_enrollment_path(presenter.enrollment),
-                    id: "update-enrollment-exemption-status",
-                    class: "btn btn-danger",
-                    role: 'button' %>
-      </p>
-    <% end %>
+<div id="actions" class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+  <h2 class="govuk-heading-m"><%= t('.title') %></h2>
 
-    <% if policy(presenter.enrollment_exemption).change_status? %>
-      <p>
-        <%= link_to t(".change_status"),
-                    new_admin_enrollment_exemption_change_status_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-danger",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment).edit? %>
+    <p>
+      <%= link_to t(".edit"),
+                  edit_admin_enrollment_path(presenter.enrollment),
+                  id: "update-enrollment-exemption-status",
+                  class: "btn btn-danger",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).withdraw? %>
-      <p>
-        <%= link_to t(".withdraw"),
-                    new_admin_enrollment_exemption_withdraw_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-danger",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).change_status? %>
+    <p>
+      <%= link_to t(".change_status"),
+                  new_admin_enrollment_exemption_change_status_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-danger",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).deregister? %>
-      <p>
-        <%= link_to t(".deregister"),
-                    new_admin_enrollment_exemption_deregister_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).withdraw? %>
+    <p>
+      <%= link_to t(".withdraw"),
+                  new_admin_enrollment_exemption_withdraw_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-danger",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).in_progress? %>
-      <p>
-        <%= link_to t(".in_progress"),
-                    new_admin_enrollment_exemption_in_progress_path(presenter.enrollment_exemption),
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).deregister? %>
+    <p>
+      <%= link_to t(".deregister"),
+                  new_admin_enrollment_exemption_deregister_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-warning",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).approve? %>
-      <p>
-        <%= link_to t(".approve"),
-                    new_admin_enrollment_exemption_approve_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).in_progress? %>
+    <p>
+      <%= link_to t(".in_progress"),
+                  new_admin_enrollment_exemption_in_progress_path(presenter.enrollment_exemption),
+                  class: "btn btn-warning",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).resend_approval_email? %>
-      <p>
-        <%= link_to t(".resend_approval_email"),
-                    new_admin_enrollment_exemption_resend_approval_email_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).approve? %>
+    <p>
+      <%= link_to t(".approve"),
+                  new_admin_enrollment_exemption_approve_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-warning",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).reject? %>
-      <p>
-        <%= link_to t(".reject"),
-                    new_admin_enrollment_exemption_reject_path(
-                      presenter.enrollment_exemption
-                    ),
-                    class: "btn btn-warning",
-                    role: 'button' %>
-      </p>
-    <% end %>
+  <% if policy(presenter.enrollment_exemption).resend_approval_email? %>
+    <p>
+      <%= link_to t(".resend_approval_email"),
+                  new_admin_enrollment_exemption_resend_approval_email_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-warning",
+                  role: 'button' %>
+    </p>
+  <% end %>
 
-    <% if policy(presenter.enrollment_exemption).change_assisted_digital? %>
-      <p>
-        <%= link_to t(".change_ad"),
-                    edit_admin_enrollment_exemption_assistance_path(presenter.enrollment_exemption),
-                    id: "change-assisted-digital",
-                    class: "btn btn-info",
-                    role: 'button' %>
-      </p>
-    <% end %>
-  </div>
+  <% if policy(presenter.enrollment_exemption).reject? %>
+    <p>
+      <%= link_to t(".reject"),
+                  new_admin_enrollment_exemption_reject_path(
+                    presenter.enrollment_exemption
+                  ),
+                  class: "btn btn-warning",
+                  role: 'button' %>
+    </p>
+  <% end %>
+
+  <% if policy(presenter.enrollment_exemption).change_assisted_digital? %>
+    <p>
+      <%= link_to t(".change_ad"),
+                  edit_admin_enrollment_exemption_assistance_path(presenter.enrollment_exemption),
+                  id: "change-assisted-digital",
+                  class: "btn btn-info",
+                  role: 'button' %>
+    </p>
+  <% end %>
 </div>
