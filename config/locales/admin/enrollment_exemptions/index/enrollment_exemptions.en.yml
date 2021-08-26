@@ -4,6 +4,7 @@ en:
       index:
         edit: Edit
         show: View
+        table_description: Search results
         table_headings:
           reference_number: Reference
           state: State
