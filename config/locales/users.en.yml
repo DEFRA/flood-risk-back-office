@@ -2,6 +2,7 @@ en:
   admin:
     users:
       user:
+        not_invited: "-"
         disable: Disable
         disabled: Disabled
         enable: Enable
