@@ -1,59 +1,55 @@
 <% if user_signed_in? %>
-  <nav>
-    <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+  <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+    <li class="govuk-header__navigation-item">
+      <%= link_to t(".search_enrollments"),
+          main_app.root_path,
+          class: "govuk-header__link" %>
+    </li>
+
+    <% if policy(FloodRiskEngine::Enrollment).create? %>
       <li class="govuk-header__navigation-item">
-        <%= link_to t(".search_enrollments"),
-            main_app.root_path,
+        <%= link_to t('.new_enrollment'),
+            main_app.new_admin_enrollment_path,
             class: "govuk-header__link" %>
       </li>
+    <% end %>
 
-      <% if policy(FloodRiskEngine::Enrollment).create? %>
-        <li class="govuk-header__navigation-item">
-          <%= link_to t('.new_enrollment'),
-              main_app.new_admin_enrollment_path,
-              class: "govuk-header__link" %>
-        </li>
-      <% end %>
+    <li class="govuk-header__navigation-item">
+      <%= link_to t(".export"),
+          main_app.admin_enrollment_exports_path,
+          class: "govuk-header__link" %>
+    </li>
 
+    <% if policy(User).index? %>
       <li class="govuk-header__navigation-item">
-        <%= link_to t(".export"),
-            main_app.admin_enrollment_exports_path,
+        <%= link_to t(".users"),
+            admin_users_path,
             class: "govuk-header__link" %>
       </li>
-
-      <% if policy(User).index? %>
-        <li class="govuk-header__navigation-item">
-          <%= link_to t(".users"),
-              admin_users_path,
-              class: "govuk-header__link" %>
-        </li>
-        <li class="govuk-header__navigation-item">
-          <%= link_to t('devise.invite_user'),
-              new_user_invitation_path,
-              class: "govuk-header__link" %>
-      <% end %>
-
-
       <li class="govuk-header__navigation-item">
-        <%= link_to t('devise.sign_out'),
-                destroy_user_session_path,
-                method: :delete,
-                class: "govuk-header__link" %>
-      </li>
+        <%= link_to t('devise.invite_user'),
+            new_user_invitation_path,
+            class: "govuk-header__link" %>
+    <% end %>
 
-      <li class="govuk-header__navigation-item">
-        <%= current_user.email %>
-      </li>
-    </ul>
-  </nav>
+
+    <li class="govuk-header__navigation-item">
+      <%= link_to t('devise.sign_out'),
+              destroy_user_session_path,
+              method: :delete,
+              class: "govuk-header__link" %>
+    </li>
+
+    <li class="govuk-header__navigation-item">
+      <%= current_user.email %>
+    </li>
+  </ul>
 <% else %>
-   <nav>
-    <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
-      <li class="govuk-header__navigation-item">
-        <%= link_to t('devise.sign_in'),
-            new_user_session_path,
-            class: "govuk-header__link" %>
-      </li>
-    </ul>
-  </nav>
+  <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+    <li class="govuk-header__navigation-item">
+      <%= link_to t('devise.sign_in'),
+          new_user_session_path,
+          class: "govuk-header__link" %>
+    </li>
+  </ul>
 <% end %>
