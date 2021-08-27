@@ -1,21 +1,18 @@
-<%
-  flashes = flash.to_hash.symbolize_keys.slice(
-    :success, :alert, :notice, :info, :warn, :not_authorized
-  )
+<% if flash[:notice].present? %>
+  <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+     <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        <%= flash[:notice] %>
+      </h3>
+    </div>
+  </div>
 
-  flash_map = {
-    not_authorized: "alert-danger",
-    success: "alert-success",
-    error: "alert-danger",
-    alert: "alert-danger",
-    notice: "alert-success",
-    info: "alert-info",
-    warn: "warning"
-  }
-%>
-<% flashes.each do |type, message| %>
-  <div class="alert <%= flash_map.fetch(type, type) %> fade in" role="alert" alert-dismissible>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <%= message %>
+<% else %>
+  <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+    <div class="govuk-notification-banner__content">
+      <h3 class="govuk-notification-banner__heading">
+        <%= flash.keys.map { |k| flash[k] }.join(" ") %>
+      </h3>
+    </div>
   </div>
 <% end %>
