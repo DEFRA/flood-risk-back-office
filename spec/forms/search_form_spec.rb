@@ -8,8 +8,8 @@ RSpec.describe SearchForm, type: :form do
   it { is_expected.to respond_to :per_page }
 
   describe "#status_filter_options" do
-    it "returns the correct statuses" do
-      expected_options = FloodRiskEngine::EnrollmentExemption.statuses.keys
+    it "returns the correct statuses (without the `building`)" do
+      expected_options = FloodRiskEngine::EnrollmentExemption.statuses.keys - ["building"]
       expect(subject.status_filter_options).to eq(expected_options)
     end
   end

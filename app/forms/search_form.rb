@@ -18,7 +18,7 @@ class SearchForm
   end
 
   def status_filter_options
-    FloodRiskEngine::EnrollmentExemption.statuses.map(&:first)
+    FloodRiskEngine::EnrollmentExemption.statuses.except(:building).keys
   end
 
   def empty?
