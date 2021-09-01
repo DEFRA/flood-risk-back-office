@@ -32,9 +32,9 @@
                     form.status_filter_options,
                     ->(key) { key },
                     ->(key) { t(key, scope: "admin.status_label") },
+                    options: { include_blank: true },
                     width: 20,
                     inline: true,
-                    include_blank: true,
                     label: { text: "" } %>
               </div>
               <div class="govuk-grid-column-one-quarter">
