@@ -6,7 +6,7 @@ RSpec.configure do |config|
 
   config.before do |ex|
     # rubocop:disable Style/ConditionalAssignment
-    if ex.metadata[:type] == :feature
+    if %i[feature query].include?(ex.metadata[:type])
       DatabaseCleaner.strategy = :truncation
     else
       DatabaseCleaner.strategy = :transaction
