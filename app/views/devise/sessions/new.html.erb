@@ -1,19 +1,29 @@
-<header>
-  <h1><%= page_title t("devise.sign_in") %></h1>
-</header>
-<br/>
+<% @page_title = t("devise.sign_in") %>
 
-<%= simple_form_for(resource,
-                    as: resource_name,
-                    url: user_session_path,
-                    html: { autocomplete: 'off' }) do |f| %>
-  <%= f.input :email, required: false, autofocus: true, input_html: { class: "input-md-4" } %>
-  <%= f.input :password,
-              required: false,
-              input_html: { class: "input-md-4", autocomplete: 'off' } %>
-  <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  <%= f.button :submit, t("devise.sign_in"),
-                        data: { disable_with: t('please_wait_html') } %>
-<% end %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= @page_title %></h1>
 
-<%= render "/shared/devise_links" %>
+    <%= form_for(
+        resource,
+        as: resource_name,
+        url: session_path(resource_name),
+        html: { autocomplete: "off" },
+        builder: GOVUKDesignSystemFormBuilder::FormBuilder) do |f| %>
+
+      <%= f.govuk_text_field :email, width: "one-half" %>
+      <%= f.govuk_password_field :password,
+                                 autocomplete: :off,
+                                 width: "one-half" %>
+
+      <%= f.submit t("devise.sign_in"),
+                   class: "govuk-button",
+                   data: { disable_with: t('please_wait_html') } %>
+
+    <% end %>
+
+    <span class="govuk-body">
+      <%= render "/shared/devise_links" %>
+    </span>
+  </div>
+</div>

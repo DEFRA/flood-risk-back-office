@@ -31,7 +31,9 @@ en:
   user_disabled_success: "User %{name} has been successfully disabled"
   user_enabled_success: "User %{name} has been successfully enabled"
   cancel_go_back: Cancel and go back
-
+  shared:
+    back:
+      back_link: Back
   activerecord:
     models:
       user:
