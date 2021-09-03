@@ -56,7 +56,7 @@ group :test do
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
-  gem "simplecov", require: false
+  gem "simplecov", "~> 0.17.1", require: false
 end
 
 group :production do
