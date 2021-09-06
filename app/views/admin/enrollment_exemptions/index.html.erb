@@ -22,7 +22,7 @@
             <div class="govuk-grid-row">
               <div class="govuk-grid-column-one-half">
                 <%= f.govuk_text_field :q,
-                    label: { text: "" },
+                    label: { text: t(".search_label"), style: "display:none" },
                     width: 20,
                     id: "search",
                     placeholder: t(:search) %>
@@ -35,7 +35,7 @@
                     options: { include_blank: true },
                     width: 20,
                     inline: true,
-                    label: { text: "" } %>
+                    label: { text: t(".select_label"), style: "display:none" } %>
               </div>
               <div class="govuk-grid-column-one-quarter">
                 <%= f.govuk_submit t(".search_button") %>
