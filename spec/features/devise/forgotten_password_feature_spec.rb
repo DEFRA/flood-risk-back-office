@@ -7,13 +7,12 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
     let!(:user) { create :user }
 
     background do
-      fill_in "Email", with: user.email
+      fill_in "Enter the email address associated with your account", with: user.email
       click_button I18n.t("devise.send_password_reset_instructions")
       expect(page).to have_flash I18n.t("devise.passwords.send_paranoid_instructions")
 
       expect(mailbox_for(user.email)).to be_one
       open_email user.email
-      # EmailSpec::EmailViewer.save_and_open_email(current_email)
       expect(current_email).to have_subject I18n.t("devise.mailer.reset_password_instructions.subject")
       expect(current_email.default_part_body.to_s).to include("We received a password reset request for your account")
 
@@ -61,7 +60,9 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
       click_button I18n.t("devise.change_password")
 
       key = "activerecord.errors.models.user.attributes.password.too_short.other"
-      expect(page).to have_form_error(:user_password, text: I18n.t(key, count: 8))
+      expect(page).to have_css(
+        "#user-password-error", text: I18n.t(key, count: 8)
+      )
 
       visit new_user_session_path
       fill_in "Email", with: user.email
@@ -73,7 +74,9 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
     scenario "Retreive lost password (blank new password)" do
       click_button I18n.t("devise.change_password")
       key = "activerecord.errors.models.user.attributes.password.blank"
-      expect(page).to have_form_error(:user_password, text: I18n.t(key))
+      expect(page).to have_css(
+        "#user-password-error", text: I18n.t(key)
+      )
 
       visit new_user_session_path
       fill_in "Email", with: user.email
@@ -93,7 +96,7 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
     end
 
     scenario "Retreive lost password (non-existant email)" do
-      fill_in "Email", with: "wibble@wobble.com"
+      fill_in "Enter the email address associated with your account", with: "wibble@wobble.com"
       click_button I18n.t("devise.send_password_reset_instructions")
 
       expect(page).to have_flash I18n.t("devise.passwords.send_paranoid_instructions")
@@ -102,10 +105,14 @@ RSpec.feature "As user, I want to be able to reset my password if I forget it" d
 
     scenario "Retreive lost password (invalid token)" do
       visit edit_user_password_path(reset_password_token: "jNF5kVHc7R2EZ9fCQjt")
+      fill_in "New password", with: "AbcFooBar1"
+      fill_in "Confirm new password", with: "AbcFooBar1"
       click_button I18n.t("devise.change_password")
 
-      key = "activerecord.errors.models.digital_services_core/user.attributes.reset_password_token.invalid"
-      expect(page).to have_form_error(nil, I18n.t(key))
+      expect(page).to have_css(
+        ".govuk-error-summary",
+        text: "It looks like you're trying to reset your password, but the URL you followed was invalid."
+      )
     end
   end
 end
