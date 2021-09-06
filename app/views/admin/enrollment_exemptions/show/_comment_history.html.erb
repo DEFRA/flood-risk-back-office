@@ -9,8 +9,8 @@
       <% heading_id = "#{element_id}-heading" %>
       <% expanded = comment == comments.first %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header govuk-body-s"><%= comment.event %></th>
-        <td class="govuk-table__cell govuk-!-width-one-half govuk-body-s"><%= comment.content %></td>
+        <th scope="row" class="govuk-table__header govuk-body-s govuk-!-width-one-third"><%= comment.event %></th>
+        <td class="govuk-table__cell govuk-body-s"><%= comment.content %></td>
         <td class="govuk-table__cell govuk-body-s">
           <%= comment.created_at.to_s(:long) %>
           <br/>

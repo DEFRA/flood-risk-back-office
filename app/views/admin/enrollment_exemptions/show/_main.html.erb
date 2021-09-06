@@ -6,8 +6,8 @@
   <tbody class="govuk-table__body">
     <% presenter.registration_and_operator_data.each do |header, value| %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header"><%= header %></th>
-        <td class="govuk-table__cell"><%= value %></td>
+        <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= header %></th>
+        <td class="govuk-table__cell govuk-!-width-two-thirds"><%= value %></td>
       </tr>
     <% end %>
   </tbody>
@@ -20,14 +20,14 @@
 
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header"><%= t('.exemption_panel.status') %></th>
-      <td class="govuk-table__cell"><%= presenter.status_tag_without_popup %></td>
+      <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= t('.exemption_panel.status') %></th>
+      <td class="govuk-table__cell govuk-!-width-two-thirds"><%= presenter.status_tag_without_popup %></td>
     </tr>
 
     <% presenter.exemption_data.each do |header, value| %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header"><%= header %></th>
-        <td class="govuk-table__cell"><%= value %></td>
+        <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= header %></th>
+        <td class="govuk-table__cell govuk-!-width-two-thirds"><%= value %></td>
       </tr>
     <% end %>
   </tbody>
