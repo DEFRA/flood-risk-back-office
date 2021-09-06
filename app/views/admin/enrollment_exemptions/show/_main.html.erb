@@ -6,28 +6,40 @@
   <tbody class="govuk-table__body">
     <% presenter.registration_and_operator_data.each do |header, value| %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= header %></th>
-        <td class="govuk-table__cell govuk-!-width-two-thirds"><%= value %></td>
+        <th scope="row"
+            class="govuk-table__header govuk-!-width-one-third">
+          <%= header %>
+        </th>
+        <td class="govuk-table__cell govuk-!-width-two-thirds"
+            id="<%= header.parameterize %>"><%= value %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<table class="govuk-table">
+<table class="govuk-table" id="exemption-details">
   <caption class="govuk-table__caption govuk-table__caption--m">
     <%= t(".exemption_panel.title") %>
   </caption>
 
   <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= t('.exemption_panel.status') %></th>
-      <td class="govuk-table__cell govuk-!-width-two-thirds"><%= presenter.status_tag_without_popup %></td>
+      <th scope="row" class="govuk-table__header govuk-!-width-one-third">
+        <%= t('.exemption_panel.status') %>
+      </th>
+      <td class="govuk-table__cell govuk-!-width-two-thirds" id="status">
+        <%= presenter.status_tag_without_popup %>
+      </td>
     </tr>
 
     <% presenter.exemption_data.each do |header, value| %>
       <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header govuk-!-width-one-third"><%= header %></th>
-        <td class="govuk-table__cell govuk-!-width-two-thirds"><%= value %></td>
+        <th scope="row"
+            class="govuk-table__header govuk-!-width-one-third">
+          <%= header %>
+        </th>
+        <td class="govuk-table__cell govuk-!-width-two-thirds"
+            id="<%= header.parameterize %>"><%= value %></td>
       </tr>
     <% end %>
   </tbody>
