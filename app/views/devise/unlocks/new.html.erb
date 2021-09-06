@@ -1,18 +1,27 @@
-<header>
-  <h1><%= page_title t("devise.resend_unlock_instructions") %></h1>
-</header>
-<br/>
+<% @page_title = t("devise.resend_unlock_instructions") %>
 
-<p><%= t ".subtitle1" %></p>
-<p><%= t ".subtitle2" %></p>
-<br/>
+<%= render("shared/back", back_path: new_user_session_path) %>
 
-<%= simple_form_for(resource, as: resource_name, url: user_unlock_path, html: { method: :post }) do |f| %>
-  <%= full_devise_error_messages! %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= @page_title %></h1>
 
-  <%= f.input :email, required: true, autofocus: true, input_html: { class: "input-md-4" } %>
-  <%= f.button :submit, t("devise.resend_unlock_instructions"),
-                        data: { disable_with: t('please_wait_html') } %>
-<% end %>
+    <p class="govuk-body"><%= t(".subtitle1") %></p>
 
-<%= render "/shared/devise_links" %>
+    <p class="govuk-body"><%= t(".subtitle2") %></p>
+
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+      <div class="govuk-grid-row">
+        <div class="govuk-form-group govuk-grid-column-one-half">
+          <%= f.label :email, class: "govuk-label"%>
+          <%= f.email_field :email, class: "govuk-input" %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit t("devise.resend_unlock_instructions"),
+                     class: "govuk-button",
+                     data: { disable_with: t('please_wait_html') } %>
+      </div>
+    <% end %>
+  </div>
+</div>
