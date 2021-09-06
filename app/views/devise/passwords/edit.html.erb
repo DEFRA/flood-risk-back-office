@@ -1,33 +1,39 @@
-<header>
-  <h1><%= page_title t("devise.change_password") %></h1>
-</header>
-<br/>
+<% @page_title = t("devise.change_password") %>
 
-<%= simple_form_for(resource,
-                    as: resource_name,
-                    url: user_password_path,
-                    html: { method: :patch, autocomplete: 'off' }) do |f| %>
-  <%= full_devise_error_messages! %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      <%= @page_title %>
+    </h1>
 
-  <%= f.input :reset_password_token, as: :hidden %>
+    <%= form_for resource,
+        as: resource_name,
+        url: password_path(resource_name),
+        html: { method: :put, autocomplete: "off" },
+        builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
 
-  <%-
-    password_length = User.try :password_length
-    hint = t("devise.minimum_password_length", count: password_length.min) if password_length && f.object.errors[:password].empty?
-  -%>
-  <%= f.input :password,
-              label: t("devise.new_password"),
-              required: true,
-              autofocus: true,
-              hint: hint,
-              input_html: { autocomplete: 'off' } %>
-  <%= f.input :password_confirmation,
-              label: t("devise.confirm_new_password"),
-              required: true,
-              input_html: { autocomplete: 'off' } %>
+      <%= full_devise_error_messages! %>
 
-  <%= f.button :submit, t('devise.change_password'),
+      <%= f.hidden_field :reset_password_token %>
+
+      <%= f.govuk_password_field :password,
+          width: "one-half",
+          autocomplete: "off",
+          label: { text: t("devise.new_password") },
+          hint: { text: t("devise.minimum_password_length", count: User.password_length.min) } %>
+
+      <%= f.govuk_password_field :password_confirmation,
+          width: "one-half",
+          autocomplete: "off",
+          label: { text: t("devise.confirm_new_password") } %>
+
+      <%= f.govuk_submit t('devise.change_password'),
                         data: { disable_with: t('please_wait_html') } %>
-<% end %>
 
-<%= render "/shared/devise_links" %>
+    <% end %>
+
+    <div class="govuk-body">
+      <%= render "/shared/devise_links" %>
+    </div>
+  </div>
+</div>

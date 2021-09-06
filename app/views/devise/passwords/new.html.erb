@@ -1,16 +1,29 @@
-<header>
-  <h1><%= page_title t("devise.forgot_password") %></h1>
-</header>
-<br/>
+<% @page_title = t("devise.forgot_password") %>
 
-<p><%= t ".subtitle" %></p>
-<br/>
+<%= render("shared/back", back_path: new_user_session_path) %>
 
-<%= simple_form_for(resource, as: resource_name, url: user_password_path, html: { method: :post }) do |f| %>
-  <%= full_devise_error_messages! %>
-  <%= f.input :email, required: true, autofocus: true, input_html: { class: "input-md-4" } %>
-  <%= f.button :submit, t("devise.send_password_reset_instructions"),
-                        data: { disable_with: t('please_wait_html') } %>
-<% end %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= @page_title %></h1>
 
-<%= render "/shared/devise_links" %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+
+      <%= full_devise_error_messages! %>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-form-group govuk-grid-column-one-half">
+          <%= f.label :email, t(".subtitle"), class: "govuk-label"%>
+          <%= f.email_field :email, class: "govuk-input" %>
+        </div>
+      </div>
+
+      <%= f.submit t("devise.send_password_reset_instructions"), class: "govuk-button",
+                    data: { disable_with: t('please_wait_html') } %>
+
+    <% end %>
+
+    <span class="govuk-body">
+      <%= render "/shared/devise_links" %>
+    </span>
+  </div>
+</div>
