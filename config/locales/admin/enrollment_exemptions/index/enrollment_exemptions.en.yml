@@ -24,6 +24,7 @@ en:
           - grid reference
           - exemption code, e.g. FRA1
         search_label: Search for a registration
+        select_label: Select a status
         search_button: Search
         submitted_label: Submitted
         not_submitted_label: Not yet submitted
