@@ -15,7 +15,7 @@ module Enrollments
       presence: {
         message: I18n.t("flood_risk_engine.validation_errors.postcode.blank")
       },
-      "flood_risk_engine/postcode" => { allow_blank: true }
+      "flood_risk_engine/legacy_postcode" => { allow_blank: true }
     )
 
     def enrollment_exemption

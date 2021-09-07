@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2016_07_15_144402) do
+ActiveRecord::Schema.define(version: 2021_08_02_151907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -213,6 +213,64 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+  create_table "transient_addresses", force: :cascade do |t|
+    t.string "premises", limit: 200
+    t.string "street_address", limit: 160
+    t.string "locality", limit: 70
+    t.string "city", limit: 30
+    t.string "postcode", limit: 8
+    t.integer "county_province_id"
+    t.string "country_iso", limit: 3
+    t.integer "address_type", default: 0, null: false
+    t.string "organisation", limit: 255, default: ""
+    t.date "state_date"
+    t.string "blpu_state_code"
+    t.string "postal_address_code"
+    t.string "logical_status_code"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.string "uprn"
+    t.string "token"
+    t.index ["addressable_type", "addressable_id"], name: "index_addressables"
+  end
+
+  create_table "transient_people", force: :cascade do |t|
+    t.string "full_name"
+    t.string "temp_postcode"
+    t.bigint "transient_registration_id"
+    t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
+  end
+
+  create_table "transient_registration_exemptions", force: :cascade do |t|
+    t.string "state"
+    t.date "registered_on"
+    t.date "expires_on"
+    t.bigint "transient_registration_id"
+    t.bigint "flood_risk_engine_exemption_id"
+    t.index ["flood_risk_engine_exemption_id"], name: "exemption_id"
+    t.index ["transient_registration_id"], name: "transient_registration_id"
+  end
+
+  create_table "transient_registrations", force: :cascade do |t|
+    t.string "token"
+    t.string "workflow_state"
+    t.string "type", default: "FloodRiskEngine::NewRegistration", null: false
+    t.string "additional_contact_email"
+    t.string "business_type"
+    t.string "company_name"
+    t.string "company_number"
+    t.string "contact_email"
+    t.string "contact_name"
+    t.string "contact_phone"
+    t.string "contact_position"
+    t.string "temp_company_postcode"
+    t.string "temp_grid_reference"
+    t.text "temp_site_description"
+    t.boolean "address_finder_error", default: false
+    t.integer "dredging_length"
+    t.index ["token"], name: "index_transient_registrations_on_token", unique: true
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -288,6 +346,7 @@ ActiveRecord::Schema.define(version: 2016_07_15_144402) do
   add_foreign_key "flood_risk_engine_organisations", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_contacts", column: "contact_id"
   add_foreign_key "flood_risk_engine_partners", "flood_risk_engine_organisations", column: "organisation_id"
+  add_foreign_key "transient_people", "transient_registrations"
   add_foreign_key "users_roles", "roles"
   add_foreign_key "users_roles", "users"
 end
