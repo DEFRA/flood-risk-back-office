@@ -1,31 +1,22 @@
-<%- content_for :head do -%>
+<% content_for :head do %>
   <%= stylesheet_link_tag "application", media: "all" %>
-  <%= stylesheet_link_tag "back_office", media: "all" %>
   <%= javascript_include_tag "application", media: "all" %>
   <%= csrf_meta_tags %>
-<%- end -%>
-
-<%-
-  # Disable Google Analytics, until we have know that
-  # value to set for the environment-variable "GOVUK_APP_DOMAIN"
-  content_for :exclude_analytics, true
-
-  content_for :app_home_path, main_app.root_path
-  content_for :app_title, t('.title')
-  page_title t('.title')
--%>
-
-<%- content_for :body_start do %>
-  <div class="flood_risk_engine">
 <% end %>
 
-<%- content_for :body_end do %>
-  </div>
+<% content_for :page_title, [@page_title, t(".title")].compact.join(" - ") %>
+
+<% content_for :header_content do %>
+
+  <%= link_to t(".title"),
+        main_app.root_path,
+        class: "govuk-header__link govuk-header__link--service-name",
+        id: "proposition-name" %>
+
 <% end %>
 
-<%- content_for :content do %>
-  <%= render "shared/flash_alerts" %>
-  <%= content_tag :div, yield %>
-<% end -%>
+<% content_for :back_link do %>
+  <%= render "shared/flash_alerts" if flash.present? %>
+<% end %>
 
-<%#= render template: 'layouts/govuk_admin_template' %>
+<%= render template: "layouts/defra_ruby_template" %>
