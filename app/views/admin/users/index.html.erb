@@ -2,20 +2,18 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-three-quarters">
-    <h1 class="govuk-heading-l"><%= User.model_name.human(count: 2) %></h1>
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    <%= link_to t('devise.invite_user'), new_user_invitation_path, class: 'govuk-button' %>
+    <h1 class="govuk-heading-l"><%= @page_title %></h1>
+    <p class="govuk-body"><%= link_to t('devise.invite_user'), new_user_invitation_path %></p>
   </div>
 </div>
 
 
-<table class="govuk-table" aria-label="<%= t('.title') %>">
+<table class="govuk-table" aria-label="<%= @page_title %>">
   <thead class="govuk-table__head">
-    <% %i[email roles invitation_accepted? enabled? actions].each do |att| %>
+    <% %i[email roles invitation_accepted status].each do |att| %>
       <th class="govuk-table__header" scope="col"><%= User.human_attribute_name att %></th>
     <% end %>
-    <th class="govuk-table__header" scope="col">&nbsp;</th>
+    <th class="govuk-table__header" scope="col" colspan="2"><%= User.human_attribute_name "actions" %></th>
   </thead>
   <tbody class="govuk-table__body">
     <%= render collection: @users, partial: 'admin/users/user' %>
