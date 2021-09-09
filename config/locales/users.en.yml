@@ -1,8 +1,9 @@
 en:
   admin:
     users:
+
       user:
-        not_invited: "-"
+        not_invited: Invitation accepted
         disable: Disable
         disabled: Disabled
         enable: Enable
@@ -12,4 +13,4 @@ en:
       edit_disable:
         title: Disable user
       index:
-        title: Users
+        title: Admin users
