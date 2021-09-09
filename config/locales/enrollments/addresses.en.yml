@@ -3,7 +3,7 @@ en:
   enrollments:
     addresses:
       edit:
-        heading: Update the address?
+        heading: Update the address
       form:
         postcode: Postcode
         legend: Enter address

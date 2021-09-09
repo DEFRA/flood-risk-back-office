@@ -1,28 +1,27 @@
+<% page_title =  t(".heading") %>
 
-<%= render(
-      "flood_risk_engine/enrollments/header",
-      title_text: t(".heading")
-    )
-%>
-<%= render "flood_risk_engine/enrollments/validation_errors", form: form %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= t(".heading") %></h1>
+    <%= form_for form,
+                 as: :address,
+                 url: enrollment_address_path(form.enrollment, form.address),
+                 builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
 
-<%= simple_form_for(
-      form,
-      as: :address,
-      url: enrollment_address_path(form.enrollment, form.address),
-      class: "form"
-    ) do |f| %>
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
 
-  <%= render "form", f: f %>
+      <%= f.govuk_text_field :premises, label: { text: form.t(".form.premises") } %>
+      <%= f.govuk_text_field :street_address, label: { text: form.t(".form.street_address") } %>
+      <%= f.govuk_text_field :locality, label: { text: form.t(".form.locality") } %>
+      <%= f.govuk_text_field :city, label: { text: form.t(".form.city") } %>
+      <%= f.govuk_text_field :postcode, label: { text: form.t(".form.postcode") } %>
+      <%= f.govuk_submit t("global.continue")  %>
 
-<% end %>
+    <% end %>
 
-<p>
-  <%= link_to(
-        t("cancel_go_back"),
-        admin_enrollment_exemption_path(form.enrollment_exemption),
-        class: "ignore-visited"
-      )
-  %>
-</p>
+    <p class="govuk-body">
+      <%= link_to t("cancel_go_back"), admin_enrollment_exemption_path(form.enrollment_exemption)  %>
+    </p>
+  </div>
+</div>
 
