@@ -3,7 +3,10 @@ class Address < ActiveRecord::Base
 
   validates :premises, presence: true
   validates :street_address, presence: true
-  validates :locality, presence: true
   validates :city, presence: true
   validates :postcode, presence: true
+
+  def to_param
+    token
+  end
 end
