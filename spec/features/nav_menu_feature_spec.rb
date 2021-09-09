@@ -42,7 +42,6 @@ RSpec.feature "Admin menu" do
         expect(page).to have_link("New")
         expect(page).to have_link("Export")
         expect(page).to have_link("Users")
-        expect(page).to have_link("Invite user")
 
         click_link t("devise.sign_out")
       end
