@@ -18,6 +18,9 @@ en:
       address:
         one: Address
         other: Addresses
+      partner_address:
+        one: Address
+        other: Addresses
       user:
         one: User
         other: Users
@@ -34,6 +37,18 @@ en:
       models:
         address:
           attributes:
+            premises:
+              blank: Enter a building name or number
+            street_address:
+              blank: Enter the first line of the address
+            city:
+              blank: Enter a town or city
+            postcode:
+              blank: Enter a postcode
+        partner_address:
+          attributes:
+            full_name:
+              blank: Enter a full name
             premises:
               blank: Enter a building name or number
             street_address:

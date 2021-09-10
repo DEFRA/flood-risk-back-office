@@ -35,8 +35,7 @@ module PartnershipPresenter
   def edit_link(partner)
     link_to(
       I18n.t(".edit"),
-      edit_enrollment_partner_path(enrollment, partner),
-      class: "btn btn-xs btn-primary"
+      edit_enrollment_partner_address_path(enrollment, partner.address)
     )
   end
 

@@ -1,0 +1,13 @@
+---
+en:
+  enrollments:
+    partner_addresses:
+      edit:
+        heading: Update the partners address
+        full_name: Full name
+        postcode: Postcode
+        legend: Enter address
+        premises: Building name or number
+        street_address: Address line 1
+        locality: Address line 2 (optional)
+        city: Town or city
