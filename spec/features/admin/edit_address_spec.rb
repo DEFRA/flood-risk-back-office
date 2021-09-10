@@ -8,11 +8,11 @@ RSpec.describe "Edit address", type: :feature do
     user.grant :system
     login_as user
     visit admin_enrollment_exemption_path(enrollment_exemption)
+
+    within("#address") { click_link("Edit") }
   end
 
-  scenario "via the registration page" do
-    within("#address") { click_link("Edit") }
-
+  scenario "successfully" do
     fill_in "Building name or number", with: "10"
     fill_in "Address line 1", with: "Downing St"
     fill_in "Address line 2 (optional)", with: "Horseguards Parade"
@@ -23,5 +23,12 @@ RSpec.describe "Edit address", type: :feature do
     within("#address") do
       expect(page).to have_text("10, Downing St, Horseguards Parade, That London, SW1A 2AA")
     end
+  end
+
+  scenario "unsuccessfully" do
+    fill_in "Building name or number", with: ""
+    click_on "Continue"
+
+    expect(page).to have_css(".govuk-error-message", text: "Enter a building name or number")
   end
 end
