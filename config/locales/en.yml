@@ -27,6 +27,7 @@ en:
       role:
         one: Role
         other: Roles
+    attributes:
       user:
         email: Email address
         disabled_comment: Comments
