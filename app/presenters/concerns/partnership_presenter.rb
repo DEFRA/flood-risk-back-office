@@ -42,17 +42,8 @@ module PartnershipPresenter
   def node_for(partner)
     sanitize(
       [
-        content_tag(:strong, "#{name_label} "),
-        partner.full_name,
-        content_tag(
-          :p,
-          sanitize(
-            [
-              content_tag(:strong, "#{address_label} "),
-              present_address(partner.address)
-            ].join
-          )
-        ),
+        "#{name_label} #{partner.full_name}",
+        content_tag(:p, "#{address_label} #{present_address(partner.address)}"),
         content_tag(:p, edit_link(partner))
       ].join,
       tag: %w[a p]
