@@ -1,9 +1,10 @@
 ---
 en:
   enrollments:
-    addresses:
+    partner_addresses:
       edit:
-        heading: Update the address
+        heading: Update the partner's address
+        full_name: Full name
         postcode: Postcode
         legend: Enter address
         premises: Building name or number
