@@ -1,15 +1,15 @@
 module Enrollments
-  class AddressesController < ApplicationController
+  class PartnerAddressesController < ApplicationController
     before_action :load_defaults
 
     def edit
-      authorize Address
+      authorize PartnerAddress
     end
 
     def update
-      authorize Address
+      authorize PartnerAddress
 
-      if @address.update(address_params)
+      if @partner_address.update(partner_address_params)
         redirect_to admin_enrollment_exemption_path(@enrollment_exemption)
       else
         render :edit
@@ -19,14 +19,14 @@ module Enrollments
     protected
 
     def load_defaults
-      @address = Address.find_by(token: params[:id])
+      @partner_address = PartnerAddress.find_by(token: params[:id])
       @enrollment = FloodRiskEngine::Enrollment.find_by(token: params[:enrollment_id])
       @enrollment_exemption = @enrollment.enrollment_exemptions.first
     end
 
-    def address_params
-      params.require(:address).permit(
-        :premises, :street_address, :locality, :city, :postcode
+    def partner_address_params
+      params.require(:partner_address).permit(
+        :full_name, :premises, :street_address, :locality, :city, :postcode
       )
     end
   end

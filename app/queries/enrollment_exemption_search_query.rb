@@ -10,7 +10,7 @@ class EnrollmentExemptionSearchQuery
   def initialize
     @relation =
       FloodRiskEngine::EnrollmentExemption
-      .joins(
+      .left_outer_joins(
         :exemption,
         enrollment:
           [
@@ -54,7 +54,7 @@ class EnrollmentExemptionSearchQuery
     end
 
     def having_status(target_status)
-      return all if target_status.blank?
+      return where.not(status: FloodRiskEngine::EnrollmentExemption.statuses[:building]) if target_status.blank?
 
       where(status: FloodRiskEngine::EnrollmentExemption.statuses[target_status])
     end
