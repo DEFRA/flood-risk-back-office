@@ -67,6 +67,11 @@ Rails.application.routes.draw do
       controller: "enrollments/addresses"
     )
     resources(
+      :organisations,
+      only: [:edit, :update],
+      controller: "enrollments/organisations"
+    )
+    resources(
       :partner_addresses,
       only: [:edit, :update],
       controller: "enrollments/partner_addresses"

@@ -189,7 +189,7 @@ class EnrollmentExemptionPresenter < Presenter
       partnership_values(organisation)
     else
       [
-        name,
+        "#{name} #{edit_organisation_link(organisation)}".html_safe,
         organisation_type,
         editable_present_address(primary_address),
         reference_number,
@@ -197,6 +197,10 @@ class EnrollmentExemptionPresenter < Presenter
         assistance_mode_text
       ]
     end
+  end
+
+  def edit_organisation_link(organisation)
+    link_to(I18n.t(".edit"), edit_enrollment_organisation_path(enrollment, organisation))
   end
 
   def organisation_type

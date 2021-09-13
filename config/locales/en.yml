@@ -18,6 +18,9 @@ en:
       address:
         one: Address
         other: Addresses
+      organisation:
+        one: Organisation
+        other: Organisations
       partner_address:
         one: Address
         other: Addresses
@@ -46,6 +49,10 @@ en:
               blank: Enter a town or city
             postcode:
               blank: Enter a postcode
+        organisation:
+          attributes:
+            name:
+              blank: Enter an operator name
         partner_address:
           attributes:
             full_name:
