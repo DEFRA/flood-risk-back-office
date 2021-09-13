@@ -23,14 +23,16 @@
 
 <% secondary_contact = presenter.secondary_contact %>
 
-<div id="secondary-contact-details" class="govuk-!-padding-top-2 govuk-!-padding-bottom-2">
-  <h2 class="govuk-heading-m"><%= t('.secondary_contact.title') %></h2>
-  <% if secondary_contact.email_address.present? %>
-    <p><%= mail_to secondary_contact.email_address %></p>
+<% if secondary_contact %>
+  <div id="secondary-contact-details" class="govuk-!-padding-top-2 govuk-!-padding-bottom-2">
+    <h2 class="govuk-heading-m"><%= t('.secondary_contact.title') %></h2>
+    <% if secondary_contact.email_address.present? %>
+      <p><%= mail_to secondary_contact.email_address %></p>
 
-    <%= link_to t(".edit"), edit_enrollment_secondary_contact_path(presenter.enrollment, secondary_contact) %>
+      <%= link_to t(".edit"), edit_enrollment_secondary_contact_path(presenter.enrollment, secondary_contact) %>
 
-  <% else %>
-    <%= link_to t(".add"), edit_enrollment_secondary_contact_path(presenter.enrollment, secondary_contact) %>
-  <% end %>
-</div>
+    <% else %>
+      <%= link_to t(".add"), edit_enrollment_secondary_contact_path(presenter.enrollment, secondary_contact) %>
+    <% end %>
+  </div>
+<% end %>

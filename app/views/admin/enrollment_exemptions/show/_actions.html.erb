@@ -1,16 +1,6 @@
 <div id="actions" class="govuk-body govuk-!-padding-top-2 govuk-!-padding-bottom-2">
   <h2 class="govuk-heading-m"><%= t('.title') %></h2>
 
-  <% if policy(presenter.enrollment).edit? %>
-    <p>
-      <%= link_to t(".edit"),
-                  edit_admin_enrollment_path(presenter.enrollment),
-                  id: "update-enrollment-exemption-status",
-                  class: "btn btn-danger",
-                  role: 'button' %>
-    </p>
-  <% end %>
-
   <% if policy(presenter.enrollment_exemption).change_status? %>
     <p>
       <%= link_to t(".change_status"),
