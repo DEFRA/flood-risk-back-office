@@ -1,0 +1,10 @@
+---
+en:
+  enrollments:
+    correspondence_contacts:
+      edit:
+        heading: Edit correspondence contact
+        full_name: Full name
+        position: Position (optional)
+        email_address: Email address
+        telephone_number: Telephone number

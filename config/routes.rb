@@ -67,6 +67,11 @@ Rails.application.routes.draw do
       controller: "enrollments/addresses"
     )
     resources(
+      :correspondence_contacts,
+      only: [:edit, :update],
+      controller: "enrollments/correspondence_contacts"
+    )
+    resources(
       :organisations,
       only: [:edit, :update],
       controller: "enrollments/organisations"
