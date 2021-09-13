@@ -81,6 +81,11 @@ Rails.application.routes.draw do
       only: [:edit, :update],
       controller: "enrollments/partner_addresses"
     )
+    resources(
+      :secondary_contacts,
+      only: [:edit, :update],
+      controller: "enrollments/secondary_contacts"
+    )
   end
 
   mount DefraRubyEmail::Engine => "/email"

@@ -9,4 +9,5 @@ en:
           position: 'Position:'
           secondary_contact:
             title: Alternative contact
+          add: Add
           edit: Edit
