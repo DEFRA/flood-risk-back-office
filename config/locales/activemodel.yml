@@ -2,6 +2,14 @@ en:
   activemodel:
     errors:
       models:
+        address:
+          attributes:
+            postcode:
+              wrong_format: Enter a valid UK postcode
+        partner_address:
+          attributes:
+            postcode:
+              wrong_format: Enter a valid UK postcode
         admin/enrollment/export:
             attributes:
               created_by:
