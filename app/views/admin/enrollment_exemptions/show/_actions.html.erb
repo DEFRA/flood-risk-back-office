@@ -76,13 +76,4 @@
     </p>
   <% end %>
 
-  <% if policy(presenter.enrollment_exemption).change_assisted_digital? %>
-    <p>
-      <%= link_to t(".change_ad"),
-                  edit_admin_enrollment_exemption_assistance_path(presenter.enrollment_exemption),
-                  id: "change-assisted-digital",
-                  class: "btn btn-info",
-                  role: 'button' %>
-    </p>
-  <% end %>
 </div>

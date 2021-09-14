@@ -1,0 +1,9 @@
+en:
+  admin:
+    enrollment_exemptions:
+      assistance:
+        modes:
+          unassisted: Unassisted
+          fully_assisted: Fully assisted
+          partial: Partially assisted
+          admin_intervention: Admin Intervention
