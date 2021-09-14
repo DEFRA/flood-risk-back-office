@@ -3,5 +3,5 @@ en:
   enrollments:
     secondary_contacts:
       edit:
-        heading: Edit secondary contact
+        heading: Edit alternative contact details
         email_address: Email address

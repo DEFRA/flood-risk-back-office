@@ -3,5 +3,5 @@ en:
   enrollments:
     organisations:
       edit:
-        heading: Edit registration
+        heading: Edit operator name
         name: Operator name
