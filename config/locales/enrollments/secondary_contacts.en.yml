@@ -1,0 +1,7 @@
+---
+en:
+  enrollments:
+    secondary_contacts:
+      edit:
+        heading: Edit secondary contact
+        email_address: Email address

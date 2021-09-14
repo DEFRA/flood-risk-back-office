@@ -18,6 +18,12 @@ en:
       address:
         one: Address
         other: Addresses
+      correspondence_contact:
+        one: Correspondence contact
+        other: Correspondence contacts
+      organisation:
+        one: Organisation
+        other: Organisations
       partner_address:
         one: Address
         other: Addresses
@@ -46,6 +52,18 @@ en:
               blank: Enter a town or city
             postcode:
               blank: Enter a postcode
+        correspondence_contact:
+          attributes:
+            full_name:
+              blank: Enter a full name
+            email_address:
+              blank: Enter an email address
+            telephone_number:
+              blank: Enter a telephone number
+        organisation:
+          attributes:
+            name:
+              blank: Enter an operator name
         partner_address:
           attributes:
             full_name:
