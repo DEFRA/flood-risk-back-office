@@ -32,10 +32,6 @@ module FloodRiskEngine
       system_user? || super_agent_user?
     end
 
-    def change_assisted_digital?
-      (system_user? || super_agent_user? || admin_agent_user?) && enrollment.submitted?
-    end
-
     def process?
       user_can_edit_and_status? :pending
     end

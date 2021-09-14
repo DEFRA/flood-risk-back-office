@@ -82,8 +82,6 @@ RSpec.feature "View Enrollment Exemption Detail" do
               enrollment.enrollment_exemptions.first
             )
           )
-
-          expect(page).to have_css("#change-assisted-digital")
         end
       end
 
