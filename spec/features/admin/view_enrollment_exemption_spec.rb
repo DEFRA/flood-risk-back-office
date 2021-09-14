@@ -60,7 +60,6 @@ RSpec.feature "View Enrollment Exemption Detail" do
         ee = enrollment.enrollment_exemptions.first
 
         within "#actions" do
-          # expect(page).to have_css("#update-enrollment-exemption-status")
           expect(page).not_to have_link(
             "Deregister", href: new_admin_enrollment_exemption_deregister_path(ee)
           )
