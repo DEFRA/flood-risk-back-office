@@ -22,10 +22,6 @@ module FloodRiskEngine
       (system_user? || super_agent_user?) && enrollment_submitted?
     end
 
-    def change_assisted_digital?
-      (system_user? || super_agent_user?) && enrollment_submitted?
-    end
-
     def edit?
       (system_user? || super_agent_user? || admin_agent_user?) && enrollment_submitted?
     end
