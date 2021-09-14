@@ -4,19 +4,10 @@ en:
       change_status:
         new:
           title: Change exemption status of registration %{reference}
-          panel_title: Change exemption status
+          status: Status
+          comment_content: Comment
           table_headings:
             operator: Operator
             exemption_code: Exemption number
             status: Status
-          status_selection_blank: Select a status
-          comment_clarification: "%{max} character limit"
           submit: Confirm Update
-          errors:
-            comment:
-              too_long: The comment must be no longer than %{max} characters
-              blank: Enter a comment
-            status:
-              inclusion: "The status must be one of: %{statuses}"
-              last_word_connector: " or "
-
