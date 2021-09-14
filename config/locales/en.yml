@@ -61,6 +61,10 @@ en:
               blank: Enter an email address
             telephone_number:
               blank: Enter a telephone number
+        enrollment_exemption:
+          attributes:
+            comment_content:
+              blank: Enter a comment
         organisation:
           attributes:
             name:
