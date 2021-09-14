@@ -1,0 +1,25 @@
+<% page_title = t(".heading") %>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l"><%= t(".heading") %></h1>
+    <%= form_for @correspondence_contact,
+                 url: enrollment_correspondence_contact_path(@enrollment, @correspondence_contact),
+                 builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
+
+      <%= f.govuk_text_field :full_name, label: { text: t(".full_name") } %>
+      <%= f.govuk_text_field :position, label: { text: t(".position") } %>
+      <%= f.govuk_text_field :telephone_number, label: { text: t(".telephone_number") } %>
+      <%= f.govuk_text_field :email_address, label: { text: t(".email_address") } %>
+      <%= f.govuk_submit t("global.continue")  %>
+
+    <% end %>
+
+    <p class="govuk-body">
+      <%= link_to t("cancel_go_back"), admin_enrollment_exemption_path(@enrollment_exemption)  %>
+    </p>
+  </div>
+</div>
+

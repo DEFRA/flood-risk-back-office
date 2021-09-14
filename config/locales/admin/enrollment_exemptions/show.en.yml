@@ -6,7 +6,6 @@ en:
         heading: View registration details
         actions:
           title: Actions
-          edit: Edit registration
           change_status: Change status
           change_ad: Change AD classification
           withdraw: Withdraw

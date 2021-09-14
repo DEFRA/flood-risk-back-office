@@ -1,0 +1,7 @@
+---
+en:
+  enrollments:
+    organisations:
+      edit:
+        heading: Edit registration
+        name: Operator name
