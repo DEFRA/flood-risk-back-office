@@ -54,7 +54,6 @@ Rails.application.routes.draw do
           controller: "enrollment_exemptions/in_progress"
         )
       end
-      resource :assistance, only: [:edit, :update], controller: "enrollment_exemptions/assistance"
     end
 
     resources :enrollment_exports, only: [:index, :create, :show]
