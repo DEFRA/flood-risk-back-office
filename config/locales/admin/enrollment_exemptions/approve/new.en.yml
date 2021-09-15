@@ -4,15 +4,12 @@ en:
       approve:
         new:
           title: Approve registration %{reference}
-          panel_title: Exemption
+          comment_content: Comment
           sub_heading: You are about to send an exemption approval email
           table_headings:
             operator: Operator
             exemption_code: Exemption number
           screening_comment: If the screening found relevant conditions, add them here
-          comment_clarification: "%{max} character limit"
+          asset_found: Asset found
+          salmonid_river_found: Salmonid river found
           submit: Confirm and send email
-          errors:
-            comment:
-              too_long: The comment must be no longer than %{max} characters
-              blank: Enter a comment
