@@ -4,7 +4,7 @@ en:
       in_progress:
         new:
           title: Change status of %{reference} to In Progress
-          panel_title: Exemption
+          comment_content: Comment
           table_headings:
             operator: Operator
             exemption_code: Exemption number
