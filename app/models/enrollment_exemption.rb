@@ -7,6 +7,7 @@ class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
 
   validates :comment_content, presence: true, if: :commentable?
   before_save :create_comment, if: :commentable?
+
   delegate :reference_number, to: :enrollment
 
   def action!(params)
