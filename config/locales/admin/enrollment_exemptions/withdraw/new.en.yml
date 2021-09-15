@@ -4,13 +4,8 @@ en:
       withdraw:
         new:
           title: Withdraw registration %{reference}
-          panel_title: Exemption
+          comment_content: Comment
           table_headings:
             operator: Operator
             exemption_code: Exemption number
-          comment_clarification: "%{max} character limit"
           submit: Withdraw
-          errors:
-            comment:
-              too_long: The comment must be no longer than %{max} characters
-              blank: Enter a comment
