@@ -13,10 +13,6 @@ FactoryBot.define do
       submitted_at { Time.current }
 
       after(:create) do |object|
-        object.enrollment_exemptions.each do |ee|
-          ee.status = 1
-        end
-
         object.organisation = if ot.to_sym == :partnership
                                 create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
                               else
