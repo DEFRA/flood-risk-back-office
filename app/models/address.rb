@@ -4,7 +4,8 @@ class Address < ActiveRecord::Base
   validates :premises, presence: true
   validates :street_address, presence: true
   validates :city, presence: true
-  validates :postcode, "flood_risk_engine/postcode": { presence: true }
+  validates :postcode, presence: true
+  validates :postcode, length: { maximum: 8 }
 
   def to_param
     token
