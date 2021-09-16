@@ -26,9 +26,9 @@ RSpec.describe "Edit address", type: :feature do
   end
 
   scenario "unsuccessfully" do
-    fill_in "Postcode", with: "foo-bar"
+    fill_in "Postcode", with: "foo-bar-foo"
     click_on "Continue"
 
-    expect(page).to have_css(".govuk-error-message", text: "Enter a valid UK postcode")
+    expect(page).to have_css(".govuk-error-message", text: "Postcode is too long")
   end
 end

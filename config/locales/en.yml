@@ -52,6 +52,7 @@ en:
               blank: Enter a town or city
             postcode:
               blank: Enter a postcode
+              too_long: Postcode is too long (maximum 8 characters)
         correspondence_contact:
           attributes:
             full_name:
@@ -76,6 +77,7 @@ en:
               blank: Enter a town or city
             postcode:
               blank: Enter a postcode
+              too_long: Postcode is too long (maximum 8 characters)
     allowed_roles:
       system: System user
       super_agent: Administrative super user
