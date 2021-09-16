@@ -18,12 +18,13 @@ FactoryBot.define do
   # Exemption and random valid_from selected for EnrollmentExemption
 
   factory :confirmed_random_pending, parent: :base_back_office_enrollment do
+    reference_number { FloodRiskEngine::ReferenceNumber.create }
+    submitted_at { Time.current }
+
     after(:create) do |object|
       create(:exemption) if FloodRiskEngine::Exemption.count == 0
 
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first
-
-      object.submit
 
       object.enrollment_exemptions.create(
         exemption: exemption,
