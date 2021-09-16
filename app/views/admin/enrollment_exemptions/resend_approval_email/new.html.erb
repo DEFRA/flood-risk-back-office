@@ -1,62 +1,61 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10">
-      <h1><%= t(".title", reference: form.reference_number) %></h1>
+<% @page_title = t(".title", reference: @enrollment_exemption.reference_number) %>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading panel-title">
-              <%= t(".panel_title") %>
-            </div>
+<h1 class="govuk-heading-l"><%= @page_title %></h1>
 
-            <div class="panel-body">
-              <h2>
-                <%= glyphicon_tag("info-sign") %>
-                <%= t(".sub_heading") %>
-              </h2>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-              <%= simple_form_for form,
-                                  url: admin_enrollment_exemption_resend_approval_email_index_path(form.enrollment_exemption),
-                                  html: { method: :post } do |f| %>
-                <div class="table-responsive">
-                  <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                          <th class="col-md-2"><%= t(".table_headings.operator") %></th>
-                          <td class="col-md-10"><%= form.organisation_name %></td>
-                        </tr>
-                        <tr>
-                          <th class="col-md-2"><%= t(".table_headings.exemption_code") %></th>
-                          <td class="col-md-10"><%= form.exemption.code %></td>
-                        </tr>
-                        <tr>
-                          <th class="col-md-2"><%= t(".table_headings.asset_found") %></th>
-                          <td class="col-md-10"><%= t(".#{form.asset_found}") %></td>
-                        </tr>
-                        <tr>
-                          <th class="col-md-2"><%= t(".table_headings.salmonid_river_found") %></th>
-                          <td class="col-md-10"><%= t(".#{form.salmonid_river_found}") %></td>
-                        </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-md-12">
-                  <%= f.input :comment, as: :text %>
-                  <span>
-                    <%= t(".comment_clarification", max: form.comment_max_length) %>
-                  </span>
-                </div>
-
-                <%= f.button :submit, t(".submit"), class: 'btn btn-primary' %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <%= t(".table_headings.operator") %>
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <%= @enrollment_exemption_presenter.organisation_name %>
+        </dd>
       </div>
-      <%= link_to glyphicon_tag(:triangle_left, text: t("cancel_go_back")),
-                  [:admin, form.enrollment_exemption],
-                  class: "ignore-visited" %>
-    </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <%= t(".table_headings.exemption_code") %>
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <%= @enrollment_exemption_presenter.code %>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <%= t(".table_headings.asset_found") %>
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <%= t(".#{@enrollment_exemption.asset_found}") %>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <%= t(".table_headings.salmonid_river_found") %>
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <%= t(".#{@enrollment_exemption.salmonid_river_found}") %>
+        </dd>
+      </div>
+    </dl>
+
+    <%= form_for @enrollment_exemption,
+        url: admin_enrollment_exemption_resend_approval_email_index_path(@enrollment_exemption),
+        html: { method: :post },
+        builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+
+      <%= render partial: "flood_risk_engine/shared/error_summary", locals: { f: f } %>
+
+      <%= f.govuk_text_area :comment_content,
+         label: { text: t(".comment_content") },
+         max_chars: 500  %>
+
+      <%= f.govuk_submit t(".submit") %>
+    <% end %>
+
+    <p class="govuk-body">
+      <%= link_to t("cancel_go_back"), [:admin, @enrollment_exemption] %>
+    </p>
   </div>
 </div>
