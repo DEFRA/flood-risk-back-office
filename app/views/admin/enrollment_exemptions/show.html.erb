@@ -3,7 +3,7 @@
 <div class="govuk-grid-row" id="admin-enrollment-exemptions-show">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l"><%= t(".heading") %></h1>
-    <%= render "admin/enrollment_exemptions/show/main", form: form, presenter: presenter %>
+    <%= render "admin/enrollment_exemptions/show/main", presenter: presenter %>
     <%= render(
           "admin/enrollment_exemptions/show/comment_history",
           comments: presenter.comments
@@ -12,8 +12,8 @@
   </div>
 
   <div class="govuk-grid-column-one-third govuk-body">
-    <%= render "admin/enrollment_exemptions/show/correspondant", form: form, presenter: presenter %>
+    <%= render "admin/enrollment_exemptions/show/correspondant", presenter: presenter %>
     <hr>
-    <%= render "admin/enrollment_exemptions/show/actions", form: form, presenter: presenter %>
+    <%= render "admin/enrollment_exemptions/show/actions", presenter: presenter %>
   </div>
 </div>
