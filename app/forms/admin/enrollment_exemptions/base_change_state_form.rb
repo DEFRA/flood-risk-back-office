@@ -1,4 +1,5 @@
 require_dependency "reform"
+
 module Admin
   module EnrollmentExemptions
     class BaseChangeStateForm < Reform::Form

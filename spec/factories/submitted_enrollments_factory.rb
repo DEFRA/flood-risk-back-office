@@ -9,7 +9,14 @@ FactoryBot.define do
     next if ot.to_sym == :unknown
 
     factory :"submitted_#{ot}", parent: :confirmed_random_pending do
+      reference_number { FloodRiskEngine::ReferenceNumber.create }
+      submitted_at { Time.current }
+
       after(:create) do |object|
+        object.enrollment_exemptions.each do |ee|
+          ee.status = 1
+        end
+
         object.organisation = if ot.to_sym == :partnership
                                 create(:organisation, :"as_#{ot}", :with_partners, name: Faker::Company.name)
                               else
@@ -19,8 +26,6 @@ FactoryBot.define do
         object.organisation.primary_address = build :simple_address
 
         object.secondary_contact = build :contact
-
-        object.submit
 
         object.save!
       end

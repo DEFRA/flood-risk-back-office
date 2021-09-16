@@ -24,8 +24,6 @@ RSpec.describe EnrollmentExport do
     let(:export) { create(:enrollment_export, :with_dates, :with_file_name) }
 
     before(:each) do
-      FactoryBot.create_list(:page_declaration, 5) # not submitted - should never appear
-
       FactoryBot.create_list(:submitted_individual, 3)
       FactoryBot.create_list(:submitted_partnership, 3)
 
