@@ -13,9 +13,5 @@ en:
             exemption_code: Exemption number
             asset_found: Asset found
             salmonid_river_found: Salmonid river found
-          comment_clarification: "%{max} character limit"
+          comment_content: Comment
           submit: Confirm and send email
-          errors:
-            comment:
-              too_long: The comment must be no longer than %{max} characters
-              blank: Enter a comment
