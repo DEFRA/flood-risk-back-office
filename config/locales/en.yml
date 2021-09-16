@@ -53,6 +53,17 @@ en:
             postcode:
               blank: Enter a postcode
               too_long: Postcode is too long (maximum 8 characters)
+        enrollment_export:
+          attributes:
+            from_date:
+              blank: From date can't be blank
+              invalid_date: From date must be a valid date
+              on_or_before: From date cannot be in the future
+            to_date:
+              blank: To date can't be blank
+              invalid_date: To date must be a valid date
+              on_or_after: To date must be on or after the from date
+              on_or_before: To date cannot be in the future
         correspondence_contact:
           attributes:
             full_name:

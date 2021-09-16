@@ -1,6 +1,5 @@
-<%= content_tag_for :tr, enrollment_export,
-                    class: ("highlight-fade-out" if flash[:created_export_id] == enrollment_export.id) do %>
-  <td>
+<%= content_tag_for :tr, enrollment_export, class: ("govuk-table__row") do %>
+  <td class="govuk-table__cell">
     <%=
       label_opts = { class: "label label-" }
 
@@ -23,21 +22,21 @@
                   label_opts
     %>
   </td>
-  <td>
+  <td class="govuk-table__cell">
     <% if enrollment_export.record_count %>
       <%= number_with_delimiter enrollment_export.record_count %>
     <% else %>
       &hellip;
     <% end %>
   </td>
-  <td>
+  <td class="govuk-table__cell">
     <% if enrollment_export.completed? %>
       <%= link_to enrollment_export.file_name, admin_enrollment_export_path(enrollment_export, format: "csv") %>
     <% else %>
       &hellip;
     <% end %>
   </td>
-  <td><%= enrollment_export.to_s %></td>
-  <td><%= l enrollment_export.created_at, format: :long %></td>
-  <td><%= enrollment_export.created_by %></td>
+  <td class="govuk-table__cell"><%= enrollment_export.to_s %></td>
+  <td class="govuk-table__cell"><%= l enrollment_export.created_at, format: :long %></td>
+  <td class="govuk-table__cell"><%= enrollment_export.created_by %></td>
 <% end %>
