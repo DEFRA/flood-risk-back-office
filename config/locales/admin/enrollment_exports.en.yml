@@ -14,7 +14,10 @@ en:
           - Requested by
       form:
         date_range_legend: What is the date range for your search?
-        please_wait_html: "Please wait&hellip;"
+        from_date: From date
+        to_date: To date
+        date_field_to_compare_against: Date field to compare against
+        submit: Create Export
   enrollment_export_requested: Registration export [%{criteria}] has been requested.
     It will be available to download below, in the next few minutes.
   enrollment_export_states:

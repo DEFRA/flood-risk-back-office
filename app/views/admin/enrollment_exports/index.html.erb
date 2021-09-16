@@ -1,25 +1,31 @@
-<%= render("flood_risk_engine/enrollments/header", title_text: t(".heading")) %>
+<% @page_title = t(".heading") %>
 
-<%= render "form", form: form %>
+<h1 class="govuk-heading-l"><%= @page_title %></h1>
+
+<%= render "form" %>
 
 <% if @exports.except(:limit, :offset).any? %>
   <hr/>
-  <h2>
+  <h2 class="govuk-heading-m">
     <%= t ".heading_secondary" %>
-    <%= link_to glyphicon_tag(:refresh, text: t(:refresh)), url_for, class: 'btn btn-primary btn-sm' %>
+    <span class="govuk-body"><%= link_to t(:refresh), url_for %></span>
   </h2>
 
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr><%= raw t(".table_headings").map { |th| content_tag(:th, th) }.join %></tr>
-      </thead>
+  <table class="govuk-table" aria-label="<%= t(".heading_secondary") %>">
+    <thead class=""govuk-table__head>
+      <tr class="govuk-table__row">
+        <% t(".table_headings").each do |table_heading| %>
+          <th class="govuk-table__header" scope="col">
+            <%= table_heading %>
+          </th>
+        <% end %>
+      </tr>
+    </thead>
 
-      <tbody>
-        <%= render @exports %>
-      </tbody>
-    </table>
-  </div>
+    <tbody class="govuk-table__body">
+      <%= render @exports %>
+    </tbody>
+  </table>
 <% end %>
 
-<%= paginate @exports %>
+<div class="govuk-body"><%= paginate @exports %></div>

@@ -3,27 +3,27 @@ module Admin
     def index
       authorize EnrollmentExport
 
-      form = form_factory
+      @enrollment_export = EnrollmentExport.new
 
       find_exports
 
-      render :index, locals: { form: form }
+      render :index
     end
 
     def create
       authorize EnrollmentExport
 
-      form = form_factory
+      @enrollment_export = EnrollmentExport.new(enrollment_export_params)
 
-      if form.validate(params) && form.save
-        flash[:created_export_id] = form.model.id
+      if @enrollment_export.save
+        flash[:created_export_id] = @enrollment_export.id
 
-        EnrollmentExportJob.perform_later(form.model)
+        EnrollmentExportJob.perform_later(@enrollment_export)
 
-        redirect_to admin_enrollment_exports_path, notice: t("enrollment_export_requested", criteria: form.model.to_s)
+        redirect_to admin_enrollment_exports_path, notice: flash_notice
       else
         find_exports
-        render :index, locals: { form: form }
+        render :index
       end
     end
 
@@ -47,18 +47,18 @@ module Admin
 
     private
 
-    def form_factory
-      # Form does not have access to current user
-      export = EnrollmentExport.new do |ee|
-        ee.created_by = current_user.email
-      end
-
-      Enrollment::ExportForm.new(export)
-    end
-
     def find_exports
       @exports = policy_scope(EnrollmentExport).order(created_at: :desc).page(params[:page])
     end
 
+    def enrollment_export_params
+      params.require(:enrollment_export).permit(
+        :from_date, :to_date, :date_field_scope
+      ).merge(created_by: current_user.email)
+    end
+
+    def flash_notice
+      t("enrollment_export_requested", criteria: @enrollment_export.to_s)
+    end
   end
 end

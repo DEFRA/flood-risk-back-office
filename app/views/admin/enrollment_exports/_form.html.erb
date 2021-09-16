@@ -1,31 +1,28 @@
-<%= simple_form_for form do |f| %>
+<%= form_for @enrollment_export,
+    url: admin_enrollment_exports_path,
+    html: { method: :post },
+    builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
 
-  <h2><small><%= t ".date_range_legend" %></small></h2>
+  <h2 class="govuk-caption-m"><%= t ".date_range_legend" %></h2>
 
-  <%
-    date_opts = {
-        as: :date, html5: false,
-        order: %i[day month year],
-        end_year: Date.today.year,
-        start_year: 2016, # Year that waste-exemptions went live
-        wrapper_html: { class: "col-xs-6 col-md-5 col-lg-4" }
-    }
-  %>
-
-  <div class="row">
-    <%= f.input :from_date, date_opts.merge(prompt: :translate) %>
-    <%= f.input :to_date, date_opts.merge(default: Date.today) -%>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <%= f.govuk_date_field :from_date,
+          legend: { size: "s", text: t(".from_date") } %>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <%= f.govuk_date_field :to_date,
+          legend: { size: "s", text: t(".to_date") } %>
+    </div>
   </div>
 
-  <h2 style="margin-top: 0px;"><small>Date field to compare against</small></h2>
-  <div class="radio">
-    <%= f.collection_radio_buttons(:date_field_scope, EnrollmentExport.date_field_scopes, :first, :last) do |b|
-      b.label(class: "radio-inline") do
-        b.radio_button + content_tag('span', b.object.first.to_s.humanize)
-      end
-    end
-    %>
-  </div>
+ <%= f.govuk_collection_radio_buttons :date_field_scope,
+    EnrollmentExport.date_field_scopes,
+    ->(option) { option[0] },
+    ->(option) { option[0].to_s.humanize },
+    inline: true,
+    small: true,
+    legend: { size: "s", text:  t(".date_field_to_compare_against") } %>
 
-  <%= f.submit class: "btn btn-success", style: "display: block", data: { disable_with: t(".please_wait_html") } %>
+  <%= f.govuk_submit t(".submit") %>
 <% end %>
