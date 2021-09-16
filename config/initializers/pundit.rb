@@ -1,1 +1,1 @@
-FloodRiskEngine::Enrollments::StepsController.include Pundit
+FloodRiskEngine::FormsController.include Pundit

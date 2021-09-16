@@ -7,7 +7,7 @@ RSpec.feature "New scenario" do
 
     within("#navigation") { click_link("New") }
 
-    expect(page).to have_css("h1", text: "Select the exemption you want to register")
+    expect(page).to have_css("h3", text: "Before you register you must")
 
     # check that the navigation links are no longer visible
     expect(page).not_to have_css("#navigation")

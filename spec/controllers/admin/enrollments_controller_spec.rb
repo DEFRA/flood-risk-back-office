@@ -19,9 +19,9 @@ module Admin
         get :new
       end
 
-      it "should redirect to engine's initial step path" do
+      it "should redirect to engine's initial start path" do
         expect(response).to be_redirect
-        expect(response.location).to match("steps/add_exemptions")
+        expect(response.location).to match("start")
       end
     end
   end
