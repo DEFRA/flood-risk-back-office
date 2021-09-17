@@ -51,7 +51,6 @@ group :test do
   gem "fuubar"
   gem "launchy", require: false
   gem "poltergeist"
-  gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
