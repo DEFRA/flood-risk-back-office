@@ -1,0 +1,12 @@
+en:
+  invitations:
+    new:
+      header: Send invitation
+      enter_an_email: Enter an email address
+      email_address: Email address
+      role: Role
+      select_assigned_role: "- Select a role -"
+      submit_button: Send an invitation
+    edit:
+      password: New password
+      password_confirmation: Confirm new password

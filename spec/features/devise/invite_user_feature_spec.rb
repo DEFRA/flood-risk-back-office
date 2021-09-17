@@ -42,7 +42,7 @@ RSpec.feature "Invite user" do
       login_as user
       visit new_user_invitation_path
 
-      within "select#user_assigned_role" do
+      within "select#user-assigned-role-field" do
         expect(page).to have_css("option[value=system]", text: "System user")
         expect(page).to have_css("option[value=super_agent]", text: "Administrative super user")
         expect(page).to have_css("option[value=admin_agent]", text: "Administrative user")
@@ -60,7 +60,7 @@ RSpec.feature "Invite user" do
           click_button "Send an invitation"
         end.not_to change(User, :count)
 
-        expect(page).to have_form_error(:user_email, text: "Email address has already been taken")
+        expect(page).to have_css(".govuk-error-message", text: "Email address has already been taken")
       end
 
       scenario "Invite user (no role selected)" do
@@ -70,7 +70,7 @@ RSpec.feature "Invite user" do
           click_button "Send an invitation"
         end.not_to change(User, :count)
 
-        expect(page).to have_form_error(:user_assigned_role, text: "You must select a user role")
+        expect(page).to have_css(".govuk-error-message", text: "You must select a user role")
       end
     end
 
