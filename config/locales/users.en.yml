@@ -2,7 +2,7 @@ en:
   admin:
     users:
       user:
-        not_invited: Invitation accepted
+        not_invited: "yes"
         disable: Disable
         disabled: Disabled
         enable: Enable
