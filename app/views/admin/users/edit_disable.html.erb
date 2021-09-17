@@ -1,19 +1,29 @@
-<% content_for(:page_title1) { t('.title') } %>
+<% @page_title = t('.title') %>
 
-<header>
-  <h1>
-    <%= t('.title') %>
-    <small><%= @user.email %></small>
-  </h1>
-</header>
-<br/>
+<h1 class="govuk-heading-l">
+  <%= t('.title') %>
+  <span class="govuk-caption-m"><%= @user.email %></span>
+</h1>
 
-<%= simple_form_for [:admin, @user],
-                    url: admin_user_disable_path, method: :patch do |f| %>
-  <%= f.input :disabled_comment, required: false, input_html: { rows: 5 } %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-  <%= f.button :submit, t('.title'), class: 'btn-danger' %>
-<% end %>
+    <%= form_for [:admin, @user],
+        url: admin_user_disable_path,
+        html: { method: :patch },
+        builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
 
-<br/>
-<%= cancel_go_back_link %>
+      <%= f.govuk_text_area :disabled_comment,
+          label: { text: t(".comments") },
+          width: "one-half",
+          placeholder: t(".disabled_comment"),
+          max_chars: 500 %>
+
+      <%= f.govuk_submit t(".title") %>
+    <% end %>
+  </div>
+</div>
+
+<p class="govuk-body">
+  <%= link_to t("cancel_go_back"), admin_users_path %>
+</p>
