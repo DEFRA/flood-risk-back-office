@@ -1,24 +1,23 @@
-<% content_for(:page_title1) { t('.title') } %>
+<% @page_title = t('.title') %>
 
-<header>
-  <h1>
-    <%= t('.title') %>
-    <small><%= @user.email %></small>
-  </h1>
-</header>
-<br/>
+<h1 class="govuk-heading-l">
+  <%= t('.title') %>
+  <span class="govuk-caption-m"><%= @user.email %></span>
+</h1>
 
-<%= simple_form_for [:admin, @user] do |f| %>
-  <%= f.input :assigned_role, collection: t("allowed_roles").map(&:reverse),
-              include_blank: false,
-              disabled: (@user == current_user), readonly: (@user == current_user),
-              input_html: { class: 'input-md-4' } %>
+<%= form_for [:admin, @user], builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
 
-  <%= f.button :submit %>
+  <%= f.govuk_select :assigned_role,
+       t("allowed_roles").map(&:reverse).sort.collect{ |role| [role[0], role[1]] },
+       html: { readonly: (@user == current_user) },
+       label: { text: t(".assigned_role") }  %>
+
+  <%= f.govuk_submit t(".submit") %>
 <% end %>
 
-<br/>
 
-<%= cancel_go_back_link %>
+<p class="govuk-body">
+  <%= link_to t("cancel_go_back"), admin_users_path %>
+</p>
 
-<%= render 'role_help' %>
+<%= render "role_help" %>
