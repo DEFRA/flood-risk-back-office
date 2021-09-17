@@ -13,5 +13,8 @@ en:
         submit: Update User
       edit_disable:
         title: Disable user
+        comments: Comments
+        disabled_comment: 'Please add an explanation to describe why this user is being disabled…'
+        submit: Disable user
       index:
         title: Admin users
