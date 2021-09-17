@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
 
+  helper FloodRiskEngine::ApplicationHelper
+
   before_action :set_paper_trail_whodunnit
 
   def info_for_paper_trail
