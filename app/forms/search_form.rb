@@ -4,7 +4,7 @@ class SearchForm
 
   attr_reader :q, :status, :page, :per_page
 
-  delegate :model_name, to: FloodRiskEngine::EnrollmentExemption
+  delegate :model_name, to: EnrollmentExemption
 
   # Note that params[:search] are the fields in the search html form.
   # Kaminari params :page and :per_page are at the top level in the params.

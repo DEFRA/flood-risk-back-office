@@ -2,7 +2,7 @@ module Admin
   class EnrollmentExemptionsController < ApplicationController
 
     def index
-      authorize FloodRiskEngine::EnrollmentExemption
+      authorize EnrollmentExemption
       search_form = SearchForm.new(params)
       render :index, locals: {
         form: search_form,
@@ -27,7 +27,7 @@ module Admin
     end
 
     def load_and_authorise_enrollment_exemption
-      enrollment_exemption = FloodRiskEngine::EnrollmentExemption.find(params[:id])
+      enrollment_exemption = EnrollmentExemption.find(params[:id])
       authorize enrollment_exemption
       enrollment_exemption
     end
