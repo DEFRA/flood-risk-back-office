@@ -1,7 +1,6 @@
 en:
   admin:
     users:
-
       user:
         not_invited: Invitation accepted
         disable: Disable
@@ -10,6 +9,8 @@ en:
         enabled: Enabled
       edit:
         title: Edit user
+        assigned_role: Role
+        submit: Update User
       edit_disable:
         title: Disable user
       index:
