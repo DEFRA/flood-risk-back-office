@@ -1,22 +1,29 @@
-<header>
-  <h1><%= t("devise.invitations.new.header") %></h1>
-</header>
-<br/>
+<% @page_title = t("devise.invitations.new.header") %>
 
-<%= simple_form_for resource, as: resource_name, url: user_invitation_path, html: { method: :post} do |f| %>
+<h1 class="govuk-heading-l"><%= @page_title %></h1>
+
+<%= form_for resource,
+             as: resource_name,
+             url: user_invitation_path,
+             html: { method: :post},
+             builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+
   <%= full_devise_error_messages! %>
 
-  <%= f.input :email, required: true, input_html: { class: 'input-md-4' },
-                      placeholder: t('user.invite_new.email', scope: 'simple_form.placeholders') %>
+  <%= f.govuk_text_field :email,
+      width: "one-half",
+      label: { text: t(".email_address") },
+      placeholder: t(".enter_an_email") %>
 
-  <%= f.input :assigned_role, required: true, prompt: :translate,
-              input_html: { class: 'input-md-4' },
-              collection: t("allowed_roles").map(&:reverse) %>
+  <%= f.govuk_select :assigned_role,
+       t("allowed_roles").map(&:reverse).sort.collect{ |role| [role[0], role[1]] },
+       label: { text: t(".role") },
+       options: { prompt: t(".select_assigned_role") } %>
 
-  <%= f.button :submit, t("devise.invitations.new.submit_button"),
-                        data: { disable_with: t('please_wait_html') } %>
+  <%= f.govuk_submit t(".submit_button") %>
 
 <% end %>
 
-<br/>
-<%= cancel_go_back_link %>
+<p class="govuk-body">
+  <%= link_to t("cancel_go_back"), admin_users_path %>
+</p>

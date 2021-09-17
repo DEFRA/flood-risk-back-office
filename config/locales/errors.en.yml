@@ -6,7 +6,7 @@ en:
         user:
           attributes:
             email:
-              blank: "You must enter your email address"
+              blank: "You must enter an email address"
               invalid: "Please enter a valid email address"
               not_found: "Your email address has not been found"
               taken: "Email address has already been taken"
