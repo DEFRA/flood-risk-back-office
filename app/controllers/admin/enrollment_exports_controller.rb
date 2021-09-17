@@ -3,7 +3,7 @@ module Admin
     def index
       authorize EnrollmentExport
 
-      @enrollment_export = EnrollmentExport.new
+      @enrollment_export = EnrollmentExport.new(to_date: Date.today)
 
       find_exports
 
