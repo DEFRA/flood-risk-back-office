@@ -14,6 +14,7 @@ module Admin
       authorize EnrollmentExport
 
       @enrollment_export = EnrollmentExport.new(enrollment_export_params)
+      @enrollment_export.populate_file_name
 
       if @enrollment_export.save
         flash[:created_export_id] = @enrollment_export.id
