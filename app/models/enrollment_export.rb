@@ -25,8 +25,6 @@ class EnrollmentExport < ActiveRecord::Base
   validates :created_by, presence: true
   validates :date_field_scope, presence: true
 
-  before_save :populate_file_name
-
   def reportable_records
     find_klazz = FloodRiskEngine::EnrollmentExemption
 
