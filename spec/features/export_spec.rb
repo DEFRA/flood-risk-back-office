@@ -17,6 +17,7 @@ RSpec.describe "Export" do
   end
 
   scenario "successfully creating an export" do
+    expect(EnrollmentExportJob).to receive(:perform_later).once
 
     fill_in "enrollment_export_to_date_3i", with: 1
     fill_in "enrollment_export_to_date_2i", with: 10
