@@ -31,11 +31,6 @@ gem "govuk_design_system_formbuilder"
 
 gem "dotenv-rails"
 
-# This has been removed from the engine so re-adding here temporarily
-# until we refactor it out of all the admin forms
-gem "reform", "~> 2.6"
-gem "reform-rails", "~> 0.2.2"
-
 group :development do
   gem "awesome_print"
   gem "rubocop"
@@ -56,7 +51,6 @@ group :test do
   gem "fuubar"
   gem "launchy", require: false
   gem "poltergeist"
-  gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
