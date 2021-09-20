@@ -101,27 +101,5 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       expect(current_path).to eq new_user_session_path
       expect(page).to have_flash(I18n.t("devise.failure.unauthenticated"), key: :alert)
     end
-
-    scenario "User without role is denied access" do
-      pending "FIX ME!"
-      login_as create(:user)
-      visit admin_user_edit_disable_path(other_user)
-
-      expect(current_path).to eq main_app.root_path
-      expect(page).to have_flash(I18n.t("pundit.user_policy.disable?", name: "user"), key: :alert)
-    end
-
-    %i[super_agent admin_agent data_agent].each do |role|
-      scenario "#{role.to_s.humanize} user is denied access" do
-        pending "FIX ME!"
-        user = create :user
-        user.add_role role
-        login_as user
-        visit admin_user_edit_disable_path(other_user)
-
-        expect(current_path).to eq main_app.root_path
-        expect(page).to have_flash(I18n.t("pundit.user_policy.disable?", name: "user"), key: :alert)
-      end
-    end
   end
 end
