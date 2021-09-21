@@ -4,9 +4,15 @@
   <div class="govuk-grid-column-three-quarters">
     <h1 class="govuk-heading-l"><%= @page_title %></h1>
     <p class="govuk-body"><%= link_to t('devise.invite_user'), new_user_invitation_path %></p>
+    <p class="govuk-body">
+      <% if @show_all_users %>
+        <%= link_to t(".show_enabled_users_only"), admin_users_path %>
+      <% else %>
+        <%= link_to t(".show_all_users"), all_admin_users_path %>
+      <% end %>
+    </p>
   </div>
 </div>
-
 
 <table class="govuk-table" aria-label="<%= @page_title %>">
   <thead class="govuk-table__head">
