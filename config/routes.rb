@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update] do
+      collection do
+        get :all
+      end
       get :edit_disable
       patch :disable
       patch :enable

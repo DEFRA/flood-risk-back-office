@@ -3,6 +3,10 @@ class UserPolicy < ApplicationPolicy
     system_user?
   end
 
+  def all?
+    system_user?
+  end
+
   def update?
     system_user?
   end
