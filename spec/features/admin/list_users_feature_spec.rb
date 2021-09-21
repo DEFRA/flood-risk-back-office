@@ -4,15 +4,21 @@ RSpec.feature "As an System user, I want to view a list of users" do
   end
 
   context "authorised" do
-    scenario "System user can view user list" do
-      create_list :user, 10
-      user = User.first
+    scenario "System user can view list of 'enable' users and toggle to view 'all' " do
+      create_list :user, 2
+      create_list :disabled_user, 2
 
+      user = User.first
       user.grant :system
       login_as user
       visit admin_users_path
+      expect(page).to have_css("tbody tr", count: 2)
 
-      expect(page).to have_css("tbody tr", count: 10)
+      click_link "Show all users"
+      expect(page).to have_css("tbody tr", count: 4)
+
+      click_link "Show enabled users only"
+      expect(page).to have_css("tbody tr", count: 2)
     end
   end
 

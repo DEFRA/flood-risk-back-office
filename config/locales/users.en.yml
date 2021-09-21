@@ -18,3 +18,5 @@ en:
         submit: Disable user
       index:
         title: Admin users
+        show_all_users: Show all users
+        show_enabled_users_only: Show enabled users only

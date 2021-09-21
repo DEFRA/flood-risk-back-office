@@ -5,9 +5,16 @@ module Admin
     def index
       authorize User
 
-      @users = policy_scope(User)
-               .order(:email)
-               .page(params[:page])
+      @users = User.where(disabled_at: nil).order(:email).page(params[:page])
+    end
+
+    def all
+      authorize User
+
+      @users = User.all.order(:email).page(params[:page])
+
+      @show_all_users = true
+      render :index
     end
 
     def edit
