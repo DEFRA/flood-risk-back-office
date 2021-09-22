@@ -10,13 +10,13 @@ RSpec.describe "In progress", type: :feature do
     login_as user
     visit admin_enrollment_exemption_path(enrollment_exemption)
 
-    within("#actions") { click_link("In Progress") }
+    within("#actions") { click_link("In progress") }
   end
 
   scenario "successfully" do
-    click_on "Confirm In Progress status"
+    click_on "Confirm In progress status"
 
     within("#status") { expect(page).to have_text("In progress") }
-    within("#comment-history") { expect(page).to have_text("Status changed to In Progress") }
+    within("#comment-history") { expect(page).to have_text("Status changed to In progress") }
   end
 end
