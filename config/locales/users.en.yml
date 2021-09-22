@@ -16,6 +16,10 @@ en:
         comments: Comments
         disabled_comment: 'Please add an explanation to describe why this user is being disabled…'
         submit: Disable user
+      edit_enable:
+        title: You are about to enable the user %{email}
+        prompt: Are you sure you want to enable this user?
+        submit: Yes, continue
       index:
         title: Admin users
         show_all_users: Show all users

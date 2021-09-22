@@ -26,6 +26,11 @@ module Admin
       authorize @user, :disable?
     end
 
+    def edit_enable
+      @user = User.find params[:user_id]
+      authorize @user, :enable?
+    end
+
     def disable
       comment = params[:user][:disabled_comment] if params[:user]
 

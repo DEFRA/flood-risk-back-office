@@ -13,7 +13,7 @@
     <% end %>
   </td>
 
-  <td class="govuk-table__cell govuk-!-font-weight-bold">
+  <td class="user-status govuk-table__cell govuk-!-font-weight-bold">
     <% if user.enabled? %>
       <%= t(".enabled") %>
     <% else %>
@@ -32,11 +32,7 @@
   <td class="govuk-table__cell">
     <% if user.disabled? && policy(user).enable? %>
       <%= link_to t(".enable"),
-                  admin_user_enable_path(user),
-                  method: :patch,
-                  data: {
-                    confirm: t("are_you_sure")
-                  } %>
+                  admin_user_edit_enable_path(user) %>
 
     <% elsif policy(user).disable? %>
       <%= link_to t(".disable"),
