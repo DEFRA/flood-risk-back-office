@@ -12,6 +12,28 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
   end
 
   context "authorised" do
+    # Disabling a user is tested below but it veers off into an
+    # authentication test. Here we are concerned with toggling the
+    # user's status
+    scenario "Disable / Enable a user" do
+      system_user = create(:user).tap { |u| u.add_role :system }
+      other_user = create(:user).tap { |u| u.add_role :admin_agent }
+
+      login_as system_user
+      visit admin_users_path
+
+      click_link "Disable"
+      fill_in "Comment", with: "User has left the company"
+      click_button "Disable user"
+      click_link "Show all users"
+      expect(page).to have_css(".user-status", text: "Disabled")
+
+      click_link "Enable"
+      expect(page).to have_css("h1", text: "You are about to enable the user #{other_user.email}")
+      click_button "Yes, continue"
+      expect(page).to have_css(".user-status", text: "Enabled")
+    end
+
     scenario "System user can disable another user", versioning: true do
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
