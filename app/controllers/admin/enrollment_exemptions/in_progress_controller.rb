@@ -22,7 +22,8 @@ module Admin
         {
           status: :being_processed,
           comment_content: "n/a",
-          comment_event: "Status changed to In Progress"
+          comment_event: "Status changed to In progress",
+          comment_user_id: current_user.id
         }
       end
 
