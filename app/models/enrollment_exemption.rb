@@ -3,7 +3,7 @@
 # to add comments. Here we add an `#action!` method, to enable
 # validation and creation of new comments
 class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
-  attr_accessor :commentable, :comment_content, :comment_event
+  attr_accessor :commentable, :comment_content, :comment_event, :comment_user_id
 
   validates :comment_content, presence: true, if: :commentable?
   before_save :create_comment, if: :commentable?
@@ -28,6 +28,6 @@ class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
   end
 
   def create_comment
-    comments.create(content: comment_content, event: comment_event)
+    comments.create(user_id: comment_user_id, content: comment_content, event: comment_event)
   end
 end
