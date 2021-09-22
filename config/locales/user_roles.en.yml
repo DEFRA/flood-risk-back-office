@@ -14,7 +14,7 @@ en:
       admin_agent:
         name: Administrative user
         description: >
-          View, edit in-progress registrations and add new.
+          View, edit registrations and add new.
       data_agent:
         name: Data user
         description: >
