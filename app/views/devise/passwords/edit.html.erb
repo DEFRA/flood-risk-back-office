@@ -1,9 +1,9 @@
-<% @page_title = t("devise.change_password") %>
+<% content_for :title, t("devise.change_password") %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">
-      <%= @page_title %>
+      <%= t("devise.change_password") %>
     </h1>
 
     <%= form_for resource,
