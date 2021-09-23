@@ -51,6 +51,13 @@
          label: { text: t(".comment_content") },
          max_chars: 500  %>
 
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <%= t(".sub_heading") %>
+        </strong>
+      </div>
+
       <%= f.govuk_submit t(".submit") %>
     <% end %>
 
