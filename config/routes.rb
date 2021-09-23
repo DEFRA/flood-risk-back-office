@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         get :all
       end
       get :edit_disable
+      get :edit_enable
       patch :disable
       patch :enable
     end

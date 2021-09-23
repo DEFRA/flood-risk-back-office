@@ -1,4 +1,4 @@
-<tr class="govuk-table__row">
+<tr class="govuk-table__row" id="user_<%= user.id %>">
   <td class="govuk-table__cell"><%= user.email %></td>
   <td class="govuk-table__cell"><%= user.roles.map { |r| t(r.name, scope: "allowed_roles") }.join("<br/>").html_safe %></td>
   <td class="govuk-table__cell govuk-!-font-weight-bold">
@@ -32,11 +32,7 @@
   <td class="govuk-table__cell">
     <% if user.disabled? && policy(user).enable? %>
       <%= link_to t(".enable"),
-                  admin_user_enable_path(user),
-                  method: :patch,
-                  data: {
-                    confirm: t("are_you_sure")
-                  } %>
+                  admin_user_edit_enable_path(user) %>
 
     <% elsif policy(user).disable? %>
       <%= link_to t(".disable"),
