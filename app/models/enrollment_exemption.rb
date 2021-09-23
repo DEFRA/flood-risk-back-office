@@ -5,7 +5,7 @@
 class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
   attr_accessor :commentable, :comment_content, :comment_event
 
-  validates :comment_content, presence: true, if: :commentable?
+  validates :comment_content, presence: true, length: { maximum: 500 }, if: :commentable?
   before_save :create_comment, if: :commentable?
 
   delegate :reference_number, to: :enrollment

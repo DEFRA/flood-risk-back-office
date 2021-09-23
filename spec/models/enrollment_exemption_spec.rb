@@ -9,6 +9,20 @@ RSpec.describe EnrollmentExemption do
     end
   end
 
+  describe "validations" do
+    let(:enrollment_exemption) { EnrollmentExemption.new(commentable: true) }
+
+    subject { enrollment_exemption.valid? }
+
+    it "validates the comment_content length" do
+      enrollment_exemption.comment_content = ("foo" * 200)
+
+      subject
+
+      expect(enrollment_exemption.errors).to include(:comment_content)
+    end
+  end
+
   describe "#action!" do
     let(:flood_risk_engine_enrollment_exemption_id) do
       create(:submitted_limited_company).enrollment_exemptions.first.id
