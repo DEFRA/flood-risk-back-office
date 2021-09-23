@@ -76,6 +76,7 @@ en:
           attributes:
             comment_content:
               blank: Enter a comment
+              too_long: Comment is too long (max 500 characters)
         organisation:
           attributes:
             name:
