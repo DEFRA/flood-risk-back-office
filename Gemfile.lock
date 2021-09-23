@@ -1567,7 +1567,6 @@ DEPENDENCIES
   fuubar
   github_changelog_generator
   govuk_design_system_formbuilder
-  jquery-rails
   kaminari
   launchy
   paper_trail
