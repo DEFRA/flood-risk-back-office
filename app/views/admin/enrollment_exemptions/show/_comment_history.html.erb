@@ -16,8 +16,6 @@
         </td>
         <td class="govuk-table__cell govuk-body-s">
           <%= comment.created_at.to_s(:long) %>
-          <br/>
-          <%= comment.user.try(:email) %>
         </td>
       </tr>
     <% end %>
