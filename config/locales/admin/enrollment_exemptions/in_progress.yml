@@ -3,9 +3,9 @@ en:
     enrollment_exemptions:
       in_progress:
         new:
-          title: Change status of %{reference} to In Progress
+          title: Change status of %{reference} to In progress
           comment_content: Comment
           table_headings:
             operator: Operator
             exemption_code: Exemption number
-          submit: Confirm In Progress status
+          submit: Confirm In progress status
