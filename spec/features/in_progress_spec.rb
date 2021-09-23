@@ -17,6 +17,7 @@ RSpec.describe "In progress", type: :feature do
     click_on "Confirm In Progress status"
 
     within("#status") { expect(page).to have_text("In progress") }
-    within("#comment-history") { expect(page).to have_text("Status changed to In Progress") }
+    within("#comment-history") { expect(page).to have_text("Status changed to In progress") }
+    within("#comment-history") { expect(page).to have_text("#{user.email} - n/a") }
   end
 end

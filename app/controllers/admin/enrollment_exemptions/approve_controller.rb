@@ -29,6 +29,7 @@ module Admin
         {
           status: :approved,
           comment_event: "Approved exemption",
+          comment_user_id: current_user.id,
           accept_reject_decision_user_id: current_user.id,
           accept_reject_decision_at: Time.zone.now
         }

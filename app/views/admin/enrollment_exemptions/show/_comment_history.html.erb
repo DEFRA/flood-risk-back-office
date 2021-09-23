@@ -10,7 +10,10 @@
       <% expanded = comment == comments.first %>
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header govuk-body-s govuk-!-width-one-third"><%= comment.event %></th>
-        <td class="govuk-table__cell govuk-body-s"><%= comment.content %></td>
+        <td class="govuk-table__cell govuk-body-s">
+          <%= "#{comment.user.email} - " if comment.user %>
+          <%= comment.content %>
+        </td>
         <td class="govuk-table__cell govuk-body-s">
           <%= comment.created_at.to_s(:long) %>
           <br/>
