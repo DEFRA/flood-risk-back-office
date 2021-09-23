@@ -8,7 +8,11 @@ module Admin
       end
 
       def create
-        update_params = enrollment_exemption_params.merge(comment_event: comment_event)
+        update_params =
+          enrollment_exemption_params.merge(
+            comment_event: comment_event,
+            comment_user_id: current_user.id
+          )
 
         if @enrollment_exemption.action!(update_params)
           redirect_to admin_enrollment_exemption_path(@enrollment_exemption)
