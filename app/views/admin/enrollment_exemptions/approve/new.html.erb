@@ -1,6 +1,8 @@
-<% @page_title = t(".title", reference: @enrollment_exemption.reference_number) %>
+<% content_for :title, t(".title", reference: @enrollment_exemption.reference_number) %>
 
-<h1 class="govuk-heading-l"><%= @page_title %></h1>
+<h1 class="govuk-heading-l">
+  <%= t(".title", reference: @enrollment_exemption.reference_number) %>
+</h1>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
