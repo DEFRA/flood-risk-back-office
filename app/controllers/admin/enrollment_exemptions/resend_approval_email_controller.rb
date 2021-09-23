@@ -22,7 +22,10 @@ module Admin
       def enrollment_exemption_params
         params.require(:enrollment_exemption).permit(
           :comment_content
-        ).merge(comment_event: "Reissued registration approved email")
+        ).merge(
+          comment_event: "Reissued registration approved email",
+          comment_user_id: current_user.id
+        )
       end
 
       def load_and_authorise_enrollment_exemption

@@ -9,6 +9,20 @@ RSpec.describe EnrollmentExemption do
     end
   end
 
+  describe "validations" do
+    let(:enrollment_exemption) { EnrollmentExemption.new(commentable: true) }
+
+    subject { enrollment_exemption.valid? }
+
+    it "validates the comment_content length" do
+      enrollment_exemption.comment_content = ("foo" * 200)
+
+      subject
+
+      expect(enrollment_exemption.errors).to include(:comment_content)
+    end
+  end
+
   describe "#action!" do
     let(:flood_risk_engine_enrollment_exemption_id) do
       create(:submitted_limited_company).enrollment_exemptions.first.id
@@ -30,8 +44,16 @@ RSpec.describe EnrollmentExemption do
       end
 
       context "and a comment" do
+        let(:user) { create(:user) }
+
         before do
-          params.merge!({ comment_content: "Hola!", comment_event: "Approved" })
+          params.merge!(
+            {
+              comment_content: "Hola!",
+              comment_event: "Approved",
+              comment_user_id: user.id
+            }
+          )
 
           subject
         end
@@ -41,6 +63,7 @@ RSpec.describe EnrollmentExemption do
         it "creates a comment" do
           expect(comment.content).to eq("Hola!")
           expect(comment.event).to eq("Approved")
+          expect(comment.user).to eq(user)
         end
 
         it "updates the status" do

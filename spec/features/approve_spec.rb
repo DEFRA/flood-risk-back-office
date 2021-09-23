@@ -21,7 +21,10 @@ RSpec.describe "Approve an enrollment", type: :feature do
     click_on "Confirm and send email"
 
     within("#status") { expect(page).to have_text("Approved") }
-    within("#comment-history") { expect(page).to have_text("Approved by Alice!") }
+
+    within("#comment-history") do
+      expect(page).to have_text("#{user.email} - Approved by Alice!")
+    end
 
     ee = enrollment_exemption.reload
     expect(ee.accept_reject_decision_user_id).to be_present

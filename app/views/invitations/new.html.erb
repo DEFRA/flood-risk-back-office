@@ -1,6 +1,6 @@
-<% @page_title = t("devise.invitations.new.header") %>
+<% content_for :title, t("devise.invitations.new.header") %>
 
-<h1 class="govuk-heading-l"><%= @page_title %></h1>
+<h1 class="govuk-heading-l"><%= t("devise.invitations.new.header") %></h1>
 
 <%= form_for resource,
              as: resource_name,

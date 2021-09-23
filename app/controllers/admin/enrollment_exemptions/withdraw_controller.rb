@@ -27,7 +27,8 @@ module Admin
       def withdrawal_params
         {
           status: :withdrawn,
-          comment_event: "Withdrawn exemption"
+          comment_event: "Withdrawn exemption",
+          comment_user_id: current_user.id
         }
       end
 

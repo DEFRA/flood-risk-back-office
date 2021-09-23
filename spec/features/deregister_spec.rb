@@ -21,7 +21,7 @@ RSpec.describe "Deregister an enrollment", type: :feature do
 
     within("#comment-history") do
       expect(page).to have_text("Deregistered exemption with Operator failings")
-      expect(page).to have_text("Deregistered by Alice!")
+      expect(page).to have_text("#{user.email} - Deregistered by Alice!")
     end
   end
 

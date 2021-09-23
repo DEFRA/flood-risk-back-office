@@ -17,7 +17,7 @@ RSpec.describe "Withdraw an enrollment", type: :feature do
     click_on "Withdraw"
 
     within("#status") { expect(page).to have_text("Withdrawn") }
-    within("#comment-history") { expect(page).to have_text("Withdrawn by Alice!") }
+    within("#comment-history") { expect(page).to have_text("#{user.email} - Withdrawn by Alice!") }
   end
 
   scenario "unsuccessfully" do
