@@ -44,8 +44,16 @@ RSpec.describe EnrollmentExemption do
       end
 
       context "and a comment" do
+        let(:user) { create(:user) }
+
         before do
-          params.merge!({ comment_content: "Hola!", comment_event: "Approved" })
+          params.merge!(
+            {
+              comment_content: "Hola!",
+              comment_event: "Approved",
+              comment_user_id: user.id
+            }
+          )
 
           subject
         end
@@ -55,6 +63,7 @@ RSpec.describe EnrollmentExemption do
         it "creates a comment" do
           expect(comment.content).to eq("Hola!")
           expect(comment.event).to eq("Approved")
+          expect(comment.user).to eq(user)
         end
 
         it "updates the status" do

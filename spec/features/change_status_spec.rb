@@ -19,7 +19,7 @@ RSpec.describe "Change status", type: :feature do
 
     within("#status") { expect(page).to have_text("Withdrawn") }
     within("#comment-history") do
-      expect(page).to have_text("Changed by Alice!")
+      expect(page).to have_text("#{user.email} - Changed by Alice!")
       expect(page).to have_text("Changed exemption from #{enrollment_exemption.status} to withdrawn")
     end
   end

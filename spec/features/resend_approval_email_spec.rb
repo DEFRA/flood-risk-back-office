@@ -19,7 +19,7 @@ RSpec.describe "Resend an approval email", type: :feature do
     click_on "Confirm and send email"
 
     within("#comment-history") do
-      expect(page).to have_text("Reissued by Alice!")
+      expect(page).to have_text("#{user.email} - Reissued by Alice!")
       expect(page).to have_text("Reissued registration approved email")
     end
   end
