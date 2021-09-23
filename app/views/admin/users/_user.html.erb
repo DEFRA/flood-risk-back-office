@@ -1,4 +1,4 @@
-<tr class="govuk-table__row">
+<tr class="govuk-table__row" id="user_<%= user.id %>">
   <td class="govuk-table__cell"><%= user.email %></td>
   <td class="govuk-table__cell"><%= user.roles.map { |r| t(r.name, scope: "allowed_roles") }.join("<br/>").html_safe %></td>
   <td class="govuk-table__cell govuk-!-font-weight-bold">
@@ -13,7 +13,7 @@
     <% end %>
   </td>
 
-  <td class="user-status govuk-table__cell govuk-!-font-weight-bold">
+  <td class="govuk-table__cell govuk-!-font-weight-bold">
     <% if user.enabled? %>
       <%= t(".enabled") %>
     <% else %>
