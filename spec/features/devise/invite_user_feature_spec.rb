@@ -63,6 +63,20 @@ RSpec.feature "Invite user" do
         expect(page).to have_css(".govuk-error-message", text: "Email address has already been taken")
       end
 
+      scenario "Invite a user who has already been invited - doesn't add a new user or role" do
+        user = User.invite!(email: email_addr)
+        user.add_role :data_agent
+
+        fill_in "Email", with: email_addr
+        select "System user", from: "Role"
+
+        expect do
+          click_button "Send an invitation"
+        end.not_to change(User, :count)
+
+        expect(user.roles.map(&:name)).to eq(["data_agent"])
+      end
+
       scenario "Invite user (no role selected)" do
         fill_in "Email", with: email_addr
 
