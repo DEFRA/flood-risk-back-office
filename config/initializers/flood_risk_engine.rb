@@ -46,5 +46,7 @@ FloodRiskEngine.configure do |config|
     :session_id,
     :authenticity_token
   ]
+
+  config.companies_house_api_key = ENV["COMPANIES_HOUSE_API_KEY"]
 end
 FloodRiskEngine.start_airbrake
