@@ -12,6 +12,7 @@ gem "pundit"
 gem "rails", "~> 6.0.3"
 gem "rolify"
 gem "sass-rails"
+gem "secure_headers"
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
 gem "uglifier"
