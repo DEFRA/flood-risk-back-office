@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: e40d6a198f068218b5b7fc71252f3ba0d28e5c5e
+  revision: 50bbebd638c3a4c37656715f6c6931a26c314961
   branch: rails6
   specs:
     flood_risk_engine (1.1)
@@ -13,7 +13,6 @@ GIT
       defra_ruby_validators
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
-      has_secure_token (~> 1.0.0)
       high_voltage (~> 3.0)
       nokogiri (>= 1.11)
       os_map_ref (= 0.4.2)
@@ -1369,8 +1368,6 @@ GEM
       activemodel (>= 6.0)
       activesupport (>= 6.0)
       deep_merge (~> 1.2.1)
-    has_secure_token (1.0.0)
-      activerecord (>= 3.0)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
     http-accept (1.7.0)
