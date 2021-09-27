@@ -37,7 +37,7 @@ class InvitationsController < ::Devise::InvitationsController
         res.errors.add :assigned_role, :inclusion
       end
 
-      res.add_role res.assigned_role if res.errors.empty? && res.assigned_role.present?
+      res.add_role res.assigned_role if res.errors.empty? && res.assigned_role.present? && res.roles.empty?
 
       # rubocop:disable Style/SafeNavigation
       # TODO: Tried changing this to use rubocop suggested Safe navigation format
