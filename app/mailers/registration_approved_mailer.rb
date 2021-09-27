@@ -1,6 +1,6 @@
 class RegistrationApprovedMailer < ActionMailer::Base
 
-  add_template_helper(FloodRiskEngine::EmailHelper)
+  helper(FloodRiskEngine::EmailHelper)
 
   layout "layouts/backend_mail"
 
