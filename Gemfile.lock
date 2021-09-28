@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 50bbebd638c3a4c37656715f6c6931a26c314961
+  revision: 3f2f1b6683a1891519edf3d08d534c0a37df565f
   branch: rails6
   specs:
     flood_risk_engine (1.1)
@@ -14,6 +14,7 @@ GIT
       dibber (~> 0.5)
       dotenv-rails (~> 2.1)
       high_voltage (~> 3.0)
+      jquery-rails (~> 4.4)
       nokogiri (>= 1.11)
       os_map_ref (= 0.4.2)
       phonelib (~> 0.6)
@@ -1376,6 +1377,10 @@ GEM
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
+    jquery-rails (4.4.0)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
     json (2.5.1)
     jwt (2.2.3)
     kaminari (1.2.1)
@@ -1611,6 +1616,7 @@ DEPENDENCIES
   fuubar
   github_changelog_generator
   govuk_design_system_formbuilder
+  jquery-rails (~> 4.4)
   kaminari
   launchy
   paper_trail
