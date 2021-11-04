@@ -1588,6 +1588,8 @@ GEM
     websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    whenever-test (1.0.1)
+      whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -1638,6 +1640,7 @@ DEPENDENCIES
   uglifier
   validates_timeliness
   whenever
+  whenever-test (~> 1.0)
 
 RUBY VERSION
    ruby 2.7.1p83
