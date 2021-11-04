@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 36f141313f0f4dc5706d37a0ee257a37fd5adfde
-  branch: rails6
+  revision: 183b39d3a81c762ad92529b180e0b3024bdb1c2d
+  branch: fix/timestamps
   specs:
     flood_risk_engine (1.1)
       aasm (~> 4.12)
@@ -97,7 +97,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrake (12.0.0)
       airbrake-ruby (~> 6.0)
-    airbrake-ruby (6.0.0)
+    airbrake-ruby (6.0.1)
       rbtree3 (~> 0.5)
     ast (2.4.2)
     async (1.30.1)
@@ -1278,8 +1278,8 @@ GEM
       rest-client (~> 2.0)
     defra_ruby_alert (2.1.1)
       airbrake
-    defra_ruby_area (2.0.1)
-      nokogiri (~> 1.11.1)
+    defra_ruby_area (2.0.2)
+      nokogiri (>= 1.11.1, < 1.13.0)
       rest-client (~> 2.0)
     defra_ruby_aws (0.4.1)
       aws-sdk-s3

@@ -48,5 +48,8 @@ module FloodRiskBackOffice
     # SassC::SyntaxError: Error: "calc(0px)" is not a number for `max'
     # https://github.com/alphagov/govuk-frontend/issues/1350
     config.assets.css_compressor = nil
+
+    # Database cleanup
+    config.max_transient_registration_age_days = ENV["MAX_TRANSIENT_REGISTRATION_AGE_DAYS"] || 30
   end
 end

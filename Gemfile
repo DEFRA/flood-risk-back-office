@@ -22,7 +22,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "rails6"
+    branch: "fix/timestamps"
 
 gem "defra_ruby_aws"
 gem "defra_ruby_email"

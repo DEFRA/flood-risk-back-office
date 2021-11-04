@@ -2,8 +2,8 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
 
   create_table "flood_risk_engine_comments", id: :serial, force: :cascade do |t|
     t.integer "user_id"
-    t.integer "commentable_id"
     t.string "commentable_type"
+    t.integer "commentable_id"
     t.text "content"
     t.string "event"
     t.datetime "created_at", null: false
@@ -161,7 +161,6 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.integer "org_type"
     t.string "registration_number", limit: 12
     t.text "searchable_content"
-    t.index ["contact_id"], name: "index_flood_risk_engine_organisations_on_contact_id"
     t.index ["org_type"], name: "index_flood_risk_engine_organisations_on_org_type"
     t.index ["registration_number"], name: "index_flood_risk_engine_organisations_on_registration_number"
     t.index ["searchable_content"], name: "index_flood_risk_engine_organisations_on_searchable_content"
@@ -196,8 +195,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
 
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
-    t.integer "resource_id"
     t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -231,6 +230,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.bigint "addressable_id"
     t.string "uprn"
     t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addressables"
   end
 
@@ -238,6 +239,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "full_name"
     t.string "temp_postcode"
     t.bigint "transient_registration_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
   end
 
@@ -247,6 +250,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.date "expires_on"
     t.bigint "transient_registration_id"
     t.bigint "flood_risk_engine_exemption_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["flood_risk_engine_exemption_id"], name: "exemption_id"
     t.index ["transient_registration_id"], name: "transient_registration_id"
   end
@@ -254,6 +259,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
   create_table "transient_registrations", force: :cascade do |t|
     t.string "token"
     t.string "workflow_state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "type", default: "FloodRiskEngine::NewRegistration", null: false
     t.string "additional_contact_email"
     t.string "business_type"
@@ -286,8 +293,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer "invitation_limit"
-    t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.integer "invited_by_id"
     t.integer "invitations_count", default: 0
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
