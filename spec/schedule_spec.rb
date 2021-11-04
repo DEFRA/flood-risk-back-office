@@ -40,7 +40,8 @@ RSpec.describe "Whenever schedule" do
   end
 
   it "can determine the configured cron log output path" do
-    expected_output_file = File.join("/srv/ruby/flood-risk-activity-exemption-back-office/shared/log/", "whenever_cron.log")
+    expected_output_file = File.join("/srv/ruby/flood-risk-activity-exemption-back-office/shared/log/",
+                                     "whenever_cron.log")
     expect(schedule.sets[:output]).to eq(expected_output_file)
   end
 
