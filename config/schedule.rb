@@ -39,3 +39,8 @@ every :day, at: (ENV["EXPORT_SERVICE_EPR_EXPORT_TIME"] || "21:05"), roles: [:db]
   rake "reports:export:epr"
 end
 
+# This is the transient registration cleanup job which will delete all records
+# that are more than 30 days old, as well as associated records
+every :day, at: (ENV["CLEANUP_TRANSIENT_REGISTRATIONS_RUN_TIME"] || "00:35"), roles: [:db] do
+  rake "cleanup:transient_registrations"
+end
