@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 36f141313f0f4dc5706d37a0ee257a37fd5adfde
+  revision: 982f67ffc0c657dd9dee4a62e1fac6d3b778899a
   branch: rails6
   specs:
     flood_risk_engine (1.1)
@@ -97,7 +97,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrake (12.0.0)
       airbrake-ruby (~> 6.0)
-    airbrake-ruby (6.0.0)
+    airbrake-ruby (6.0.1)
       rbtree3 (~> 0.5)
     ast (2.4.2)
     async (1.30.1)
@@ -1278,8 +1278,8 @@ GEM
       rest-client (~> 2.0)
     defra_ruby_alert (2.1.1)
       airbrake
-    defra_ruby_area (2.0.1)
-      nokogiri (~> 1.11.1)
+    defra_ruby_area (2.0.2)
+      nokogiri (>= 1.11.1, < 1.13.0)
       rest-client (~> 2.0)
     defra_ruby_aws (0.4.1)
       aws-sdk-s3
@@ -1588,6 +1588,8 @@ GEM
     websocket-extensions (0.1.5)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    whenever-test (1.0.1)
+      whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -1638,6 +1640,7 @@ DEPENDENCIES
   uglifier
   validates_timeliness
   whenever
+  whenever-test (~> 1.0)
 
 RUBY VERSION
    ruby 2.7.1p83
