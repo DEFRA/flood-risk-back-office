@@ -15,7 +15,7 @@ RSpec.describe "Whenever schedule" do
 
   it "makes sure 'rake' statements exist" do
     rake_jobs = schedule.jobs[:rake]
-    expect(rake_jobs.count).to eq(3)
+    expect(rake_jobs.count).to eq(4)
   end
 
   it "picks up the area lookup run frequency and time" do
