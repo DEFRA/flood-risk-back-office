@@ -44,3 +44,10 @@ end
 every :day, at: (ENV["CLEANUP_TRANSIENT_REGISTRATIONS_RUN_TIME"] || "00:35"), roles: [:db] do
   rake "cleanup:transient_registrations"
 end
+
+# This runs daily and cleans up sessions that have not been updated in the
+# last 30 days. The intention is to prevent the session table from growing
+# too big. More info: https://github.com/rails/activerecord-session_store
+every :day, at: (ENV["CLEANUP_SESSIONS_TABLE_TIME"] || "01:00"), roles: [:db] do
+  rake "db:sessions:trim"
+end
