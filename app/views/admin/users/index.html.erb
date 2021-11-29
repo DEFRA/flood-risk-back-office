@@ -20,7 +20,9 @@
     <th class="govuk-table__header" scope="col" colspan="2"><%= User.human_attribute_name "actions" %></th>
   </thead>
   <tbody class="govuk-table__body">
-    <%= render collection: @users, partial: 'admin/users/user' %>
+    <% @users.each do |user| %>
+      <%= render partial: 'admin/users/user', locals: { user: user } %>
+    <% end %>
   </tbody>
 </table>
 
