@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.7.1"
 
-gem "aws-sdk-resources"
+gem "aws-sdk-s3"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
