@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       AWS_DAILY_EXPORT_BUCKET: bucket_name
+      NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
       PG_USERNAME: postgres
       PG_PASSWORD: pinafore
       TZ: UTC

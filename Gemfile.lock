@@ -472,6 +472,7 @@ GEM
       i18n
     validates_timeliness (5.0.0)
       timeliness (>= 0.3.10, < 1)
+    vcr (6.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket-driver (0.7.5)
@@ -530,6 +531,7 @@ DEPENDENCIES
   simplecov (~> 0.17.1)
   uglifier
   validates_timeliness
+  vcr
   whenever
   whenever-test (~> 1.0)
 

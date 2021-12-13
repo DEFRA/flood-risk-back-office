@@ -2,7 +2,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe SendRegistrationApprovedEmail, type: :service do
-    let(:mailer) { RegistrationApprovedMailer }
+    let(:email_service) { ::Notify::RegistrationApprovedEmailService }
 
     let(:enrollment) { create(:approved_individual) }
     let(:enrollment_exemption) { enrollment.enrollment_exemptions.first }
@@ -45,20 +45,15 @@ module FloodRiskEngine
 
           expect(primary_contact_email).to_not eq(secondary_contact_email)
 
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:twice)
+          expect(email_service).to receive(:run)
+            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .exactly(:once)
+
+          expect(email_service).to receive(:run)
+            .with(enrollment: enrollment, recipient_address: secondary_contact_email)
+            .exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 2
-
-          expect(mailer).to receive(:approved)
-            .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: primary_contact_email)
-            .and_return(message_delivery)
-
-          expect(mailer).to receive(:approved)
-            .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: secondary_contact_email)
-            .and_return(message_delivery)
 
           service_object.call
         end
@@ -79,15 +74,11 @@ module FloodRiskEngine
           expect(primary_contact_email).to_not be_blank
           expect(primary_contact_email).to eq(enrollment.secondary_contact.email_address)
 
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:once)
-
           service_object = described_class.new(enrollment_exemption)
 
-          expect(mailer).to receive(:approved)
+          expect(email_service).to receive(:run)
+            .with(enrollment: enrollment, recipient_address: primary_contact_email)
             .exactly(:once)
-            .with(enrollment_exemption: enrollment_exemption, recipient_address: primary_contact_email)
-            .and_return(message_delivery)
 
           expect(service_object.distinct_recipients.size).to eq 1
           service_object.call
@@ -110,17 +101,11 @@ module FloodRiskEngine
 
           expect(enrollment.correspondence_contact.email_address).to_not be_blank
 
-          expect(service_object.distinct_recipients.size).to eq 1
-
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:once)
-
-          expect(mailer).to receive(:approved)
+          expect(email_service).to receive(:run)
+            .with(enrollment: enrollment, recipient_address: enrollment.correspondence_contact.email_address)
             .exactly(:once)
-            .with(
-              enrollment_exemption: enrollment_exemption,
-              recipient_address: enrollment.correspondence_contact.email_address
-            ).and_return(message_delivery)
+
+          expect(service_object.distinct_recipients.size).to eq 1
 
           service_object.call
         end
