@@ -38,11 +38,16 @@ class ExemptionEmailPresenter
     organisation.try(&:partnership?)
   end
 
-  # For partnerships there's no organisation name
-  def organisation_name
-    return if partnership?
-
-    organisation.name
+  def organisation_name_and_address
+    val =
+      if partnership?
+        partners.map do |partner|
+          [partner.full_name] + address_parts_for_email(partner.address)
+        end
+      else
+        [organisation.name] + address_parts_for_email(primary_address)
+      end
+    val.join("\n")
   end
 
   def address_parts_for_email(address)
@@ -62,15 +67,19 @@ class ExemptionEmailPresenter
   end
 
   def asset?
-    enrollment_exemption.asset_found?
+    enrollment_exemption.asset_found? ? "yes" : "no"
   end
 
   def salmonid?
-    enrollment_exemption.salmonid_river_found?
+    enrollment_exemption.salmonid_river_found? ? "yes" : "no"
   end
 
   def decision_date
     ldate(accept_reject_decision_at, format: :long)
+  end
+
+  def contact_name_and_position
+    [full_name, position].compact.join(", ").to_s
   end
 
   private

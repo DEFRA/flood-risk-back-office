@@ -14,11 +14,10 @@ class SendRegistrationApprovedEmail
     validate_enrollment
 
     distinct_recipients.each do |recipient|
-      mailer = RegistrationApprovedMailer.approved(
-        enrollment_exemption: enrollment_exemption,
+      Notify::RegistrationApprovedEmailService.run(
+        enrollment: enrollment,
         recipient_address: recipient
       )
-      mailer.deliver_later
     end
   end
 
