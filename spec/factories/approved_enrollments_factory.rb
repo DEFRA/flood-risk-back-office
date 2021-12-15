@@ -12,6 +12,8 @@ FactoryBot.define do
     factory :"approved_#{ot}", parent: :"submitted_#{ot}", traits: [:accept_reject_common] do
       after(:create) do |object|
         ee = object.enrollment_exemptions.first
+        ee.asset_found = true
+        ee.salmonid_river_found = true
         ee.comments << build_list(:comment, rand(5), :with_user_id, event: "Approved exemption")
         ee.approved!
         object.update secondary_contact: create(:contact)
