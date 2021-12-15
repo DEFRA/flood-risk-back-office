@@ -156,6 +156,8 @@ GEM
     concurrent-ruby (1.0.5)
     console (1.14.0)
       fiber-local
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     database_cleaner (2.0.1)
       database_cleaner-active_record (~> 2.0.0)
@@ -259,6 +261,7 @@ GEM
       activemodel (>= 6.0)
       activesupport (>= 6.0)
       deep_merge (~> 1.2.1)
+    hashdiff (1.0.1)
     high_voltage (3.1.2)
     htmlentities (4.3.4)
     http-accept (1.7.0)
@@ -475,6 +478,10 @@ GEM
     vcr (6.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    webmock (3.14.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -532,6 +539,7 @@ DEPENDENCIES
   uglifier
   validates_timeliness
   vcr
+  webmock
   whenever
   whenever-test (~> 1.0)
 

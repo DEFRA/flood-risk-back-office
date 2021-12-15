@@ -57,6 +57,7 @@ group :test do
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
   gem "simplecov", "~> 0.17.1", require: false
   gem "vcr"
+  gem "webmock"
   gem "whenever-test", "~> 1.0"
 end
 
