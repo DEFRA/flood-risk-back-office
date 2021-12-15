@@ -2,7 +2,7 @@ require "rails_helper"
 
 module FloodRiskEngine
   RSpec.describe SendRegistrationRejectedEmail, type: :service do
-    let(:mailer) { RegistrationRejectedMailer }
+    let(:email_service) { ::Notify::RegistrationRejectedEmailService }
 
     let(:enrollment) { create(:rejected_individual) }
     let(:enrollment_exemption) { enrollment.enrollment_exemptions.first }
@@ -42,28 +42,22 @@ module FloodRiskEngine
           expect(secondary_contact_email).to be_present
           expect(primary_contact_email).to_not eq(secondary_contact_email)
 
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:twice)
-
-          expect(mailer).to receive(:rejected)
-            .exactly(:once)
+          expect(email_service).to receive(:run)
             .with(
-              enrollment_exemption: enrollment_exemption,
+              enrollment: enrollment,
               recipient_address: enrollment.correspondence_contact.email_address
-            )
-            .and_return(message_delivery)
+            ).exactly(:once)
 
-          expect(mailer).to receive(:rejected)
-            .exactly(:once)
+          expect(email_service).to receive(:run)
             .with(
-              enrollment_exemption: enrollment_exemption,
+              enrollment: enrollment,
               recipient_address: enrollment.secondary_contact.email_address
-            )
-            .and_return(message_delivery)
+            ).exactly(:once)
 
           service_object = described_class.new(enrollment_exemption)
 
           expect(service_object.distinct_recipients.size).to eq 2
+
           service_object.call
         end
       end
@@ -79,18 +73,13 @@ module FloodRiskEngine
           expect(enrollment.correspondence_contact.email_address).to_not be_blank
           enrollment.update secondary_contact: secondary_contact
 
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:once)
-
           service_object = described_class.new(enrollment_exemption)
 
-          expect(mailer).to receive(:rejected)
-            .exactly(:once)
+          expect(email_service).to receive(:run)
             .with(
-              enrollment_exemption: enrollment_exemption,
+              enrollment: enrollment,
               recipient_address: enrollment.correspondence_contact.email_address
-            )
-            .and_return(message_delivery)
+            ).exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 1
           service_object.call
@@ -113,16 +102,11 @@ module FloodRiskEngine
 
           expect(service_object.distinct_recipients.size).to eq 1
 
-          message_delivery = instance_double(ActionMailer::MessageDelivery)
-          expect(message_delivery).to receive(:deliver_later).exactly(:once)
-
-          expect(mailer).to receive(:rejected)
-            .exactly(:once)
+          expect(email_service).to receive(:run)
             .with(
-              enrollment_exemption: enrollment_exemption,
+              enrollment: enrollment,
               recipient_address: enrollment.correspondence_contact.email_address
-            )
-            .and_return(message_delivery)
+            ).exactly(:once)
 
           service_object.call
         end
@@ -131,24 +115,9 @@ module FloodRiskEngine
 
     describe ".for" do
       it "sends an email to each address" do
-        message_delivery = instance_double(ActionMailer::MessageDelivery)
-        expect(message_delivery).to receive(:deliver_later).exactly(:twice)
-
-        expect(mailer).to receive(:rejected)
-          .exactly(:once)
-          .with(
-            enrollment_exemption: enrollment_exemption,
-            recipient_address: enrollment.correspondence_contact.email_address
-          )
-          .and_return(message_delivery)
-
-        expect(mailer).to receive(:rejected)
-          .exactly(:once)
-          .with(
-            enrollment_exemption: enrollment_exemption,
-            recipient_address: enrollment.secondary_contact.email_address
-          )
-          .and_return(message_delivery)
+        expect(email_service)
+          .to receive(:run)
+          .exactly(:twice)
 
         described_class.for enrollment_exemption
       end

@@ -1,6 +1,0 @@
----
-en:
-  admin:
-    registration_rejected_mailer:
-      rejected:
-        subject: Flood risk activity exemption - not registered
