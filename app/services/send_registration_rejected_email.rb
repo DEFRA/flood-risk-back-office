@@ -13,11 +13,10 @@ class SendRegistrationRejectedEmail
   def call
     validate_enrollment
     distinct_recipients.each do |recipient|
-      mailer = RegistrationRejectedMailer.rejected(
-        enrollment_exemption: enrollment_exemption,
+      Notify::RegistrationRejectedEmailService.run(
+        enrollment: enrollment,
         recipient_address: recipient
       )
-      mailer.deliver_later
     end
   end
 
