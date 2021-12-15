@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/email
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"krystyna_upton@example.net","template_id":"bbe3ae28-f34e-4215-9f56-a23827aa02c3","personalisation":{"registration_number":"EXFRA001001"}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/5.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Dec 2021 11:29:26 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-B3-Spanid:
+      - 921e8beac5356d92
+      X-B3-Traceid:
+      - 921e8beac5356d92
+      X-Vcap-Request-Id:
+      - 40ffff78-2a81-4059-4732-0a9e52423c52
+      Content-Length:
+      - '1464'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"content":{"body":"#We have not registered your flood risk activity
+        exemption\r\nbecause it''s in an environmentally sensitive location\r\n---\r\n\r\nYour
+        reference is EXFRA001001\r\n\r\nYou must not do any work on the proposed activity.\r\n\r\n#What
+        you can do\r\n\r\nIf you want to do the work at this location, you will have
+        to apply for a permit:\r\nhttps://www.gov.uk/guidance/flood-risk-activities-environmental-permits\r\n\r\nIf
+        you are able to do the activity at a different place you might be able to
+        register an exemption. Contact us to check a new location.\r\n\r\nYou can''t
+        appeal because your activity is in an environmentally sensitive location.
+        That means you can''t meet the conditions for an exemption and would need
+        to apply for a permit.\r\n---\r\n#Contact the Environment Agency\r\n\r\nenquiries@environment-agency.gov.uk\r\nTelephone:
+        03708 506 506\r\nMinicom: 03702 422 549\r\nMonday to Friday, 8am to 6pm","from_email":"flood.risk.activity.exemption@notifications.service.gov.uk","subject":"Flood
+        risk activity exemption \u2013 not registered"},"id":"22439c74-4e7c-481e-aa57-421064db8dc2","reference":null,"scheduled_for":null,"template":{"id":"bbe3ae28-f34e-4215-9f56-a23827aa02c3","uri":"https://api.notifications.service.gov.uk/services/3c49a0a8-ac02-4b40-88de-bcba588c0e6c/templates/bbe3ae28-f34e-4215-9f56-a23827aa02c3","version":2},"uri":"https://api.notifications.service.gov.uk/v2/notifications/22439c74-4e7c-481e-aa57-421064db8dc2"}
+
+'
+  recorded_at: Wed, 15 Dec 2021 11:29:14 GMT
+recorded_with: VCR 6.0.0

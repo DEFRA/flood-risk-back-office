@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.notifications.service.gov.uk/v2/notifications/email
+    body:
+      encoding: UTF-8
+      string: '{"email_address":"jae@example.com","template_id":"c814587b-1368-4f64-a9b9-da101f9a078b","personalisation":{"registration_number":"EXFRA001003","exemption_description":"Awesome
+        Linen Pants FRA_RSPEC_192.","grid_reference":"OQ 00118 00118","assets":"no","salmonid":"no","decision_date":"15
+        November 2021 23:44","organisation_name_and_address":"Greenfelder, Kunde and
+        Stanton\n7681, 8417 Kenneth Island\nSouth\nJavierview\nBS1 5AH","contact_name_and_position":"Vincenzo
+        Graham, advocate","contact_phone":"0500 156528","contact_email":"hannah.von@example.org"}}'
+    headers:
+      User-Agent:
+      - NOTIFY-API-RUBY-CLIENT/5.3.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic <API_KEY>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Access-Control-Allow-Headers:
+      - Content-Type,Authorization
+      Access-Control-Allow-Methods:
+      - GET,PUT,POST,DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 15 Dec 2021 11:29:34 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains
+      X-B3-Spanid:
+      - c936e66648e12178
+      X-B3-Traceid:
+      - c936e66648e12178
+      X-Vcap-Request-Id:
+      - 66cc2522-dfa2-48ce-7535-888fc3082570
+      Content-Length:
+      - '2485'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"content":{"body":"#We\u2019ve registered your flood risk activity
+        exemption\r\n---\r\n\r\n^Your reference is EXFRA001003\r\n\r\n\r\nExemption
+        registered\r\n---\r\nAwesome Linen Pants FRA_RSPEC_192.\r\nat grid reference
+        OQ 00118 00118.\r\n---\r\n#Before you start work\r\n\r\n# Check you can meet
+        the exemption conditions\r\n\r\nYou should re-check you can meet the description
+        and conditions of your exemption in the flood risk exemptions guidance:\r\nhttps://www.gov.uk/government/publications/environmental-permitting-regulations-exempt-flood-risk-activities\r\n\r\n\r\n\r\n\r\n\r\n#
+        Other things to check\r\n\r\nYou should check if there are protected species
+        in the area. If there are, you must make sure your activity doesn\u2019t harm
+        them. You may also need planning permission and to get the landowner''s permission
+        to enter the land.\r\n---\r\n\r\nDate of registration\r\n15 November 2021
+        23:44\r\n\r\nExemptions don\u2019t expire except for dredging FRA23 which
+        expires 3 years after the registration date and dredging FRA24 which expires
+        1 year after the registration date.\r\n---\r\nResponsible for activity (the
+        \u2018operator\u2019)\r\n-----------------------------------------\r\nGreenfelder,
+        Kunde and Stanton\n7681, 8417 Kenneth Island\nSouth\nJavierview\nBS1 5AH \r\n---\r\nWho
+        we will contact\r\n  Vincenzo Graham, advocate\r\n  Tel: 0500 156528\r\n  hannah.von@example.org\r\n---\r\nResponsibilities
+        of the operator\r\nThe organisation or individual responsible must keep to
+        the description and conditions for the exemption. We can prosecute them if
+        they don\u2019t do this.\r\n---\r\n#If your activity changes\r\n\r\nIf the
+        location changes, you will need to register a new exemption.\r\n\r\nIf the
+        activity or the way you are doing the work changes, you will need to check
+        if it is still exempt. If it is not, you will have to apply for a permit:\r\nhttps://www.gov.uk/guidance/flood-risk-activities-environmental-permits","from_email":"flood.risk.activity.exemption@notifications.service.gov.uk","subject":"Flood
+        risk activity exemption successfully registered"},"id":"293d27e2-461c-4ad8-93f4-75543cbf8285","reference":null,"scheduled_for":null,"template":{"id":"c814587b-1368-4f64-a9b9-da101f9a078b","uri":"https://api.notifications.service.gov.uk/services/3c49a0a8-ac02-4b40-88de-bcba588c0e6c/templates/c814587b-1368-4f64-a9b9-da101f9a078b","version":10},"uri":"https://api.notifications.service.gov.uk/v2/notifications/293d27e2-461c-4ad8-93f4-75543cbf8285"}
+
+'
+  recorded_at: Wed, 15 Dec 2021 11:29:22 GMT
+recorded_with: VCR 6.0.0
