@@ -49,7 +49,7 @@ module Notify
 
     def organisation_name_and_address
       FormatOrganisationAddressService.run(
-        organisation: @enrollment.organisation, separator: "\n"
+        organisation: @enrollment.organisation, line_separator: "\n"
       )
     end
 
