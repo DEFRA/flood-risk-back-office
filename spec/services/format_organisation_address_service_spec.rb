@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe FormatOrganisationAddressService, type: :service do
   context ".run" do
     subject do
-      described_class.run(organisation: organisation, separator: "\n")
+      described_class.run(organisation: organisation, line_separator: "\n")
     end
 
     context "limited_company" do
@@ -17,11 +17,9 @@ RSpec.describe FormatOrganisationAddressService, type: :service do
 
       it "formats the organisation's name and address" do
         expect(subject).to eq(
-          "#{organisation.name}\n"\
-          "#{address.premises}, #{address.street_address}\n"\
-          "#{address.locality}\n"\
-          "#{address.city}\n"\
-          "#{address.postcode}"
+          "#{organisation.name}, "\
+          "#{address.premises}, #{address.street_address}, "\
+          "#{address.locality}, #{address.city}, #{address.postcode}"
         )
       end
     end
@@ -41,16 +39,14 @@ RSpec.describe FormatOrganisationAddressService, type: :service do
 
       it "formats the partner's names and addresses" do
         expect(subject).to match(
-          "#{partner_one.full_name}\n"\
-          "#{partner_one.address.premises}, #{partner_one.address.street_address}\n"\
-          "#{partner_one.address.locality}\n"\
-          "#{partner_one.address.city}\n"\
-          "#{partner_one.address.postcode}\n"\
-          "#{partner_two.full_name}\n"\
-          "#{partner_two.address.premises}, #{partner_two.address.street_address}\n"\
-          "#{partner_two.address.locality}\n"\
-          "#{partner_two.address.city}\n"\
-          "#{partner_two.address.postcode}"
+          "#{partner_one.full_name}, "\
+          "#{partner_one.address.premises}, #{partner_one.address.street_address}, "\
+          "#{partner_one.address.locality}, "\
+          "#{partner_one.address.city}, #{partner_one.address.postcode}\n"\
+          "#{partner_two.full_name}, "\
+          "#{partner_two.address.premises}, #{partner_two.address.street_address}, "\
+          "#{partner_two.address.locality}, "\
+          "#{partner_two.address.city}, #{partner_two.address.postcode}"
         )
       end
     end

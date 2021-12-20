@@ -28,7 +28,7 @@ module Notify
       let(:expected_organisation_name_and_address) do
         FormatOrganisationAddressService.run(
           organisation: enrollment.organisation,
-          separator: "\n"
+          line_separator: "\n"
         )
       end
 
