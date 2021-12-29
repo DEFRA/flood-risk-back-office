@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: e11bf1ad90fb725a25d1077b34312a61f78a2727
+  revision: 64dc587dc13dc7d3418554679ead61a0e141e4f2
   branch: main
   specs:
     flood_risk_engine (1.1)
@@ -491,7 +491,7 @@ GEM
       whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.1)
+    zeitwerk (2.5.2)
 
 PLATFORMS
   ruby
