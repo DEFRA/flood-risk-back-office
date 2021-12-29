@@ -3,7 +3,6 @@
 ![Build Status](https://github.com/DEFRA/flood-risk-back-office/workflows/CI/badge.svg?branch=main)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-back-office&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-back-office)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_flood-risk-back-office&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_flood-risk-back-office)
-[![security](https://hakiri.io/github/DEFRA/flood-risk-back-office/main.svg)](https://hakiri.io/github/DEFRA/flood-risk-back-office/main)
 [![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
 
 A Ruby on Rails application delivering the [Flood risk activity exemptions service](https://register-flood-risk-exemption.service.gov.uk).
