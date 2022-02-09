@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 1ae56f767e8846fd7e1bed4476588d16b6524542
+  revision: 36fd837f16bfdf49262b4dea203de83557416106
   branch: main
   specs:
     flood_risk_engine (1.1)
@@ -96,7 +96,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    airbrake (12.0.0)
+    airbrake (13.0.0)
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.0.2)
       rbtree3 (~> 0.5)
