@@ -475,7 +475,7 @@ GEM
       i18n
     validates_timeliness (5.0.0)
       timeliness (>= 0.3.10, < 1)
-    vcr (6.0.0)
+    vcr (6.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     webmock (3.14.0)
