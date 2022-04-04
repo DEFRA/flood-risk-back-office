@@ -1,1 +1,1 @@
-FloodRiskEngine::FormsController.include Pundit
+FloodRiskEngine::FormsController.include Pundit::Authorization
