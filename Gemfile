@@ -18,7 +18,6 @@ gem "secure_headers"
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
 gem "uglifier"
-# gem "validates_timeliness"
 gem "whenever"
 
 gem "flood_risk_engine",
