@@ -28,7 +28,7 @@ module Admin
         enrollment_exemption_params.merge(
           {
             status: :deregistered,
-            comment_event: comment_event,
+            comment_event:,
             comment_user_id: current_user.id
           }
         )

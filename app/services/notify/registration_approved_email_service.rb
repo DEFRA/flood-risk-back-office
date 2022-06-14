@@ -7,16 +7,16 @@ module Notify
     def notify_options
       {
         email_address: @recipient_address,
-        template_id: template_id,
+        template_id:,
         personalisation: {
           registration_number: @enrollment.reference_number,
           exemption_description: enrollment_description,
-          grid_reference: grid_reference,
+          grid_reference:,
           assets: assets?,
           salmonid: salmonid?,
-          decision_date: decision_date,
-          organisation_name_and_address: organisation_name_and_address,
-          contact_name_and_position: contact_name_and_position,
+          decision_date:,
+          organisation_name_and_address:,
+          contact_name_and_position:,
           contact_phone: correspondence_contact.telephone_number,
           contact_email: correspondence_contact.email_address
         }

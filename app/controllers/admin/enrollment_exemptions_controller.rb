@@ -14,7 +14,7 @@ module Admin
       enrollment_exemption = load_and_authorise_enrollment_exemption
       presenter = EnrollmentExemptionPresenter.new(enrollment_exemption, view_context)
 
-      render :show, locals: { presenter: presenter }
+      render :show, locals: { presenter: }
     end
 
     private

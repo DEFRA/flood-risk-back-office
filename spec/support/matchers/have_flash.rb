@@ -1,6 +1,6 @@
 RSpec::Matchers.define :have_flash do |text|
   match do
-    expect(page).to have_css(".govuk-notification-banner", text: text)
+    expect(page).to have_css(".govuk-notification-banner", text:)
   end
 end
 

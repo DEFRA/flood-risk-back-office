@@ -199,6 +199,7 @@ GEM
       devise (>= 4.6)
     dibber (0.6.0)
     diff-lcs (1.5.0)
+    digest (3.1.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -310,6 +311,12 @@ GEM
     minitest (5.15.0)
     multi_json (1.15.0)
     multipart-post (2.1.1)
+    net-protocol (0.1.3)
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.5)
@@ -382,7 +389,7 @@ GEM
     rbtree3 (0.7.0)
     record_tag_helper (1.0.1)
       actionview (>= 5)
-    regexp_parser (2.3.1)
+    regexp_parser (2.5.0)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -418,16 +425,16 @@ GEM
     rspec-support (3.11.0)
     rspec_junit_formatter (0.5.1)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubocop (1.28.2)
+    rubocop (1.30.1)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.17.0, < 2.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.18.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.17.0)
+    rubocop-ast (1.18.0)
       parser (>= 3.1.1.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
@@ -463,7 +470,7 @@ GEM
       concurrent-ruby (~> 1.0.0)
     thor (1.2.1)
     tilt (2.0.10)
-    timeliness (0.4.4)
+    timeout (0.3.0)
     timers (4.3.3)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -477,8 +484,6 @@ GEM
     uniform_notifier (1.16.0)
     validates_email_format_of (1.6.3)
       i18n
-    validates_timeliness (5.0.0)
-      timeliness (>= 0.3.10, < 1)
     vcr (6.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -524,6 +529,7 @@ DEPENDENCIES
   jquery-rails (~> 4.4)
   kaminari
   launchy
+  net-smtp
   paper_trail
   passenger
   pg
@@ -541,14 +547,13 @@ DEPENDENCIES
   shoulda-matchers (~> 3.1.1)
   simplecov (~> 0.17.1)
   uglifier
-  validates_timeliness
   vcr
   webmock
   whenever
   whenever-test (~> 1.0)
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.1.4
+   2.3.15

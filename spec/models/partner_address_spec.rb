@@ -9,7 +9,7 @@ RSpec.describe PartnerAddress do
     let!(:enrollment) { create(:submitted_partnership) }
     let(:token) { enrollment.partners.first.contact.address.token }
 
-    let(:partner_address) { described_class.find_by(token: token) }
+    let(:partner_address) { described_class.find_by(token:) }
 
     it "assigns the contacts'full_name" do
       expect(partner_address.full_name).to eq(enrollment.partners.first.contact.full_name)
@@ -18,7 +18,7 @@ RSpec.describe PartnerAddress do
     it "updates the contact's full_name" do
       partner_address.update(full_name: "Alice Apples")
 
-      expect(PartnerAddress.find_by(token: token).full_name).to eq("Alice Apples")
+      expect(PartnerAddress.find_by(token:).full_name).to eq("Alice Apples")
     end
   end
 

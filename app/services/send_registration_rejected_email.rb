@@ -14,7 +14,7 @@ class SendRegistrationRejectedEmail
     validate_enrollment
     distinct_recipients.each do |recipient|
       Notify::RegistrationRejectedEmailService.run(
-        enrollment: enrollment,
+        enrollment:,
         recipient_address: recipient
       )
     end

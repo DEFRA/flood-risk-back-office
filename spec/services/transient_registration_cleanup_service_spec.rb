@@ -14,7 +14,7 @@ RSpec.describe TransientRegistrationCleanupService do
 
       it "deletes it" do
         expect { described_class.run }.to change {
-          FloodRiskEngine::TransientRegistration.where(id: id).count
+          FloodRiskEngine::TransientRegistration.where(id:).count
         }.from(1).to(0)
       end
 
@@ -50,7 +50,7 @@ RSpec.describe TransientRegistrationCleanupService do
     context "when a transient_registration is newer than 30 days" do
       it "does not delete it" do
         expect { described_class.run }.to_not change {
-          FloodRiskEngine::TransientRegistration.where(id: id).count
+          FloodRiskEngine::TransientRegistration.where(id:).count
         }.from(1)
       end
     end

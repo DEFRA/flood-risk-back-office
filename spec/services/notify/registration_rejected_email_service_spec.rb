@@ -13,7 +13,7 @@ module Notify
       let(:expected_notify_options) do
         {
           email_address: recipient_address,
-          template_id: template_id,
+          template_id:,
           personalisation: {
             registration_number: enrollment.reference_number
           }
@@ -30,8 +30,8 @@ module Notify
       subject do
         VCR.use_cassette("registration_rejected_sends_an_email") do
           described_class.run(
-            enrollment: enrollment,
-            recipient_address: recipient_address
+            enrollment:,
+            recipient_address:
           )
         end
       end

@@ -22,7 +22,7 @@ module Reports
     private
 
     def populate_temp_file
-      File.open(file_path, "w+") { |file| file.write(epr_report) }
+      File.write(file_path, epr_report)
     end
 
     def file_path

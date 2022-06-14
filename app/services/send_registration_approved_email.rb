@@ -15,7 +15,7 @@ class SendRegistrationApprovedEmail
 
     distinct_recipients.each do |recipient|
       Notify::RegistrationApprovedEmailService.run(
-        enrollment: enrollment,
+        enrollment:,
         recipient_address: recipient
       )
     end

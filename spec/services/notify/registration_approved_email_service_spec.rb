@@ -66,8 +66,8 @@ module Notify
       subject do
         VCR.use_cassette("registration_approved_sends_an_email") do
           described_class.run(
-            enrollment: enrollment,
-            recipient_address: recipient_address
+            enrollment:,
+            recipient_address:
           )
         end
       end

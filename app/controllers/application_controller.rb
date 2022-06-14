@@ -93,10 +93,10 @@ class ApplicationController < ActionController::Base
         exception.record.class.model_name
       end
 
-    human_name = model_name.human(count: count).downcase if exception.record
+    human_name = model_name.human(count:).downcase if exception.record
     default = I18n.t("pundit.defaults.#{act}", name: human_name) if human_name
 
-    I18n.t "pundit.#{policy_name}.#{act}", default: default
+    I18n.t "pundit.#{policy_name}.#{act}", default:
   end
 
   def set_cache_headers

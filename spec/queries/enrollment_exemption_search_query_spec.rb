@@ -14,7 +14,7 @@ RSpec.describe EnrollmentExemptionSearchQuery, type: :query do
       {
         search: {
           q: search_term,
-          status: status
+          status:
         }
       }
     )

@@ -14,28 +14,18 @@ class EnrollmentExport < ActiveRecord::Base
     decision_at: 1
   }
 
-  validates :from_date, presence: true
-  validates_date :from_date, on_or_before: :today, allow_blank: true
+  validate :from_date_on_or_before,
+           :to_date_on_or_before,
+           :to_date_on_or_after
 
-  validates :to_date, presence: true
-  validates_date :to_date, on_or_before: :today, allow_blank: true
-
-  validates_date :to_date, on_or_after: :from_date, allow_blank: true
-
-  validates :created_by, presence: true
-  validates :date_field_scope, presence: true
+  validates :from_date,
+            :to_date,
+            :created_by,
+            :date_field_scope,
+            presence: true
 
   def reportable_records
-    find_klazz = FloodRiskEngine::EnrollmentExemption
-
-    case date_field_scope
-      when "submitted_at"
-        find_klazz.reportable_by_submitted_at(from_date, to_date)
-      when "decision_at"
-        find_klazz.reportable_by_decision_at(from_date, to_date)
-      else
-        find_klazz.reportable_by_submitted_at(from_date, to_date)
-    end
+    FloodRiskEngine::EnrollmentExemption.send("reportable_by_#{date_field_scope}", from_date, to_date)
   end
 
   def csv_data
@@ -93,4 +83,23 @@ class EnrollmentExport < ActiveRecord::Base
     Rails.root.join("private", "exports", file_name)
   end
 
+  private
+
+  def from_date_on_or_before
+    return unless from_date
+
+    errors.add(:from_date, :on_or_before) unless from_date <= Date.today
+  end
+
+  def to_date_on_or_before
+    return unless to_date
+
+    errors.add(:to_date, :on_or_before) unless to_date <= Date.today
+  end
+
+  def to_date_on_or_after
+    return unless from_date && to_date
+
+    errors.add(:to_date, :on_or_after) unless to_date >= from_date
+  end
 end
