@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.1.2
   # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
   # use it to investigate what the fix may be.
   DisplayCopNames: true
@@ -21,6 +21,7 @@ AllCops:
     - "**/db/schema.rb"
     - "**/db/migrate/*"
     - "**/vendor/**/*"
+  NewCops: enable
 
 # Rubymine disagrees and not sure how to fix Rubymine indentation right now
 Layout/CaseIndentation:

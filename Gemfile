@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.7.1"
+ruby "3.1.2"
 
 gem "aws-sdk-s3"
 gem "devise"
@@ -7,6 +7,7 @@ gem "devise_invitable"
 gem "devise-security"
 gem "jquery-rails", "~> 4.4"
 gem "kaminari"
+gem "net-smtp"
 gem "paper_trail"
 gem "pg"
 gem "pundit"
@@ -17,7 +18,6 @@ gem "secure_headers"
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
 gem "uglifier"
-gem "validates_timeliness"
 gem "whenever"
 
 gem "flood_risk_engine",

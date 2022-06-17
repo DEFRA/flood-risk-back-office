@@ -46,11 +46,11 @@ module FloodRiskEngine
           expect(primary_contact_email).to_not eq(secondary_contact_email)
 
           expect(email_service).to receive(:run)
-            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .with(enrollment:, recipient_address: primary_contact_email)
             .exactly(:once)
 
           expect(email_service).to receive(:run)
-            .with(enrollment: enrollment, recipient_address: secondary_contact_email)
+            .with(enrollment:, recipient_address: secondary_contact_email)
             .exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 2
@@ -65,7 +65,7 @@ module FloodRiskEngine
         end
 
         it "sends one email to the shared address" do
-          enrollment.update(secondary_contact: secondary_contact)
+          enrollment.update(secondary_contact:)
 
           expect(enrollment_exemption).to be_approved
 
@@ -77,7 +77,7 @@ module FloodRiskEngine
           service_object = described_class.new(enrollment_exemption)
 
           expect(email_service).to receive(:run)
-            .with(enrollment: enrollment, recipient_address: primary_contact_email)
+            .with(enrollment:, recipient_address: primary_contact_email)
             .exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 1
@@ -102,7 +102,7 @@ module FloodRiskEngine
           expect(enrollment.correspondence_contact.email_address).to_not be_blank
 
           expect(email_service).to receive(:run)
-            .with(enrollment: enrollment, recipient_address: enrollment.correspondence_contact.email_address)
+            .with(enrollment:, recipient_address: enrollment.correspondence_contact.email_address)
             .exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 1

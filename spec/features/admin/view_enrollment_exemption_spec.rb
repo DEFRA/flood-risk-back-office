@@ -128,7 +128,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       let(:enrollment_exemption) do
         create(
           :enrollment_exemption,
-          enrollment: enrollment
+          enrollment:
         )
       end
 
@@ -177,11 +177,11 @@ RSpec.feature "View Enrollment Exemption Detail" do
   context "with comment history" do
     let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
     let(:user) { create :user }
-    let(:comment) { create :comment, user: user }
+    let(:comment) { create :comment, user: }
     let(:enrollment_exemption) do
       create(
         :enrollment_exemption,
-        enrollment: enrollment,
+        enrollment:,
         comments: [comment]
       )
     end

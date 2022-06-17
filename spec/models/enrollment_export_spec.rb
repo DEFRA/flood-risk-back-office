@@ -48,29 +48,28 @@ RSpec.describe EnrollmentExport do
 
     context "on_or_before" do
       let(:enrollment_export) { build(:enrollment_export) }
-
-      subject { enrollment_export.valid? }
+      let(:errors) do
+        enrollment_export.validate
+        enrollment_export.errors
+      end
 
       it "validates the from_date" do
         enrollment_export.from_date = 1.day.from_now
-        subject
 
-        expect(enrollment_export.errors[:from_date]).to include("From date cannot be in the future")
+        expect(errors[:from_date]).to include("From date cannot be in the future")
       end
 
       it "validates the to_date" do
         enrollment_export.to_date = 1.day.from_now
-        subject
 
-        expect(enrollment_export.errors[:to_date]).to include("To date cannot be in the future")
+        expect(errors[:to_date]).to include("To date cannot be in the future")
       end
 
       it "validates the to_date is not before the from_date" do
         enrollment_export.to_date = 2.days.ago
         enrollment_export.from_date = 1.day.ago
-        subject
 
-        expect(enrollment_export.errors[:to_date]).to include("To date must be on or after the from date")
+        expect(errors[:to_date]).to include("To date must be on or after the from date")
       end
     end
   end

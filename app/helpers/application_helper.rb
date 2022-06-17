@@ -4,6 +4,6 @@ module ApplicationHelper
 
     messages = resource.errors.messages.values.compact.map(&:to_sentence)
 
-    render "shared/validation_errors", messages: messages
+    render "shared/validation_errors", messages:
   end
 end

@@ -15,8 +15,7 @@ module Reports
         expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
         expect(EprSerializer).to receive(:new).and_return(epr_serializer)
 
-        expect(File).to receive(:open).and_yield(file)
-        expect(file).to receive(:write)
+        expect(File).to receive(:write)
 
         expect(DefraRuby::Aws).to receive(:get_bucket).and_return(bucket)
         expect(File).to receive(:new).and_return(file)
@@ -40,8 +39,7 @@ module Reports
         expect(epr_serializer).to receive(:to_csv).and_return(epr_report)
         expect(EprSerializer).to receive(:new).and_return(epr_serializer)
 
-        expect(File).to receive(:open).and_yield(file)
-        expect(file).to receive(:write)
+        expect(File).to receive(:write)
 
         expect(DefraRuby::Aws).to receive(:get_bucket).and_return(bucket)
         expect(File).to receive(:new).and_return(file).exactly(3).times

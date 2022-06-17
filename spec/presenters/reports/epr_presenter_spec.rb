@@ -22,7 +22,7 @@ module Reports
       let(:organisation) { double(:organisation, partnership?: false, name: "organisation name") }
 
       before do
-        allow(object).to receive(:enrollment).and_return(double(:enrollment, organisation: organisation))
+        allow(object).to receive(:enrollment).and_return(double(:enrollment, organisation:))
       end
 
       it "returns the organisation's name" do

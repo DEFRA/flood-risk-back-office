@@ -7,7 +7,7 @@ module Notify
     def notify_options
       {
         email_address: @recipient_address,
-        template_id: template_id,
+        template_id:,
         personalisation: {
           registration_number: @enrollment.reference_number
         }

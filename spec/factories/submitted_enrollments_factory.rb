@@ -36,7 +36,7 @@ FactoryBot.define do
           ee.valid_from = from
 
           to = DateTime.current.to_f
-          ee.accept_reject_decision_at = Time.zone.at(from.to_f + rand * (to - from.to_f))
+          ee.accept_reject_decision_at = Time.zone.at(from.to_f + (rand * (to - from.to_f)))
 
           user = User.limit(1).order("RANDOM()").pluck(:id).first || create(:user).id
           ee.accept_reject_decision_user_id = user

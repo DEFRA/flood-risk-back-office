@@ -27,7 +27,7 @@ FactoryBot.define do
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first
 
       object.enrollment_exemptions.create(
-        exemption: exemption,
+        exemption:,
         status: %w[pending being_processed].sample,
         valid_from: (Date.current - rand(7).days)
       )

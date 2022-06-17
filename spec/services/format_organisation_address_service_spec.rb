@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe FormatOrganisationAddressService, type: :service do
   context ".run" do
     subject do
-      described_class.run(organisation: organisation, line_separator: "\n")
+      described_class.run(organisation:, line_separator: "\n")
     end
 
     context "limited_company" do

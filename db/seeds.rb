@@ -4,8 +4,8 @@ FloodRiskEngine::Engine.load_seed
 
 def create_user(email, role)
   user = User.create!(
-    email: email,
-    password: ENV["DEFAULT_PASSWORD"] || "Secret123"
+    email:,
+    password: ENV.fetch("DEFAULT_PASSWORD", "Secret123")
   )
   user.add_role role
 end
