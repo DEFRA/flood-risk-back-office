@@ -7,7 +7,9 @@ gem "devise_invitable"
 gem "devise-security"
 gem "jquery-rails", "~> 4.4"
 gem "kaminari"
-gem "net-smtp"
+gem "net-imap", require: false
+gem "net-pop", require: false
+gem "net-smtp", require: false
 gem "paper_trail"
 gem "pg"
 gem "pundit"
