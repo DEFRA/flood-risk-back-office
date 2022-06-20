@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 9e16a45ed01bed26eaea0adb1be63b32b25edc1d
+  revision: cd8b9fb01ca6fd5b1843fd7f776a82d5c848445c
   branch: main
   specs:
     flood_risk_engine (1.1)
@@ -16,6 +16,8 @@ GIT
       high_voltage (~> 3)
       jquery-rails (~> 4)
       matrix (~> 0.4)
+      net-imap (~> 0.2)
+      net-pop (~> 0.1)
       net-smtp (~> 0.3)
       nokogiri (>= 1)
       notifications-ruby-client
