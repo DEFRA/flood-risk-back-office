@@ -227,7 +227,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "postal_address_code"
     t.string "logical_status_code"
     t.string "addressable_type"
-    t.bigint "addressable_id"
+    t.integer "addressable_id"
     t.string "uprn"
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
@@ -238,7 +238,7 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
   create_table "transient_people", force: :cascade do |t|
     t.string "full_name"
     t.string "temp_postcode"
-    t.bigint "transient_registration_id"
+    t.integer "transient_registration_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
@@ -248,8 +248,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "state"
     t.date "registered_on"
     t.date "expires_on"
-    t.bigint "transient_registration_id"
-    t.bigint "flood_risk_engine_exemption_id"
+    t.integer "transient_registration_id"
+    t.integer "flood_risk_engine_exemption_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["flood_risk_engine_exemption_id"], name: "exemption_id"
