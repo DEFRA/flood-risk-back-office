@@ -13,7 +13,7 @@ This is a thin, host application which mounts and provides styling for the [floo
 
 Please make sure the following are installed:
 
-- [Ruby 2.3.1](https://www.ruby-lang.org) installed for example via [RVM](https://rvm.io) or [Rbenv](https://github.com/sstephenson/rbenv/blob/master/README.md)
+- [Ruby 3.1.2](https://www.ruby-lang.org) installed for example via [RVM](https://rvm.io) or [Rbenv](https://github.com/sstephenson/rbenv/blob/master/README.md)
 - [Bundler](http://bundler.io/)
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 - [Postgresql](http://www.postgresql.org/download)

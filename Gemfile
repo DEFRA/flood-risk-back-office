@@ -36,7 +36,8 @@ gem "dotenv-rails"
 
 group :development do
   gem "awesome_print"
-  gem "rubocop"
+  gem "defra_ruby_style"
+  gem "puma"
 end
 
 group :development, :test do
