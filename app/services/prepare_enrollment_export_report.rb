@@ -38,7 +38,7 @@ class PrepareEnrollmentExportReport
     [
       enrollment_exemption.status,
       presenter.submitted_at,
-      ldate(enrollment_exemption.accept_reject_decision_at, format: :long),
+      ldate(enrollment_exemption.accept_reject_decision_at),
       enrollment_exemption.accept_reject_decision_user.try(:email),
       enrollment_export.created_by,
       presenter.deregister_reason_text,
@@ -111,8 +111,8 @@ class PrepareEnrollmentExportReport
     Rails.root.join "private", "exports", enrollment_export.file_name
   end
 
-  def ldate(date, hash = {})
-    date ? I18n.l(date, hash) : nil
+  def ldate(date)
+    date ? I18n.l(date, format: :long) : nil
   end
 
 end
