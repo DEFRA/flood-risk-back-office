@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 1f5ae49bf18eb2fc7d7baae0cd7e554e655d318f
+  revision: cc018dc203d63d401c3136cfab006e06ebab5bbd
   branch: main
   specs:
     flood_risk_engine (1.1)
@@ -501,7 +501,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.2.0)
     uniform_notifier (1.16.0)
-    validates_email_format_of (1.7.0)
+    validates_email_format_of (1.7.2)
       i18n
     vcr (6.1.0)
     warden (1.2.9)
