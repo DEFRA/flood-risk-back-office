@@ -21,7 +21,7 @@ module FloodRiskEngine
     end
 
     describe "scopes" do
-      before(:each) do
+      before do
         FactoryBot.create_list(:submitted_local_authority, 5)
         FactoryBot.create_list(:submitted_partnership, 5)
 
@@ -31,11 +31,11 @@ module FloodRiskEngine
 
       let(:from_date) { 1.year.ago }
 
-      it "should select all completed" do
+      it "selects all completed" do
         expect(EnrollmentExemption.reportable_by_submitted_at(from_date, Date.current).count).to eq 16
       end
 
-      it "should select only approved/rejected" do
+      it "selects only approved/rejected" do
         expect(EnrollmentExemption.reportable_by_decision_at(from_date, Date.current).count).to eq 6
       end
     end

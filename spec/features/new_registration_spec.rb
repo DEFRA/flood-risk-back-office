@@ -1,8 +1,9 @@
-RSpec.feature "New scenario" do
+RSpec.describe "New scenario" do
   let(:user) { create(:user).tap { |u| u.add_role :system } }
-  background { login_as(user) }
 
-  scenario "in general" do
+  before { login_as(user) }
+
+  it "in general" do
     visit main_app.root_path
 
     within("#navigation") { click_link("New") }

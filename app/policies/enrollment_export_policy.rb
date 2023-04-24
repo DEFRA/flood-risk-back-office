@@ -13,7 +13,7 @@ class EnrollmentExportPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.try! :has_any_role?
+      if user&.has_any_role?
         scope.all
       else
         scope.none

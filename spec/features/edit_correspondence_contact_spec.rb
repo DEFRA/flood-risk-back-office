@@ -12,7 +12,7 @@ RSpec.describe "Edit correspondence contact", type: :feature do
     within("#correspondence-contact-details") { click_link("Edit") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     fill_in "Full name", with: "Alice Apples"
     fill_in "Position (optional)", with: "Ms"
     fill_in "Email address", with: "alice@example.com"
@@ -28,7 +28,7 @@ RSpec.describe "Edit correspondence contact", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     fill_in "Email address", with: "foo-bar"
     click_on "Continue"
 

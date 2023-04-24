@@ -1,4 +1,4 @@
-RSpec.feature "As an System user, I want to disable/enable a user" do
+RSpec.describe "As an System user, I want to disable/enable a user" do
   let!(:system_user) do
     create(:user).tap { |u| u.add_role :system }
   end
@@ -7,7 +7,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
     create(:user).tap { |u| u.add_role :admin_agent }
   end
 
-  background do
+  before do
     User.destroy_all
   end
 
@@ -15,7 +15,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
     # Disabling a user is tested below but it veers off into an
     # authentication test. Here we are concerned with toggling the
     # user's status
-    scenario "Disable / Enable a user" do
+    it "Disable / Enable a user" do
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
 
@@ -34,7 +34,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
       expect(page).to have_css("tr#user_#{other_user.id} td", text: "Enabled")
     end
 
-    scenario "System user can disable another user", versioning: true do
+    it "System user can disable another user", versioning: true do
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
 
@@ -50,7 +50,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
         end.to change { other_user.reload.disabled_at }.from(nil)
       end.to change { other_user.reload.versions.count }.by(1)
 
-      expect(current_path).to eq admin_users_path
+      expect(page).to have_current_path admin_users_path, ignore_query: true
 
       expect(other_user).to be_disabled
       expect(other_user.disabled_at).to be_kind_of ActiveSupport::TimeWithZone
@@ -67,7 +67,7 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
 
       expect do
         click_button "Sign in"
-      end.to_not change { other_user.reload.sign_in_count }
+      end.not_to change { other_user.reload.sign_in_count }
       # Devise "paranoid mode" is on, so display the message "Invalid email or password",
       # instead of the default "Your account is not activated yet" message
       expect(page).to have_flash(I18n.t("devise.failure.invalid", authentication_keys: "email"), key: :alert)
@@ -75,11 +75,11 @@ RSpec.feature "As an System user, I want to disable/enable a user" do
   end
 
   context "unauthorised" do
-    scenario "Logged out user is asked to sign-in" do
+    it "Logged out user is asked to sign-in" do
       # don't sign in
       visit admin_user_edit_disable_path(other_user)
 
-      expect(current_path).to eq new_user_session_path
+      expect(page).to have_current_path new_user_session_path, ignore_query: true
       expect(page).to have_flash(I18n.t("devise.failure.unauthenticated"), key: :alert)
     end
   end

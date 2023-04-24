@@ -7,7 +7,7 @@ module Notify
         create(:approved_limited_company, reference_number: FloodRiskEngine::ReferenceNumber.create)
       end
 
-      let(:recipient_address) { Faker::Internet.safe_email }
+      let(:recipient_address) { Faker::Internet.email }
 
       let(:enrollment_exemption) do
         enrollment.enrollment_exemptions.first

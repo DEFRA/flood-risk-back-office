@@ -12,7 +12,7 @@ RSpec.describe "Deregister an enrollment", type: :feature do
     within("#actions") { click_link("Deregister") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     select "Operator failings", from: "Deregister reason"
     fill_in "Comment", with: "Deregistered by Alice!"
     click_on "Deregister registration"
@@ -25,7 +25,7 @@ RSpec.describe "Deregister an enrollment", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Deregister registration"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

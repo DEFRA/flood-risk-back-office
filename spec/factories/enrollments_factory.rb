@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :base_back_office_enrollment, parent: :enrollment do
     after(:create) do |object|
       object.exemption_location = build(:location, description: "#{Faker::Lorem.sentence}, near river.")
-      object.correspondence_contact = build(:flood_risk_engine_contact, email_address: Faker::Internet.safe_email)
+      object.correspondence_contact = build(:flood_risk_engine_contact, email_address: Faker::Internet.email)
 
       object.save
     end

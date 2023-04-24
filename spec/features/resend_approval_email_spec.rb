@@ -12,7 +12,7 @@ RSpec.describe "Resend an approval email", type: :feature do
     within("#actions") { click_link("Reissue approval email") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     expect(SendRegistrationApprovedEmail).to receive(:for).once
 
     fill_in "Comment", with: "Reissued by Alice!"
@@ -24,7 +24,7 @@ RSpec.describe "Resend an approval email", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Confirm and send email"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

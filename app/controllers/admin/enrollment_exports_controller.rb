@@ -29,7 +29,7 @@ module Admin
     end
 
     def show
-      export = EnrollmentExport.completed.find_by!(id: params[:id])
+      export = EnrollmentExport.completed.find(params[:id])
 
       authorize export
 

@@ -6,7 +6,7 @@ RSpec.describe EnrollmentExemptionPresenter, type: :presenter do
 
   let(:presenter) do
     template = double("template")
-    allow(template).to receive(:link_to) { "" }
+    allow(template).to receive(:link_to).and_return("")
     described_class.new(enrollment_exemption, template)
   end
 

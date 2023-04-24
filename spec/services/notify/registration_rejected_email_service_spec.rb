@@ -4,7 +4,7 @@ module Notify
   RSpec.describe RegistrationRejectedEmailService do
     describe ".run" do
       let!(:template_id) { "bbe3ae28-f34e-4215-9f56-a23827aa02c3" }
-      let(:recipient_address) { Faker::Internet.safe_email }
+      let(:recipient_address) { Faker::Internet.email }
 
       let!(:enrollment) do
         create(:approved_limited_company, reference_number: FloodRiskEngine::ReferenceNumber.create)

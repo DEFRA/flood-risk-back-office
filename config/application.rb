@@ -37,7 +37,7 @@ module FloodRiskBackOffice
     config.area_lookup_run_for = ENV["AREA_LOOKUP_RUN_FOR"] || 60
 
     # Data export config
-    config.epr_reports_bucket_name = ENV["AWS_DAILY_EXPORT_BUCKET"]
+    config.epr_reports_bucket_name = ENV["FRA_AWS_DAILY_EXPORT_BUCKET"]
     config.epr_export_filename = ENV["EPR_DAILY_REPORT_FILE_NAME"] || "flood_risk_epr_daily_full"
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
@@ -51,5 +51,8 @@ module FloodRiskBackOffice
 
     # Database cleanup
     config.max_transient_registration_age_days = ENV["MAX_TRANSIENT_REGISTRATION_AGE_DAYS"] || 30
+
+    # Allow deserialization of Time objects:
+    config.active_record.yaml_column_permitted_classes = [Time]
   end
 end

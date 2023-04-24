@@ -16,7 +16,7 @@ RSpec.describe "Export" do
     fill_in "enrollment_export_from_date_1i", with: 2020
   end
 
-  scenario "successfully creating an export" do
+  it "successfully creating an export" do
     expect(EnrollmentExportJob).to receive(:perform_later).once
 
     fill_in "enrollment_export_to_date_3i", with: 1
@@ -31,7 +31,7 @@ RSpec.describe "Export" do
     expect(page).to have_css("tr.enrollment_export", text: user.email)
   end
 
-  scenario "unsuccessfully creating an export" do
+  it "unsuccessfully creating an export" do
     fill_in "enrollment_export_to_date_3i", with: 29
     fill_in "enrollment_export_to_date_2i", with: 9
     fill_in "enrollment_export_to_date_1i", with: 2019

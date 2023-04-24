@@ -13,7 +13,7 @@ RSpec.describe "In progress", type: :feature do
     within("#actions") { click_link("In progress") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     click_on "Confirm In progress status"
 
     within("#status") { expect(page).to have_text("In progress") }

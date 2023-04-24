@@ -3,6 +3,8 @@
 require "rails_helper"
 
 RSpec.describe EnrollmentExemptionSearchQuery, type: :query do
+  subject { described_class.call(search_form).all.map(&:enrollment) }
+
   let!(:approved_individual) { create(:approved_individual) }
   let!(:rejected_individual) { create(:rejected_individual) }
 
@@ -19,8 +21,6 @@ RSpec.describe EnrollmentExemptionSearchQuery, type: :query do
       }
     )
   end
-
-  subject { described_class.call(search_form).all.map(&:enrollment) }
 
   describe "filter by status" do
     it "finds all the enrollments" do

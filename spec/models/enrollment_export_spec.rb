@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe EnrollmentExport do
   describe "#populate_file_name" do
-    it "should increment populate_file_name for same dates" do
+    it "increments populate_file_name for same dates" do
       ee_existing = create(:enrollment_export, :completed)
 
       ee = build(:enrollment_export, :with_dates)
@@ -14,14 +14,14 @@ RSpec.describe EnrollmentExport do
       expect(ee.file_name).to include(date_as_string)
       expect(ee_existing.file_name).to include(date_as_string)
 
-      expect(ee_existing.file_name).to_not eq(ee.populate_file_name)
+      expect(ee_existing.file_name).not_to eq(ee.populate_file_name)
     end
   end
 
   context "scopes" do
     let(:export) { create(:enrollment_export, :with_dates, :with_file_name) }
 
-    before(:each) do
+    before do
       FactoryBot.create_list(:submitted_individual, 3)
       FactoryBot.create_list(:submitted_partnership, 3)
 
@@ -29,12 +29,12 @@ RSpec.describe EnrollmentExport do
       FactoryBot.create_list(:rejected_limited_company, 2)
     end
 
-    it "should select all submitted records" do
+    it "selects all submitted records" do
       export.date_field_scope = "submitted_at"
       expect(export.reportable_records.count).to eq 12
     end
 
-    it "should select only approved/rejected" do
+    it "selects only approved/rejected" do
       export.date_field_scope = "decision_at"
       expect(export.reportable_records.count).to eq 6
     end

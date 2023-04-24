@@ -1,21 +1,22 @@
-RSpec.feature "Admin menu" do
+RSpec.describe "Admin menu" do
   context "Logged out" do
-    scenario "View logged-out admin menu" do
+    it "View logged-out admin menu" do
       visit main_app.root_path
 
       within "#navigation" do
         click_link t("devise.sign_in")
       end
 
-      expect(current_path).to eq new_user_session_path
+      expect(page).to have_current_path new_user_session_path, ignore_query: true
     end
   end
 
   context "Logged in" do
     let(:user) { FactoryBot.create :user }
-    background { login_as user }
 
-    scenario "View logged-in admin menu (user with NCC super-agent role)" do
+    before { login_as user }
+
+    it "View logged-in admin menu (user with NCC super-agent role)" do
       user.add_role :super_agent
       visit main_app.root_path
 
@@ -33,7 +34,7 @@ RSpec.feature "Admin menu" do
       expect(page).to have_flash t("devise.sessions.signed_out")
     end
 
-    scenario "View logged-in admin menu (user with NCC system role)" do
+    it "View logged-in admin menu (user with NCC system role)" do
       user.add_role :system
       visit main_app.root_path
 
@@ -46,7 +47,7 @@ RSpec.feature "Admin menu" do
         click_link t("devise.sign_out")
       end
 
-      expect(current_path).to eq root_path
+      expect(page).to have_current_path root_path, ignore_query: true
     end
   end
 end
