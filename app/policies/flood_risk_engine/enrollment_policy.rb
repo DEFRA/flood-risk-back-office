@@ -10,10 +10,6 @@ module FloodRiskEngine
       system_user? || super_agent_user? || admin_agent_user?
     end
 
-    def show_continue_button?
-      create? && enrollment.present? && !enrollment.complete?
-    end
-
     def show?
       super && user.present? && user.has_any_role?
     end

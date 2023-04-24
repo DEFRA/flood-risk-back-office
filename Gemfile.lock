@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 52552b5b8d10a976f06f203c3f66c5c1deb3d3ec
+  revision: 77303daa53f3548f11da2e9fbbfeedd83e8866dd
   branch: main
   specs:
     flood_risk_engine (1.1)
@@ -351,7 +351,7 @@ GEM
     passenger (6.0.17)
       rack
       rake (>= 0.8.1)
-    pg (1.4.6)
+    pg (1.5.0)
     phonelib (0.8.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
