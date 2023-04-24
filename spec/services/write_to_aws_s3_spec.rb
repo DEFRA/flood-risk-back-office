@@ -8,7 +8,7 @@ RSpec.describe WriteToAwsS3, type: :service do
 
     before do
       Aws.config.update({ region: "eu-west-1", credentials: Aws::Credentials.new("key_id", "access_key") })
-      stub_request(:put, %r{https://.*\.s3\.eu-west-1\.amazonaws\.com.*})
+      stub_request(:post, %r{https://.*\.s3\.eu-west-1\.amazonaws\.com.*})
     end
 
     it "returns a presigned url structure" do
