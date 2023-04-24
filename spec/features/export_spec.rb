@@ -48,19 +48,17 @@ RSpec.describe "enrollment exports" do
 
   describe "GET enrollment_export" do
     let(:user) { create(:user) }
+    let(:enrollment) { create(:base_back_office_enrollment) }
     let(:enrollment_export) { create(:enrollment_export, :with_dates, :with_file_name, :completed) }
 
     before do
-      # avoid generating binary data for the purposes of this test
-      allow_any_instance_of(Admin::EnrollmentExportsController).to receive(:send_data) # rubocop:disable RSpec/AnyInstance
-
       user.grant :system
       login_as user
       visit "/admin/enrollment_exports/#{enrollment_export.id}.csv"
     end
 
-    it "returns HTTP 204 No Content" do
-      expect(page.status_code).to eq 204
+    it "includes the created_by email address" do
+      expect(page).to have_text("\"Registration status\",\"Submitted date\",\"Decision date\",\"Decision maker\",\"Created by\",\"Deregister reason\",\"Assistance mode\",\"Assistance user\",\"Exemption reference number\",\"NGR\",\"Site description\",\"Easting and Northing\",\"Water management area\",\"Exemption code and description\",\"Business type\",\"Contact name\",\"Contact email\",\"Contact phone number\",\"Operator name\",\"Comments\",\"Link to registration details\"")
     end
   end
 end
