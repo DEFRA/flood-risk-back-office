@@ -1,42 +1,42 @@
 #  As an NCCC System user, I want to be able to invite users
-RSpec.feature "Invite user" do
+RSpec.describe "Invite user" do
   let(:email_addr) { "one@example.com" }
 
-  background do
+  before do
     User.where(email: email_addr).destroy_all
   end
 
   context "unauthorised" do
-    scenario "Logged out user is asked to sign-in" do
+    it "Logged out user is asked to sign-in" do
       # don't sign in
       visit new_user_invitation_path
-      expect(current_path).to eq new_user_session_path
+      expect(page).to have_current_path new_user_session_path, ignore_query: true
       expect(page).to have_flash(I18n.t("devise.failure.unauthenticated"), key: :alert)
     end
 
-    scenario "User without role is denied access" do
+    it "User without role is denied access" do
       login_as create(:user)
       visit new_user_invitation_path
 
-      expect(current_path).to eq main_app.root_path
+      expect(page).to have_current_path main_app.root_path, ignore_query: true
       expect(page).to have_flash(I18n.t("pundit.user_policy.invite?"), key: :alert)
     end
 
     %i[super_agent admin_agent data_agent].each do |role|
-      scenario "#{role.to_s.humanize} user is denied access" do
+      it "#{role.to_s.humanize} user is denied access" do
         user = create :user
         user.add_role role
         login_as user
         visit new_user_invitation_path
 
-        expect(current_path).to eq main_app.root_path
+        expect(page).to have_current_path main_app.root_path, ignore_query: true
         expect(page).to have_flash(I18n.t("pundit.user_policy.invite?"), key: :alert)
       end
     end
   end
 
   context "authorised" do
-    background do
+    before do
       user = create :user
       user.add_role :system
       login_as user
@@ -51,7 +51,7 @@ RSpec.feature "Invite user" do
     end
 
     context "invalid" do
-      scenario "Invite user (invalid - existing email)" do
+      it "Invite user (invalid - existing email)" do
         create :user, email: email_addr
         fill_in "Email", with: email_addr
         select "System user", from: "Role"
@@ -63,7 +63,7 @@ RSpec.feature "Invite user" do
         expect(page).to have_css(".govuk-error-message", text: "Email address has already been taken")
       end
 
-      scenario "Invite a user who has already been invited - doesn't add a new user or role" do
+      it "Invite a user who has already been invited - doesn't add a new user or role" do
         user = User.invite!(email: email_addr)
         user.add_role :data_agent
 
@@ -77,7 +77,7 @@ RSpec.feature "Invite user" do
         expect(user.roles.map(&:name)).to eq(["data_agent"])
       end
 
-      scenario "Invite user (no role selected)" do
+      it "Invite user (no role selected)" do
         fill_in "Email", with: email_addr
 
         expect do
@@ -89,32 +89,6 @@ RSpec.feature "Invite user" do
     end
 
     context "valid" do
-      scenario "Invite System user" do
-        fill_in "Email", with: email_addr
-        select "System user", from: "Role"
-
-        expect do
-          click_button "Send an invitation"
-        end.to change(User, :count).by(1)
-
-        u = User.last
-        expect(u.roles.map(&:name)).to include "system"
-        expect(u).to have_role :system
-      end
-
-      scenario "Invite Admin-agent user" do
-        fill_in "Email", with: email_addr
-        select "Administrative user", from: "Role"
-
-        expect do
-          click_button "Send an invitation"
-        end.to change(User, :count).by(1)
-
-        u = User.last
-        expect(u.roles.map(&:name)).to include "admin_agent"
-        expect(u).to have_role :admin_agent
-      end
-
       after do
         u = User.last
         expect(u.email).to eq email_addr
@@ -141,7 +115,7 @@ RSpec.feature "Invite user" do
 
         click_button I18n.t("devise.invitations.edit.submit_button")
 
-        expect(current_path).to eq new_user_session_path
+        expect(page).to have_current_path new_user_session_path, ignore_query: true
         expect(page).to have_css "h1", text: "Sign in"
 
         u.reload
@@ -152,6 +126,33 @@ RSpec.feature "Invite user" do
         expect(u.invitation_token).to be_blank
         expect(u.invitation_accepted_at).to be_present
       end
+
+      it "Invite System user" do
+        fill_in "Email", with: email_addr
+        select "System user", from: "Role"
+
+        expect do
+          click_button "Send an invitation"
+        end.to change(User, :count).by(1)
+
+        u = User.last
+        expect(u.roles.map(&:name)).to include "system"
+        expect(u).to have_role :system
+      end
+
+      it "Invite Admin-agent user" do
+        fill_in "Email", with: email_addr
+        select "Administrative user", from: "Role"
+
+        expect do
+          click_button "Send an invitation"
+        end.to change(User, :count).by(1)
+
+        u = User.last
+        expect(u.roles.map(&:name)).to include "admin_agent"
+        expect(u).to have_role :admin_agent
+      end
+
     end
   end
 end

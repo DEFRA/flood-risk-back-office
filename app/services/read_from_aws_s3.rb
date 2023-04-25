@@ -10,7 +10,7 @@ class ReadFromAwsS3
 
   def call
     s3 = Aws::S3::Resource.new
-    bucket = s3.bucket ENV.fetch("AWS_MANUAL_EXPORT_BUCKET")
+    bucket = s3.bucket ENV.fetch("FRA_AWS_MANUAL_EXPORT_BUCKET")
 
     bucket.object(enrollment_export.file_name).presigned_url(
       :get,

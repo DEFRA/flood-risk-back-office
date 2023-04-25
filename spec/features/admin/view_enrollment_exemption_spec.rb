@@ -1,5 +1,5 @@
-RSpec.feature "View Enrollment Exemption Detail" do
-  background do
+RSpec.describe "View Enrollment Exemption Detail" do
+  before do
     user = create :user
     user.add_role :system
     login_as user
@@ -42,7 +42,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
         enrollment.enrollment_exemptions.first.tap(&:pending!)
       end
 
-      scenario "Page has the expected content - Status Pending" do
+      it "Page has the expected content - Status Pending" do
         visit admin_enrollment_exemption_path(enrollment_exemption)
 
         within "#registration-details" do
@@ -91,7 +91,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
           enrollment.reload
         end
 
-        scenario "Page has the modified content" do
+        it "Page has the modified content" do
           visit admin_enrollment_exemption_path(enrollment_exemption)
 
           within "#actions" do
@@ -123,7 +123,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       end
     end
 
-    context "without secondary contact " do
+    context "without secondary contact" do
       let(:enrollment) { create :confirmed_no_secondary_contact }
       let(:enrollment_exemption) do
         create(
@@ -132,12 +132,12 @@ RSpec.feature "View Enrollment Exemption Detail" do
         )
       end
 
-      scenario "Page has the expected content when optional secondary_contact not present" do
+      it "Page has the expected content when optional secondary_contact not present" do
         visit admin_enrollment_exemption_path(enrollment_exemption)
 
         within "#admin-enrollment-exemptions-show" do
           expect(page).to have_css("#correspondence-contact-details")
-          expect(page).to_not have_css("#secondary-contact-details")
+          expect(page).not_to have_css("#secondary-contact-details")
         end
       end
     end
@@ -145,7 +145,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
     context "when organisation is partnership" do
       let(:enrollment) { create :submitted_partnership }
 
-      scenario "Page has expected content for all partners" do
+      it "Page has expected content for all partners" do
         visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first)
 
         within "#admin-enrollment-exemptions-show" do
@@ -164,8 +164,10 @@ RSpec.feature "View Enrollment Exemption Detail" do
       let(:enrollment) { create :submitted_limited_company }
       let(:organisation) { enrollment.organisation }
       let(:registration_number) { "WW123456" }
+
       before { organisation.update_attribute :registration_number, registration_number }
-      scenario "Page has expected content for all partners" do
+
+      it "Page has expected content for all partners" do
         visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first)
         within "#registration-details" do
           expect(page).to have_text registration_number
@@ -186,7 +188,7 @@ RSpec.feature "View Enrollment Exemption Detail" do
       )
     end
 
-    scenario "Page has comment content" do
+    it "Page has comment content" do
       visit admin_enrollment_exemption_path(enrollment_exemption)
 
       within "#comment-history" do
@@ -197,10 +199,10 @@ RSpec.feature "View Enrollment Exemption Detail" do
     context "unless accessed by user without sufficent rights" do
       let(:non_system_user) { create(:user) }
 
-      scenario "Page has the no comment content" do
+      it "Page has the no comment content" do
         login_as non_system_user
         visit admin_enrollment_exemption_path(enrollment_exemption)
-        expect(page).to_not have_css("#comment-history")
+        expect(page).not_to have_css("#comment-history")
       end
     end
   end

@@ -12,7 +12,7 @@ RSpec.describe "Edit organisation", type: :feature do
     within("#operator-name") { click_link("Edit") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     fill_in "Operator name", with: "Alice Apple"
     click_on "Continue"
 
@@ -21,7 +21,7 @@ RSpec.describe "Edit organisation", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     fill_in "Operator name", with: ""
     click_on "Continue"
 

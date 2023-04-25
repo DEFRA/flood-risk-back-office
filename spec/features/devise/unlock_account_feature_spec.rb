@@ -1,9 +1,9 @@
-RSpec.feature "As a user, I want to be unlock my account" do
+RSpec.describe "As a user, I want to be unlock my account" do
   include ActiveSupport::Testing::TimeHelpers
 
   let(:user) { create :user, password: "Xyz12345678" }
 
-  background do
+  before do
     3.times do
       expect(user.reload.locked_at).to be_nil
       expect(user.unlock_token).to be_blank
@@ -18,7 +18,7 @@ RSpec.feature "As a user, I want to be unlock my account" do
     end
   end
 
-  scenario "Lock account" do
+  it "Lock account" do
     expect(user.reload.locked_at).to be_kind_of ActiveSupport::TimeWithZone
     expect(user.unlock_token).to be_present
 
@@ -29,7 +29,7 @@ RSpec.feature "As a user, I want to be unlock my account" do
     expect(current_email.default_part_body.to_s).to include("We received a request to unlock your account")
   end
 
-  scenario "Unlock account by email" do
+  it "Unlock account by email" do
     reset_mailer
 
     visit new_user_unlock_path
@@ -42,7 +42,7 @@ RSpec.feature "As a user, I want to be unlock my account" do
     visit_in_email "Unlock your account"
 
     expect(page).to have_flash I18n.t("devise.unlocks.unlocked")
-    expect(current_path).to eq new_user_session_path
+    expect(page).to have_current_path new_user_session_path, ignore_query: true
 
     expect(user.reload.failed_attempts).to eq 0
     expect(user.reload.locked_at).to be_nil
@@ -54,7 +54,7 @@ RSpec.feature "As a user, I want to be unlock my account" do
     expect(page).to have_flash I18n.t("devise.sessions.signed_in")
   end
 
-  scenario "Unlock account by waiting for unlock interval" do
+  it "Unlock account by waiting for unlock interval" do
     travel(29.minutes + 58.seconds) do
       visit new_user_session_path
 

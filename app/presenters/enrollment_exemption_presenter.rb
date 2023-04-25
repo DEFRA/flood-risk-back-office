@@ -250,7 +250,7 @@ class EnrollmentExemptionPresenter < Presenter
   def comment_to_html(comment)
     [
       content_tag(:strong, comment.event),
-      (comment.content if comment.content.present?),
+      comment.content.presence,
       content_tag(:em, comment.created_at.to_s(:govuk_date_short))
     ].compact.join("<br>")
   end

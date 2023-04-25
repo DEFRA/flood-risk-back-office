@@ -39,6 +39,7 @@ module Reports
 
       context "when the organisation is a partnership" do
         let(:organisation) { double(:organisation, partnership?: true) }
+
         before do
           partners = [
             double(:partner1, contact: double(:contact, full_name: "Enzo DeRegister")),

@@ -9,7 +9,7 @@ class WriteToAwsS3
   end
 
   def call
-    bucket = s3.bucket ENV.fetch("AWS_MANUAL_EXPORT_BUCKET")
+    bucket = s3.bucket ENV.fetch("FRA_AWS_MANUAL_EXPORT_BUCKET")
     obj = bucket.object enrollment_export.file_name
     obj.upload_file(
       enrollment_export.full_path,

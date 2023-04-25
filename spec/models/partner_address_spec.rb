@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe PartnerAddress do
   context "validations" do
-    it { should validate_presence_of(:full_name) }
+    it { is_expected.to validate_presence_of(:full_name) }
   end
 
   describe "#full_name" do

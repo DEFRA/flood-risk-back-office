@@ -12,7 +12,7 @@ RSpec.describe "Change status", type: :feature do
     within("#actions") { click_link("Change status") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     select "Withdrawn", from: "Status"
     fill_in "Comment", with: "Changed by Alice!"
     click_on "Confirm Update"
@@ -24,7 +24,7 @@ RSpec.describe "Change status", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Confirm Update"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

@@ -12,7 +12,7 @@ RSpec.describe "Withdraw an enrollment", type: :feature do
     within("#actions") { click_link("Withdraw") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     fill_in "Comment", with: "Withdrawn by Alice!"
     click_on "Withdraw"
 
@@ -20,7 +20,7 @@ RSpec.describe "Withdraw an enrollment", type: :feature do
     within("#comment-history") { expect(page).to have_text("#{user.email} - Withdrawn by Alice!") }
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Withdraw"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

@@ -12,7 +12,7 @@ RSpec.describe "Reject an enrollment", type: :feature do
     within("#actions") { click_link("Reject") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     expect(SendRegistrationRejectedEmail).to receive(:for).once
 
     fill_in "Comment", with: "Rejected by Alice!"
@@ -26,7 +26,7 @@ RSpec.describe "Reject an enrollment", type: :feature do
     expect(ee.accept_reject_decision_at).to be_present
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Confirm and send email"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "defra_ruby/aws"
 
 module Reports
   RSpec.describe EprExportService do

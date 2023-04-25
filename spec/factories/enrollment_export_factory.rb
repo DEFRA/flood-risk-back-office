@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :enrollment_export do
     state { "queued" }
-    created_by { Faker::Internet.safe_email }
+    created_by { Faker::Internet.email }
 
     trait :with_dates do
       from_date { 1.year.ago }

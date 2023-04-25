@@ -18,7 +18,7 @@ module Admin
     end
 
     def edit
-      @user.assigned_role = @user.roles.first.try!(:name)
+      @user.assigned_role = @user.roles.first&.name
     end
 
     def edit_disable

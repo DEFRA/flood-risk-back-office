@@ -9,7 +9,7 @@ namespace :lookups do
       locations_scope = FloodRiskEngine::Location.missing_area.with_easting_and_northing
 
       locations_scope.find_each do |location|
-        break if Time.now > run_until
+        break if Time.zone.now > run_until
 
         FloodRiskEngine::UpdateWaterManagementAreaJob.perform_now(location)
       end

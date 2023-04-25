@@ -43,7 +43,7 @@ module FloodRiskEngine
           primary_contact_email   = enrollment.correspondence_contact.email_address
           secondary_contact_email = enrollment.secondary_contact.email_address
 
-          expect(primary_contact_email).to_not eq(secondary_contact_email)
+          expect(primary_contact_email).not_to eq(secondary_contact_email)
 
           expect(email_service).to receive(:run)
             .with(enrollment:, recipient_address: primary_contact_email)
@@ -71,7 +71,7 @@ module FloodRiskEngine
 
           primary_contact_email = enrollment.correspondence_contact.email_address
 
-          expect(primary_contact_email).to_not be_blank
+          expect(primary_contact_email).not_to be_blank
           expect(primary_contact_email).to eq(enrollment.secondary_contact.email_address)
 
           service_object = described_class.new(enrollment_exemption)
@@ -86,20 +86,12 @@ module FloodRiskEngine
       end
 
       context "when seconday contact is nil since it is optional in the 'email other' form" do
-        it "sends one email to the correspondence contact and does not use empty ('') secondary email" do
-          enrollment.secondary_contact.update email_address: "" # should result in it not being sent
-        end
-
-        it "sends one email to the correspondence contact and does not use nil secondary email" do
-          enrollment.secondary_contact.update email_address: nil # should result in it not being sent
-        end
-
-        after(:each) do
+        after do
           expect(enrollment_exemption).to be_approved
 
           service_object = described_class.new(enrollment_exemption)
 
-          expect(enrollment.correspondence_contact.email_address).to_not be_blank
+          expect(enrollment.correspondence_contact.email_address).not_to be_blank
 
           expect(email_service).to receive(:run)
             .with(enrollment:, recipient_address: enrollment.correspondence_contact.email_address)
@@ -109,6 +101,15 @@ module FloodRiskEngine
 
           service_object.call
         end
+
+        it "sends one email to the correspondence contact and does not use empty ('') secondary email" do
+          enrollment.secondary_contact.update email_address: "" # should result in it not being sent
+        end
+
+        it "sends one email to the correspondence contact and does not use nil secondary email" do
+          enrollment.secondary_contact.update email_address: nil # should result in it not being sent
+        end
+
       end
     end
   end

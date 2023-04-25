@@ -1,6 +1,12 @@
+inherit_from: .rubocop_todo.yml
+
 inherit_gem:
   defra_ruby_style:
     - default.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 3.1.2
@@ -26,10 +32,6 @@ AllCops:
     - "**/db/migrate/*"
     - "**/vendor/**/*"
   NewCops: enable
-
-# Rubymine disagrees and not sure how to fix Rubymine indentation right now
-Layout/CaseIndentation:
-  Enabled: false
 
 # We believe it looks cluttered not having the ability to have empty lines after
 # the module, class, and block declarations
@@ -81,7 +83,7 @@ Metrics/ModuleLength:
 
 # We believe the default 80 characters is too restrictive and that lines can still be readable and maintainable
 # when no more than 120 characters. This also allows us to maximise our scree space.
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Exclude:
     - "**spec/factories/**/*.rb"
@@ -137,4 +139,7 @@ Style/StringLiterals:
 Lint/MissingSuper:
   Enabled: false
 Style/MissingRespondToMissing:
+  Enabled: false
+
+RSpec/DescribeClass:
   Enabled: false

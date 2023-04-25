@@ -73,7 +73,7 @@ class ApplicationController < ActionController::Base
       if exception.try(:policy)
         pundit_message exception
       else
-        I18n.t :default, scope: :pundit
+        I18n.t "pundit.default"
       end
 
     path = main_app.root_path

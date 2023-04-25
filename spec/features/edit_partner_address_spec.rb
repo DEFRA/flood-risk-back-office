@@ -12,7 +12,7 @@ RSpec.describe "Edit address", type: :feature do
     within("#partner-1") { click_link("Edit") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     fill_in "Full name", with: "Alice Apples"
     fill_in "Building name or number", with: "10"
     fill_in "Address line 1", with: "Downing St"
@@ -27,7 +27,7 @@ RSpec.describe "Edit address", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     fill_in "Full name", with: ""
     click_on "Continue"
 

@@ -12,7 +12,7 @@ RSpec.describe "Approve an enrollment", type: :feature do
     within("#actions") { click_link("Approve") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     expect(SendRegistrationApprovedEmail).to receive(:for).once
 
     check "Asset found"
@@ -33,7 +33,7 @@ RSpec.describe "Approve an enrollment", type: :feature do
     expect(ee.asset_found).to be_truthy
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     click_on "Confirm and send email"
 
     expect(page).to have_css(".govuk-error-message", text: "Enter a comment")

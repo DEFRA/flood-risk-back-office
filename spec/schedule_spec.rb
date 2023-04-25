@@ -47,9 +47,9 @@ RSpec.describe "Whenever schedule" do
 
   it "allows the `whenever` command to be called without raising an error" do
     Open3.popen3("bundle", "exec", "whenever") do |_, stdout, stderr, wait_thr|
-      expect(stdout.read).to_not be_empty
+      expect(stdout.read).not_to be_empty
       expect(stderr.read).to be_empty
-      expect(wait_thr.value.success?).to eq(true)
+      expect(wait_thr.value.success?).to be(true)
     end
   end
 end

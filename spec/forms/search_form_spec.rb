@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe SearchForm, type: :form do
   subject { described_class.new({}) }
+
   it { is_expected.to respond_to :status_filter_options }
   it { is_expected.to respond_to :q }
   it { is_expected.to respond_to :page }

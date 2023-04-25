@@ -12,7 +12,7 @@ RSpec.describe "Edit secondary contact", type: :feature do
     within("#secondary-contact-details") { click_link("Edit") }
   end
 
-  scenario "successfully" do
+  it "successfully" do
     fill_in "Email address", with: "alice@example.com"
     click_on "Continue"
 
@@ -22,7 +22,7 @@ RSpec.describe "Edit secondary contact", type: :feature do
     end
   end
 
-  scenario "unsuccessfully" do
+  it "unsuccessfully" do
     fill_in "Email address", with: "foo-bar"
     click_on "Continue"
 
