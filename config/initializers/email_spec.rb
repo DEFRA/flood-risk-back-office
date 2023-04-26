@@ -3,6 +3,5 @@
 ActiveSupport.on_load(:action_mailer) do
   module EmailSpec
     module Helpers; end
-  end  
-  require 'email_spec'
+  end
 end
