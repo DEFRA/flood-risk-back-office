@@ -32,7 +32,7 @@ RSpec.describe "Edit users" do
 
       %i[super_agent admin_agent data_agent].each do |role|
         it "#{role.to_s.humanize} user is denied access" do
-          user = create :user
+          user = create(:user)
           user.add_role role
           login_as user
           visit edit_admin_user_path(other_user)

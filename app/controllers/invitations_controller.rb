@@ -1,5 +1,5 @@
 # rubocop:disable Metrics/PerceivedComplexity
-class InvitationsController < ::Devise::InvitationsController
+class InvitationsController < Devise::InvitationsController
   # Adapted from https://github.com/scambra/devise_invitable/blob/v1.5.3/app/controllers/devise/invitations_controller.rb#L39
   # TODO: refactor this!
   def update

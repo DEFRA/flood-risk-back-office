@@ -5,8 +5,8 @@ RSpec.describe "As an System user, I want to view a list of users" do
 
   context "authorised" do
     it "System user can view list of 'enable' users and toggle to view 'all'" do
-      create_list :user, 2
-      create_list :disabled_user, 2
+      create_list(:user, 2)
+      create_list(:disabled_user, 2)
 
       user = User.first
       user.grant :system
@@ -40,7 +40,7 @@ RSpec.describe "As an System user, I want to view a list of users" do
 
     %i[super_agent admin_agent data_agent].each do |role|
       it "#{role.to_s.humanize} user is denied access" do
-        user = create :user
+        user = create(:user)
         user.add_role role
         login_as user
         visit admin_users_path

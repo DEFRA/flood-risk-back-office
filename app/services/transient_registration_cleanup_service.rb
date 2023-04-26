@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class TransientRegistrationCleanupService < ::FloodRiskEngine::BaseService
+class TransientRegistrationCleanupService < FloodRiskEngine::BaseService
   def run
     transient_registrations_to_remove.destroy_all
   end

@@ -1,4 +1,4 @@
-class UnlocksController < ::Devise::UnlocksController
+class UnlocksController < Devise::UnlocksController
   protected
 
   # The path used after sending unlock password instructions

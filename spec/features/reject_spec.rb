@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Reject an enrollment", type: :feature do
+RSpec.describe "Reject an enrollment" do
   let(:enrollment_exemption) { create(:submitted_limited_company).enrollment_exemptions.first }
   let(:user) { create(:user) }
 

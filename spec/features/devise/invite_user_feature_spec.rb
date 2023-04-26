@@ -24,7 +24,7 @@ RSpec.describe "Invite user" do
 
     %i[super_agent admin_agent data_agent].each do |role|
       it "#{role.to_s.humanize} user is denied access" do
-        user = create :user
+        user = create(:user)
         user.add_role role
         login_as user
         visit new_user_invitation_path
@@ -37,7 +37,7 @@ RSpec.describe "Invite user" do
 
   context "authorised" do
     before do
-      user = create :user
+      user = create(:user)
       user.add_role :system
       login_as user
       visit new_user_invitation_path
@@ -52,7 +52,7 @@ RSpec.describe "Invite user" do
 
     context "invalid" do
       it "Invite user (invalid - existing email)" do
-        create :user, email: email_addr
+        create(:user, email: email_addr)
         fill_in "Email", with: email_addr
         select "System user", from: "Role"
 

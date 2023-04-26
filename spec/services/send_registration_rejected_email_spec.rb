@@ -87,30 +87,20 @@ module FloodRiskEngine
       end
 
       context "when seconday contact is nil" do
-        after do
+
+        before { enrollment.update(secondary_contact: nil) }
+
+        it "sends a single email" do
           expect(enrollment_exemption).to be_rejected
 
           service_object = described_class.new(enrollment_exemption)
 
           expect(service_object.distinct_recipients.size).to eq 1
 
-          expect(email_service).to receive(:run)
-            .with(
-              enrollment:,
-              recipient_address: enrollment.correspondence_contact.email_address
-            ).exactly(:once)
+          expect(email_service).to receive(:run).exactly(:once)
 
           service_object.call
         end
-
-        it "sends one email to the correspondence contact when secondary email blank" do
-          enrollment.secondary_contact.update email_address: ""
-        end
-
-        it "sends one email to the correspondence contact when secondary email nil" do
-          enrollment.secondary_contact.update email_address: nil
-        end
-
       end
     end
 

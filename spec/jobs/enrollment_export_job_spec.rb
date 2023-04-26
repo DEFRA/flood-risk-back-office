@@ -12,7 +12,7 @@ RSpec.describe EnrollmentExportJob do
     let(:export) { create(:enrollment_export, :with_dates, :with_file_name) }
 
     it "does not error" do
-      job
+      expect { job }.not_to raise_error
     end
   end
 end

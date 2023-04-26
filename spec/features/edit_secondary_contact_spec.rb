@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Edit secondary contact", type: :feature do
+RSpec.describe "Edit secondary contact" do
   let(:enrollment_exemption) { create(:submitted_partnership).enrollment_exemptions.first }
   let(:user) { create(:user) }
 

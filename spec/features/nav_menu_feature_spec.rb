@@ -12,7 +12,7 @@ RSpec.describe "Admin menu" do
   end
 
   context "Logged in" do
-    let(:user) { FactoryBot.create :user }
+    let(:user) { FactoryBot.create(:user) }
 
     before { login_as user }
 
@@ -20,7 +20,7 @@ RSpec.describe "Admin menu" do
       user.add_role :super_agent
       visit main_app.root_path
 
-      expect(page).to have_no_content t("devise.invite_user")
+      expect(page).not_to have_content t("devise.invite_user")
 
       within "#navigation" do
         expect(page).to have_link("Search")

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Edit address", type: :feature do
+RSpec.describe "Edit address" do
   let(:enrollment_exemption) { create(:submitted_limited_company).enrollment_exemptions.first }
   let(:user) { create(:user) }
 
