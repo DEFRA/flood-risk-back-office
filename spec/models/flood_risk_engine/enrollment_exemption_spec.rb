@@ -2,7 +2,7 @@ require "rails_helper"
 
 module FloodRiskEngine
 
-  RSpec.describe EnrollmentExemption, type: :model do
+  RSpec.describe EnrollmentExemption do
     it { is_expected.to belong_to(:accept_reject_decision_user) }
 
     describe "approval" do

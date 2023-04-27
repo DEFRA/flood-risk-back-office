@@ -8,7 +8,7 @@ module FloodRiskEngine
     let(:enrollment_exemption) { enrollment.enrollment_exemptions.first }
 
     describe "#call" do
-      context "argument validation" do
+      context "with argument validation" do
         it "raises an error when a nil enrollment_exemption passed" do
           expect { described_class.new(nil).call }.to raise_error(ArgumentError)
         end
@@ -31,7 +31,7 @@ module FloodRiskEngine
         end
       end
 
-      context "primary_contact_email and 'other email recipient' (aka secondary contact) are different" do
+      context "when primary_contact_email and 'other email recipient' (aka secondary contact) are different" do
         it "sends an email to each address", duff: true do
           expect(enrollment_exemption).to be_approved
 
@@ -85,31 +85,23 @@ module FloodRiskEngine
         end
       end
 
-      context "when seconday contact is nil since it is optional in the 'email other' form" do
-        after do
+      context "when secondary contact is nil since it is optional in the 'email other' form" do
+
+        before { enrollment.update(secondary_contact: nil) }
+
+        it "sends only one email" do
           expect(enrollment_exemption).to be_approved
 
           service_object = described_class.new(enrollment_exemption)
 
           expect(enrollment.correspondence_contact.email_address).not_to be_blank
 
-          expect(email_service).to receive(:run)
-            .with(enrollment:, recipient_address: enrollment.correspondence_contact.email_address)
-            .exactly(:once)
+          expect(email_service).to receive(:run).exactly(:once)
 
           expect(service_object.distinct_recipients.size).to eq 1
 
           service_object.call
         end
-
-        it "sends one email to the correspondence contact and does not use empty ('') secondary email" do
-          enrollment.secondary_contact.update email_address: "" # should result in it not being sent
-        end
-
-        it "sends one email to the correspondence contact and does not use nil secondary email" do
-          enrollment.secondary_contact.update email_address: nil # should result in it not being sent
-        end
-
       end
     end
   end

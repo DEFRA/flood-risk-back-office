@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Deregister an enrollment", type: :feature do
+RSpec.describe "Deregister an enrollment" do
   let(:enrollment_exemption) { create(:approved_limited_company).enrollment_exemptions.first }
   let(:user) { create(:user) }
 

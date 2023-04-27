@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Resend an approval email", type: :feature do
+RSpec.describe "Resend an approval email" do
   let(:enrollment_exemption) { create(:approved_limited_company).enrollment_exemptions.first }
   let(:user) { create(:user) }
 

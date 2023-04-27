@@ -10,24 +10,6 @@ module Admin
       render :index
     end
 
-    def create
-      authorize EnrollmentExport
-
-      @enrollment_export = EnrollmentExport.new(enrollment_export_params)
-      @enrollment_export.populate_file_name
-
-      if @enrollment_export.save
-        flash[:created_export_id] = @enrollment_export.id
-
-        EnrollmentExportJob.perform_later(@enrollment_export)
-
-        redirect_to admin_enrollment_exports_path, notice: flash_notice
-      else
-        find_exports
-        render :index
-      end
-    end
-
     def show
       export = EnrollmentExport.completed.find(params[:id])
 
@@ -43,6 +25,24 @@ module Admin
             redirect_to ReadEnrollmentExportReport.run(export)
           end
         end
+      end
+    end
+
+    def create
+      authorize EnrollmentExport
+
+      @enrollment_export = EnrollmentExport.new(enrollment_export_params)
+      @enrollment_export.populate_file_name
+
+      if @enrollment_export.save
+        flash[:created_export_id] = @enrollment_export.id
+
+        EnrollmentExportJob.perform_later(@enrollment_export)
+
+        redirect_to admin_enrollment_exports_path, notice: flash_notice
+      else
+        find_exports
+        render :index
       end
     end
 

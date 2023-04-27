@@ -1,6 +1,6 @@
 RSpec.describe "View Enrollment Exemption Detail" do
   before do
-    user = create :user
+    user = create(:user)
     user.add_role :system
     login_as user
   end
@@ -37,7 +37,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
 
   context "COMPLETE" do
     context "When Enrollment Submitted" do
-      let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
+      let(:enrollment) { create(:confirmed, submitted_at: Time.zone.now) }
       let(:enrollment_exemption) do
         enrollment.enrollment_exemptions.first.tap(&:pending!)
       end
@@ -124,7 +124,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
     end
 
     context "without secondary contact" do
-      let(:enrollment) { create :confirmed_no_secondary_contact }
+      let(:enrollment) { create(:confirmed_no_secondary_contact) }
       let(:enrollment_exemption) do
         create(
           :enrollment_exemption,
@@ -143,7 +143,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
     end
 
     context "when organisation is partnership" do
-      let(:enrollment) { create :submitted_partnership }
+      let(:enrollment) { create(:submitted_partnership) }
 
       it "Page has expected content for all partners" do
         visit admin_enrollment_exemption_path(enrollment.enrollment_exemptions.first)
@@ -161,7 +161,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
     end
 
     context "with organisation as limited company" do
-      let(:enrollment) { create :submitted_limited_company }
+      let(:enrollment) { create(:submitted_limited_company) }
       let(:organisation) { enrollment.organisation }
       let(:registration_number) { "WW123456" }
 
@@ -177,9 +177,9 @@ RSpec.describe "View Enrollment Exemption Detail" do
   end
 
   context "with comment history" do
-    let(:enrollment) { create :confirmed, submitted_at: Time.zone.now }
-    let(:user) { create :user }
-    let(:comment) { create :comment, user: }
+    let(:enrollment) { create(:confirmed, submitted_at: Time.zone.now) }
+    let(:user) { create(:user) }
+    let(:comment) { create(:comment, user:) }
     let(:enrollment_exemption) do
       create(
         :enrollment_exemption,

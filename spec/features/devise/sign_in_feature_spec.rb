@@ -1,5 +1,5 @@
 RSpec.describe "As a user, I want to be able sign in" do
-  let(:user) { create :user, password: "Abc12345678" }
+  let(:user) { create(:user, password: "Abc12345678") }
 
   before do
     visit new_user_session_path

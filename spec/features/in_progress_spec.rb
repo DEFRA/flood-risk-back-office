@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "In progress", type: :feature do
+RSpec.describe "In progress" do
   let(:enrollment_exemption) { create(:submitted_limited_company).enrollment_exemptions.first }
   let(:user) { create(:user) }
 

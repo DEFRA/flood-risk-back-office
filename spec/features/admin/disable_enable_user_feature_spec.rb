@@ -53,7 +53,7 @@ RSpec.describe "As an System user, I want to disable/enable a user" do
       expect(page).to have_current_path admin_users_path, ignore_query: true
 
       expect(other_user).to be_disabled
-      expect(other_user.disabled_at).to be_kind_of ActiveSupport::TimeWithZone
+      expect(other_user.disabled_at).to be_a ActiveSupport::TimeWithZone
       expect(other_user.disabled_comment).to eq "User has left the company"
 
       last_version = other_user.versions.last

@@ -1,7 +1,7 @@
 RSpec.describe "As a user, I want to be unlock my account" do
   include ActiveSupport::Testing::TimeHelpers
 
-  let(:user) { create :user, password: "Xyz12345678" }
+  let(:user) { create(:user, password: "Xyz12345678") }
 
   before do
     3.times do
@@ -19,7 +19,7 @@ RSpec.describe "As a user, I want to be unlock my account" do
   end
 
   it "Lock account" do
-    expect(user.reload.locked_at).to be_kind_of ActiveSupport::TimeWithZone
+    expect(user.reload.locked_at).to be_a ActiveSupport::TimeWithZone
     expect(user.unlock_token).to be_present
 
     expect(mailbox_for(user.email)).to be_one
@@ -62,7 +62,7 @@ RSpec.describe "As a user, I want to be unlock my account" do
       fill_in "Password", with: user.password
       click_button I18n.t("devise.sign_in")
       expect(page).to have_flash(I18n.t("devise.failure.invalid", authentication_keys: "email"), key: :alert)
-      expect(user.reload.locked_at).to be_kind_of ActiveSupport::TimeWithZone
+      expect(user.reload.locked_at).to be_a ActiveSupport::TimeWithZone
       expect(user.unlock_token).to be_present
     end
 
