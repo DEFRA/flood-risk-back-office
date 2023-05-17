@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -45,17 +45,8 @@ Rails.application.configure do
     config.action_controller.default_url_options =
       config.action_mailer.default_url_options = { host: host, port: port, protocol: protocol }
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: ENV['EMAIL_USERNAME'],
-    password: ENV['EMAIL_PASSWORD'],
-    domain: ENV['EMAIL_APP_DOMAIN'],
-    address: ENV['EMAIL_HOST'],
-    port: ENV['EMAIL_PORT'],
-    authentication: :plain,
-    enable_starttls_auto: true,
-    ssl: (ENV["EMAIL_PORT"].to_i == 465) # Sendgrid uses port 465 for SSL traffic
-  }
+  config.action_mailer.delivery_method = :notify_mail
+  config.action_mailer.notify_mail_settings = { api_key: ENV.fetch("NOTIFY_API_KEY") }
 
   if defined? Bullet
     config.after_initialize do

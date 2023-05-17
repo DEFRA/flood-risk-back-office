@@ -558,6 +558,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  notifications-ruby-client
   paper_trail
   passenger
   pg

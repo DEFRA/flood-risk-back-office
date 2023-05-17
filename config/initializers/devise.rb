@@ -14,7 +14,11 @@ Devise.setup do |config|
   config.mailer_sender = ENV.fetch("DEVISE_MAILER_SENDER")
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  #
+  # config.mailer = 'Devise::Mailer' is the default but we override it with our own. This is because we rely on
+  # GOV.UK Notify for sending the emails and our own `NotifyMail` class. As we're not sending stuff via SMTP we need
+  # to mail things in a different way hence we tell Devise to use our own mailer rather than the default.
+  config.mailer = "UserMailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -265,7 +269,7 @@ Devise.setup do |config|
   # When invite_for is 0 (the default), the invitation won't expire.
   config.invite_for = 2.weeks
 
-   # Auto-login after the user accepts the invite. If this is false,
+  # Auto-login after the user accepts the invite. If this is false,
   # the user will need to manually log in after accepting the invite.
   config.allow_insecure_sign_in_after_accept = false
 end
