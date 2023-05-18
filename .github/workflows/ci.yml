@@ -61,7 +61,7 @@ jobs:
       - name: Run unit tests
         run: |
           bundle exec rspec
-          sed -i 's/\/home\/runner\/work\/flood-risk-back-office\/flood-risk-back-office\//\/github\/workspace\//g' coverage/coverage.json
+          sed -i 's/\/home\/runner\/work\/flood-risk-back-office\/flood-risk-back-office\//\/github\/workspace\//g' coverage/.resultset.json
       - name: Analyze with SonarCloud
         uses: sonarsource/sonarcloud-github-action@master
         env:

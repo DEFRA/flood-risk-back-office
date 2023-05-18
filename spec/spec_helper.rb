@@ -8,8 +8,6 @@
 
 # Code coverage hooks
 require "simplecov"
-require "simplecov_json_formatter"
-SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
 SimpleCov.start "rails" do
   # any custom configs like groups and filters can be here at a central place
   # Standard filters
