@@ -61,7 +61,7 @@ You can then access the web site at http://localhost:3000
 
 ## GOV.UK Notify
 
-The project uses [Notify](https://www.notifications.service.gov.uk/using-notify/get-started) to send email. It does this using Notify's [web API](https://docs.notifications.service.gov.uk/ruby.html). The key difference is that the templates for all emails are stored in Notify. Any mailer views found in the TCM code are there purely as reference to what the Notify templates contain and to allow us to replicate the email body.
+The project uses [Notify](https://www.notifications.service.gov.uk/using-notify/get-started) to send email. It does this using Notify's [web API](https://docs.notifications.service.gov.uk/ruby.html). The key difference is that the templates for all emails are stored in Notify. Any mailer views found in the project code are there purely as reference to what the Notify templates contain and to allow us to replicate the email body.
 
 ### Intercepting email in development
 
