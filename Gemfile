@@ -31,6 +31,8 @@ gem "defra_ruby_email"
 gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
 gem "govuk_design_system_formbuilder"
+# GOV.UK Notify gem. Allows us to send email via the Notify web API
+gem "notifications-ruby-client"
 
 gem "dotenv-rails"
 
