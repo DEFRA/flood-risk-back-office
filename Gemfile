@@ -62,7 +62,7 @@ group :test do
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
-  gem "simplecov", "~> 0.17.1", require: false
+  gem "simplecov", "~> 0.21.2", require: false
   gem "vcr"
   gem "webmock"
   gem "whenever-test", "~> 1.0"

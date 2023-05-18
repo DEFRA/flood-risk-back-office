@@ -479,11 +479,12 @@ GEM
     secure_headers (6.5.0)
     shoulda-matchers (3.1.3)
       activesupport (>= 4.0.0)
-    simplecov (0.17.1)
+    simplecov (0.21.2)
       docile (~> 1.1)
-      json (>= 1.8, < 3)
-      simplecov-html (~> 0.10.0)
-    simplecov-html (0.10.2)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -576,7 +577,7 @@ DEPENDENCIES
   sass-rails
   secure_headers
   shoulda-matchers (~> 3.1.1)
-  simplecov (~> 0.17.1)
+  simplecov (~> 0.21.2)
   uglifier
   vcr
   webmock
