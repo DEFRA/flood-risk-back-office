@@ -52,6 +52,7 @@ RSpec.describe "enrollment exports" do
     let(:enrollment_export) { create(:enrollment_export, :with_dates, :with_file_name, :completed) }
 
     before do
+      enrollment_export.run
       user.grant :system
       login_as user
       visit "/admin/enrollment_exports/#{enrollment_export.id}.csv"
