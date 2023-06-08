@@ -1,5 +1,9 @@
 require "paper_trail"
 
+# these classses are required on boot, so have to be loaded explicitly (since Rails 7 - zeitwerk autoloader)
+require "user"
+require "role"
+
 module FloodRiskEngine
   Enrollment.has_paper_trail          meta: { status: :step }
   EnrollmentExemption.has_paper_trail meta: { status: :status }
