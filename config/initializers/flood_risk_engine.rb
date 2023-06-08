@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
+# these classses are required on boot, so have to be loaded explicitly (since Rails 7 - zeitwerk autoloader)
+require "flood_risk_engine/application_record"
+require "flood_risk_engine/address"
+require "flood_risk_engine/contact"
+require "flood_risk_engine/location"
+require "flood_risk_engine/organisation"
+require "flood_risk_engine/partner"
+require "flood_risk_engine/reference_number"
+require "flood_risk_engine/enrollment_exemption"
+require "flood_risk_engine/enrollment"
+require "flood_risk_engine/can_redirect_form_to_correct_path"
+require "flood_risk_engine/forms_controller"
+
 FloodRiskEngine.configure do |config|
   # By default we use a different layout to the host app (ie we don't use application by default)
   # because that layout may include calls to helper methods that we (as an isolated engine)

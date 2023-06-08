@@ -8,7 +8,7 @@ FactoryBot.define do
     end
 
     trait :with_secondary_contact do
-      association :secondary_contact, factory: :contact
+      secondary_contact factory: :contact
     end
 
     step { :confirmation }
@@ -34,7 +34,7 @@ FactoryBot.define do
     end
 
     trait :with_secondary_contact do
-      association :secondary_contact, factory: :contact
+      secondary_contact factory: :contact
     end
   end
 

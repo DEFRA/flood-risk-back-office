@@ -60,5 +60,8 @@ module FloodRiskBackOffice
 
     # Add custom delivery method for emails
     ActionMailer::Base.add_delivery_method(:notify_mail, NotifyMail)
+
+    # For Rails 7: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+    config.active_record.legacy_connection_handling = false
   end
 end
