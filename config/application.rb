@@ -20,12 +20,14 @@ Bundler.require(*Rails.groups)
 
 module FloodRiskBackOffice
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+  
+    # prevent the autoload of engine decorators by zeitwerk and load them manually
+    # https://edgeguides.rubyonrails.org/engines.html#overriding-models-and-controllers
+    decorators = "#{Rails.root}/app/decorators"
+    Rails.autoloaders.main.ignore(decorators)
     config.to_prepare do
-      Rails.root.glob("app/decorators/**/*_decorator*.rb").each do |c|
-        require_dependency(c)
+      Dir.glob("#{decorators}/**/*_decorator*.rb").each do |decorator|
+        load decorator
       end
     end
 
