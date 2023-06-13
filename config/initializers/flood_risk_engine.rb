@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 # these classses are required on boot, so have to be loaded explicitly (since Rails 7 - zeitwerk autoloader)
+require "flood_risk_engine/email_helper"
 require "flood_risk_engine/application_record"
+require "flood_risk_engine/application_controller"
 require "flood_risk_engine/address"
 require "flood_risk_engine/contact"
 require "flood_risk_engine/location"
