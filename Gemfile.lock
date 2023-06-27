@@ -508,7 +508,7 @@ GEM
     uniform_notifier (1.16.0)
     validates_email_format_of (1.7.2)
       i18n
-    vcr (6.1.0)
+    vcr (6.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     webmock (3.18.1)
