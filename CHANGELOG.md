@@ -2,7 +2,25 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.0.2...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.0.3...HEAD)
+
+**Implemented enhancements:**
+
+- Feature/ruby 2480 frae tech upgrade to rails 7 [\#629](https://github.com/DEFRA/flood-risk-back-office/pull/629) ([brujeo](https://github.com/brujeo))
+
+**Fixed bugs:**
+
+- Reconfiguring Uglifier dependency [\#634](https://github.com/DEFRA/flood-risk-back-office/pull/634) ([brujeo](https://github.com/brujeo))
+
+**Merged pull requests:**
+
+- Bump protocol-http1 from 0.15.0 to 0.15.1 [\#654](https://github.com/DEFRA/flood-risk-back-office/pull/654) ([dependabot[bot]](https://github.com/apps/dependabot))
+- refactoring preloading of engine decorators [\#635](https://github.com/DEFRA/flood-risk-back-office/pull/635) ([brujeo](https://github.com/brujeo))
+- replace SendGrid with Notify for devise emails \(user invites, password resets etc\) [\#622](https://github.com/DEFRA/flood-risk-back-office/pull/622) ([brujeo](https://github.com/brujeo))
+
+## [v2.0.3](https://github.com/defra/flood-risk-back-office/tree/v2.0.3) (2023-05-17)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.0.2...v2.0.3)
 
 **Fixed bugs:**
 
@@ -11,6 +29,7 @@
 
 **Merged pull requests:**
 
+- Release v2.0.3 [\#621](https://github.com/DEFRA/flood-risk-back-office/pull/621) ([PaulDoyle-DEFRA](https://github.com/PaulDoyle-DEFRA))
 - Bump aws-sdk-s3 from 1.121.0 to 1.122.0 [\#617](https://github.com/DEFRA/flood-risk-back-office/pull/617) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump pg from 1.5.2 to 1.5.3 [\#615](https://github.com/DEFRA/flood-risk-back-office/pull/615) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump devise\_invitable from 2.0.7 to 2.0.8 [\#614](https://github.com/DEFRA/flood-risk-back-office/pull/614) ([dependabot[bot]](https://github.com/apps/dependabot))
