@@ -214,7 +214,7 @@ GEM
       warden (~> 1.2.3)
     devise-security (0.18.0)
       devise (>= 4.3.0)
-    devise_invitable (2.0.8)
+    devise_invitable (2.0.9)
       actionmailer (>= 5.0)
       devise (>= 4.6)
     dibber (0.7.0)
