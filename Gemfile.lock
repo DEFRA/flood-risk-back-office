@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 3fa24198bbaed34f1fc1e09f5131d552e6d9326c
+  revision: 6cf36ec299ef68b344d147623236bdfc858ed39c
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -8,7 +8,7 @@ GIT
       activerecord-session_store (~> 2)
       defra_ruby_address
       defra_ruby_alert (~> 2.1)
-      defra_ruby_area (~> 2)
+      defra_ruby_area (~> 2.1)
       defra_ruby_email (~> 1)
       defra_ruby_validators
       dibber (~> 0.5)
@@ -108,7 +108,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
-    airbrake (13.0.3)
+    airbrake (13.0.4)
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
@@ -186,7 +186,7 @@ GEM
       rest-client (~> 2.0)
     defra_ruby_alert (2.2.1)
       airbrake
-    defra_ruby_area (2.0.3)
+    defra_ruby_area (2.1.0)
       nokogiri (>= 1.13.2)
       rest-client (~> 2.0)
     defra_ruby_aws (0.5.0)
@@ -220,8 +220,7 @@ GEM
     dibber (0.7.0)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    domain_name (0.5.20190701)
-      unf (>= 0.0.5, < 1.0.0)
+    domain_name (0.6.20231109)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -327,7 +326,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     netrc (0.11.0)
-    nio4r (2.5.9)
+    nio4r (2.6.1)
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -504,9 +503,6 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     uk_postcode (2.1.8)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.9)
     unicode-display_width (2.4.2)
     uniform_notifier (1.16.0)
     validates_email_format_of (1.7.2)
