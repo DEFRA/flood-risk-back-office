@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 6cf36ec299ef68b344d147623236bdfc858ed39c
+  revision: 67d444a2858460416cfd251dbd75f5222b5767d9
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -8,7 +8,7 @@ GIT
       activerecord-session_store (~> 2)
       defra_ruby_address
       defra_ruby_alert (~> 2.1)
-      defra_ruby_area (~> 2.1)
+      defra_ruby_area (~> 2.2)
       defra_ruby_email (~> 1)
       defra_ruby_validators
       dibber (~> 0.5)
@@ -186,7 +186,7 @@ GEM
       rest-client (~> 2.0)
     defra_ruby_alert (2.2.1)
       airbrake
-    defra_ruby_area (2.1.0)
+    defra_ruby_area (2.2.0)
       nokogiri (>= 1.13.2)
       rest-client (~> 2.0)
     defra_ruby_aws (0.5.0)
