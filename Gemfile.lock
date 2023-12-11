@@ -414,7 +414,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.6)
     rolify (6.0.1)
-    rspec-activemodel-mocks (1.1.0)
+    rspec-activemodel-mocks (1.2.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       rspec-mocks (>= 2.99, < 4.0)
