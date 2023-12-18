@@ -9,7 +9,7 @@ class ReadFromAwsS3
   end
 
   def call
-    s3 = Aws::S3::Resource.new
+    s3 = Aws::S3::Resource.new(region: Rails.application.secrets.aws_region)
     bucket = s3.bucket ENV.fetch("FRA_AWS_MANUAL_EXPORT_BUCKET")
 
     bucket.object(enrollment_export.file_name).presigned_url(

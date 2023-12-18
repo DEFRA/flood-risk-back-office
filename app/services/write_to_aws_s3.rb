@@ -22,7 +22,7 @@ class WriteToAwsS3
   attr_accessor :enrollment_export
 
   def s3
-    Aws::S3::Resource.new
+    Aws::S3::Resource.new(region: Rails.application.secrets.aws_region)
   rescue StandardError => e
     Rails.logger.error(e.backtrace.first.inspect)
     Rails.logger.error("AWS setup failed - check you initializer and config : #{e.inspect}")
