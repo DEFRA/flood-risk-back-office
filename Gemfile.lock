@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 67d444a2858460416cfd251dbd75f5222b5767d9
+  revision: 1ed3c0fe65446f23bd3896efd1df40fd5965a70d
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -165,7 +165,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.4.0)
+    cgi (0.4.1)
     chronic (0.10.2)
     cliver (0.3.2)
     concurrent-ruby (1.2.2)
@@ -311,7 +311,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1003)
+    mime-types-data (3.2023.1205)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
     minitest (5.20.0)
@@ -326,7 +326,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     netrc (0.11.0)
-    nio4r (2.6.1)
+    nio4r (2.7.0)
     nokogiri (1.15.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -347,7 +347,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.5.3)
-    phonelib (0.8.5)
+    phonelib (0.8.6)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -491,7 +491,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sucker_punch (3.1.0)
+    sucker_punch (3.2.0)
       concurrent-ruby (~> 1.0)
     thor (1.3.0)
     tilt (2.2.0)
