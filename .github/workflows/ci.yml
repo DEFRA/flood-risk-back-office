@@ -7,7 +7,6 @@ jobs:
     # You must use a Linux environment when using service containers or container jobs
     runs-on: ubuntu-latest
     env:
-      FRA_AWS_DAILY_EXPORT_BUCKET: bucket_name
       NOTIFY_API_KEY: ${{ secrets.NOTIFY_API_KEY }}
       PG_USERNAME: postgres
       PG_PASSWORD: pinafore
