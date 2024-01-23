@@ -2,7 +2,7 @@
 
 require "defra_ruby/aws"
 
-secrets = Rails.application.secrets
+secrets = FloodRiskBackOffice::Application.secrets
 
 DefraRuby::Aws.configure do |c|
   epr_reports_bucket = {
