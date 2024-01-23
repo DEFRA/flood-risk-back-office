@@ -79,4 +79,25 @@ RSpec.describe User do
       expect(user.errors[:email]).to include("is too long (maximum is 255 characters)")
     end
   end
+
+  describe "#add_to_role_names" do
+    let(:role) { Role.new(name: "foo") }
+
+    it "adds the role" do
+      user.add_to_role_names(role)
+      expect(user.role_names).to include role.name
+    end
+  end
+
+  describe "#remove_from_role_names" do
+    let(:role) { Role.new(name: "foo") }
+
+    it "removes the role" do
+      user.add_to_role_names(role)
+      expect(user.role_names).to include role.name
+
+      user.remove_from_role_names(role)
+      expect(user.role_names).to be_nil
+    end
+  end
 end
