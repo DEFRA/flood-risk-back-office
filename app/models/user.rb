@@ -47,13 +47,11 @@ class User < ActiveRecord::Base
   # Use ActiveJob to deliver Devise emails
   # https://github.com/plataformatec/devise#activejob-integration
   def send_devise_notification(notification, *)
-    # :nocov:
     if Rails.application.config.active_job.queue_adapter == :inline
       super
     else
       devise_mailer.send(notification, self, *).deliver_later
     end
-    # :nocov:
   end
 
   def active_for_authentication?

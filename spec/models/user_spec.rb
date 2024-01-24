@@ -100,4 +100,20 @@ RSpec.describe User do
       expect(user.role_names).to be_nil
     end
   end
+
+  describe "#send_devise_notification" do
+    subject(:send_notification) { user.send_devise_notification(:reset_password_instructions) }
+
+    context "when not using inline queue" do
+      let(:delivery_job) { instance_double(ActionMailer::MailDeliveryJob) }
+
+      before do
+        allow(Rails.application.config.active_job).to receive(:queue_adapter).and_return(:sucker_punch)
+        allow(ActionMailer::MailDeliveryJob).to receive(:new).and_return delivery_job
+        allow(delivery_job).to receive(:enqueue)
+      end
+
+      it { expect { send_notification }.not_to raise_error }
+    end
+  end
 end
