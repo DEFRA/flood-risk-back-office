@@ -74,7 +74,17 @@ module FloodRiskBackOffice
       @secrets ||= begin
         secrets = ActiveSupport::OrderedOptions.new
         files = config.paths["config/secrets"].existent
-        secrets.merge! Rails::Secrets.parse(files, env: Rails.env)
+        secrets.merge! parse(files)
+      end
+    end
+
+    def parse(paths)
+      paths.each_with_object(Hash.new) do |path, all_secrets|
+        require "erb"
+
+        secrets = YAML.load(ERB.new(IO.read(path)).result, aliases: true) || {}
+        all_secrets.merge!(secrets["shared"].deep_symbolize_keys) if secrets["shared"]
+        all_secrets.merge!(secrets[Rails.env].deep_symbolize_keys) if secrets[Rails.env]
       end
     end
   end
