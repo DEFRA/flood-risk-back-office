@@ -367,7 +367,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    passenger (6.0.19)
+    passenger (6.0.20)
       rack
       rake (>= 0.8.1)
     pg (1.5.4)
