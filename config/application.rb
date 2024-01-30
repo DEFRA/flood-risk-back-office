@@ -74,11 +74,11 @@ module FloodRiskBackOffice
       @secrets ||= begin
         secrets = ActiveSupport::OrderedOptions.new
         files = config.paths["config/secrets"].existent
-        secrets.merge! parse(files)
+        secrets.merge! parse_secrets(files)
       end
     end
 
-    def parse(paths)
+    def parse_secrets(paths)
       paths.each_with_object(Hash.new) do |path, all_secrets|
         require "erb"
 
