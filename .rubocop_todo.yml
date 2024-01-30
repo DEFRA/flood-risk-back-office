@@ -56,7 +56,7 @@ RSpec/ExpectInHook:
 
 # Offense count: 6
 # This cop supports unsafe autocorrection (--autocorrect-all).
-RSpec/FactoryBot/SyntaxMethods:
+FactoryBot/SyntaxMethods:
   Exclude:
     - 'spec/features/admin/view_enrollment_exemption_spec.rb'
     - 'spec/features/nav_menu_feature_spec.rb'

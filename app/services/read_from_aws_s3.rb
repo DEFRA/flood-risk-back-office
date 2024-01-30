@@ -9,7 +9,7 @@ class ReadFromAwsS3
   end
 
   def call
-    secrets = Rails.application.secrets
+    secrets = FloodRiskBackOffice::Application.secrets
     s3 = Aws::S3::Resource.new(
       region: secrets.aws_region,
       credentials: Aws::Credentials.new(secrets.aws_access_key_id, secrets.aws_secret_access_key)

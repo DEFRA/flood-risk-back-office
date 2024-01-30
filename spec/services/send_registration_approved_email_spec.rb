@@ -32,7 +32,7 @@ module FloodRiskEngine
       end
 
       context "when primary_contact_email and 'other email recipient' (aka secondary contact) are different" do
-        it "sends an email to each address", duff: true do
+        it "sends an email to each address", :duff do
           expect(enrollment_exemption).to be_approved
 
           expect(enrollment.correspondence_contact.email_address).to be_present
