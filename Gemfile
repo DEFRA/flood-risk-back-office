@@ -1,9 +1,6 @@
 source "https://rubygems.org"
 ruby "3.2.2"
 
-# pin rack version to avoid Passenger / Rails 7.1 issue: https://github.com/phusion/passenger/issues/2508
-gem "rack", "< 3"
-
 gem "aws-sdk-s3"
 gem "devise"
 gem "devise_invitable"
@@ -75,5 +72,6 @@ end
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
-  gem "passenger", require: "phusion_passenger/rack_handler"
+  # Pin gem version to avoid Passenger / Rails 7.1 issue: https://github.com/phusion/passenger/issues/2508
+  gem "passenger", "< 6.0", require: "phusion_passenger/rack_handler"
 end
