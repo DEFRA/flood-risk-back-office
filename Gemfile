@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 ruby "3.2.2"
 
+# pin rack version to avoid Passenger / Rails 7.1 issue: https://github.com/phusion/passenger/issues/2508
 gem "rack", "< 3"
 
 gem "aws-sdk-s3"
