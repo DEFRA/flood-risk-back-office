@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
          :recoverable,
          :session_limitable,
          :timeoutable,
-         timeout_in: Rails.application.secrets.session_timeout_minutes.minutes
+         timeout_in: FloodRiskBackOffice::Application.secrets.session_timeout_minutes.minutes
 
   validate :password_meets_minimum_requirements
   validates :email, length: { maximum: 255 }
@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
 
   # Use ActiveJob to deliver Devise emails
   # https://github.com/plataformatec/devise#activejob-integration
-  def send_devise_notification(notification, *args)
+  def send_devise_notification(notification, *)
     if Rails.application.config.active_job.queue_adapter == :inline
       super
     else
-      devise_mailer.send(notification, self, *args).deliver_later
+      devise_mailer.send(notification, self, *).deliver_later
     end
   end
 

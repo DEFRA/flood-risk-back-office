@@ -5,6 +5,8 @@ gem "aws-sdk-s3"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
+gem "faraday"
+gem "faraday-retry"
 gem "jquery-rails", "~> 4.4"
 gem "kaminari"
 gem "net-imap", require: false
@@ -27,7 +29,6 @@ gem "flood_risk_engine",
     branch: "main"
 
 gem "defra_ruby_aws"
-gem "defra_ruby_email"
 gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
 gem "govuk_design_system_formbuilder"

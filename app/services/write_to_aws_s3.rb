@@ -22,7 +22,7 @@ class WriteToAwsS3
   attr_accessor :enrollment_export
 
   def s3
-    secrets = Rails.application.secrets
+    secrets = FloodRiskBackOffice::Application.secrets
     Aws::S3::Resource.new(
       region: secrets.aws_region,
       credentials: Aws::Credentials.new(secrets.aws_access_key_id, secrets.aws_secret_access_key)
