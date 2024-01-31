@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 ruby "3.2.2"
 
+gem "rack", "< 3"
+
 gem "aws-sdk-s3"
 gem "devise"
 gem "devise_invitable"
