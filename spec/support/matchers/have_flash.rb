@@ -6,6 +6,6 @@ end
 
 RSpec::Matchers.define :have_no_flash do
   match do
-    expect(page).not_to have_css alert_css(".govuk-notification-banner")
+    expect(page).to have_no_css alert_css(".govuk-notification-banner")
   end
 end

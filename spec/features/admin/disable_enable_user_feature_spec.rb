@@ -34,7 +34,7 @@ RSpec.describe "As an System user, I want to disable/enable a user" do
       expect(page).to have_css("tr#user_#{other_user.id} td", text: "Enabled")
     end
 
-    it "System user can disable another user", versioning: true do
+    it "System user can disable another user", :versioning do
       system_user = create(:user).tap { |u| u.add_role :system }
       other_user = create(:user).tap { |u| u.add_role :admin_agent }
 
