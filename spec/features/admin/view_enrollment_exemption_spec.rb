@@ -6,9 +6,13 @@ RSpec.describe "View Enrollment Exemption Detail" do
   end
 
   context "Enrollment NOT Submitted" do
-    incomplete = FactoryBot.factories.collect(&:name).grep(/page/).tap do |a| a.delete :page_confirmation end
+    incomplete = FactoryBot.factories.collect(&:name).grep(/page/).tap do |a|
+      a.delete :page_confirmation
+    end
 
-    enrollments = incomplete.collect do |f| FactoryBot.create(f) end
+    enrollments = incomplete.collect do |f|
+      FactoryBot.create(f)
+    end
 
     enrollments.each do |enrollment|
       next unless enrollment.enrollment_exemptions.first
@@ -25,11 +29,11 @@ RSpec.describe "View Enrollment Exemption Detail" do
         expect(page).to have_css("#exemption-details")
 
         within "#actions" do
-          expect(page).not_to have_link("Edit registration")
-          expect(page).not_to have_link("Deregister")
-          expect(page).not_to have_link("Reject")
-          expect(page).not_to have_link("Approve")
-          expect(page).not_to have_link("Withdraw")
+          expect(page).to have_no_link("Edit registration")
+          expect(page).to have_no_link("Deregister")
+          expect(page).to have_no_link("Reject")
+          expect(page).to have_no_link("Approve")
+          expect(page).to have_no_link("Withdraw")
         end
       end
     end
@@ -60,7 +64,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
         ee = enrollment.enrollment_exemptions.first
 
         within "#actions" do
-          expect(page).not_to have_link(
+          expect(page).to have_no_link(
             "Deregister", href: new_admin_enrollment_exemption_deregister_path(ee)
           )
 
@@ -100,19 +104,19 @@ RSpec.describe "View Enrollment Exemption Detail" do
               href: new_admin_enrollment_exemption_deregister_path(enrollment_exemption)
             )
 
-            expect(page).not_to have_link(
+            expect(page).to have_no_link(
               "Reject",
               href: new_admin_enrollment_exemption_reject_path(enrollment_exemption)
             )
 
-            expect(page).not_to have_link(
+            expect(page).to have_no_link(
               "Approve",
               href: new_admin_enrollment_exemption_approve_path(
                 enrollment.enrollment_exemptions.first
               )
             )
 
-            expect(page).not_to have_link(
+            expect(page).to have_no_link(
               "Withdraw",
               href: new_admin_enrollment_exemption_withdraw_path(
                 enrollment.enrollment_exemptions.first
@@ -137,7 +141,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
 
         within "#admin-enrollment-exemptions-show" do
           expect(page).to have_css("#correspondence-contact-details")
-          expect(page).not_to have_css("#secondary-contact-details")
+          expect(page).to have_no_css("#secondary-contact-details")
         end
       end
     end
@@ -202,7 +206,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
       it "Page has the no comment content" do
         login_as non_system_user
         visit admin_enrollment_exemption_path(enrollment_exemption)
-        expect(page).not_to have_css("#comment-history")
+        expect(page).to have_no_css("#comment-history")
       end
     end
   end

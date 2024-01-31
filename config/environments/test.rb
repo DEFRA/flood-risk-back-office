@@ -39,5 +39,8 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # Make belongs_to optional: true for test data purposes
+  config.active_record.belongs_to_required_by_default = false
+
   Rails.application.routes.default_url_options[:host] = ENV["DEFAULT_URL_HOST"] || "localhost:8000"
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_02_151907) do
-
+ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -230,8 +229,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.bigint "addressable_id"
     t.string "uprn"
     t.string "token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addressables"
   end
 
@@ -239,8 +238,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.string "full_name"
     t.string "temp_postcode"
     t.bigint "transient_registration_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["transient_registration_id"], name: "index_transient_people_on_transient_registration_id"
   end
 
@@ -250,8 +249,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
     t.date "expires_on"
     t.bigint "transient_registration_id"
     t.bigint "flood_risk_engine_exemption_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["flood_risk_engine_exemption_id"], name: "exemption_id"
     t.index ["transient_registration_id"], name: "transient_registration_id"
   end
@@ -259,8 +258,8 @@ ActiveRecord::Schema.define(version: 2021_08_02_151907) do
   create_table "transient_registrations", force: :cascade do |t|
     t.string "token"
     t.string "workflow_state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "type", default: "FloodRiskEngine::NewRegistration", null: false
     t.string "additional_contact_email"
     t.string "business_type"
