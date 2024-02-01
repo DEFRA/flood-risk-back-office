@@ -15,7 +15,6 @@ gem "net-smtp", require: false
 gem "paper_trail"
 gem "pg"
 gem "pundit"
-gem "rails", "~> 7.0"
 gem "rolify"
 gem "sass-rails"
 gem "secure_headers"
@@ -69,9 +68,12 @@ group :test do
   gem "whenever-test", "~> 1.0"
 end
 
+# Pin this version as well as passenger to avoid https://github.com/phusion/passenger/issues/2508
+gem "rack", "2.2.4"
+
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
-  # Pin gem version to avoid Passenger / Rails 7.1 issue: https://github.com/phusion/passenger/issues/2508
-  gem "passenger", "< 6.0", require: "phusion_passenger/rack_handler"
+  # Pin this version as well as rack to avoid https://github.com/phusion/passenger/issues/2508
+  gem "passenger", "6.0.19", require: "phusion_passenger/rack_handler"
 end
