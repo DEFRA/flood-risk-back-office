@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: b3429f5d8e695462eb1af03f50955ad45c5177d2
+  revision: 2565e615622c9efd65152728408606068b573b32
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -297,7 +297,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     io-event (1.4.2)
-    irb (1.11.1)
+    irb (1.11.2)
       rdoc
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -334,10 +334,10 @@ GEM
     matrix (0.4.2)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1205)
+    mime-types-data (3.2024.0206)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
     net-http (0.4.1)
@@ -353,7 +353,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.0)
+    nokogiri (1.16.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     notifications-ruby-client (6.0.0)
@@ -570,7 +570,7 @@ GEM
       whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
   ruby
