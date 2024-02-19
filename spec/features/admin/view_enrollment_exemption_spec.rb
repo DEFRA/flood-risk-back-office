@@ -50,7 +50,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
         visit admin_enrollment_exemption_path(enrollment_exemption)
 
         within "#registration-details" do
-          expect(page).to have_css("td", text: enrollment.reference_number)
+          expect(page).to have_css("td", text: enrollment.ref_number)
         end
 
         within "#correspondence-contact-details" do
