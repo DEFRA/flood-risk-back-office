@@ -67,11 +67,11 @@ class Presenter < SimpleDelegator
   end
 
   def blank_value
-    content_tag :em, t("presenters.blank"), class: "text-muted"
+    content_tag :em, I18n.t("presenters.blank"), class: "text-muted"
   end
 
   def nil_value
-    content_tag :em, t("presenters.nil"), class: "text-muted"
+    content_tag :em, I18n.t("presenters.nil"), class: "text-muted"
   end
 
   def friendly_date(date)
@@ -80,7 +80,7 @@ class Presenter < SimpleDelegator
   end
 
   def friendly_expiry_date(date)
-    return t("presenters.no_expiry_date_present") unless date
+    return I18n.t("presenters.no_expiry_date_present") unless date
 
     I18n.l(date.to_date, format: :long)
   end
