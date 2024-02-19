@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: b3429f5d8e695462eb1af03f50955ad45c5177d2
+  revision: e216a9b94a3a3bf49ecb6622390be12434b07ceb
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -182,7 +182,7 @@ GEM
     console (1.23.3)
       fiber-annotation
       fiber-local
-    crack (0.4.6)
+    crack (1.0.0)
       bigdecimal
       rexml
     crass (1.0.6)
@@ -297,7 +297,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
     io-event (1.4.2)
-    irb (1.11.1)
+    irb (1.11.2)
       rdoc
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -306,7 +306,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.7.1)
-    jwt (2.7.1)
+    jwt (2.8.0)
+      base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -334,15 +335,14 @@ GEM
     matrix (0.4.2)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2023.1205)
+    mime-types-data (3.2024.0206)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.5)
-    minitest (5.21.2)
+    minitest (5.22.2)
     multi_json (1.15.0)
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.9.1)
+    net-imap (0.4.10)
       date
       net-protocol
     net-pop (0.1.2)
@@ -353,8 +353,9 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.0)
-      mini_portile2 (~> 2.8.2)
+    nokogiri (1.16.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     notifications-ruby-client (6.0.0)
       jwt (>= 1.5, < 3)
@@ -373,7 +374,7 @@ GEM
     passenger (6.0.19)
       rack
       rake (>= 0.8.1)
-    pg (1.5.4)
+    pg (1.5.5)
     phonelib (0.8.7)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -556,7 +557,7 @@ GEM
     vcr (6.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    webmock (3.19.1)
+    webmock (3.20.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -570,10 +571,11 @@ GEM
       whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
-  ruby
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   awesome_print
@@ -585,6 +587,7 @@ DEPENDENCIES
   defra_ruby_aws
   defra_ruby_style
   defra_ruby_template
+  defra_ruby_validators
   devise
   devise-security
   devise_invitable

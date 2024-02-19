@@ -27,6 +27,10 @@ gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
     branch: "main"
 
+# This is specified in the engine gemspec,
+# but need to specify here also to pick up i18n locales
+gem "defra_ruby_validators"
+
 gem "defra_ruby_aws"
 gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
