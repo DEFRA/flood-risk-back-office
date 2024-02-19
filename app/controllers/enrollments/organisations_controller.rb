@@ -20,7 +20,8 @@ module Enrollments
 
     def load_defaults
       @organisation = Organisation.find(params[:id])
-      @enrollment = FloodRiskEngine::Enrollment.find_by(token: params[:enrollment_id])
+      @enrollment = FloodRiskEngine::Enrollment.find_by(token: params[:enrollment_id]) ||
+                    FloodRiskEngine::Enrollment.find(params[:enrollment_id])
       @enrollment_exemption = @enrollment.enrollment_exemptions.first
     end
 
