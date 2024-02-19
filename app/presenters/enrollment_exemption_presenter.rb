@@ -203,8 +203,7 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def edit_organisation_link(organisation)
-    Rails.logger.warn "\n++++++++ edit_organisation_link for: #{enrollment}, #{organisation}\n"
-    link_to(I18n.t(".edit"), edit_enrollment_organisation_path(enrollment.id, organisation))
+    link_to(I18n.t(".edit"), edit_enrollment_organisation_path(enrollment, organisation))
   end
 
   def organisation_type
