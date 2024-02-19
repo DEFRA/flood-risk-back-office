@@ -1,5 +1,5 @@
 FloodRiskEngine::EnrollmentExemption.class_eval do
-  belongs_to :accept_reject_decision_user, class_name: "User"
+  belongs_to :accept_reject_decision_user, class_name: "User", optional: true
 
   # rubocop:disable Style/Lambda
 
