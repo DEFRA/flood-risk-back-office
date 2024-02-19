@@ -29,6 +29,6 @@ RSpec.describe EnrollmentExemptionPresenter, type: :presenter do
   end
 
   describe "#blank_value" do
-    it { expect(presenter.blank_value).to match /Not specified/ }
+    it { expect(presenter.blank_value).to match(/Not specified/) }
   end
 end
