@@ -7,6 +7,8 @@ def create_user(email, role)
     email:,
     password: ENV.fetch("DEFAULT_PASSWORD", "Secret123")
   )
+  Rolify.resource_types << "User" unless Rolify.resource_types.include?("User")
+  Role.create(name: role)
   user.add_role role
 end
 

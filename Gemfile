@@ -5,6 +5,8 @@ gem "aws-sdk-s3"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
+gem "faraday"
+gem "faraday-retry"
 gem "jquery-rails", "~> 4.4"
 gem "kaminari"
 gem "net-imap", require: false
@@ -13,7 +15,6 @@ gem "net-smtp", require: false
 gem "paper_trail"
 gem "pg"
 gem "pundit"
-gem "rails", "~> 7.0"
 gem "rolify"
 gem "sass-rails"
 gem "secure_headers"
@@ -26,8 +27,11 @@ gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
     branch: "main"
 
+# This is specified in the engine gemspec,
+# but need to specify here also to pick up i18n locales
+gem "defra_ruby_validators"
+
 gem "defra_ruby_aws"
-gem "defra_ruby_email"
 gem "defra_ruby_template"
 gem "github_changelog_generator", require: false
 gem "govuk_design_system_formbuilder"
@@ -68,8 +72,12 @@ group :test do
   gem "whenever-test", "~> 1.0"
 end
 
+# Pin this version as well as passenger to avoid https://github.com/phusion/passenger/issues/2508
+gem "rack", "2.2.4"
+
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
   # via Procfile) # via Procfile)
-  gem "passenger", require: "phusion_passenger/rack_handler"
+  # Pin this version as well as rack to avoid https://github.com/phusion/passenger/issues/2508
+  gem "passenger", "6.0.19", require: "phusion_passenger/rack_handler"
 end

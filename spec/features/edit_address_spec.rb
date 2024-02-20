@@ -29,6 +29,6 @@ RSpec.describe "Edit address" do
     fill_in "Postcode", with: "foo-bar-foo"
     click_on "Continue"
 
-    expect(page).to have_css(".govuk-error-message", text: "Postcode is too long")
+    expect(page).to have_css(".govuk-error-message", text: "Error: Enter a valid postcode - there’s a mistake in that one")
   end
 end

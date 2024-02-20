@@ -7,11 +7,11 @@ default: &default
   encoding: unicode
   min_messages: warning
   pool: <%= ENV["DB_POOL"] || 5 %>
-  host: <%= Rails.application.secrets.pg_host || 'localhost' %>
-  port: <%= Rails.application.secrets.pg_port || 5432 %>
-  database: <%= Rails.application.secrets.pg_database || 'flood_risk' %>
-  username: <%= Rails.application.secrets.pg_username || 'vagrant' %>
-  password: <%= Rails.application.secrets.pg_password || 'vagrant' %>
+  host: <%= FloodRiskBackOffice::Application.secrets.pg_host || 'localhost' %>
+  port: <%= FloodRiskBackOffice::Application.secrets.pg_port || 5432 %>
+  database: <%= FloodRiskBackOffice::Application.secrets.pg_database || 'flood_risk' %>
+  username: <%= FloodRiskBackOffice::Application.secrets.pg_username || 'vagrant' %>
+  password: <%= FloodRiskBackOffice::Application.secrets.pg_password || 'vagrant' %>
 
 development:
   <<: *default

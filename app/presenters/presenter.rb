@@ -62,27 +62,8 @@ class Presenter < SimpleDelegator
     super
   end
 
-  def default_url_options
-    Rails.application.routes.default_url_options
-  end
-
   def blank_value
-    content_tag :em, t("presenters.blank"), class: "text-muted"
-  end
-
-  def nil_value
-    content_tag :em, t("presenters.nil"), class: "text-muted"
-  end
-
-  def friendly_date(date)
-    formatted_date = date && I18n.l(date.to_date, format: :long)
-    formatted_date || ""
-  end
-
-  def friendly_expiry_date(date)
-    return t("presenters.no_expiry_date_present") unless date
-
-    I18n.l(date.to_date, format: :long)
+    content_tag :em, I18n.t("presenters.blank"), class: "text-muted"
   end
 
   # Add any common methods like app-specific date formatters etc here
