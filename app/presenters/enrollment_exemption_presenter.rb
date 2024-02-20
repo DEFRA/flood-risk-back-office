@@ -26,7 +26,6 @@ class EnrollmentExemptionPresenter < Presenter
            :exemption_location,
            :correspondence_contact,
            :secondary_contact,
-           :reference_number,
            to: :enrollment, allow_nil: true
 
   delegate :code, :summary, to: :exemption, allow_nil: true
@@ -78,6 +77,10 @@ class EnrollmentExemptionPresenter < Presenter
     return "" unless enrollment_exemption.deregister_reason
 
     enrollment_exemption.deregister_reason.humanize
+  end
+
+  def reference_number
+    enrollment.ref_number
   end
 
   def status

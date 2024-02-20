@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "defra_ruby/aws"
+
 module CanLoadFileToAws
   def load_file_to_aws_bucket(options = {})
     result = nil

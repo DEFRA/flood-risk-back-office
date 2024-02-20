@@ -111,7 +111,7 @@ module Flood
 
         puts("\nLast Enrollment generated:")
         puts "ID: #{FloodRiskEngine::Enrollment.last.id}"
-        puts "RefNumber [#{FloodRiskEngine::Enrollment.last.reference_number}]"
+        puts "RefNumber [#{FloodRiskEngine::Enrollment.last.ref_number}]"
 
         conn = ActiveRecord::Base.connection
         vacuum_after_insert(conn)

@@ -50,7 +50,7 @@ RSpec.describe "As user, I want to be able to reset my password if I forget it" 
       fill_in "Password", with: new_password
       click_button I18n.t("devise.sign_in")
 
-      expect(page).not_to have_content I18n.t("devise.failure.invalid", authentication_keys: "email")
+      expect(page).to have_no_content I18n.t("devise.failure.invalid", authentication_keys: "email")
       expect(page).to have_flash I18n.t("devise.sessions.signed_in")
       expect(page).to have_current_path "/"
     end

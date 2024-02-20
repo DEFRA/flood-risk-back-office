@@ -42,7 +42,7 @@ module Notify
           email_address: recipient_address,
           template_id: "c814587b-1368-4f64-a9b9-da101f9a078b",
           personalisation: {
-            registration_number: enrollment.reference_number,
+            registration_number: enrollment.ref_number,
             exemption_description: expected_exemption_description,
             grid_reference: enrollment.exemption_location.grid_reference,
             assets: "yes",

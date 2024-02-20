@@ -11,7 +11,7 @@ module Admin
     def all
       authorize User
 
-      @users = User.all.order(:email).page(params[:page])
+      @users = User.order(:email).page(params[:page])
 
       @show_all_users = true
       render :index

@@ -8,8 +8,6 @@ class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
   validates :comment_content, presence: true, length: { maximum: 500 }, if: :commentable?
   before_save :create_comment, if: :commentable?
 
-  delegate :reference_number, to: :enrollment
-
   def action!(params)
     @commentable = true
     update(params)
@@ -19,6 +17,10 @@ class EnrollmentExemption < FloodRiskEngine::EnrollmentExemption
     def status_keys
       FloodRiskEngine::EnrollmentExemption.statuses.except(:building).keys
     end
+  end
+
+  def reference_number
+    enrollment.ref_number
   end
 
   private

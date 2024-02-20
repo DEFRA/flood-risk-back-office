@@ -15,7 +15,7 @@ module Notify
           email_address: recipient_address,
           template_id:,
           personalisation: {
-            registration_number: enrollment.reference_number
+            registration_number: enrollment.ref_number
           }
         }
       end

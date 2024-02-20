@@ -79,4 +79,41 @@ RSpec.describe User do
       expect(user.errors[:email]).to include("is too long (maximum is 255 characters)")
     end
   end
+
+  describe "#add_to_role_names" do
+    let(:role) { Role.new(name: "foo") }
+
+    it "adds the role" do
+      user.add_to_role_names(role)
+      expect(user.role_names).to include role.name
+    end
+  end
+
+  describe "#remove_from_role_names" do
+    let(:role) { Role.new(name: "foo") }
+
+    it "removes the role" do
+      user.add_to_role_names(role)
+      expect(user.role_names).to include role.name
+
+      user.remove_from_role_names(role)
+      expect(user.role_names).to be_nil
+    end
+  end
+
+  describe "#send_devise_notification" do
+    subject(:send_notification) { user.send_devise_notification(:reset_password_instructions) }
+
+    context "when not using inline queue" do
+      let(:delivery_job) { instance_double(ActionMailer::MailDeliveryJob) }
+
+      before do
+        allow(Rails.application.config.active_job).to receive(:queue_adapter).and_return(:sucker_punch)
+        allow(ActionMailer::MailDeliveryJob).to receive(:new).and_return delivery_job
+        allow(delivery_job).to receive(:enqueue)
+      end
+
+      it { expect { send_notification }.not_to raise_error }
+    end
+  end
 end

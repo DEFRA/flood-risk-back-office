@@ -45,7 +45,7 @@ RSpec.describe EnrollmentExemptionSearchQuery, type: :query do
   end
 
   describe "by reference_number" do
-    let(:search_term) { approved_individual.reference_number.downcase }
+    let(:search_term) { approved_individual.ref_number.downcase }
 
     it "finds the approved enrollment" do
       expect(subject).to eq([approved_individual])

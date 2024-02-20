@@ -9,7 +9,7 @@ module Notify
         email_address: @recipient_address,
         template_id:,
         personalisation: {
-          registration_number: @enrollment.reference_number,
+          registration_number: @enrollment.ref_number,
           exemption_description: enrollment_description,
           grid_reference:,
           assets: assets?,

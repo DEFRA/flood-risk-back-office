@@ -4,14 +4,9 @@ class Address < ActiveRecord::Base
   validates :premises, presence: true
   validates :street_address, presence: true
   validates :city, presence: true
-  validates :postcode, presence: true
-  validates :postcode, length: { maximum: 8 }
+  validates :postcode, "defra_ruby/validators/postcode": true
 
   def to_param
     token
-  end
-
-  def address_finder_errored!
-    # Invoked by postcode validator, but we don't want/need it here
   end
 end
