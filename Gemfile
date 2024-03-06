@@ -63,6 +63,7 @@ group :test do
   gem "poltergeist"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
+  gem "rspec-retry"
   gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
