@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: e216a9b94a3a3bf49ecb6622390be12434b07ceb
+  revision: f9446af7205ac58a88f04e483878be91e1dda0ee
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -306,7 +306,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.7.1)
-    jwt (2.8.0)
+    jwt (2.8.1)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -335,7 +335,7 @@ GEM
     matrix (0.4.2)
     mime-types (3.5.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0206)
+    mime-types-data (3.2024.0305)
     mini_mime (1.1.5)
     minitest (5.22.2)
     multi_json (1.15.0)
