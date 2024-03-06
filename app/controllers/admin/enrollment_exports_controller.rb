@@ -22,7 +22,7 @@ module Admin
           if ENV["EXPORT_USE_FILESYSTEM_NOT_AWS_S3"]
             send_data ReadEnrollmentExportReport.run(export), type: "text/plain", filename: export.full_path.to_s
           else
-            redirect_to ReadEnrollmentExportReport.run(export)
+            redirect_to ReadEnrollmentExportReport.run(export), allow_other_host: true
           end
         end
       end
