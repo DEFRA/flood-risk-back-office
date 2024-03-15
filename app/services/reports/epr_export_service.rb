@@ -38,7 +38,7 @@ module Reports
     end
 
     def bucket_name
-      FloodRiskBackOffice::Application.config.epr_reports_bucket_name
+      FloodRiskBackOffice::Application.config.epr_exports_bucket_name
     end
   end
 end

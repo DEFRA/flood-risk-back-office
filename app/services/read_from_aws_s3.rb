@@ -9,14 +9,9 @@ class ReadFromAwsS3
   end
 
   def call
-    secrets = FloodRiskBackOffice::Application.secrets
-    s3 = Aws::S3::Resource.new(
-      region: secrets.aws_region,
-      credentials: Aws::Credentials.new(secrets.aws_access_key_id, secrets.aws_secret_access_key)
-    )
-    bucket = s3.bucket ENV.fetch("FRA_AWS_MANUAL_EXPORT_BUCKET")
+    bucket = DefraRuby::Aws.get_bucket(bucket_name)
 
-    bucket.object(enrollment_export.file_name).presigned_url(
+    bucket.presigned_url(
       :get,
       expires_in: 20 * 60, # 20 minutes in seconds
       secure: true,
@@ -26,6 +21,10 @@ class ReadFromAwsS3
   end
 
   private
+
+  def bucket_name
+    FloodRiskBackOffice::Application.config.enrollment_exports_bucket_name
+  end
 
   attr_accessor :enrollment_export
 

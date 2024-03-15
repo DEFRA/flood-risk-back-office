@@ -4,15 +4,17 @@ require "defra_ruby/aws"
 
 module CanLoadFileToAws
   def load_file_to_aws_bucket(options = {})
-    result = nil
+    response = nil
 
     3.times do
-      result = bucket.load(File.new(file_path, "r"), options)
+      response = bucket.load(File.new(file_path, "r"), options)
 
-      break if result.successful?
+      break if response.successful?
     end
 
-    raise(result.error) unless result.successful?
+    raise(response.error) unless response.successful?
+
+    response.result
   end
 
   def bucket
