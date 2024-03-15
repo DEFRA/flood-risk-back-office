@@ -9,7 +9,7 @@ module Reports
       it "creates a csv file and load it to AWS" do
         epr_serializer = double(:epr_serializer)
         epr_report = double(:epr_report)
-        result = double(:result, successful?: true)
+        result = double(:result, successful?: true, result: true)
         file = double(:file)
         bucket = double(:bucket)
 
