@@ -11,13 +11,7 @@ class ReadFromAwsS3
   def call
     bucket = DefraRuby::Aws.get_bucket(bucket_name)
 
-    bucket.presigned_url(
-      :get,
-      expires_in: 20 * 60, # 20 minutes in seconds
-      secure: true,
-      response_content_type: "text/csv",
-      response_content_disposition: "attachment; filename=#{enrollment_export.file_name}"
-    )
+    DefraRuby::Aws::PresignedUrlService.run(bucket, enrollment_export.file_name)
   end
 
   private
