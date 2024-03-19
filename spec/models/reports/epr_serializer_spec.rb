@@ -18,7 +18,7 @@ module Reports
         data = '"accept_reject_decision_at","reference_number","grid_reference","water_management_area_long_name","code","organisation_details"'
 
         expect(presenter).to receive(:accept_reject_decision_at).and_return("accept_reject_decision_at")
-        expect(presenter).to receive(:reference_number).and_return("reference_number")
+        expect(presenter).to receive(:ref_number).and_return("reference_number")
         expect(presenter).to receive(:grid_reference).and_return("grid_reference")
         expect(presenter).to receive(:water_management_area_long_name).and_return("water_management_area_long_name")
         expect(presenter).to receive(:code).and_return("code")

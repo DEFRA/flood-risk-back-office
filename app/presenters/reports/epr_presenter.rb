@@ -2,7 +2,7 @@
 
 module Reports
   class EprPresenter < SimpleDelegator
-    delegate :reference_number, :exemption_location, :organisation, to: :enrollment, allow_nil: true
+    delegate :ref_number, :exemption_location, :organisation, to: :enrollment, allow_nil: true
     delegate :grid_reference, :water_management_area, to: :exemption_location, allow_nil: true
     delegate :long_name, to: :water_management_area, prefix: true, allow_nil: true
     delegate :code, to: :exemption, allow_nil: true
