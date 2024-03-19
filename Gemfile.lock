@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: f9446af7205ac58a88f04e483878be91e1dda0ee
+  revision: dcf10936c197f65b583ba553d7f65a590ad266de
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -159,7 +159,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
-    bigdecimal (3.1.6)
+    bigdecimal (3.1.7)
     builder (3.2.4)
     bullet (7.1.6)
       activesupport (>= 3.0.0)
@@ -292,12 +292,11 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
-    i18n (1.14.3)
+    i18n (1.14.4)
       concurrent-ruby (~> 1.0)
-      racc (~> 1.7)
     io-console (0.7.2)
     io-event (1.4.2)
-    irb (1.11.2)
+    irb (1.12.0)
       rdoc
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -337,7 +336,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2024.0305)
     mini_mime (1.1.5)
-    minitest (5.22.2)
+    minitest (5.22.3)
     multi_json (1.15.0)
     mutex_m (0.2.0)
     net-http (0.4.1)
@@ -353,9 +352,9 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.16.2-x86_64-darwin)
+    nokogiri (1.16.3-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     notifications-ruby-client (6.0.0)
       jwt (>= 1.5, < 3)
@@ -375,7 +374,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.5.6)
-    phonelib (0.8.7)
+    phonelib (0.8.8)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -530,6 +529,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    simpleidn (0.2.1)
+      unf (~> 0.1.4)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -550,11 +551,15 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     uk_postcode (2.1.8)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.9.1)
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (0.13.0)
-    validates_email_format_of (1.7.2)
-      i18n
+    validates_email_format_of (1.8.0)
+      i18n (>= 0.8.0)
+      simpleidn
     vcr (6.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
