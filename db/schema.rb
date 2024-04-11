@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_11_144401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "enrollment_exports", id: :serial, force: :cascade do |t|
     t.date "from_date", null: false
@@ -22,8 +23,8 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.integer "state", default: 0, null: false
     t.text "failure_text"
     t.integer "record_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "date_field_scope", default: 0
     t.index ["created_at"], name: "index_enrollment_exports_on_created_at"
     t.index ["file_name"], name: "index_enrollment_exports_on_file_name", unique: true
@@ -119,10 +120,10 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.datetime "valid_from"
     t.boolean "asset_found", default: false
     t.boolean "salmonid_river_found", default: false
-    t.integer "accept_reject_decision_user_id"
-    t.datetime "accept_reject_decision_at"
     t.integer "deregister_reason"
     t.integer "assistance_mode", default: 0
+    t.integer "accept_reject_decision_user_id"
+    t.datetime "accept_reject_decision_at", precision: nil
     t.index ["accept_reject_decision_user_id"], name: "by_change_user"
     t.index ["deregister_reason"], name: "by_deregister_reason"
     t.index ["enrollment_id", "exemption_id"], name: "fre_enrollments_exemptions_enrollment_id_exemption_id", unique: true
@@ -189,15 +190,23 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.string "area_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.geometry "area", limit: {:srid=>0, :type=>"geometry"}
+    t.index ["area"], name: "index_flood_risk_engine_water_management_areas_on_area", using: :gist
     t.index ["code"], name: "fre_water_boundary_areas_code", unique: true
+  end
+
+  create_table "not_in_engines", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", id: :serial, force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "resource_type"
     t.integer "resource_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
   end
@@ -281,16 +290,16 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.string "email", limit: 255, default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.datetime "reset_password_sent_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
+    t.datetime "invitation_created_at", precision: nil
+    t.datetime "invitation_sent_at", precision: nil
+    t.datetime "invitation_accepted_at", precision: nil
     t.integer "invitation_limit"
     t.string "invited_by_type"
     t.integer "invited_by_id"
@@ -298,11 +307,11 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.text "disabled_comment"
-    t.datetime "disabled_at"
-    t.datetime "locked_at"
+    t.datetime "disabled_at", precision: nil
+    t.datetime "locked_at", precision: nil
     t.string "role_names"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "unique_session_id", limit: 20
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
@@ -332,7 +341,7 @@ ActiveRecord::Schema[7.1].define(version: 2021_08_02_151907) do
     t.string "event", null: false
     t.string "whodunnit"
     t.text "object"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.string "status"
     t.string "whodunnit_email"
     t.string "ip"
