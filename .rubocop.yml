@@ -8,6 +8,7 @@ require:
   - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
   - rubocop-factory_bot
 
 AllCops:
