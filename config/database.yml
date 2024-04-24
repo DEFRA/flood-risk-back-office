@@ -3,7 +3,7 @@
 # See the .env.example file
 #
 default: &default
-  adapter: postgresql
+  adapter: postgis
   encoding: unicode
   min_messages: warning
   pool: <%= ENV["DB_POOL"] || 5 %>

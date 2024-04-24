@@ -40,6 +40,10 @@ gem "notifications-ruby-client"
 
 gem "dotenv-rails"
 
+# for handling Water Managment Areas GeoJSON data
+gem "rgeo-geojson"
+gem "rubyzip"
+
 group :development do
   gem "awesome_print"
   gem "defra_ruby_style"
