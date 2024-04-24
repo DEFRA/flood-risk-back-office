@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 2c9294f994ebbbc3fa68a7053942f36dcc49709c
-  branch: fix/RUBY-3027_area_lookup
+  revision: e0ee86ab19bcb8c422651b3af38c59103bc89252
+  branch: main
   specs:
     flood_risk_engine (1.2)
       aasm (~> 5.5)
@@ -446,7 +446,7 @@ GEM
     record_tag_helper (1.0.1)
       actionview (>= 5)
     regexp_parser (2.9.0)
-    reline (0.5.2)
+    reline (0.5.3)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)

@@ -25,7 +25,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "fix/RUBY-3027_area_lookup"
+    branch: "main"
 
 # This is specified in the engine gemspec,
 # but need to specify here also to pick up i18n locales
