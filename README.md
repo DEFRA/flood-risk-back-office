@@ -49,6 +49,22 @@ bundle exec rake db:seed
 
 Add `RAILS_ENV=test` to the commands when preparing the test database.
 
+### Geospatial Queries
+
+The application uses [PostGIS](https://postgis.net/) [rgeo](https://rubygems.org/gems/rgeo) for geospatial queries. The [activerecord-postgis-adapter](https://github.com/rgeo/activerecord-postgis-adapter) gem adds geospatial datatypes to PotgreSQL and supports geospatial queries. The adapter is enabled by defining the database adapter as `postgis` instead of `postgresql` in `database.yml`:
+
+```
+adapter: postgis
+```
+
+The application also uses [rgeo-geojson](https://github.com/rgeo/rgeo-geojson) to parse an Environment Agency dataset of Water Management Area boundaries. A copy of the dataset is stored in JSON format in a zip archive under `lib/fixtures/files` and loaded using the once-off Rake task `load_admin_areas`.
+
+Note that postgis is also required when running automated unit tests within GitHub CI. To support this, `ci.yml` specifies the use of a docker image which runs `PostgreSQL` with the `postgis` adapter:
+
+```
+image: postgis/postgis:10-2.5
+```
+
 ## Running the app
 
 To start the service locally run
