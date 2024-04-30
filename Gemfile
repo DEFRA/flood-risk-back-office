@@ -48,19 +48,22 @@ group :development do
   gem "awesome_print"
   gem "defra_ruby_style"
   gem "puma"
+  gem "rubocop"
+  gem "rubocop-rails"
+  gem "rubocop-rspec"
 end
 
 group :development, :test do
   gem "bullet"
   gem "byebug"
-  gem "factory_bot_rails"
-  gem "faker"
 end
 
 group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "email_spec", require: false
+  gem "factory_bot_rails"
+  gem "faker"
   gem "fuubar"
   gem "launchy", require: false
   gem "poltergeist"
@@ -68,7 +71,6 @@ group :test do
   gem "rspec_junit_formatter"
   gem "rspec-rails"
   gem "rspec-retry"
-  gem "rubocop-rspec"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
   gem "simplecov", "~> 0.17.1", require: false
   gem "vcr"
