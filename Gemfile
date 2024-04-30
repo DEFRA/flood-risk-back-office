@@ -55,7 +55,6 @@ group :development, :test do
   gem "byebug"
   gem "factory_bot_rails"
   gem "faker"
-  gem "rspec-rails"
 end
 
 group :test do
@@ -67,8 +66,8 @@ group :test do
   gem "poltergeist"
   gem "rspec-activemodel-mocks"
   gem "rspec_junit_formatter"
+  gem "rspec-rails"
   gem "rspec-retry"
-  gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "shoulda-matchers", "~> 3.1.1", require: false # Pinned to avoid breaking changes
   gem "simplecov", "~> 0.17.1", require: false
