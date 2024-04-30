@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Style/StderrPuts
 desc "Update water management area for all enrollments"
 task refresh_water_management_areas: :environment do
   run_for = FloodRiskBackOffice::Application.config.area_lookup_run_for.to_i
@@ -11,7 +12,8 @@ task refresh_water_management_areas: :environment do
     northing = location.northing&.to_i
 
     unless easting.is_a?(Integer) && northing.is_a?(Integer)
-      puts "Invalid easting/northing (#{easting}/#{northing}), enrollment number: #{enrollment_number(location)}"
+      $stderr.puts "Invalid easting/northing (#{easting}/#{northing}), " \
+                   "enrollment number: #{enrollment_number(location)}"
       next
     end
 
@@ -21,8 +23,8 @@ task refresh_water_management_areas: :environment do
 
       break if Time.zone.now > run_until
     rescue StandardError => e
-      puts "Error looking up water management area for location with easting/northing " \
-           "#{easting}/#{northing}, enrollment number: #{enrollment_number(location)}: #{e}"
+      $stderr.puts "Error looking up water management area for location with easting/northing " \
+                   "#{easting}/#{northing}, enrollment number: #{enrollment_number(location)}: #{e}"
     end
   end
 
@@ -30,6 +32,7 @@ task refresh_water_management_areas: :environment do
     puts "refresh_water_management_areas task updated #{updated_count} of #{FloodRiskEngine::Location.count} locations"
   end
 end
+# rubocop:enable Style/StderrPuts
 
 def enrollment_number(location)
   location.locatable&.reference_number&.number
