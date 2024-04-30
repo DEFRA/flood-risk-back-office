@@ -644,9 +644,7 @@ DEPENDENCIES
   rspec-rails
   rspec-retry
   rspec_junit_formatter
-  rubocop
   rubocop-rails
-  rubocop-rspec
   rubyzip
   sass-rails
   secure_headers
