@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 051400f5ff8743b4499b480dc0f52c2e8caca7d0
+  revision: 0bf4c0331d75facac6dca06ba86c72adc88a920a
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -93,7 +93,7 @@ GEM
       activemodel (= 7.1.3.2)
       activesupport (= 7.1.3.2)
       timeout (>= 0.4.0)
-    activerecord-postgis-adapter (9.0.1)
+    activerecord-postgis-adapter (9.0.2)
       activerecord (~> 7.1.0)
       rgeo-activerecord (~> 7.0.0)
     activerecord-session_store (2.1.0)
