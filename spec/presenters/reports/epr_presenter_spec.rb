@@ -53,5 +53,18 @@ module Reports
         end
       end
     end
+
+    describe "#water_management_area_long_name" do
+      let(:long_name) { Faker::Lorem.sentence }
+      let(:area) { create(:water_management_area, long_name:) }
+      let(:location) { build(:location, water_management_area: area) }
+      let(:enrollment) { build(:enrollment, exemption_location: location) }
+
+      before { allow(object).to receive(:enrollment).and_return(enrollment) }
+
+      it "returns the expected name" do
+        expect(subject.water_management_area_long_name).to eq long_name
+      end
+    end
   end
 end
