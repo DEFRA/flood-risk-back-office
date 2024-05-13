@@ -22,23 +22,23 @@ module Reports
     private
 
     def populate_temp_file
-      File.write(file_path, epr_report)
+      epr_report(file_path)
     end
 
     def file_path
-      Rails.root.join("tmp/#{file_name}.csv")
+      @file_path ||= Rails.root.join("tmp/#{file_name}.csv")
     end
 
     def file_name
-      FloodRiskBackOffice::Application.config.epr_export_filename
+      @file_name ||= FloodRiskBackOffice::Application.config.epr_export_filename
     end
 
-    def epr_report
-      @_epr_report ||= EprSerializer.new.to_csv
+    def epr_report(file_path)
+      EprSerializer.new.to_csv(file_path)
     end
 
     def bucket_name
-      FloodRiskBackOffice::Application.config.epr_exports_bucket_name
+      @bucket_name ||= FloodRiskBackOffice::Application.config.epr_exports_bucket_name
     end
   end
 end

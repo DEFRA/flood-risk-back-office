@@ -7,6 +7,7 @@ module Reports
     describe "#to_csv" do
       let(:enrollment_exemption) { double(:enrollment_exemption) }
       let(:presenter) { double(:presenter) }
+      let(:file_path) { Rails.root.join("/tmp/epr_report") }
 
       before do
         allow(FloodRiskEngine::EnrollmentExemption).to receive(:approved).and_return([enrollment_exemption])
@@ -24,10 +25,12 @@ module Reports
         expect(presenter).to receive(:code).and_return("code")
         expect(presenter).to receive(:organisation_details).and_return("organisation_details")
 
-        result = subject.to_csv
+        subject.to_csv(file_path)
 
-        expect(result).to include(heading)
-        expect(result).to include(data)
+        epr_contents = File.read(file_path)
+
+        expect(epr_contents).to include(heading)
+        expect(epr_contents).to include(data)
       end
     end
   end

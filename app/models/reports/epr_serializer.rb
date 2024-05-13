@@ -13,11 +13,13 @@ module Reports
       organisation_details: "Operator name"
     }.freeze
 
-    def to_csv
-      CSV.generate(force_quotes: true) do |csv|
+    def to_csv(file_path)
+      CSV.open(file_path, "wb", force_quotes: true) do |csv|
         csv << ATTRIBUTES.values
 
-        FloodRiskEngine::EnrollmentExemption.approved.each do |enrollment_exemption|
+        FloodRiskEngine::EnrollmentExemption.includes(:enrollment, :exemption)
+                                            .approved
+                                            .each do |enrollment_exemption|
           csv << parse_enrollment_exemption(enrollment_exemption)
         end
       end
