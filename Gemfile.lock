@@ -218,7 +218,7 @@ GEM
       rubocop-factory_bot
       rubocop-rake
       rubocop-rspec
-    defra_ruby_template (3.15.1)
+    defra_ruby_template (5.4.1)
     defra_ruby_validators (2.6.0)
       activemodel
       i18n
