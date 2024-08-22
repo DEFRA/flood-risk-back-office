@@ -613,7 +613,7 @@ DEPENDENCIES
   database_cleaner
   defra_ruby_aws
   defra_ruby_style
-  defra_ruby_template
+  defra_ruby_template (~> 5.0)
   defra_ruby_validators
   devise
   devise-security
