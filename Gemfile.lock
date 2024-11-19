@@ -219,7 +219,7 @@ GEM
       rubocop-rake
       rubocop-rspec
     defra_ruby_template (5.4.1)
-    defra_ruby_validators (2.6.0)
+    defra_ruby_validators (2.7.2)
       activemodel
       i18n
       matrix
@@ -299,7 +299,7 @@ GEM
       activesupport (>= 6.1.4.4)
     htmlentities (4.3.4)
     http-accept (1.7.0)
-    http-cookie (1.0.5)
+    http-cookie (1.0.7)
       domain_name (~> 0.5)
     i18n (1.14.6)
       concurrent-ruby (~> 1.0)
@@ -343,9 +343,10 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    mime-types (3.5.2)
+    mime-types (3.6.0)
+      logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.0305)
+    mime-types-data (3.2024.1105)
     mini_mime (1.1.5)
     mini_portile2 (2.8.7)
     minitest (5.25.1)
@@ -385,7 +386,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.5.9)
-    phonelib (0.8.8)
+    phonelib (0.9.3)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -551,8 +552,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    simpleidn (0.2.2)
-      unf (~> 0.1.4)
+    simpleidn (0.2.3)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -573,9 +573,6 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     uk_postcode (2.1.8)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.9.1)
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
     uri (1.0.2)
