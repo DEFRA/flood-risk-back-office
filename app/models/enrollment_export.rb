@@ -2,14 +2,14 @@ require "csv"
 
 class EnrollmentExport < ActiveRecord::Base
 
-  enum state: {
+  enum :state, {
     queued: 0,
     started: 1,
     failed: 2,
     completed: 3
   }
 
-  enum date_field_scope: {
+  enum :date_field_scope, {
     submitted_at: 0,
     decision_at: 1
   }

@@ -207,7 +207,7 @@ class EnrollmentExemptionPresenter < Presenter
   end
 
   def organisation_type
-    [humanized_org_type, registration_number].select(&:present?).join(" - ")
+    [humanized_org_type, registration_number].compact_blank.join(" - ")
   end
 
   def humanized_org_type
