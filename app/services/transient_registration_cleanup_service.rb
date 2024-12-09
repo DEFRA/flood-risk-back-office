@@ -8,7 +8,7 @@ class TransientRegistrationCleanupService < FloodRiskEngine::BaseService
   private
 
   def transient_registrations_to_remove
-    FloodRiskEngine::TransientRegistration.where("created_at < ?", oldest_possible_date)
+    FloodRiskEngine::TransientRegistration.where(created_at: ...oldest_possible_date)
   end
 
   def oldest_possible_date
