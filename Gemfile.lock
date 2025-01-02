@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 443173b33c76421bd0b46e0603f9cdbe6dda0f78
+  revision: 3e9168dd94cf4b1d6498637d85b87276497994c4
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -124,7 +124,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    airbrake (13.0.4)
+    airbrake (13.0.5)
       airbrake-ruby (~> 6.0)
     airbrake-ruby (6.2.2)
       rbtree3 (~> 0.6)
@@ -309,7 +309,7 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
     io-event (1.4.2)
-    irb (1.14.1)
+    irb (1.14.3)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -318,7 +318,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.9.1)
-    jwt (2.9.3)
+    jwt (2.10.1)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -390,7 +390,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.5.9)
-    phonelib (0.10.1)
+    phonelib (0.10.3)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -403,7 +403,7 @@ GEM
     protocol-http2 (0.16.0)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
-    psych (5.2.1)
+    psych (5.2.2)
       date
       stringio
     public_suffix (6.0.1)
@@ -452,12 +452,12 @@ GEM
     rainbow (3.1.1)
     rake (13.2.1)
     rbtree3 (0.7.1)
-    rdoc (6.8.1)
+    rdoc (6.10.0)
       psych (>= 4.0.0)
     record_tag_helper (1.0.1)
       actionview (>= 5)
     regexp_parser (2.10.0)
-    reline (0.5.12)
+    reline (0.6.0)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
