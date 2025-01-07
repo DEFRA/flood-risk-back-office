@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 3e9168dd94cf4b1d6498637d85b87276497994c4
+  revision: 95d5ced5396fe36269247693ca469d83d4c31190
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -189,7 +189,7 @@ GEM
     chronic (0.10.2)
     cliver (0.3.2)
     concurrent-ruby (1.3.4)
-    connection_pool (2.4.1)
+    connection_pool (2.5.0)
     console (1.23.3)
       fiber-annotation
       fiber-local
@@ -595,7 +595,8 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.9.1)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (1.0.0)
