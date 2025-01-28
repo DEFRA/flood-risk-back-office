@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 3e9168dd94cf4b1d6498637d85b87276497994c4
+  revision: 95d5ced5396fe36269247693ca469d83d4c31190
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -309,7 +309,8 @@ GEM
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
     io-event (1.4.2)
-    irb (1.14.3)
+    irb (1.15.1)
+      pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -350,7 +351,7 @@ GEM
     mime-types (3.6.0)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2024.1203)
+    mime-types-data (3.2025.0107)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.4)
@@ -369,7 +370,7 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.4)
-    nokogiri (1.18.1)
+    nokogiri (1.18.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     notifications-ruby-client (6.2.0)
@@ -395,6 +396,9 @@ GEM
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
+    pp (0.6.2)
+      prettyprint
+    prettyprint (0.2.0)
     protocol-hpack (1.4.2)
     protocol-http (0.26.0)
       base64
@@ -403,7 +407,7 @@ GEM
     protocol-http2 (0.16.0)
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.18)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     public_suffix (6.0.1)
@@ -452,7 +456,7 @@ GEM
     rainbow (3.1.1)
     rake (13.2.1)
     rbtree3 (0.7.1)
-    rdoc (6.10.0)
+    rdoc (6.11.0)
       psych (>= 4.0.0)
     record_tag_helper (1.0.1)
       actionview (>= 5)
@@ -595,7 +599,8 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.9.1)
-    websocket-driver (0.7.6)
+    websocket-driver (0.7.7)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     whenever (1.0.0)
