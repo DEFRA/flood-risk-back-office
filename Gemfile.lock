@@ -284,6 +284,7 @@ GEM
     faraday-retry (2.3.1)
       faraday (~> 2.0)
     ffi (1.17.2-x86_64-darwin)
+    ffi (1.17.2-x86_64-linux-gnu)
     fiber-annotation (0.2.0)
     fiber-local (1.1.0)
       fiber-storage
@@ -385,6 +386,8 @@ GEM
     netrc (0.11.0)
     nio4r (2.7.4)
     nokogiri (1.18.8-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-linux-gnu)
       racc (~> 1.4)
     notifications-ruby-client (6.2.0)
       jwt (>= 1.5, < 3)
@@ -625,6 +628,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   awesome_print
