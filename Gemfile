@@ -70,8 +70,8 @@ group :test do
   gem "launchy", require: false
   gem "poltergeist"
   gem "rspec"
-  gem "rspec-core"
   gem "rspec-activemodel-mocks"
+  gem "rspec-core"
   gem "rspec_junit_formatter"
   gem "rspec-rails"
   gem "rspec-retry"
