@@ -29,7 +29,7 @@ gem "flood_risk_engine",
 
 # This is specified in the engine gemspec,
 # but need to specify here also to pick up i18n locales
-gem "defra_ruby_validators"
+gem "defra_ruby_validators", "~> 2.7"
 
 gem "defra_ruby_aws"
 gem "defra_ruby_template", "~> 5.0"
