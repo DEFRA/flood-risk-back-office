@@ -29,7 +29,8 @@ gem "flood_risk_engine",
 
 # This is specified in the engine gemspec,
 # but need to specify here also to pick up i18n locales
-gem "defra_ruby_validators"
+# Pin to below v3 to avoid pulling in the companies house gem
+gem "defra_ruby_validators", "~> 2.7"
 
 gem "defra_ruby_aws"
 gem "defra_ruby_template", "~> 5.0"
@@ -48,7 +49,10 @@ group :development do
   gem "awesome_print"
   gem "defra_ruby_style"
   gem "puma"
+  gem "rubocop"
+  gem "rubocop-capybara"
   gem "rubocop-rails"
+  gem "rubocop-rspec_rails"
 end
 
 group :development, :test do
@@ -65,7 +69,9 @@ group :test do
   gem "fuubar"
   gem "launchy", require: false
   gem "poltergeist"
+  gem "rspec"
   gem "rspec-activemodel-mocks"
+  gem "rspec-core"
   gem "rspec_junit_formatter"
   gem "rspec-rails"
   gem "rspec-retry"

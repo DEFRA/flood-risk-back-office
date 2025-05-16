@@ -18,7 +18,6 @@ class EnrollmentExemptionPresenter < Presenter
            :enrollment,
            :expires_at,
            :id,
-           :status,
            :to_model,
            to: :enrollment_exemption
 
@@ -48,9 +47,7 @@ class EnrollmentExemptionPresenter < Presenter
     Hash[*registration_and_operator_headers.zip(registration_and_operator_values).flatten]
   end
 
-  def assistance_modes_map
-    EnrollmentExemptionPresenter.assistance_modes_map
-  end
+  delegate :assistance_modes_map, to: :EnrollmentExemptionPresenter
 
   def self.assistance_modes_map
     FloodRiskEngine::EnrollmentExemption.assistance_modes.keys.collect do |s|
