@@ -25,7 +25,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "main"
+    branch: "rails-7.2.2.1-upgrade"
 
 # This is specified in the engine gemspec,
 # but need to specify here also to pick up i18n locales
