@@ -4,9 +4,7 @@ class WriteEnrollmentExportReport
     @enrollment_export = enrollment_export
   end
 
-  def column_names
-    PrepareEnrollmentExportReport.column_names
-  end
+  delegate :column_names, to: :PrepareEnrollmentExportReport
 
   def started
     enrollment_export.update!(state: :started)

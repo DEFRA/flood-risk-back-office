@@ -206,6 +206,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
       it "Page has the no comment content" do
         login_as non_system_user
         visit admin_enrollment_exemption_path(enrollment_exemption)
+        sleep 1
         expect(page).to have_no_css("#comment-history")
       end
     end

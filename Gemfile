@@ -48,7 +48,11 @@ group :development do
   gem "awesome_print"
   gem "defra_ruby_style"
   gem "puma"
+  gem "rubocop-capybara"
+  gem "rubocop-factory_bot"
   gem "rubocop-rails"
+  gem "rubocop-rspec"
+  gem "rubocop-rspec_rails"
 end
 
 group :development, :test do
