@@ -25,7 +25,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "main"
+    branch: "rails-7.2.2.1-upgrade"
 
 # This is specified in the engine gemspec,
 # but need to specify here also to pick up i18n locales
@@ -49,9 +49,10 @@ group :development do
   gem "awesome_print"
   gem "defra_ruby_style"
   gem "puma"
-  gem "rubocop"
   gem "rubocop-capybara"
+  gem "rubocop-factory_bot"
   gem "rubocop-rails"
+  gem "rubocop-rspec"
   gem "rubocop-rspec_rails"
 end
 

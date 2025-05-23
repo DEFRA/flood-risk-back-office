@@ -67,7 +67,7 @@ RSpec.describe "As an System user, I want to disable/enable a user" do
 
       expect do
         click_button "Sign in"
-      end.not_to change { other_user.reload.sign_in_count }
+      end.not_to(change { other_user.reload.sign_in_count })
       # Devise "paranoid mode" is on, so display the message "Invalid email or password",
       # instead of the default "Your account is not activated yet" message
       expect(page).to have_flash(I18n.t("devise.failure.invalid", authentication_keys: "email"), key: :alert)

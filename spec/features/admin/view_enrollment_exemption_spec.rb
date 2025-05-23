@@ -200,16 +200,15 @@ RSpec.describe "View Enrollment Exemption Detail" do
       end
     end
 
-    # rubocop:disable Capybara/NegationMatcherAfterVisit
     context "unless accessed by user without sufficent rights" do
       let(:non_system_user) { create(:user) }
 
       it "Page has the no comment content" do
         login_as non_system_user
         visit admin_enrollment_exemption_path(enrollment_exemption)
+        sleep 1
         expect(page).to have_no_css("#comment-history")
       end
     end
-    # rubocop:enable Capybara/NegationMatcherAfterVisit
   end
 end

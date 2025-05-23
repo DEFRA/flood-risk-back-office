@@ -22,7 +22,7 @@ module FloodRiskBackOffice
   class Application < Rails::Application
 
     config.load_defaults 7.0
-  
+
     # prevent the autoload of engine decorators by zeitwerk and load them manually
     # https://edgeguides.rubyonrails.org/engines.html#overriding-models-and-controllers
     decorators = "#{Rails.root}/app/decorators"
@@ -74,6 +74,8 @@ module FloodRiskBackOffice
     def self.secrets
       @secrets ||= begin
         secrets = ActiveSupport::OrderedOptions.new
+        # Ensure the config/secrets path is defined (removed in Rails 7.2)
+        config.paths.add "config/secrets", with: "config/secrets.yml" unless config.paths["config/secrets"]
         files = config.paths["config/secrets"].existent
         secrets.merge! parse_secrets(files)
       end
