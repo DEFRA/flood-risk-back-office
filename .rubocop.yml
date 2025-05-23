@@ -1,10 +1,8 @@
 inherit_from: .rubocop_todo.yml
 
-# NOTE: Temporarily not inheriting from defra_ruby_style gem as it uses deprecated 'require:' syntax
-# instead of 'plugins:' which causes warnings with newer RuboCop versions.
-# inherit_gem:
-#   defra_ruby_style:
-#     - default.yml
+inherit_gem:
+  defra_ruby_style:
+    - default.yml
 
 plugins:
   - rubocop-capybara
