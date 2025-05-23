@@ -26,7 +26,7 @@ GIT
       phonelib (~> 0.6)
       rails (~> 7.2.2.1)
       rgeo
-      rgeo-activerecord
+      rgeo-activerecord (~> 7)
       sucker_punch (~> 3)
       validates_email_format_of (~> 1)
 
@@ -507,18 +507,6 @@ GEM
       multi_json (~> 1.15)
       rgeo (>= 1.0.0)
     rolify (6.0.1)
-    rspec-activemodel-mocks (1.2.1)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      rspec-mocks (>= 2.99, < 4.0)
-    rspec-core (3.13.3)
-      rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.4)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.4)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
     rspec-rails (8.0.0)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
@@ -663,7 +651,7 @@ DEPENDENCIES
   defra_ruby_aws
   defra_ruby_style
   defra_ruby_template (~> 5.0)
-  defra_ruby_validators
+  defra_ruby_validators (~> 2.7)
   devise
   devise-security
   devise_invitable
@@ -694,7 +682,9 @@ DEPENDENCIES
   record_tag_helper
   rgeo-geojson
   rolify
+  rspec
   rspec-activemodel-mocks
+  rspec-core
   rspec-rails
   rspec-retry
   rspec_junit_formatter

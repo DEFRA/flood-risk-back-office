@@ -21,6 +21,9 @@ RSpec.describe "Admin menu" do
       visit main_app.root_path
 
       sleep 1
+      # to avoid Capybara/NegationMatcherAfterVisit
+      expect(page).to have_link("Search")
+
       expect(page).to have_no_content t("devise.invite_user")
 
       within "#navigation" do

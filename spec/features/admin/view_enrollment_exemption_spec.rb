@@ -200,6 +200,7 @@ RSpec.describe "View Enrollment Exemption Detail" do
       end
     end
 
+    # rubocop:disable Capybara/NegationMatcherAfterVisit
     context "unless accessed by user without sufficent rights" do
       let(:non_system_user) { create(:user) }
 
@@ -210,5 +211,6 @@ RSpec.describe "View Enrollment Exemption Detail" do
         expect(page).to have_no_css("#comment-history")
       end
     end
+    # rubocop:enable Capybara/NegationMatcherAfterVisit
   end
 end
