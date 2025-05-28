@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 module FloodRiskBackOffice
   class Application < Rails::Application
 
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
     # prevent the autoload of engine decorators by zeitwerk and load them manually
     # https://edgeguides.rubyonrails.org/engines.html#overriding-models-and-controllers
