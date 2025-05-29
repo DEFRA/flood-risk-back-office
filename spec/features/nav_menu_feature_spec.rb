@@ -20,6 +20,7 @@ RSpec.describe "Admin menu" do
       user.add_role :super_agent
       visit main_app.root_path
 
+      sleep 1
       # to avoid Capybara/NegationMatcherAfterVisit
       expect(page).to have_link("Search")
 

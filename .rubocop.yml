@@ -8,6 +8,7 @@ plugins:
   - rubocop-capybara
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rake
   - rubocop-rspec_rails
   - rubocop-factory_bot
 
