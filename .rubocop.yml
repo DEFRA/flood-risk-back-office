@@ -99,6 +99,16 @@ Layout/LineLength:
     - "**spec/policies/**/*_spec.rb"
     - "**spec/routing/**/*_spec.rb"
 
+# This cop appears to misfire for cases where an attr_accessor and a delgate instruction use the same attribute name.
+Lint/DuplicateMethods:
+  Exclude:
+    - app/presenters/enrollment_exemption_presenter.rb
+
+# This cop assumes any method which does not return a boolean should have not a name ending in "?"
+# This is not suitable for many methods, e.g. `assets?` which is a predicate method which returns "rue" or "false".
+Naming/PredicateMethod:
+  Enabled: false
+
 # Turn these off as can totally mess with the expect{...}.to syntax
 # Also reports on model validations using Proc.new { style blocks but trying to use do .. end raises invalid syntax
 Style/BlockDelimiters:

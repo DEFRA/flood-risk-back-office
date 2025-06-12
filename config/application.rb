@@ -74,7 +74,7 @@ module FloodRiskBackOffice
     def self.secrets
       @secrets ||= begin
         secrets = ActiveSupport::OrderedOptions.new
-        files = config.paths["config/secrets"].existent
+        files = [File.new(Rails.root.join("config/secrets.yml"))]
         secrets.merge! parse_secrets(files)
       end
     end

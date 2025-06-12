@@ -20,13 +20,13 @@ RSpec.describe "Admin menu" do
       user.add_role :super_agent
       visit main_app.root_path
 
-      expect(page).to have_no_content t("devise.invite_user")
+      expect(page).not_to have_content t("devise.invite_user")
 
       within "#navigation" do
         expect(page).to have_link("Search")
         expect(page).to have_link("New")
         expect(page).to have_link("Export")
-        expect(page).to have_no_link("Users")
+        expect(page).not_to have_link("Users")
 
         click_link t("devise.sign_out")
       end
