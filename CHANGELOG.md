@@ -2,10 +2,55 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.4...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.5...HEAD)
+
+**Fixed bugs:**
+
+- Fix/ruby 2874 last email [\#965](https://github.com/DEFRA/flood-risk-back-office/pull/965) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 
 **Merged pull requests:**
 
+- Bump defra\_ruby\_template gem version [\#1038](https://github.com/DEFRA/flood-risk-back-office/pull/1038) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Bump factory\_bot\_rails from 6.4.4 to 6.5.0 [\#1034](https://github.com/DEFRA/flood-risk-back-office/pull/1034) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop from 1.75.6 to 1.75.8 [\#1028](https://github.com/DEFRA/flood-risk-back-office/pull/1028) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rspec from 3.13.0 to 3.13.1 [\#1024](https://github.com/DEFRA/flood-risk-back-office/pull/1024) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump devise\_invitable from 2.0.10 to 2.0.11 [\#1023](https://github.com/DEFRA/flood-risk-back-office/pull/1023) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Upgrade to Rails 7.2.2.1 and update dependencies [\#1022](https://github.com/DEFRA/flood-risk-back-office/pull/1022) ([jjromeo](https://github.com/jjromeo))
+- Chore/jenkins ffi [\#1019](https://github.com/DEFRA/flood-risk-back-office/pull/1019) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Update dependabot config [\#1009](https://github.com/DEFRA/flood-risk-back-office/pull/1009) ([brujeo](https://github.com/brujeo))
+- Bump devise\_invitable from 2.0.9 to 2.0.10 [\#1007](https://github.com/DEFRA/flood-risk-back-office/pull/1007) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump launchy from 3.0.1 to 3.1.1 [\#1006](https://github.com/DEFRA/flood-risk-back-office/pull/1006) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump pundit from 2.4.0 to 2.5.0 [\#1005](https://github.com/DEFRA/flood-risk-back-office/pull/1005) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday from 2.12.2 to 2.13.0 [\#1004](https://github.com/DEFRA/flood-risk-back-office/pull/1004) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump govuk\_design\_system\_formbuilder from 5.8.0 to 5.9.0 [\#1003](https://github.com/DEFRA/flood-risk-back-office/pull/1003) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump byebug from 11.1.3 to 12.0.0 [\#1002](https://github.com/DEFRA/flood-risk-back-office/pull/1002) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday-retry from 2.2.1 to 2.3.1 [\#1001](https://github.com/DEFRA/flood-risk-back-office/pull/1001) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-imap from 0.5.6 to 0.5.7 [\#1000](https://github.com/DEFRA/flood-risk-back-office/pull/1000) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump uri from 1.0.2 to 1.0.3 [\#999](https://github.com/DEFRA/flood-risk-back-office/pull/999) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump cgi from 0.4.1 to 0.4.2 [\#998](https://github.com/DEFRA/flood-risk-back-office/pull/998) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump nokogiri from 1.18.2 to 1.18.8 [\#997](https://github.com/DEFRA/flood-risk-back-office/pull/997) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 8.0.0 to 8.0.5 [\#996](https://github.com/DEFRA/flood-risk-back-office/pull/996) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-s3 from 1.178.0 to 1.183.0 [\#992](https://github.com/DEFRA/flood-risk-back-office/pull/992) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump webmock from 3.24.0 to 3.25.1 [\#990](https://github.com/DEFRA/flood-risk-back-office/pull/990) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-imap from 0.5.5 to 0.5.6 [\#985](https://github.com/DEFRA/flood-risk-back-office/pull/985) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rspec-rails from 7.1.0 to 7.1.1 [\#983](https://github.com/DEFRA/flood-risk-back-office/pull/983) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-smtp from 0.5.0 to 0.5.1 [\#981](https://github.com/DEFRA/flood-risk-back-office/pull/981) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump puma from 6.5.0 to 6.6.0 [\#978](https://github.com/DEFRA/flood-risk-back-office/pull/978) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop-rails from 2.28.0 to 2.29.1 [\#976](https://github.com/DEFRA/flood-risk-back-office/pull/976) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump aws-sdk-s3 from 1.176.1 to 1.178.0 [\#973](https://github.com/DEFRA/flood-risk-back-office/pull/973) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump govuk\_design\_system\_formbuilder from 5.7.1 to 5.8.0 [\#972](https://github.com/DEFRA/flood-risk-back-office/pull/972) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump net-imap from 0.5.4 to 0.5.5 [\#970](https://github.com/DEFRA/flood-risk-back-office/pull/970) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubyzip from 2.3.2 to 2.4.1 [\#969](https://github.com/DEFRA/flood-risk-back-office/pull/969) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `443173b` to `3e9168d` [\#967](https://github.com/DEFRA/flood-risk-back-office/pull/967) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actionpack from 7.1.5 to 7.1.5.1 [\#954](https://github.com/DEFRA/flood-risk-back-office/pull/954) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v2.1.5](https://github.com/defra/flood-risk-back-office/tree/v2.1.5) (2024-12-11)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.4...v2.1.5)
+
+**Merged pull requests:**
+
+- Release v2.1.5 [\#955](https://github.com/DEFRA/flood-risk-back-office/pull/955) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Chore/ruby 3506 dependencies [\#953](https://github.com/DEFRA/flood-risk-back-office/pull/953) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump gem versions [\#951](https://github.com/DEFRA/flood-risk-back-office/pull/951) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Chore/ruby 3506 dependencies [\#943](https://github.com/DEFRA/flood-risk-back-office/pull/943) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
