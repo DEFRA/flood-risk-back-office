@@ -33,7 +33,7 @@ gem "flood_risk_engine",
 gem "defra_ruby_validators", "~> 2.7"
 
 gem "defra_ruby_aws"
-gem "defra_ruby_template", "~> 5.0"
+gem "defra_ruby_template", "~> 5.11"
 gem "github_changelog_generator", require: false
 gem "govuk_design_system_formbuilder"
 # GOV.UK Notify gem. Allows us to send email via the Notify web API
