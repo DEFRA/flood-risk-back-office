@@ -12,8 +12,8 @@ module Notify
           registration_number: @enrollment.ref_number,
           exemption_description: enrollment_description,
           grid_reference:,
-          assets: assets?,
-          salmonid: salmonid?,
+          assets: assets,
+          salmonid: salmonid,
           decision_date:,
           organisation_name_and_address:,
           contact_name_and_position:,
@@ -35,11 +35,11 @@ module Notify
       @enrollment.exemption_location.grid_reference
     end
 
-    def assets?
+    def assets
       enrollment_exemption.asset_found? ? "yes" : "no"
     end
 
-    def salmonid?
+    def salmonid
       enrollment_exemption.salmonid_river_found? ? "yes" : "no"
     end
 

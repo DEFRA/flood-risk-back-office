@@ -22,7 +22,7 @@ FactoryBot.define do
     submitted_at { Time.current }
 
     after(:create) do |object|
-      create(:exemption) if FloodRiskEngine::Exemption.count == 0
+      create(:exemption) if FloodRiskEngine::Exemption.none?
 
       exemption = FloodRiskEngine::Exemption.offset(rand(FloodRiskEngine::Exemption.count)).first
 

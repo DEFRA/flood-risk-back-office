@@ -1,5 +1,6 @@
 class SearchForm
   include ActiveModel::Model
+
   STATUS_ALL = nil
 
   attr_reader :q, :status, :page, :per_page
