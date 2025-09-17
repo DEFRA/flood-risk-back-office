@@ -2,7 +2,22 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.5...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.6...HEAD)
+
+**Merged pull requests:**
+
+- Bump flood\_risk\_engine from `103d053` to `f583e8d` [\#1067](https://github.com/DEFRA/flood-risk-back-office/pull/1067) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump defra\_ruby\_aws from 0.5.0 to 0.5.1 [\#1066](https://github.com/DEFRA/flood-risk-back-office/pull/1066) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Gem updates and lint fixes [\#1064](https://github.com/DEFRA/flood-risk-back-office/pull/1064) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Restoring dependabot settings so it can pull engine updates [\#1046](https://github.com/DEFRA/flood-risk-back-office/pull/1046) ([brujeo](https://github.com/brujeo))
+- Bump rspec-core from 3.13.3 to 3.13.5 [\#1040](https://github.com/DEFRA/flood-risk-back-office/pull/1040) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump govuk\_design\_system\_formbuilder from 5.10.0 to 5.11.0 [\#1037](https://github.com/DEFRA/flood-risk-back-office/pull/1037) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday-retry from 2.3.1 to 2.3.2 [\#1036](https://github.com/DEFRA/flood-risk-back-office/pull/1036) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump bullet from 8.0.7 to 8.0.8 [\#1030](https://github.com/DEFRA/flood-risk-back-office/pull/1030) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v2.1.6](https://github.com/defra/flood-risk-back-office/tree/v2.1.6) (2025-06-25)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.5...v2.1.6)
 
 **Fixed bugs:**
 
@@ -10,6 +25,7 @@
 
 **Merged pull requests:**
 
+- Release v2.1.6 [\#1039](https://github.com/DEFRA/flood-risk-back-office/pull/1039) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump defra\_ruby\_template gem version [\#1038](https://github.com/DEFRA/flood-risk-back-office/pull/1038) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump factory\_bot\_rails from 6.4.4 to 6.5.0 [\#1034](https://github.com/DEFRA/flood-risk-back-office/pull/1034) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump rubocop from 1.75.6 to 1.75.8 [\#1028](https://github.com/DEFRA/flood-risk-back-office/pull/1028) ([dependabot[bot]](https://github.com/apps/dependabot))
