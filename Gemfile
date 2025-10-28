@@ -85,7 +85,7 @@ group :test do
 end
 
 # Pin this version as well as passenger to avoid https://github.com/phusion/passenger/issues/2508
-gem "rack", "2.2.4"
+gem "rack", "2.2.20"
 
 group :production do
   # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
