@@ -52,6 +52,7 @@ group :development do
   gem "rubocop-capybara"
   gem "rubocop-factory_bot"
   gem "rubocop-rails"
+  gem "rubocop-rake"
   gem "rubocop-rspec"
   gem "rubocop-rspec_rails"
 end
