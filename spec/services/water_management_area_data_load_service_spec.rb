@@ -3,28 +3,26 @@ require "zip"
 
 RSpec.describe WaterManagementAreaDataLoadService, type: :service do
   describe ".run" do
-
-    existing_code = "DVNCWL"
-    existing_area_id = 27
-    existing_area_name = "an area name"
-    existing_long_name = "a long name"
-    existing_short_name = "a short name"
+    let(:existing_code) { "DVNCWL" }
+    let(:existing_area_id) { 27 }
+    let(:existing_area_name) { "an area name" }
+    let(:existing_long_name) { "a long name" }
+    let(:existing_short_name) { "a short name" }
+    let(:existing_area) { FloodRiskEngine::WaterManagementArea.first }
 
     # The service is heavy so run it once only
     before(:all) do # rubocop:disable RSpec/BeforeAfterAll
       FloodRiskEngine::WaterManagementArea.create!(
         area_id: 1,
-        code: existing_code,
-        area_name: existing_area_name,
-        long_name: existing_long_name,
-        short_name: existing_short_name,
+        code: "DVNCWL",
+        area_name: "an area name",
+        long_name: "a long name",
+        short_name: "a short name",
         area: nil
       )
 
       described_class.run
     end
-
-    let(:existing_area) { FloodRiskEngine::WaterManagementArea.first }
 
     it { expect(FloodRiskEngine::WaterManagementArea.count).to eq(16) }
 
