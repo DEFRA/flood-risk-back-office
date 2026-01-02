@@ -388,7 +388,7 @@ GEM
     passenger (6.0.19)
       rack
       rake (>= 0.8.1)
-    pg (1.6.2)
+    pg (1.6.3)
     phonelib (0.10.15)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
