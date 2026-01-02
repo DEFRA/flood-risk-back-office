@@ -20,7 +20,7 @@ module Reports
         FloodRiskEngine::EnrollmentExemption.includes(:enrollment, :exemption)
                                             .approved
                                             .each do |enrollment_exemption|
-          csv << parse_enrollment_exemption(enrollment_exemption)
+                                              csv << parse_enrollment_exemption(enrollment_exemption)
         end
       end
     end
