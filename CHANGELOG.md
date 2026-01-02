@@ -2,10 +2,26 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.6...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.7...HEAD)
 
 **Merged pull requests:**
 
+- update rack to a non-vulnerable version [\#1091](https://github.com/DEFRA/flood-risk-back-office/pull/1091) ([brujeo](https://github.com/brujeo))
+- Bump webmock from 3.25.1 to 3.26.0 [\#1090](https://github.com/DEFRA/flood-risk-back-office/pull/1090) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Sonar cloud config [\#1089](https://github.com/DEFRA/flood-risk-back-office/pull/1089) ([brujeo](https://github.com/brujeo))
+- Bump puma from 7.0.3 to 7.1.0 [\#1080](https://github.com/DEFRA/flood-risk-back-office/pull/1080) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubyzip from 3.1.0 to 3.2.0 [\#1079](https://github.com/DEFRA/flood-risk-back-office/pull/1079) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump faraday from 2.13.4 to 2.14.0 [\#1076](https://github.com/DEFRA/flood-risk-back-office/pull/1076) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump rubocop-rails from 2.33.3 to 2.33.4 [\#1075](https://github.com/DEFRA/flood-risk-back-office/pull/1075) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump notifications-ruby-client from 6.2.0 to 6.3.0 [\#1073](https://github.com/DEFRA/flood-risk-back-office/pull/1073) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v2.1.7](https://github.com/defra/flood-risk-back-office/tree/v2.1.7) (2025-09-17)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.6...v2.1.7)
+
+**Merged pull requests:**
+
+- Version 2.1.7 [\#1068](https://github.com/DEFRA/flood-risk-back-office/pull/1068) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
 - Bump flood\_risk\_engine from `103d053` to `f583e8d` [\#1067](https://github.com/DEFRA/flood-risk-back-office/pull/1067) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump defra\_ruby\_aws from 0.5.0 to 0.5.1 [\#1066](https://github.com/DEFRA/flood-risk-back-office/pull/1066) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Gem updates and lint fixes [\#1064](https://github.com/DEFRA/flood-risk-back-office/pull/1064) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
