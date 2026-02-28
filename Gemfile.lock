@@ -215,7 +215,7 @@ GEM
       rails
       sprockets-rails
     defra_ruby_style (0.4.1)
-    defra_ruby_template (5.11.0)
+    defra_ruby_template (5.11.1)
     defra_ruby_validators (2.7.2)
       activemodel
       i18n
