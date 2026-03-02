@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/DEFRA/flood-risk-engine
-  revision: 7fe72eda515a6f81a2fa712c42469c80ba8344ac
+  revision: 6a5cb61799f783518b1d935165bb6e04520b2e1b
   branch: main
   specs:
     flood_risk_engine (1.2)
@@ -19,7 +19,7 @@ GIT
       matrix (~> 0.4)
       net-imap (~> 0.2)
       net-pop (~> 0.1)
-      nokogiri (>= 1.18.9)
+      nokogiri (>= 1.19.1)
       notifications-ruby-client
       os_map_ref (= 0.5)
       pg (~> 1)
@@ -201,7 +201,7 @@ GEM
       database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
     date (3.5.1)
-    defra_ruby_address (0.1.0)
+    defra_ruby_address (0.3.0)
       rest-client (~> 2.0)
     defra_ruby_alert (2.2.1)
       airbrake
@@ -249,7 +249,7 @@ GEM
       htmlentities (~> 4.3.3)
       launchy (>= 2.1, < 4.0)
       mail (~> 2.7)
-    erb (6.0.1)
+    erb (6.0.2)
     erubi (1.13.1)
     execjs (2.10.0)
     factory_bot (6.5.6)
@@ -304,8 +304,9 @@ GEM
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
-    irb (1.16.0)
+    irb (1.17.0)
       pp (>= 0.6.0)
+      prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jmespath (1.6.2)
@@ -349,10 +350,11 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0924)
+    mime-types-data (3.2026.0224)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.1)
+    minitest (6.0.2)
+      drb (~> 2.0)
       prism (~> 1.5)
     multi_json (1.18.0)
     net-http (0.9.1)
@@ -389,7 +391,7 @@ GEM
       rack
       rake (>= 0.8.1)
     pg (1.6.3)
-    phonelib (0.10.15)
+    phonelib (0.10.16)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
       cliver (~> 0.3.1)
@@ -397,7 +399,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
+    prism (1.9.0)
     protocol-hpack (1.5.1)
     protocol-http (0.26.8)
     protocol-http1 (0.19.1)
@@ -440,8 +442,8 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.6.2)
-      loofah (~> 2.21)
+    rails-html-sanitizer (1.7.0)
+      loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
     railties (7.2.2.2)
       actionpack (= 7.2.2.2)
@@ -454,7 +456,7 @@ GEM
     rainbow (3.1.1)
     rake (13.3.1)
     rbtree3 (0.7.1)
-    rdoc (7.0.3)
+    rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -474,7 +476,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.4.4)
-    rgeo (3.0.1)
+    rgeo (3.1.0)
     rgeo-activerecord (8.0.0)
       activerecord (>= 7.0)
       rgeo (>= 3.0)
@@ -583,7 +585,7 @@ GEM
     stringio (3.2.0)
     sucker_punch (3.3.0)
       concurrent-ruby (~> 1.0)
-    thor (1.4.0)
+    thor (1.5.0)
     tilt (2.6.1)
     timeout (0.6.0)
     timers (4.4.0)
@@ -621,7 +623,7 @@ GEM
       whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.4)
+    zeitwerk (2.7.5)
 
 PLATFORMS
   ruby
