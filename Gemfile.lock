@@ -143,8 +143,8 @@ GEM
       async (>= 1.25)
     awesome_print (1.9.2)
     aws-eventstream (1.4.0)
-    aws-partitions (1.1198.0)
-    aws-sdk-core (3.240.0)
+    aws-partitions (1.1220.0)
+    aws-sdk-core (3.242.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -152,11 +152,11 @@ GEM
       bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
-    aws-sdk-kms (1.118.0)
-      aws-sdk-core (~> 3, >= 3.239.1)
+    aws-sdk-kms (1.122.0)
+      aws-sdk-core (~> 3, >= 3.241.4)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.196.1)
-      aws-sdk-core (~> 3, >= 3.228.0)
+    aws-sdk-s3 (1.208.0)
+      aws-sdk-core (~> 3, >= 3.234.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
@@ -208,8 +208,8 @@ GEM
     defra_ruby_area (2.2.0)
       nokogiri (>= 1.13.2)
       rest-client (~> 2.0)
-    defra_ruby_aws (0.5.1)
-      aws-sdk-s3 (< 1.197)
+    defra_ruby_aws (0.6.0)
+      aws-sdk-s3
     defra_ruby_email (1.3.0)
       notifications-ruby-client
       rails
