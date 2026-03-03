@@ -85,12 +85,6 @@ group :test do
   gem "whenever-test", "~> 1.0"
 end
 
-# Pin this version as well as passenger to avoid https://github.com/phusion/passenger/issues/2508
-gem "rack", "2.2.20"
-
 group :production do
-  # Use Passenger as our web-server/app-server (e.g. on AWS via Upstart, Heroku
-  # via Procfile) # via Procfile)
-  # Pin this version as well as rack to avoid https://github.com/phusion/passenger/issues/2508
-  gem "passenger", "6.0.19", require: "phusion_passenger/rack_handler"
+  gem "passenger", "~> 6.0", require: "phusion_passenger/rack_handler"
 end
