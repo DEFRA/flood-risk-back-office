@@ -698,7 +698,7 @@ DEPENDENCIES
   whenever-test (~> 1.0)
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.4.6p54
 
 BUNDLED WITH
    2.6.9
