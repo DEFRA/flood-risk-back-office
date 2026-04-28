@@ -2,6 +2,7 @@ source "https://rubygems.org"
 ruby "3.4.6"
 
 gem "aws-sdk-s3"
+gem "csv"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
