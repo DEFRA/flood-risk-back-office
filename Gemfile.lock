@@ -197,6 +197,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    csv (3.3.5)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
     database_cleaner-active_record (2.2.2)
@@ -640,6 +641,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara
+  csv
   database_cleaner
   defra_ruby_aws
   defra_ruby_style
@@ -698,7 +700,7 @@ DEPENDENCIES
   whenever-test (~> 1.0)
 
 RUBY VERSION
-   ruby 3.2.2p53
+   ruby 3.4.6p54
 
 BUNDLED WITH
    2.6.9
