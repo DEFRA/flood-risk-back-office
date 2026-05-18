@@ -13,7 +13,7 @@ plugins:
   - rubocop-factory_bot
 
 AllCops:
-  TargetRubyVersion: 3.2.2
+  TargetRubyVersion: 3.4
   # Cop names are not displayed in offense messages by default. We find it useful to include this information so we can
   # use it to investigate what the fix may be.
   DisplayCopNames: true
