@@ -24,7 +24,7 @@ RSpec.describe "Admin menu" do
       # to avoid Capybara/NegationMatcherAfterVisit
       expect(page).to have_link("Search")
 
-      expect(page).to have_no_content t("devise.invite_user")
+      expect(page).to have_no_text t("devise.invite_user")
 
       within "#navigation" do
         expect(page).to have_link("Search")
