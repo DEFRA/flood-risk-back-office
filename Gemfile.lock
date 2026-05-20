@@ -224,8 +224,9 @@ GEM
       sprockets-rails
     defra_ruby_style (0.4.1)
     defra_ruby_template (5.11.1)
-    defra_ruby_validators (2.7.2)
+    defra_ruby_validators (3.1.0)
       activemodel
+      defra_ruby_companies_house
       i18n
       matrix
       os_map_ref
@@ -650,7 +651,7 @@ DEPENDENCIES
   defra_ruby_aws
   defra_ruby_style
   defra_ruby_template (~> 5.11)
-  defra_ruby_validators (~> 2.7)
+  defra_ruby_validators
   devise
   devise-security
   devise_invitable
