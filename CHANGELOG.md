@@ -2,10 +2,30 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.8...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.9...HEAD)
+
+**Fixed bugs:**
+
+- RUBY-4266 Update defra\_ruby\_validators [\#1162](https://github.com/DEFRA/flood-risk-back-office/pull/1162) ([jjromeo](https://github.com/jjromeo))
 
 **Merged pull requests:**
 
+- Bump flood\_risk\_engine from `17c3ccd` to `4d1277b` [\#1185](https://github.com/DEFRA/flood-risk-back-office/pull/1185) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump flood\_risk\_engine from `f5da507` to `17c3ccd` [\#1184](https://github.com/DEFRA/flood-risk-back-office/pull/1184) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Feature/ruby 4336 frae security enable bundler cooldown give new gems a few days to be vetted [\#1183](https://github.com/DEFRA/flood-risk-back-office/pull/1183) ([brujeo](https://github.com/brujeo))
+- Update bundle dependencies [\#1161](https://github.com/DEFRA/flood-risk-back-office/pull/1161) ([jjromeo](https://github.com/jjromeo))
+- Bump flood\_risk\_engine from `03afac1` to `f5da507` [\#1160](https://github.com/DEFRA/flood-risk-back-office/pull/1160) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update Ruby to 3.4.6 [\#1149](https://github.com/DEFRA/flood-risk-back-office/pull/1149) ([jjromeo](https://github.com/jjromeo))
+- \[RUBY-4262\] Update PostgreSQL image version in CI configuration to postgis/postgis:15-3.4 [\#1148](https://github.com/DEFRA/flood-risk-back-office/pull/1148) ([brujeo](https://github.com/brujeo))
+
+## [v2.1.9](https://github.com/defra/flood-risk-back-office/tree/v2.1.9) (2026-04-20)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.8...v2.1.9)
+
+**Merged pull requests:**
+
+- Bump activestorage from 7.2.3 to 7.2.3.1 [\#1141](https://github.com/DEFRA/flood-risk-back-office/pull/1141) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Release/v2.1.9 [\#1140](https://github.com/DEFRA/flood-risk-back-office/pull/1140) ([brujeo](https://github.com/brujeo))
 - Update Gemfile [\#1125](https://github.com/DEFRA/flood-risk-back-office/pull/1125) ([brujeo](https://github.com/brujeo))
 - Bump flood\_risk\_engine from `7fe72ed` to `6a5cb61` [\#1124](https://github.com/DEFRA/flood-risk-back-office/pull/1124) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump aws-sdk-s3 from 1.196.1 to 1.208.0 [\#1120](https://github.com/DEFRA/flood-risk-back-office/pull/1120) ([dependabot[bot]](https://github.com/apps/dependabot))
