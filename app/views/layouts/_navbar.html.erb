@@ -1,49 +1,56 @@
-<% if user_signed_in? %>
-  <ul id="navigation" class="govuk-header__navigation-list" aria-label="Navigation menu">
-    <li class="govuk-header__navigation-item">
-      <%= link_to t(".search_enrollments"),
-          main_app.root_path,
-          class: "govuk-header__link" %>
-    </li>
+<nav aria-label="Navigation menu" class="govuk-service-navigation__wrapper">
+  <button type="button"
+          class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle"
+          aria-controls="navigation"
+          hidden>
+    Menu
+  </button>
 
-    <% if policy(FloodRiskEngine::Enrollment).create? %>
-      <li class="govuk-header__navigation-item">
-        <%= link_to t('.new_enrollment'),
-            main_app.new_admin_enrollment_path,
-            class: "govuk-header__link" %>
+  <ul id="navigation" class="govuk-service-navigation__list">
+    <% if user_signed_in? %>
+      <li class="govuk-service-navigation__item">
+        <%= link_to t(".search_enrollments"),
+            main_app.root_path,
+            class: "govuk-service-navigation__link" %>
+      </li>
+
+      <% if policy(FloodRiskEngine::Enrollment).create? %>
+        <li class="govuk-service-navigation__item">
+          <%= link_to t('.new_enrollment'),
+              main_app.new_admin_enrollment_path,
+              class: "govuk-service-navigation__link" %>
+        </li>
+      <% end %>
+
+      <li class="govuk-service-navigation__item">
+        <%= link_to t(".export"),
+            main_app.admin_enrollment_exports_path,
+            class: "govuk-service-navigation__link" %>
+      </li>
+
+      <% if policy(User).index? %>
+        <li class="govuk-service-navigation__item">
+          <%= link_to t(".users"),
+              admin_users_path,
+              class: "govuk-service-navigation__link" %>
+        </li>
+      <% end %>
+
+      <li class="govuk-service-navigation__item">
+        <%= link_to t('devise.sign_out'),
+                destroy_user_session_path,
+                class: "govuk-service-navigation__link" %>
+      </li>
+
+      <li class="govuk-service-navigation__item">
+        <%= current_user.email %>
+      </li>
+    <% else %>
+      <li class="govuk-service-navigation__item">
+        <%= link_to t('devise.sign_in'),
+            new_user_session_path,
+            class: "govuk-service-navigation__link" %>
       </li>
     <% end %>
-
-    <li class="govuk-header__navigation-item">
-      <%= link_to t(".export"),
-          main_app.admin_enrollment_exports_path,
-          class: "govuk-header__link" %>
-    </li>
-
-    <% if policy(User).index? %>
-      <li class="govuk-header__navigation-item">
-        <%= link_to t(".users"),
-            admin_users_path,
-            class: "govuk-header__link" %>
-      </li>
-    <% end %>
-
-    <li class="govuk-header__navigation-item">
-      <%= link_to t('devise.sign_out'),
-              destroy_user_session_path,
-              class: "govuk-header__link" %>
-    </li>
-
-    <li class="govuk-header__navigation-item">
-      <%= current_user.email %>
-    </li>
   </ul>
-<% else %>
-  <ul id="navigation" class="govuk-header__navigation-list" aria-label="Navigation menu">
-    <li class="govuk-header__navigation-item">
-      <%= link_to t('devise.sign_in'),
-          new_user_session_path,
-          class: "govuk-header__link" %>
-    </li>
-  </ul>
-<% end %>
+</nav>
