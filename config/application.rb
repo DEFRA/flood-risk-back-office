@@ -23,6 +23,10 @@ module FloodRiskBackOffice
 
     config.load_defaults 7.1
 
+    # Sprockets stylesheets are built on @import, which Dart Sass deprecates.
+    # Silenced until the gem and the apps move to @use.
+    config.sass.silence_deprecations = ["import"]
+
     # prevent the autoload of engine decorators by zeitwerk and load them manually
     # https://edgeguides.rubyonrails.org/engines.html#overriding-models-and-controllers
     decorators = "#{Rails.root}/app/decorators"
