@@ -3,6 +3,7 @@ ruby "3.4.6"
 
 gem "aws-sdk-s3"
 gem "csv"
+gem "dartsass-sprockets"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
@@ -17,7 +18,6 @@ gem "paper_trail"
 gem "pg"
 gem "pundit"
 gem "rolify"
-gem "sass-rails"
 gem "secure_headers"
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
