@@ -3,6 +3,7 @@ ruby "3.4.6"
 
 gem "aws-sdk-s3"
 gem "csv"
+gem "dartsass-sprockets"
 gem "devise"
 gem "devise_invitable"
 gem "devise-security"
@@ -17,7 +18,6 @@ gem "paper_trail"
 gem "pg"
 gem "pundit"
 gem "rolify"
-gem "sass-rails"
 gem "secure_headers"
 
 gem "record_tag_helper" # supports the deprecated `content_tag_for`
@@ -33,9 +33,9 @@ gem "defra_ruby_validators"
 
 gem "async", "~> 1" # Pin to 1.x to avoid ThreadError in changelog generator
 gem "defra_ruby_aws"
-gem "defra_ruby_template", "~> 5.11"
+gem "defra_ruby_template", "~> 6.4"
 gem "github_changelog_generator", require: false
-gem "govuk_design_system_formbuilder"
+gem "govuk_design_system_formbuilder", "~> 6.4.0"
 # GOV.UK Notify gem. Allows us to send email via the Notify web API
 gem "notifications-ruby-client"
 
