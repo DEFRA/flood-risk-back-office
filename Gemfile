@@ -26,7 +26,7 @@ gem "whenever"
 
 gem "flood_risk_engine",
     git: "https://github.com/DEFRA/flood-risk-engine",
-    branch: "chore/rails-8-1-upgrade"
+    branch: "main"
 
 # This is specified in the engine gemspec, but need to specify here also to pick up i18n locales.
 gem "defra_ruby_validators"
