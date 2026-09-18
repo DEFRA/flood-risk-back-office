@@ -21,7 +21,7 @@ Bundler.require(*Rails.groups)
 module FloodRiskBackOffice
   class Application < Rails::Application
 
-    config.load_defaults 7.1
+    config.load_defaults 8.1
 
     # Sprockets stylesheets are built on @import, which Dart Sass deprecates.
     # Silenced until the gem and the apps move to @use.

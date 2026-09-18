@@ -1,5 +1,4 @@
 require "rails_helper"
-require "sucker_punch/testing/inline"
 
 RSpec.describe EnrollmentExportJob do
   subject(:job) { described_class.perform_now(export) }
