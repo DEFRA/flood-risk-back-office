@@ -49,7 +49,7 @@ module Admin
     end
 
     # TODO: refactor!
-    # rubocop:disable Metrics/PerceivedComplexity
+    # rubocop:disable-next Metrics/PerceivedComplexity
     def update
       @user.assign_attributes params.require(:user).permit(:assigned_role)
 
@@ -74,7 +74,6 @@ module Admin
         render :edit
       end
     end
-    # rubocop:enable Metrics/PerceivedComplexity
 
     private
 
