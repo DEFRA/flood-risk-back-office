@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable-next Metrics/PerceivedComplexity
 class InvitationsController < Devise::InvitationsController
   # Adapted from https://github.com/scambra/devise_invitable/blob/v1.5.3/app/controllers/devise/invitations_controller.rb#L39
   # TODO: refactor this!
@@ -63,4 +63,3 @@ class InvitationsController < Devise::InvitationsController
     admin_users_path
   end
 end
-# rubocop:enable Metrics/PerceivedComplexity
