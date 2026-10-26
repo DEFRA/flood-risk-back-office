@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.9...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.10...HEAD)
+
+**Merged pull requests:**
+
+- Upgrade to Rails 8.1 and adjust configurations and dependencies [\#1206](https://github.com/DEFRA/flood-risk-back-office/pull/1206) ([brujeo](https://github.com/brujeo))
+- FRAE: Update defra-ruby-template to version 6.4.0 [\#1205](https://github.com/DEFRA/flood-risk-back-office/pull/1205) ([jjromeo](https://github.com/jjromeo))
+
+## [v2.1.10](https://github.com/defra/flood-risk-back-office/tree/v2.1.10) (2026-06-30)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.9...v2.1.10)
 
 **Fixed bugs:**
 
@@ -10,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Release v2.1.10 [\#1188](https://github.com/DEFRA/flood-risk-back-office/pull/1188) ([jjromeo](https://github.com/jjromeo))
 - Bump flood\_risk\_engine from `17c3ccd` to `4d1277b` [\#1185](https://github.com/DEFRA/flood-risk-back-office/pull/1185) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump flood\_risk\_engine from `f5da507` to `17c3ccd` [\#1184](https://github.com/DEFRA/flood-risk-back-office/pull/1184) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Feature/ruby 4336 frae security enable bundler cooldown give new gems a few days to be vetted [\#1183](https://github.com/DEFRA/flood-risk-back-office/pull/1183) ([brujeo](https://github.com/brujeo))

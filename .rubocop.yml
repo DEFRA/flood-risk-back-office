@@ -37,8 +37,9 @@ AllCops:
     - "**/vendor/**/*"
   NewCops: enable
 
-# Aligning with this cop introduces ambiguity errors on pages with links and buttons with the same name
-Capybara/ClickLinkOrButtonStyle:
+# TODO: Adopt params.expect as part of the post-Rails-8.1 modernisation sweep.
+# This cop activated itself when the lockfile moved to Rails 8.1
+Rails/StrongParametersExpect:
   Enabled: false
 
 # We believe it looks cluttered not having the ability to have empty lines after

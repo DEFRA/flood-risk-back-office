@@ -3,7 +3,7 @@ require "thor"
 require "factory_girl"
 
 module Flood
-  # rubocop:disable Metrics/ClassLength
+  # rubocop:disable-next Metrics/ClassLength
   class BulkLoad < Thor
 
     desc "clear", "Clear DB of major model data"
@@ -121,9 +121,9 @@ module Flood
       end
     end
 
-    # rubocop:disable Metrics/BlockLength
+    # rubocop:disable-next Metrics/BlockLength
     no_commands do
-      # rubocop:disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+      # rubocop:disable-next Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
       def build_factory_list
         factories = []
 
@@ -137,7 +137,6 @@ module Flood
 
         factories
       end
-      # rubocop:enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
       def init
         # assume run from Rails.root
@@ -201,7 +200,7 @@ module Flood
       # testing the command using the dummy app in this gem).
       # If postgres then it uses the ANALYZE argument to update statistics, which are used
       # by the planner to determine the most efficient way to execute a query.
-      # rubocop:disable Lint/ShadowedArgument
+      # rubocop:disable-next Lint/ShadowedArgument
       def modify_after_insert(conn, postgres_cmd, default_cmd)
         conn = ActiveRecord::Base.connection
         cmd = if conn.instance_values["config"][:adapter].in? %w[postgresql postgres postgis]
@@ -214,7 +213,6 @@ module Flood
           conn.execute "#{cmd} flood_risk_engine_#{t};"
         end
       end
-      # rubocop:enable Lint/ShadowedArgument
 
       def vacuum_after_insert(conn)
         modify_after_insert conn, "VACUUM (ANALYZE)", "VACUUM"
@@ -225,7 +223,5 @@ module Flood
       end
 
     end
-    # rubocop:enable Metrics/BlockLength
   end
-  # rubocop:enable Metrics/ClassLength
 end

@@ -6,14 +6,22 @@
 <% content_for :page_title, title %>
 
 <% content_for :header_content do %>
+  <section aria-label="Service information"
+           class="govuk-service-navigation"
+           data-module="govuk-service-navigation">
+    <div class="govuk-width-container">
+      <div class="govuk-service-navigation__container">
+        <span class="govuk-service-navigation__service-name">
+          <%= link_to t(".title"),
+                      main_app.root_path,
+                      id: "proposition-name",
+                      class: "govuk-service-navigation__link" %>
+        </span>
 
-  <%= link_to t(".title"),
-        main_app.root_path,
-        class: "govuk-header__link govuk-header__service-name",
-        id: "proposition-name" %>
-
-  <%= render partial: "layouts/navbar" %>
-
+        <%= render partial: "layouts/navbar" %>
+      </div>
+    </div>
+  </section>
 <% end %>
 
 <% content_for :back_link do %>

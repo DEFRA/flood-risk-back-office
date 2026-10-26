@@ -108,7 +108,7 @@ RSpec.describe User do
       let(:delivery_job) { instance_double(ActionMailer::MailDeliveryJob) }
 
       before do
-        allow(Rails.application.config.active_job).to receive(:queue_adapter).and_return(:sucker_punch)
+        allow(Rails.application.config.active_job).to receive(:queue_adapter).and_return(:async)
         allow(ActionMailer::MailDeliveryJob).to receive(:new).and_return delivery_job
         allow(delivery_job).to receive(:enqueue)
       end

@@ -5,13 +5,12 @@ RSpec.configure do |config|
   end
 
   config.before do |ex|
-    # rubocop:disable Style/ConditionalAssignment
+    # rubocop:disable-next Style/ConditionalAssignment
     if %i[feature query].include?(ex.metadata[:type])
       DatabaseCleaner.strategy = :truncation
     else
       DatabaseCleaner.strategy = :transaction
     end
-    # rubocop:enable Style/ConditionalAssignment
 
     DatabaseCleaner.start
   end

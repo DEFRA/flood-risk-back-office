@@ -26,7 +26,7 @@ class PrepareEnrollmentExportReport
     end.join("\n")
   end
 
-  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable-next Metrics/MethodLength
   def generate_row(enrollment_exemption)
     @current_enrollment_exemption = enrollment_exemption
 
@@ -64,7 +64,6 @@ class PrepareEnrollmentExportReport
     )
     raise
   end
-  # rubocop:enable Metrics/MethodLength
 
   def self.column_names
     [
