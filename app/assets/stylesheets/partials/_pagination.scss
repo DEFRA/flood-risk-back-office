@@ -39,7 +39,7 @@
   text-decoration: none;
 
   &:hover, &:focus {
-    background: govuk-colour("light-grey");
+    background: govuk-colour("black", $variant: "tint-95");
     outline: 3px solid $govuk-focus-colour;
   }
 
