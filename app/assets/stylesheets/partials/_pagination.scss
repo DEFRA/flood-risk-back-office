@@ -1,3 +1,5 @@
+@use "defra_ruby_template" as *;
+
 // Cribbed from https://home-office-digital-patterns.herokuapp.com/components/pagination
 .pagination .pagination_list-items {
 
@@ -39,7 +41,7 @@
   text-decoration: none;
 
   &:hover, &:focus {
-    background: govuk-colour("light-grey");
+    background: govuk-colour("black", $variant: "tint-95");
     outline: 3px solid $govuk-focus-colour;
   }
 
