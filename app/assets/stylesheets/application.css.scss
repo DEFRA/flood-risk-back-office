@@ -1,5 +1,5 @@
-@import "defra_ruby_template";
-@import "partials/pagination";
+@use "defra_ruby_template" as *;
+@use "partials/pagination";
 
 .display_none {
   display: none;
