@@ -635,7 +635,7 @@ GEM
     validates_email_format_of (1.8.2)
       i18n (>= 0.8.0)
       simpleidn
-    vcr (6.4.0)
+    vcr (6.4.1)
     warden (1.2.9)
       rack (>= 2.0.9)
     webmock (3.26.4)
