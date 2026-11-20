@@ -9,7 +9,7 @@ RSpec.describe "As a user, I want to be able sign in" do
     form = page.find("form")
     expect(form[:autocomplete]).to eq("off")
 
-    pwd_input = page.find("input[type='password']")
+    pwd_input = page.find_field(type: "password")
     expect(pwd_input[:autocomplete]).to eq("off")
   end
 
