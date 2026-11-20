@@ -2,10 +2,23 @@
 
 ## [Unreleased](https://github.com/defra/flood-risk-back-office/tree/HEAD)
 
-[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.10...HEAD)
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.2.2...HEAD)
 
 **Merged pull requests:**
 
+- Update ruby version [\#1225](https://github.com/DEFRA/flood-risk-back-office/pull/1225) ([PaulDoyle-EA](https://github.com/PaulDoyle-EA))
+- Bump actionview from 8.1.4 to 8.1.4.1 [\#1223](https://github.com/DEFRA/flood-risk-back-office/pull/1223) ([dependabot[bot]](https://github.com/apps/dependabot))
+- \[RUBY-4493\] Update defra\_ruby\_template to 6.6.0 [\#1215](https://github.com/DEFRA/flood-risk-back-office/pull/1215) ([jjromeo](https://github.com/jjromeo))
+- \[RUBY-4493\] Pin defra\_ruby\_template to 6.4.0 [\#1213](https://github.com/DEFRA/flood-risk-back-office/pull/1213) ([jjromeo](https://github.com/jjromeo))
+- Bump flood\_risk\_engine from `9a14a43` to `0d2a89e` [\#1209](https://github.com/DEFRA/flood-risk-back-office/pull/1209) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v2.2.2](https://github.com/defra/flood-risk-back-office/tree/v2.2.2) (2026-09-28)
+
+[Full Changelog](https://github.com/defra/flood-risk-back-office/compare/v2.1.10...v2.2.2)
+
+**Merged pull requests:**
+
+- Release/v2.2.2 [\#1207](https://github.com/DEFRA/flood-risk-back-office/pull/1207) ([brujeo](https://github.com/brujeo))
 - Upgrade to Rails 8.1 and adjust configurations and dependencies [\#1206](https://github.com/DEFRA/flood-risk-back-office/pull/1206) ([brujeo](https://github.com/brujeo))
 - FRAE: Update defra-ruby-template to version 6.4.0 [\#1205](https://github.com/DEFRA/flood-risk-back-office/pull/1205) ([jjromeo](https://github.com/jjromeo))
 
